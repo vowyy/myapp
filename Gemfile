@@ -62,7 +62,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #ログイン周り
 gem 'omniauth'
 gem 'omniauth-facebook'
-gem 'devise'
+gem 'devise', '~> 4.2'
 #https接続（bundle exec thin start --ssl)
 gem 'thin'
 
