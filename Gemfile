@@ -77,3 +77,9 @@ gem 'rmagick'
 gem 'better_errors'
 # better_errorsの画面上にirb/pry(PERL)を表示する
 gem 'binding_of_caller'
+
+#bootstrap周り
+gem 'bootstrap', '4.0.0.alpha6'
+gem 'jquery-rails'
+gem 'popper_js', '~> 1.12.3'
+gem 'rails-assets-tether', '>= 1.1.0'
