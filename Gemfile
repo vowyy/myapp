@@ -79,7 +79,5 @@ gem 'better_errors'
 gem 'binding_of_caller'
 
 #bootstrap周り
-gem 'bootstrap', '4.0.0.alpha6'
+gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem 'jquery-rails'
-gem 'popper_js', '~> 1.12.3'
-gem 'rails-assets-tether', '>= 1.1.0'
