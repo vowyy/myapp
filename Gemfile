@@ -11,7 +11,7 @@ gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 
 # server
 gem 'puma', '~> 3.11'
-gem 'thin' #https接続（bundle exec thin start --ssl)
+gem 'thin' # https接続（bundle exec thin start --ssl)
 
 # view
 gem 'sass-rails', '~> 5.0'
