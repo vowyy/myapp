@@ -38,8 +38,9 @@ gem 'rmagick'
 
 # エラー画面をわかりやすく整形してくれる
 gem 'better_errors'
-# better_errorsの画面上にirb/pry(PERL)を表示する
 gem 'binding_of_caller'
+
+gem 'rubocop'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
