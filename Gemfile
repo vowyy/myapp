@@ -24,15 +24,15 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
-#ログイン周り
+# ログイン周り
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'devise', '~> 4.2'
 
-#環境変数
+# 環境変数
 gem 'dotenv-rails'
 
-#画像
+# 画像
 gem 'carrierwave'
 gem 'rmagick'
 
@@ -56,7 +56,7 @@ group :test do
   gem 'capybara', '>= 2.15', '< 4.0'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
-  #Rspec
+  # Rspec
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'database_cleaner'

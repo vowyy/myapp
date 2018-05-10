@@ -8,6 +8,6 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
     devise_parameter_sanitizer.permit(:acount_update, keys: [:first_name, :last_name])
-    #sanitizer == 清浄剤
+    # sanitizer == 清浄剤
   end
 end
