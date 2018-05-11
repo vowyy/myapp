@@ -13,3 +13,40 @@ AllCops:
     - 'bundle_bin/*'
     - 'bin/*'
     - 'vendor/**/*'
+
+# Gemをアルファベッド順でなくてもok
+Bundler/OrderedGems:
+  Enabled: false
+
+# Gemfileの1行目のsourceをSourceではなくてもok
+Naming/FileName:
+  Exclude:
+    - 'Gemfile'
+
+# コメントで日本語使用ok
+Style/AsciiComments:
+  Enabled: false
+
+# ブロックコメントはok
+Style/BlockComments:
+  Enabled: false
+
+# class moduleに対するコメントはなくてok
+Style/Documentation:
+  Enabled: false
+
+# frozen string leteral commentがなくてもok(RubyのStringリテラルが勝手にfreezeされてimmutableになる。 Ruby3系では基本的にimmutableになる予定)
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# " 'を区別しなくてok
+Style/StringLiterals:
+  Enabled: false
+
+# %i(Ruby Python PHP)  => [:Ruby, :Python, :PHP] みたいに書かなくてok
+Style/SymbolArray:
+  Enabled: false
+
+# 1行に文字120まで書ける
+Metrics/LineLength:
+  Max: 120
