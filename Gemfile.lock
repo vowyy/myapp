@@ -181,6 +181,14 @@ GEM
       ast (~> 2.4.0)
     popper_js (1.12.9)
     powerpack (0.1.1)
+    pry (0.11.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
+    pry-byebug (3.6.0)
+      byebug (~> 10.0)
+      pry (~> 0.10)
+    pry-rails (0.3.6)
+      pry (>= 0.10.4)
     public_suffix (3.0.2)
     puma (3.11.4)
     rack (2.0.5)
@@ -321,6 +329,8 @@ DEPENDENCIES
   mysql2 (>= 0.4.4, < 0.6.0)
   omniauth
   omniauth-facebook
+  pry-byebug
+  pry-rails
   puma (~> 3.11)
   rails (~> 5.2.0)
   rmagick
