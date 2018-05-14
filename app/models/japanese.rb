@@ -27,6 +27,7 @@ end
 # Table name: japaneses
 #
 #  id                     :bigint(8)        not null, primary key
+#  birthday               :date
 #  confirmation_sent_at   :datetime
 #  confirmation_token     :string(255)
 #  confirmed_at           :datetime
@@ -35,6 +36,9 @@ end
 #  email                  :string(255)      default(""), not null
 #  encrypted_password     :string(255)      default(""), not null
 #  first_name             :string(255)
+#  image                  :string(255)
+#  intro                  :text(65535)
+#  lang_l                 :integer          default(0), not null
 #  last_name              :string(255)
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :string(255)
