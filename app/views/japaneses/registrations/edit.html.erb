@@ -16,21 +16,30 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: "form-control" %>
   </div>
 
+  <div class="form-group">
+    <%= f.label :gender, "性別" %><br />
+    <%= f.select :gender, Japanese.genders.keys, autofocus: true, prompt: "性別を選んでください", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :lang_l, "英語レベル" %><br />
+    <%= f.select :lang_l, Japanese.lang_ls.keys, autofocus: true, prompt: "英語レベル", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :intro, "紹介文" %><br />
+    <%= f.text_field :intro, autofocus: true, placeholder: "紹介文を記入してください。", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :birthday, "生年月日" %><br />
+    <%= raw sprintf( f.date_select(:birthday, use_month_numbers: true,  start_year: 2000, end_year: 1950, include_blank: true, autofocus: true, class: "form-control", date_separator: '%s'), '年 ', '月 ') + '日' %>
+  </div>
+
+
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
-
-  <!-- <div class="form-group">
-    <%= f.password_field :password, autocomplete: "off", placeholder: "新たなパスワード(変更しない場合は触らないでください)", class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "再確認用パスワード", class: "form-control"  %>
-  </div>
-
-  <div class="form-group">
-    <%= f.password_field :current_password, autocomplete: "off",  placeholder: "現在のパスワード", class: "form-control" %> -->
-  </div>
 
   <div class="actions">
     <%= f.submit "送信", class: "btn btn-primary" %>

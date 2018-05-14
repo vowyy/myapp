@@ -6,6 +6,14 @@ class Japanese < ApplicationRecord
 
   validates :first_name, presence: true, length: { maximum: 10 }
   validates :last_name, presence: true, length: { maximum: 10 }
+  validates :gender, presence: true, on: :update
+  validates :lang_l, presence: true, on: :update
+  validates :birthday, presence:true, on: :update
+
+  # mount_uploader :image, ImageUploader
+
+  enum gender: { male: 0, female: 1, else: 2 }
+  enum lang_l:{ beginner: 0, intermediate: 1, advanced: 2 }
 
   # allow users to update their accounts without passwords
   def update_without_current_password(params, *options)
@@ -36,9 +44,10 @@ end
 #  email                  :string(255)      default(""), not null
 #  encrypted_password     :string(255)      default(""), not null
 #  first_name             :string(255)
+#  gender                 :integer
 #  image                  :string(255)
 #  intro                  :text(65535)
-#  lang_l                 :integer          default(0), not null
+#  lang_l                 :integer
 #  last_name              :string(255)
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :string(255)
