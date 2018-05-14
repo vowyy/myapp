@@ -50,3 +50,11 @@ Style/SymbolArray:
 # 1行に文字120まで書ける
 Metrics/LineLength:
   Max: 120
+
+# ブロックの中身の行数50行までok
+Metrics/BlockLength:
+  Max: 50
+
+# module_name::class_nameみたいな書き方ok
+Style/ClassAndModuleChildren:
+  Enabled: false
