@@ -24,9 +24,10 @@ two: {}
 #  email                  :string(255)      default(""), not null
 #  encrypted_password     :string(255)      default(""), not null
 #  first_name             :string(255)
+#  gender                 :integer
 #  image                  :string(255)
 #  intro                  :text(65535)
-#  lang_l                 :integer          default(0), not null
+#  lang_l                 :integer
 #  last_name              :string(255)
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :string(255)

@@ -33,8 +33,9 @@ ActiveRecord::Schema.define(version: 2018_05_14_022655) do
     t.string "last_name"
     t.date "birthday"
     t.text "intro"
-    t.integer "lang_l", limit: 1, default: 0, null: false
+    t.integer "lang_l", limit: 1
     t.string "image"
+    t.integer "gender", limit: 1
     t.index ["email"], name: "index_japaneses_on_email", unique: true
     t.index ["reset_password_token"], name: "index_japaneses_on_reset_password_token", unique: true
   end
