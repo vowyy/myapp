@@ -2,7 +2,12 @@ Rails.application.routes.draw do
 
   root 'pages#home'
 
-  devise_for :japaneses, controllers: {registrations: 'japaneses/registrations'}
+  #　(devise/confirmations#アクション)　＝＞　(japaneses/confirmation#アクション)
+  devise_for :japaneses, controllers:
+    {
+      registrations: 'japaneses/registrations',
+      confirmations: 'japaneses/confirmations'
+    }
 end
 
 # == Route Map
@@ -24,9 +29,9 @@ end
 #                              PUT    /japaneses(.:format)                                                                     japaneses/registrations#update
 #                              DELETE /japaneses(.:format)                                                                     japaneses/registrations#destroy
 #                              POST   /japaneses(.:format)                                                                     japaneses/registrations#create
-#    new_japanese_confirmation GET    /japaneses/confirmation/new(.:format)                                                    devise/confirmations#new
-#        japanese_confirmation GET    /japaneses/confirmation(.:format)                                                        devise/confirmations#show
-#                              POST   /japaneses/confirmation(.:format)                                                        devise/confirmations#create
+#    new_japanese_confirmation GET    /japaneses/confirmation/new(.:format)                                                    japaneses/confirmations#new
+#        japanese_confirmation GET    /japaneses/confirmation(.:format)                                                        japaneses/confirmations#show
+#                              POST   /japaneses/confirmation(.:format)                                                        japaneses/confirmations#create
 #           rails_service_blob GET    /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show
 #    rails_blob_representation GET    /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations#show
 #           rails_disk_service GET    /rails/active_storage/disk/:encoded_key/*filename(.:format)                              active_storage/disk#show
