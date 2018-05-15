@@ -32,13 +32,21 @@ class DeviseCreateJapaneses < ActiveRecord::Migration[5.2]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
+      t.string  :first_name, index: true
+      t.string  :last_name, index: true
+      t.integer :gender, limit: 1
+      t.date    :birthday
+      t.string  :image
+      t.text    :intro
+      t.integer :lang_l
+
 
       t.timestamps null: false
     end
 
     add_index :japaneses, :email,                unique: true
     add_index :japaneses, :reset_password_token, unique: true
-    # add_index :japaneses, :confirmation_token,   unique: true
+    add_index :japaneses, :confirmation_token,   unique: true
     # add_index :japaneses, :unlock_token,         unique: true
   end
 end

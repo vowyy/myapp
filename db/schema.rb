@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_14_022655) do
+ActiveRecord::Schema.define(version: 2018_05_09_070712) do
 
   create_table "japaneses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,16 +27,19 @@ ActiveRecord::Schema.define(version: 2018_05_14_022655) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
-    t.date "birthday"
-    t.text "intro"
-    t.integer "lang_l", limit: 1
-    t.string "image"
     t.integer "gender", limit: 1
+    t.date "birthday"
+    t.string "image"
+    t.text "intro"
+    t.integer "lang_l"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["confirmation_token"], name: "index_japaneses_on_confirmation_token", unique: true
     t.index ["email"], name: "index_japaneses_on_email", unique: true
+    t.index ["first_name"], name: "index_japaneses_on_first_name"
+    t.index ["last_name"], name: "index_japaneses_on_last_name"
     t.index ["reset_password_token"], name: "index_japaneses_on_reset_password_token", unique: true
   end
 

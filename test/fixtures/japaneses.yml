@@ -41,6 +41,9 @@ two: {}
 #
 # Indexes
 #
+#  index_japaneses_on_confirmation_token    (confirmation_token) UNIQUE
 #  index_japaneses_on_email                 (email) UNIQUE
+#  index_japaneses_on_first_name            (first_name)
+#  index_japaneses_on_last_name             (last_name)
 #  index_japaneses_on_reset_password_token  (reset_password_token) UNIQUE
 #
