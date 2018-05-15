@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :foreigners
   root 'pages#home'
 
   #　(devise/confirmations#アクション)　＝＞　(japaneses/confirmation#アクション)
