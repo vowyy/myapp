@@ -28,8 +28,12 @@ vendor/bundle
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-#環境変数
+# 環境変数
 .env
 
-#画像
+# 画像
 /public
+
+# pessimizeで生成されたbackupファイル
+Gemfile.backup
+Gemfile.lock.backup
