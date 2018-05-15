@@ -5,10 +5,10 @@ class Japanese < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   validates :first_name, presence: true, length: { maximum: 10 }
-  validates :last_name, presence: true, length: { maximum: 10 }
-  validates :gender, presence: true, on: :update
-  validates :lang_l, presence: true, on: :update
-  validates :birthday, presence:true, on: :update
+  validates :last_name,  presence: true, length: { maximum: 10 }
+  validates :gender,     presence: true, on: :update
+  validates :lang_l,     presence: true, on: :update
+  validates :birthday,   presence: true, on: :update
 
   # mount_uploader :image, ImageUploader
 
@@ -28,7 +28,6 @@ class Japanese < ApplicationRecord
     clean_up_passwords
     result
   end
-
 end
 
 # == Schema Information

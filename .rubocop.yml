@@ -1,3 +1,5 @@
+# be rubocop --auto-gen-config
+
 inherit_from: .rubocop_todo.yml
 
 AllCops:
@@ -49,7 +51,7 @@ Style/SymbolArray:
 
 # 1行に文字120まで書ける
 Metrics/LineLength:
-  Max: 120
+  Max: 150
 
 # ブロックの中身の行数50行までok
 Metrics/BlockLength:
