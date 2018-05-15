@@ -52,6 +52,8 @@ gem 'pessimize', "~> 0.4"
 # viewでmodel絡みのメソッドを書きたいときのためのdecorator
 gem 'active_decorator', "~> 1.0"
 
+gem 'toastr-rails', "~> 1.0"
+
 group :development, :test do
   gem 'byebug', "~> 10.0", platforms: [:mri, :mingw, :x64_mingw]
 end
