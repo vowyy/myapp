@@ -15,8 +15,9 @@ module Myapp
     config.generators do |g|
       g.skip_routes true
       g.stylesheets false
-      g.javascript false
+      g.assets false
       g.helper false
+      g.test_framework false
     end
   end
 end
