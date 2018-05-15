@@ -350,7 +350,7 @@ DEPENDENCIES
   spring (~> 2.0)
   spring-watcher-listen (~> 2.0)
   thin (~> 1.7)
-  toastr-rails
+  toastr-rails (~> 1.0)
   tzinfo-data
   uglifier (~> 4.1)
   web-console (~> 3.6)
