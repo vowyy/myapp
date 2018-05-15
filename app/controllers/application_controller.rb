@@ -3,6 +3,12 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  # これがないとviewで current_japanese.full_name みたいにdecoratarのメソッドが呼び出せない。
+  def current_japanese
+    ActiveDecorator::Decorator.instance.decorate(super) if super.present?
+    super
+  end
+
   protected
 
   def configure_permitted_parameters
