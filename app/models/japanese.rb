@@ -13,7 +13,7 @@ class Japanese < ApplicationRecord
   # mount_uploader :image, ImageUploader
 
   enum gender: { male: 0, female: 1, else: 2 }
-  enum lang_l:{ beginner: 0, intermediate: 1, advanced: 2 }
+  enum lang_l: { beginner: 0, intermediate: 1, advanced: 2 }
 
   # allow users to update their accounts without passwords
   def update_without_current_password(params, *options)
@@ -28,6 +28,7 @@ class Japanese < ApplicationRecord
     clean_up_passwords
     result
   end
+
 end
 
 # == Schema Information
