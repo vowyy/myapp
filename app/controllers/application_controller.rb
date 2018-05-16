@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  before_action :configure_permitted_parameters, if: :devise_controller?
+  # before_action :configure_permitted_parameters, if: :devise_controller?
 
   # これがないとviewで current_japanese.full_name みたいにdecoratarのメソッドが呼び出せない。
   def current_japanese
@@ -9,11 +9,16 @@ class ApplicationController < ActionController::Base
     super
   end
 
-  protected
-
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :birthday, :intro, :lang_l, :image, :gender])
-    # sanitizer == 清浄剤
+  def current_foreigner
+    ActiveDecorator::Decorator.instance.decorate(super) if super.present?
+    super
   end
+
+  # protected
+  #
+  # def configure_permitted_parameters
+  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
+  #   devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :birthday, :intro, :lang_l, :image, :gender])
+  #   # sanitizer == 清浄剤
+  # end
 end
