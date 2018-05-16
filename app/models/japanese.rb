@@ -4,6 +4,9 @@ class Japanese < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
+  validates :email, format: { with: VALID_EMAIL_REGEX }
   validates :first_name, presence: true, length: { maximum: 10 }
   validates :last_name,  presence: true, length: { maximum: 10 }
   validates :gender,     presence: true, on: :update
