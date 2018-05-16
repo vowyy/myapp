@@ -1,43 +1,49 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>profile</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render 'shared/devise_errormes' %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+
+  <div class="form-group">
+    <%= f.text_field :name, placeholder: "your name", class: "form-control" %>
   </div>
+
+  <div class="form-group">
+    <%= f.email_field :email, autocomplete: "email", placeholder: "mail address", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :gender, "gender" %><br />
+    <%= f.select :gender, Foreigner.genders.keys, prompt: "select gender", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :j_l, "japanese level" %><br />
+    <%= f.select :j_l, Foreigner.j_ls.keys, prompt: "select japanese level", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :intro, "Introduction" %><br />
+    <%= f.text_field :intro, placeholder: "your introduction", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :birthday, "date of birthe" %><br />
+    <%= raw sprintf( f.date_select(:birthday, use_month_numbers: true,  start_year: 2000, end_year: 1950, include_blank: true, class: "form-control", date_separator: '%s'), 'year ', 'month ') + 'day' %>
+  </div>
+
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "update", class: "btn btn-primary" %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<!-- <h3>Cancel my account</h3>
 
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-<%= link_to "Back", :back %>
+<%= link_to "Back", :back %> -->
