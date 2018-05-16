@@ -9,6 +9,7 @@ class Japanese < ApplicationRecord
   validates :gender,     presence: true, on: :update
   validates :lang_l,     presence: true, on: :update
   validates :birthday,   presence: true, on: :update
+  validates :intro,      length: { maximum: 255 }
 
   # mount_uploader :image, ImageUploader
 
