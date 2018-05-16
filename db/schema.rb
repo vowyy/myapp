@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(version: 2018_05_15_044400) do
     t.string "name"
     t.bigint "uid"
     t.string "provider"
-    t.integer "j_l", limit: 1, null: false
-    t.integer "gender", limit: 1, null: false
+    t.integer "j_l", limit: 1
+    t.integer "gender", limit: 1
     t.text "intro"
     t.string "image"
     t.date "birthday"

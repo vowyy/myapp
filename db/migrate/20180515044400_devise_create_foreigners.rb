@@ -35,8 +35,8 @@ class DeviseCreateForeigners < ActiveRecord::Migration[5.2]
       t.string  :name
       t.bigint  :uid
       t.string  :provider
-      t.integer :j_l, limit: 1, null: false
-      t.integer :gender, limit: 1, null: false
+      t.integer :j_l, limit: 1
+      t.integer :gender, limit: 1
       t.text    :intro
       t.string  :image
       t.date    :birthday
