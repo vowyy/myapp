@@ -2,7 +2,54 @@ class Foreigner < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: %i[facebook]
+
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
+  validates :email,    format: { with: VALID_EMAIL_REGEX }
+  validates :name,     presence: true, length: { maximum: 50 }
+  validates :gender,   presence: true, on: :update
+  validates :birthday, presence: true, on: :update
+  validates :j_l,      presence: true, on: :update
+  validates :intro,    length: { maximum: 255 }
+  validates :provider, presence: true
+  validates :uid,      presence: true
+
+  #mount_uploader :image, ImageUploader
+  #imageカラムとcarrierwaveで生成されたimageuploaderを結びつける。
+
+
+  enum gender: { male: 0, female: 1, else: 2 }
+  enum j_l: { beginner: 0, intermediate: 1, advanced: 2 }
+
+  def new_comer?
+    created_at > 1.minute.ago
+  end
+
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |foreigner|
+      foreigner.email = auth.info.email
+      foreigner.uid      = auth.uid
+      foreigner.provider = auth.provider
+      foreigner.password = Devise.friendly_token[0,20]
+      foreigner.name     = auth.info.name
+      foreigner.image    = auth.info.image.gsub('http://','https://')
+    end
+  end
+
+  # 現在のパスワードなしでupdateするオーバーライド
+  def update_without_current_password(params, *options)
+    params.delete(:current_password)
+
+    if params[:password].blank? && params[:password_confirmation].blank?
+      params.delete(:password)
+      params.delete(:password_confirmation)
+    end
+
+    result = update_attributes(params, *options)
+    clean_up_passwords
+    result
+  end
 end
 
 # == Schema Information
@@ -18,10 +65,10 @@ end
 #  current_sign_in_ip     :string(255)
 #  email                  :string(255)      default(""), not null
 #  encrypted_password     :string(255)      default(""), not null
-#  gender                 :integer          not null
+#  gender                 :integer
 #  image                  :string(255)
 #  intro                  :text(65535)
-#  j_l                    :integer          not null
+#  j_l                    :integer
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :string(255)
 #  name                   :string(255)
