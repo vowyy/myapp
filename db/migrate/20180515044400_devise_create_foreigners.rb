@@ -40,7 +40,7 @@ class DeviseCreateForeigners < ActiveRecord::Migration[5.2]
       t.text       :intro
       t.string     :image
       t.date       :birthday
-      t.references :nation, index: true
+      t.integer    :nation_id, index: true, foreign_key: true
 
       t.timestamps null: false
     end

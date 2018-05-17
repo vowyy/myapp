@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2018_05_17_022445) do
     t.text "intro"
     t.string "image"
     t.date "birthday"
-    t.bigint "nation_id"
+    t.integer "nation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["confirmation_token"], name: "index_foreigners_on_confirmation_token", unique: true
@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 2018_05_17_022445) do
   end
 
   create_table "nations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "nation"
+    t.string "name"
     t.string "flag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
