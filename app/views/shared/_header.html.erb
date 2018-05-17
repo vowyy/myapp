@@ -1,34 +1,39 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
  <div class="container">
-   <a class="navbar-brand" href="#">myapp</a>
+   <a class="navbar-brand" href="#"><%= link_to "myapp", root_path %></a>
    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
      <span class="navbar-toggler-icon"></span>
    </button>
 
    <div class="collapse navbar-collapse" id="navbarsExample07">
-     <% if !japanese_signed_in? %>
+     <% if !japanese_signed_in? && !foreigner_signed_in? %>
        <li class="nav-link" ><%= link_to "ログイン", new_japanese_session_path %></li>
        <li class="nav-link" ><%= link_to "新規登録", new_japanese_registration_path %></li>
+       <li class="nav-link" ><%= link_to "Sign up/login with facebook", new_foreigner_session_path %></li>
      <% else %>
-       <ul class="navbar-nav mr-auto">
-         <!-- <li class="nav-item active">
-           <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-         </li>
-         <li class="nav-item">
-           <a class="nav-link" href="#">Link</a>
-         </li> -->
-         <li class="nav-item dropdown">
-           <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= current_japanese.full_name %></a>
-           <div class="dropdown-menu" aria-labelledby="dropdown07">
-             <!-- <a class="dropdown-item" href="#">Action</a>
-             <a class="dropdown-item" href="#">Another action</a>
-             <a class="dropdown-item" href="#">Something else here</a> -->
-             <a class="dropdown-item" ><%= link_to "マイページ", '#'  %></a>
-             <a class="dropdown-item" ><%= link_to "プロフィール編集", edit_japanese_registration_path %></a>
-             <a class="dropdown-item" ><%= link_to "サインアウト", destroy_japanese_session_path, method: :delete  %></a>
-           </div>
-         </li>
-       </ul>
+       <% if current_foreigner.nil? %>
+         <ul class="navbar-nav mr-auto">
+           <li class="nav-item dropdown">
+             <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= current_japanese.full_name %></a>
+             <div class="dropdown-menu" aria-labelledby="dropdown07">
+               <a class="dropdown-item" ><%= link_to "マイページ", '#'  %></a>
+               <a class="dropdown-item" ><%= link_to "プロフィール編集", edit_japanese_registration_path %></a>
+               <a class="dropdown-item" ><%= link_to "サインアウト", destroy_japanese_session_path, method: :delete  %></a>
+             </div>
+           </li>
+         </ul>
+       <% elsif current_japanese.nil? %>
+         <ul class="navbar-nav mr-auto">
+           <li class="nav-item dropdown">
+             <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= current_foreigner.name %></a>
+             <div class="dropdown-menu" aria-labelledby="dropdown07">
+               <a class="dropdown-item" ><%= link_to "mypage", '#'  %></a>
+               <a class="dropdown-item" ><%= link_to "edit_profile", edit_foreigner_registration_path %></a>
+               <a class="dropdown-item" ><%= link_to "sign_out", destroy_foreigner_session_path, method: :delete  %></a>
+             </div>
+           </li>
+         </ul>
+       <% end %>
      <% end %>
    </div>
  </div>

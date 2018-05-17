@@ -60,3 +60,11 @@ Metrics/BlockLength:
 # module_name::class_nameみたいな書き方ok
 Style/ClassAndModuleChildren:
   Enabled: false
+
+# メソッド内のライン20行までok
+Metrics/MethodLength:
+  Max: 20
+
+# メソッドをもっと細かく分けるのは後回しでok
+Metrics/AbcSize:
+ Enabled: false
