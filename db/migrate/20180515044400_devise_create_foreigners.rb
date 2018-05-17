@@ -32,14 +32,15 @@ class DeviseCreateForeigners < ActiveRecord::Migration[5.2]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
-      t.string  :name
-      t.bigint  :uid
-      t.string  :provider
-      t.integer :j_l, limit: 1
-      t.integer :gender, limit: 1
-      t.text    :intro
-      t.string  :image
-      t.date    :birthday
+      t.string     :name
+      t.bigint     :uid
+      t.string     :provider
+      t.integer    :j_l, limit: 1
+      t.integer    :gender, limit: 1
+      t.text       :intro
+      t.string     :image
+      t.date       :birthday
+      t.references :nation, index: true
 
       t.timestamps null: false
     end

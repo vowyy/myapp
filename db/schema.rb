@@ -35,10 +35,12 @@ ActiveRecord::Schema.define(version: 2018_05_17_022445) do
     t.text "intro"
     t.string "image"
     t.date "birthday"
+    t.bigint "nation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["confirmation_token"], name: "index_foreigners_on_confirmation_token", unique: true
     t.index ["email"], name: "index_foreigners_on_email", unique: true
+    t.index ["nation_id"], name: "index_foreigners_on_nation_id"
     t.index ["reset_password_token"], name: "index_foreigners_on_reset_password_token", unique: true
   end
 
