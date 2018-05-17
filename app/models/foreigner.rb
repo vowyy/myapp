@@ -1,6 +1,6 @@
 class Foreigner < ApplicationRecord
-  belongs_to :nation
-  
+  belongs_to :nation, optional: true
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: %i[facebook]
 
@@ -26,15 +26,18 @@ class Foreigner < ApplicationRecord
     created_at > 1.minute.ago
   end
 
+  # 新たなカラム追加する場合、ストロングパラメーターに追加しないとforeignerは作成されないので注意。
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |foreigner|
-      foreigner.email = auth.info.email
+      foreigner.email    = auth.info.email
       foreigner.uid      = auth.uid
       foreigner.provider = auth.provider
       foreigner.password = Devise.friendly_token[0, 20]
       foreigner.name     = auth.info.name
       foreigner.image    = auth.info.image.gsub('http://', 'https://')
+      # binding.pry
     end
+    # binding.pry
   end
 
   # 現在のパスワードなしでupdateするオーバーライド
@@ -81,7 +84,7 @@ end
 #  unconfirmed_email      :string(255)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  nation_id              :bigint(8)
+#  nation_id              :integer
 #
 # Indexes
 #
