@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_15_044400) do
+ActiveRecord::Schema.define(version: 2018_05_17_022445) do
 
   create_table "foreigners", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -71,6 +71,13 @@ ActiveRecord::Schema.define(version: 2018_05_15_044400) do
     t.index ["first_name"], name: "index_japaneses_on_first_name"
     t.index ["last_name"], name: "index_japaneses_on_last_name"
     t.index ["reset_password_token"], name: "index_japaneses_on_reset_password_token", unique: true
+  end
+
+  create_table "nations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "nation"
+    t.string "flag"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
