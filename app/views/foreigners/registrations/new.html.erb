@@ -1,6 +1,6 @@
 <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<!-- <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render 'shared/devise_errormes' %>
 
   <div class="field">
@@ -26,4 +26,10 @@
   </div>
 <% end %>
 
-<%= render "foreigners/shared/links" %>
+<%= render "foreigners/shared/links" %> -->
+
+<%- if devise_mapping.omniauthable? %>
+  <%- resource_class.omniauth_providers.each do |provider| %>
+    <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %><br />
+  <% end -%>
+<% end -%>

@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   devise_for :foreigners, controllers:
     {
       registrations: 'foreigners/registrations',
-      omniauth_callbacks: 'foreigners/omniauth_callbacks'
+      omniauth_callbacks: 'foreigners/omniauth_callbacks',
+      sessions: 'foreigners/sessions'
     }
 end
 
@@ -38,9 +39,9 @@ end
 #             new_japanese_confirmation GET      /japaneses/confirmation/new(.:format)                                                    japaneses/confirmations#new
 #                 japanese_confirmation GET      /japaneses/confirmation(.:format)                                                        japaneses/confirmations#show
 #                                       POST     /japaneses/confirmation(.:format)                                                        japaneses/confirmations#create
-#                 new_foreigner_session GET      /foreigners/sign_in(.:format)                                                            devise/sessions#new
-#                     foreigner_session POST     /foreigners/sign_in(.:format)                                                            devise/sessions#create
-#             destroy_foreigner_session DELETE   /foreigners/sign_out(.:format)                                                           devise/sessions#destroy
+#                 new_foreigner_session GET      /foreigners/sign_in(.:format)                                                            foreigners/sessions#new
+#                     foreigner_session POST     /foreigners/sign_in(.:format)                                                            foreigners/sessions#create
+#             destroy_foreigner_session DELETE   /foreigners/sign_out(.:format)                                                           foreigners/sessions#destroy
 # foreigner_facebook_omniauth_authorize GET|POST /foreigners/auth/facebook(.:format)                                                      foreigners/omniauth_callbacks#passthru
 #  foreigner_facebook_omniauth_callback GET|POST /foreigners/auth/facebook/callback(.:format)                                             foreigners/omniauth_callbacks#facebook
 #                new_foreigner_password GET      /foreigners/password/new(.:format)                                                       devise/passwords#new

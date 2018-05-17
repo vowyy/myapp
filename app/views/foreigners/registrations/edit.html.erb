@@ -23,6 +23,11 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :nation_id, "select your nationality" %><br />
+    <%= f.collection_select :nation_id, Nation.all, :id, :name, prompt: "Your nationality" %>
+  </div>
+
+  <div class="form-group">
     <%= f.label :intro, "Introduction" %><br />
     <%= f.text_field :intro, placeholder: "your introduction", class: "form-control" %>
   </div>
