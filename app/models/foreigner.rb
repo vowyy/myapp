@@ -1,19 +1,20 @@
 class Foreigner < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  belongs_to :nation
+  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: %i[facebook]
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
-  validates :email,    format: { with: VALID_EMAIL_REGEX }
-  validates :name,     presence: true, length: { maximum: 50 }
-  validates :gender,   presence: true, on: :update
-  validates :birthday, presence: true, on: :update
-  validates :j_l,      presence: true, on: :update
-  validates :intro,    length: { maximum: 255 }
-  validates :provider, presence: true
-  validates :uid,      presence: true
+  validates :email,     format: { with: VALID_EMAIL_REGEX }
+  validates :name,      presence: true, length: { maximum: 50 }
+  validates :gender,    presence: true, on: :update
+  validates :birthday,  presence: true, on: :update
+  validates :j_l,       presence: true, on: :update
+  validates :nation_id, presence: true, on: :update
+  validates :intro,     length: { maximum: 255 }
+  validates :provider,  presence: true
+  validates :uid,       presence: true
 
   # mount_uploader :image, ImageUploader
   # imageカラムとcarrierwaveで生成されたimageuploaderを結びつける。
@@ -80,10 +81,12 @@ end
 #  unconfirmed_email      :string(255)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  nation_id              :bigint(8)
 #
 # Indexes
 #
 #  index_foreigners_on_confirmation_token    (confirmation_token) UNIQUE
 #  index_foreigners_on_email                 (email) UNIQUE
+#  index_foreigners_on_nation_id             (nation_id)
 #  index_foreigners_on_reset_password_token  (reset_password_token) UNIQUE
 #

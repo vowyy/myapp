@@ -1,4 +1,5 @@
 class Nation < ApplicationRecord
+  has_many :foreigners
 end
 
 # == Schema Information
