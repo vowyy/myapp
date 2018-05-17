@@ -15,9 +15,8 @@ class Foreigner < ApplicationRecord
   validates :provider, presence: true
   validates :uid,      presence: true
 
-  #mount_uploader :image, ImageUploader
-  #imageカラムとcarrierwaveで生成されたimageuploaderを結びつける。
-
+  # mount_uploader :image, ImageUploader
+  # imageカラムとcarrierwaveで生成されたimageuploaderを結びつける。
 
   enum gender: { male: 0, female: 1, else: 2 }
   enum j_l: { beginner: 0, intermediate: 1, advanced: 2 }
@@ -31,9 +30,9 @@ class Foreigner < ApplicationRecord
       foreigner.email = auth.info.email
       foreigner.uid      = auth.uid
       foreigner.provider = auth.provider
-      foreigner.password = Devise.friendly_token[0,20]
+      foreigner.password = Devise.friendly_token[0, 20]
       foreigner.name     = auth.info.name
-      foreigner.image    = auth.info.image.gsub('http://','https://')
+      foreigner.image    = auth.info.image.gsub('http://', 'https://')
     end
   end
 
