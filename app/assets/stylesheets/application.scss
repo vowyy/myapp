@@ -5,3 +5,7 @@
 // - Sassファイルでは*= require、*= require_treeを削除する
 // - Sassファイルではインポートに@importを利用する
 // - Sassファイルで*= requireを利用すると他のスタイルシートではBootstrapのmixinや変数を利用できなくなる
+
+.navbar {
+  border-bottom: solid;
+}
