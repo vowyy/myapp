@@ -15,6 +15,9 @@ Rails.application.routes.draw do
       omniauth_callbacks: 'foreigners/omniauth_callbacks',
       sessions: 'foreigners/sessions'
     }
+
+   resources :japaneses,  only: [:show]
+   resources :foreigners, only: [:show]
 end
 
 # == Route Map
@@ -56,6 +59,8 @@ end
 #                                       PUT      /foreigners(.:format)                                                                    foreigners/registrations#update
 #                                       DELETE   /foreigners(.:format)                                                                    foreigners/registrations#destroy
 #                                       POST     /foreigners(.:format)                                                                    foreigners/registrations#create
+#                              japanese GET      /japaneses/:id(.:format)                                                                 japaneses#show
+#                             foreigner GET      /foreigners/:id(.:format)                                                                foreigners#show
 #                    rails_service_blob GET      /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show
 #             rails_blob_representation GET      /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations#show
 #                    rails_disk_service GET      /rails/active_storage/disk/:encoded_key/*filename(.:format)                              active_storage/disk#show
