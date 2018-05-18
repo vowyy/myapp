@@ -17,12 +17,10 @@ gem 'thin', "~> 1.7" # https接続（bundle exec thin start --ssl)
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '~> 4.1'
 gem 'coffee-rails', '~> 4.2'
-gem 'bootstrap', '~> 4.0'
 gem 'jquery-rails', "~> 4.3"
-
-# else
-gem 'jbuilder', '~> 2.7'
-gem 'bootsnap', '~> 1.3', require: false
+gem 'bootstrap-sass', "~> 3.3"
+gem "font-awesome-rails", "~> 4.7"
+gem 'toastr-rails', "~> 1.0"
 
 # ログイン周り
 gem 'omniauth', "~> 1.8"
@@ -41,7 +39,7 @@ gem 'better_errors', "~> 2.4"
 gem 'binding_of_caller', "~> 0.8"
 
 # ruby/railsの文法管理
-gem 'rubocop', "~> 0.55"
+gem 'rubocop', "~> 0.56"
 
 # modelなどにテーブルの注釈追加
 gem 'annotate', "~> 2.7"
@@ -52,7 +50,9 @@ gem 'pessimize', "~> 0.4"
 # viewでmodel絡みのメソッドを書きたいときのためのdecorator
 gem 'active_decorator', "~> 1.0"
 
-gem 'toastr-rails', "~> 1.0"
+# else
+gem 'jbuilder', '~> 2.7'
+gem 'bootsnap', '~> 1.3', require: false
 
 group :development, :test do
   gem 'byebug', "~> 10.0", platforms: [:mri, :mingw, :x64_mingw]
@@ -68,8 +68,8 @@ group :development do
 end
 
 group :test do
-  gem 'capybara', '~> 3.0', '< 4.0'
-  gem 'selenium-webdriver', "~> 3.11"
+  gem 'capybara', '~> 3.1', '< 4.0'
+  gem 'selenium-webdriver', "~> 3.12"
   gem 'chromedriver-helper', "~> 1.2"
   # Rspec
   gem 'rspec-rails', "~> 3.7"
