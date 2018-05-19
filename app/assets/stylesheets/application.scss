@@ -6,6 +6,9 @@
 // - Sassファイルではインポートに@importを利用する
 // - Sassファイルで*= requireを利用すると他のスタイルシートではBootstrapのmixinや変数を利用できなくなる
 
-.navbar {
-  border-bottom: solid;
+
+body {
+  color: #565a5c;
+  background-color: #F8F8F8;
+  font-family: "Varela Round", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
