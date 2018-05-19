@@ -3,18 +3,16 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   #　(devise/confirmations#アクション)　＝＞　(japaneses/confirmation#アクション)に変更
-  devise_for :japaneses, controllers:
-    {
-      registrations: 'japaneses/registrations',
-      confirmations: 'japaneses/confirmations'
-    }
+  devise_for :japaneses, controllers: {
+                                        registrations: 'japaneses/registrations',
+                                        confirmations: 'japaneses/confirmations'
+                                       }
 
-  devise_for :foreigners, controllers:
-    {
-      registrations: 'foreigners/registrations',
-      omniauth_callbacks: 'foreigners/omniauth_callbacks',
-      sessions: 'foreigners/sessions'
-    }
+  devise_for :foreigners, controllers: {
+                                         registrations:      'foreigners/registrations',
+                                         omniauth_callbacks: 'foreigners/omniauth_callbacks',
+                                         sessions:           'foreigners/sessions'
+                                        }
 
    resources :japaneses,  only: [:show]
    resources :foreigners, only: [:show]

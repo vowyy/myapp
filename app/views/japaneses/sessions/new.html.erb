@@ -1,29 +1,32 @@
-  <h2>ログイン</h2>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <h2>ログイン</h2>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-group">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: "form-control" %>
+        </div>
 
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="form-group">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: "form-control" %>
-      </div>
+        <div class="form-group">
+          <%= f.password_field :password, autocomplete: "off", placeholder: "パスワード", class: "form-control" %>
+        </div>
 
-      <div class="form-group">
-        <%= f.password_field :password, autocomplete: "off", placeholder: "パスワード", class: "form-control" %>
-      </div>
+        <div>
+          <% if devise_mapping.rememberable? -%>
+            <div class="form-group">
+              <span>remember me?</span>
+              <%= f.check_box :remember_me %>
+            </div>
+          <% end %>
+          <span>
+            <%= link_to "パスワードを忘れた方はこちら", new_japanese_password_path %>
+          </span>
+        </div>
 
-      <div>
-        <% if devise_mapping.rememberable? -%>
-          <div class="form-group">
-            <span>remember me?</span>
-            <%= f.check_box :remember_me %>
-          </div>
-        <% end %>
-        <span>
-          <%= link_to "パスワードを忘れた方はこちら", new_japanese_password_path %>
-        </span>
-      </div>
+        <div class="actions">
+          <%= f.submit "ログイン", class: "btn btn-primary" %>
+        </div>
+      <% end %>
 
-      <div class="actions">
-        <%= f.submit "ログイン", class: "btn btn-primary" %>
-      </div>
-    <% end %>
-
-    <%= render "japaneses/shared/links" %>
+      <%= render "japaneses/shared/links" %>
+  </div>
+</div>

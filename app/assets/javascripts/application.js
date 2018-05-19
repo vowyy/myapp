@@ -12,8 +12,24 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require_tree .
 //= require jquery3
-//= require popper
 //= require bootstrap-sprockets
 //= require toastr
+//= require_tree .
+
+
+
+// ヘッダーのドロップダウン
+$(function(){
+    $(".dropdown").hover(
+            function() {
+                $('.dropdown-menu', this).stop( true, true ).fadeIn("slow");
+                $(this).toggleClass('open');
+                $('b', this).toggleClass("caret caret-up");
+            },
+            function() {
+                $('.dropdown-menu', this).stop( true, true ).fadeOut("fast");
+                $(this).toggleClass('open');
+                $('b', this).toggleClass("caret caret-up");
+            });
+    });
