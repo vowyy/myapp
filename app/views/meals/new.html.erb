@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-2 text-center">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        meal details
+      </div>
+      <div class="panel-body">
+        <%= form_for(@meal) do |f| %>
+          <%= render 'shared/devise_errormes', object: f.object %>
+
+          <div class="form-group">
+            <%= f.label :date_time, "date" %><br />
+            <%= raw sprintf( f.date_select(:date_time, use_month_numbers: true,  start_year: Time.now.year, default: Date.today, autofocus: true, class: "form-control", date_separator: '%s'), '/ ', '/ ') %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :p_num, "how many people?" %><br />
+            <%= f.select :p_num,  [[1, 1],[2, 2],[3, 3], [4,4], [5,5]], autofocus: true, prompt: "not selected", class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :lang, "Your languge" %><br />
+            <%= f.select :lang, Meal.langs.keys, prompt: "not selected", class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :in, "place" %><br />
+            <%= f.select :in, Meal.ins.keys, prompt: "not selected", class: "form-control" %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "送信", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
