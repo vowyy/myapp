@@ -1,4 +1,5 @@
 class Meal < ApplicationRecord
+  belongs_to :foreigner
 end
 
 # == Schema Information
