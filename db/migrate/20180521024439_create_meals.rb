@@ -7,7 +7,7 @@ class CreateMeals < ActiveRecord::Migration[5.2]
       t.integer :lang
       t.references :foreigner
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end
