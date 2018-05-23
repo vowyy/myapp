@@ -2,6 +2,8 @@ class Match < ApplicationRecord
   belongs_to :meal
   belongs_to :foreigner
   belongs_to :japanese
+
+  validates :ok, inclusion: { in: [true, false] }
 end
 
 # == Schema Information
