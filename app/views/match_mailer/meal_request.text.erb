@@ -1,3 +1,5 @@
-Match#meal_request
+Hi <%= @foreigner.name %>,
 
-<%= @greeting %>, find me in app/views/match_mailer/meal_request.text.erb
+Your meal has been requested. Click on the link below to check request.
+
+<%= edit_match_url(@match) %>
