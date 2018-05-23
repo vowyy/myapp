@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 2018_05_23_033334) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["japanese_id"], name: "index_matches_on_japanese_id"
+    t.index ["meal_id", "japanese_id"], name: "index_matches_on_meal_id_and_japanese_id", unique: true
     t.index ["meal_id"], name: "index_matches_on_meal_id"
   end
 
