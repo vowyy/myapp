@@ -1,2 +1,12 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="row">
+  <% @meals.each do |meal| %>
+    <div class="colp-md-3">
+      <%= meal.foreigner.name %>
+      <%= meal.date_time %>
+      <%= meal.in %>
+      <% if japanese? %>
+        <%= link_to "#{meal.foreigner.name}さんにリクエスト", root_path %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -10,6 +10,8 @@ class MealsController < ApplicationController
     @meal = current_foreigner.meals.build(meal_params)
 
     if @meal.save
+      flash[:notice] = "meal succesfully created!!"
+      redirect_to root_url
     else
      render 'new'
     end
