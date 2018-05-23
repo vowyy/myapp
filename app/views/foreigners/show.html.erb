@@ -1,5 +1,9 @@
 <%= @foreigner.name %>
-<%= @foreigner.nation.name %>
+<% unless @foreigner.nation == nil %>
+  <%= @foreigner.nation.name %>
+<% else %>
+  hello
+<% end %>
 <%= @foreigner.email %>
 <%= @foreigner.j_l %>
 <%= @foreigner.gender %>

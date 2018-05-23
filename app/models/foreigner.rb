@@ -1,5 +1,6 @@
 class Foreigner < ApplicationRecord
   belongs_to :nation, optional: true
+  has_many :meals
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: %i[facebook]
