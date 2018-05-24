@@ -3,7 +3,7 @@ class Match < ApplicationRecord
   belongs_to :japanese
 
   validates :ok, inclusion: { in: [true, false] }
-  validates_uniqueness_of :meal_id, :scope => :japanese_id
+  validates_uniqueness_of :meal_id, scope: :japanese_id
 end
 
 # == Schema Information
