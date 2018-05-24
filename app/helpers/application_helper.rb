@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   def japanese?
     current_japanese && current_foreigner.nil?
   end
