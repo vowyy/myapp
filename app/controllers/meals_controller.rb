@@ -13,7 +13,7 @@ class MealsController < ApplicationController
       flash[:notice] = "meal succesfully created!!"
       redirect_to root_url
     else
-     render 'new'
+     render :new
     end
   end
 
@@ -29,6 +29,6 @@ class MealsController < ApplicationController
   private
 
   def meal_params
-    params.require(:meal).permit(:date_time, :in, :p_num, :lang)
+    params.require(:meal).permit(:date_time, :location, :p_num, :lang)
   end
 end

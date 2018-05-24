@@ -17,6 +17,7 @@ Rails.application.routes.draw do
    resources :japaneses,  only: [:show]
    resources :foreigners, only: [:show]
    resources :meals
+   resources :matches
 end
 
 # == Route Map
@@ -68,6 +69,14 @@ end
 #                                       PATCH    /meals/:id(.:format)                                                                     meals#update
 #                                       PUT      /meals/:id(.:format)                                                                     meals#update
 #                                       DELETE   /meals/:id(.:format)                                                                     meals#destroy
+#                               matches GET      /matches(.:format)                                                                       matches#index
+#                                       POST     /matches(.:format)                                                                       matches#create
+#                             new_match GET      /matches/new(.:format)                                                                   matches#new
+#                            edit_match GET      /matches/:id/edit(.:format)                                                              matches#edit
+#                                 match GET      /matches/:id(.:format)                                                                   matches#show
+#                                       PATCH    /matches/:id(.:format)                                                                   matches#update
+#                                       PUT      /matches/:id(.:format)                                                                   matches#update
+#                                       DELETE   /matches/:id(.:format)                                                                   matches#destroy
 #                    rails_service_blob GET      /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show
 #             rails_blob_representation GET      /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations#show
 #                    rails_disk_service GET      /rails/active_storage/disk/:encoded_key/*filename(.:format)                              active_storage/disk#show

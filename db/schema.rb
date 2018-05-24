@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_21_024439) do
+ActiveRecord::Schema.define(version: 2018_05_23_033334) do
 
   create_table "foreigners", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -75,10 +75,22 @@ ActiveRecord::Schema.define(version: 2018_05_21_024439) do
     t.index ["reset_password_token"], name: "index_japaneses_on_reset_password_token", unique: true
   end
 
+  create_table "matches", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "meal_id"
+    t.bigint "japanese_id"
+    t.boolean "ok", default: false
+    t.integer "budget", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["japanese_id"], name: "index_matches_on_japanese_id"
+    t.index ["meal_id", "japanese_id"], name: "index_matches_on_meal_id_and_japanese_id", unique: true
+    t.index ["meal_id"], name: "index_matches_on_meal_id"
+  end
+
   create_table "meals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "date_time"
-    t.integer "in"
-    t.integer "p_num"
+    t.integer "location"
+    t.integer "p_num", null: false
     t.integer "lang"
     t.bigint "foreigner_id"
     t.datetime "created_at", null: false
@@ -93,4 +105,6 @@ ActiveRecord::Schema.define(version: 2018_05_21_024439) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "matches", "japaneses"
+  add_foreign_key "matches", "meals"
 end

@@ -3,9 +3,15 @@
     <div class="colp-md-3">
       <%= meal.foreigner.name %>
       <%= meal.date_time %>
-      <%= meal.in %>
+      <%= meal.location %>
+      <%= meal.lang %>
       <% if japanese? %>
-        <%= link_to "#{meal.foreigner.name}さんにリクエスト", root_path %>
+        <%= form_for(current_japanese.matches.build) do |f| %>
+          <!-- <%= render 'shared/devise_errormes', object: f.object %> なぜか、エラーあるのにエラーメッセージが出ない。 -->
+          <!-- 今の所flashで我慢している。 -->
+          <%= f.submit "食事リクエストを送る", class: "btn btn-primary" %>
+          <%= hidden_field_tag :meal_id, meal.id %>
+        <% end %>
       <% end %>
     </div>
   <% end %>
