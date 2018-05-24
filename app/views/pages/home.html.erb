@@ -3,7 +3,7 @@
     <div class="colp-md-3">
       <%= meal.foreigner.name %>
       <%= meal.date_time %>
-      <%= meal.in %>
+      <%= meal.location %>
       <%= meal.lang %>
       <% if japanese? %>
         <%= form_for(current_japanese.matches.build) do |f| %>

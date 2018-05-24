@@ -89,8 +89,8 @@ ActiveRecord::Schema.define(version: 2018_05_23_033334) do
 
   create_table "meals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "date_time"
-    t.integer "in"
-    t.integer "p_num"
+    t.integer "location"
+    t.integer "p_num", null: false
     t.integer "lang"
     t.bigint "foreigner_id"
     t.datetime "created_at", null: false
