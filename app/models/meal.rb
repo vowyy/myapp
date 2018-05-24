@@ -15,7 +15,7 @@ class Meal < ApplicationRecord
   private
 
   def date_time_cannot_be_in_the_past
-    if date_time.present? && date_time < Date.today
+    if date_time.present? && date_time < Date.current
       errors.add(:date, "is past.")
     end
   end
