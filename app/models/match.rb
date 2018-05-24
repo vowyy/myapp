@@ -11,7 +11,7 @@ class Match < ApplicationRecord
   end
 
   def set_up_room
-    self.toggle!(:ok) && self.create_room
+    self.toggle!(:ok) && self.create_room(foreigner_id: self.meal.foreigner.id, japanese_id: self.japanese.id)
   end
 end
 
