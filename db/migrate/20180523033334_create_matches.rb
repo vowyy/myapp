@@ -4,7 +4,7 @@ class CreateMatches < ActiveRecord::Migration[5.2]
       t.references :meal, foreign_key: true
       t.references :japanese, foreign_key: true
       t.boolean :ok, default: false
-      t.integer :budget
+      t.integer :budget, null: false, default: 0
 
       t.timestamps null: false
     end

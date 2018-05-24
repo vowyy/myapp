@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 2018_05_23_033334) do
     t.bigint "meal_id"
     t.bigint "japanese_id"
     t.boolean "ok", default: false
-    t.integer "budget"
+    t.integer "budget", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["japanese_id"], name: "index_matches_on_japanese_id"
