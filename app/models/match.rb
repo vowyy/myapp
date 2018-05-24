@@ -1,9 +1,18 @@
 class Match < ApplicationRecord
   belongs_to :meal
   belongs_to :japanese
+  has_one :room, dependent: :destroy
 
   validates :ok, inclusion: { in: [true, false] }
   validates_uniqueness_of :meal_id, scope: :japanese_id
+
+  def is_already_approved?
+     self.ok? && Room.exists?(match_id: self.id)
+  end
+
+  def set_up_room
+    self.toggle!(:ok) && self.create_room
+  end
 end
 
 # == Schema Information

@@ -19,8 +19,7 @@ class MatchesController < ApplicationController
 
   def update
     if @match.update(match_params)
-      @match.toggle!(:ok)
-      flash[:notice] = "Congratulations!"
+      @match.is_already_approved? ? flash[:alert] = "You already approved" : @match.set_up_room && flash[:notice] = "Congratulations"
       redirect_to root_path
     else
       render :edit
