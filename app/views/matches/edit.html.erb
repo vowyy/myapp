@@ -1,0 +1,15 @@
+Your meal was requested by
+
+<%= @match.japanese.full_name %>
+<%= @match.japanese.lang_l %>
+<%= @match.japanese.intro %>
+
+<div>If you accept this request, click on the button below and chat room will immedietly be created!!</div>
+<%= button_to 'approve request', match_path(@match), method: :put, class: "btn btn-primary"%>
+<div>
+  or
+</div>
+
+<div>
+  <%= button_to 'cancel request', match_path(@match), method: :delete, class: "btn btn-primary"%>
+</div>
