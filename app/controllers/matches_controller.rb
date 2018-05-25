@@ -14,16 +14,24 @@ class MatchesController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit;end
 
   def update
-    if @match.update(match_params)
-      @match.is_already_approved? ? flash[:alert] = "You already approved" : @match.set_up_room && flash[:notice] = "Congratulations"
+    if @match.already_approved?
+      flash[:alert] = "You already approved request."
       redirect_to root_path
     else
-      render :edit
-      flash[:alert] = "Try again."
+      begin
+        Match.transaction do
+          @match.update!(match_params)
+          @match.setup_room!
+        end
+        flash[:notice] = "Congratulations"
+        redirect_to root_path
+      rescue
+        flash[:alert] = "Sorry. Failed to approve. Try again."
+        redirect_to root_path
+      end
     end
   end
 

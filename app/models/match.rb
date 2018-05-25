@@ -6,13 +6,14 @@ class Match < ApplicationRecord
   validates :ok, inclusion: { in: [true, false] }
   validates_uniqueness_of :meal_id, scope: :japanese_id
 
-  def is_already_approved?
-     self.ok? && Room.exists?(match_id: self.id)
+  def already_approved?
+     ok? && Room.exists?(match_id: self.id)
   end
 
-  def set_up_room
-    self.toggle!(:ok) && self.create_room(foreigner_id: self.meal.foreigner.id, japanese_id: self.japanese.id)
+  def setup_room!
+    toggle!(:ok) && create_room!(foreigner_id: self.meal.foreigner_id, japanese_id: self.japanese_id)
   end
+  # toggle!(:ok)はこのままにするか、外に切り出すか？
 end
 
 # == Schema Information
