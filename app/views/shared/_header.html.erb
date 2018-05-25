@@ -11,7 +11,7 @@
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <% if !japanese_signed_in? && !foreigner_signed_in? %>
+      <% if !current_user_exists? %>
         <ul class="nav navbar-nav navbar-right">
           <li class="nav-link" ><%= link_to "ログイン", new_japanese_session_path %></li>
           <li class="nav-link" ><%= link_to "新規登録", new_japanese_registration_path %></li>
