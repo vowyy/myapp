@@ -2,6 +2,7 @@ class Room < ApplicationRecord
   belongs_to :match
   belongs_to :foreigner
   belongs_to :japanese
+  has_many :messages
 
   validates :match_id, presence: true
 end
