@@ -100,8 +100,14 @@ ActiveRecord::Schema.define(version: 2018_05_28_043937) do
 
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "content", null: false
+    t.bigint "match_id"
+    t.bigint "foreigner_id"
+    t.bigint "japanese_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["foreigner_id"], name: "index_messages_on_foreigner_id"
+    t.index ["japanese_id"], name: "index_messages_on_japanese_id"
+    t.index ["match_id"], name: "index_messages_on_match_id"
   end
 
   create_table "nations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
