@@ -1,10 +1,13 @@
 module ApplicationHelper
-
   def japanese?
-    current_japanese && current_foreigner.nil?
+    japanese_signed_in? && !foreigner_signed_in?
   end
 
   def foreigner?
-    current_foreigner && current_japanese.nil?
+    !japanese_signed_in? && foreigner_signed_in?
+  end
+
+  def current_user_exists?
+    japanese_signed_in? || foreigner_signed_in?
   end
 end

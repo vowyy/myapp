@@ -1,5 +1,6 @@
 class MatchesController < ApplicationController
   before_action :get_match, only: [:edit, :update]
+  before_action :already_approved?, only: [:update]
 
   def create
     @match = current_japanese.matches.build(match_params)
@@ -14,17 +15,12 @@ class MatchesController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit;end
 
   def update
-    if @match.update(match_params)
-      @match.toggle!(:ok)
-      flash[:notice] = "Congratulations!"
+    if @match.update(ok: true)
+      flash[:notice] = "Congratulations"
       redirect_to root_path
-    else
-      render :edit
-      flash[:alert] = "Try again."
     end
   end
 
@@ -38,10 +34,17 @@ class MatchesController < ApplicationController
 
   # これ必要か？userに直接入力してもらうことは特になく、ボタン押すだけ。
   def match_params
-    params.permit(:budget, :meal_id, :ok)
+    params.permit(:budget, :meal_id)
   end
 
   def get_match
     @match = Match.find(params[:id])
+  end
+
+  def already_approved?
+    if @match.ok? && Room.exists?(match_id: @match.id)
+      flash[:alert] = "You already approved request."
+      redirect_to root_path
+    end
   end
 end

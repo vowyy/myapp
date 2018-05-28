@@ -1,9 +1,18 @@
 class Match < ApplicationRecord
+  after_update :setup_room!
+
   belongs_to :meal
   belongs_to :japanese
+  has_one :room, dependent: :destroy
 
   validates :ok, inclusion: { in: [true, false] }
   validates_uniqueness_of :meal_id, scope: :japanese_id
+
+  private
+
+  def setup_room!
+    create_room!(foreigner_id: self.meal.foreigner_id, japanese_id: self.japanese_id)
+  end
 end
 
 # == Schema Information

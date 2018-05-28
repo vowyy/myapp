@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-md-4">
+    <ul>
+      <% @rooms.each do |room| %>
+        <li>
+          <%= link_to room do %>
+            <% if japanese? %>
+              名前: <%= room.foreigner.name %>
+              <%= room.match.meal.date_time %> 昼
+            <% else %>
+              name: <%= room.japanese.full_name %>
+              <%= room.match.meal.date_time %> dinner
+            <% end %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
