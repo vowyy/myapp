@@ -8,11 +8,6 @@ class Match < ApplicationRecord
   validates :ok, inclusion: { in: [true, false] }
   validates_uniqueness_of :meal_id, scope: :japanese_id
 
-  def already_approved?
-     ok? && Room.exists?(match_id: self.id)
-  end
-
-
   private
 
   def setup_room!

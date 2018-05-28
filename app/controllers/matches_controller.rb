@@ -1,5 +1,6 @@
 class MatchesController < ApplicationController
   before_action :get_match, only: [:edit, :update]
+  before_action :already_approved?, only: [:update]
 
   def create
     @match = current_japanese.matches.build(match_params)
@@ -17,14 +18,8 @@ class MatchesController < ApplicationController
   def edit;end
 
   def update
-    if @match.already_approved?
-      flash[:alert] = "You already approved request."
-      redirect_to root_path
-    elsif @match.update!(ok: true)
+    if @match.update(ok: true)
       flash[:notice] = "Congratulations"
-      redirect_to root_path
-    else
-      flash[:alert] = "Sorry. Failed to approve. Try again."
       redirect_to root_path
     end
   end
@@ -44,5 +39,12 @@ class MatchesController < ApplicationController
 
   def get_match
     @match = Match.find(params[:id])
+  end
+
+  def already_approved?
+    if @match.ok? && Room.exists?(match_id: @match.id)
+      flash[:alert] = "You already approved request."
+      redirect_to root_path
+    end
   end
 end
