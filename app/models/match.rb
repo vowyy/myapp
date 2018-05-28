@@ -1,4 +1,6 @@
 class Match < ApplicationRecord
+  after_update :setup_room!
+
   belongs_to :meal
   belongs_to :japanese
   has_one :room, dependent: :destroy
@@ -10,10 +12,12 @@ class Match < ApplicationRecord
      ok? && Room.exists?(match_id: self.id)
   end
 
+
+  private
+
   def setup_room!
-    toggle!(:ok) && create_room!(foreigner_id: self.meal.foreigner_id, japanese_id: self.japanese_id)
+    create_room!(foreigner_id: self.meal.foreigner_id, japanese_id: self.japanese_id)
   end
-  # toggle!(:ok)はこのままにするか、外に切り出すか？
 end
 
 # == Schema Information
