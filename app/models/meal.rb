@@ -4,7 +4,7 @@ class Meal < ApplicationRecord
 
   validates :date_time,    presence: true
   validates :lang,         presence: true
-  validates :location,           presence: true
+  validates :location,     presence: true
   validates :p_num,        presence: true
   validates :foreigner_id, presence: true
   validate :date_time_cannot_be_in_the_past
@@ -20,6 +20,8 @@ class Meal < ApplicationRecord
     end
   end
 end
+
+# 同一人物による同じ日の同じ時間帯のmealを作れない要する。
 
 # == Schema Information
 #
