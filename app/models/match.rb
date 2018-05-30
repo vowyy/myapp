@@ -6,12 +6,12 @@ class Match < ApplicationRecord
   has_one :room, dependent: :destroy
 
   validates :ok, inclusion: { in: [true, false] }
-  validates_uniqueness_of :meal_id, scope: :japanese_id
+  validates :meal_id, uniqueness: { scope: :japanese_id }
 
   private
 
   def setup_room!
-    create_room!(foreigner_id: self.meal.foreigner_id, japanese_id: self.japanese_id)
+    create_room!(foreigner_id: meal.foreigner_id, japanese_id: japanese_id)
   end
 end
 

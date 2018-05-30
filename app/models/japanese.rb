@@ -8,7 +8,6 @@ class Japanese < ApplicationRecord
   has_many :rooms, dependent: :destroy
   has_many :messages, as: :messable, dependent: :destroy
 
-
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   validates :email, format: { with: VALID_EMAIL_REGEX }
@@ -33,7 +32,7 @@ class Japanese < ApplicationRecord
       params.delete(:password_confirmation)
     end
 
-    result = update_attributes(params, *options)
+    result = update(params, *options)
     clean_up_passwords
     result
   end

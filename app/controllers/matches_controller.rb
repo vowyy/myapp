@@ -1,5 +1,5 @@
 class MatchesController < ApplicationController
-  before_action :get_match, only: [:edit, :update]
+  before_action :set_match, only: [:edit, :update]
   before_action :already_approved?, only: [:update]
 
   def create
@@ -8,14 +8,13 @@ class MatchesController < ApplicationController
     if @match.save
       flash[:success] = "食事リクエストを#{@match.meal.foreigner.name}さんに送信しました。"
       MatchMailer.meal_request(@match).deliver_now
-      redirect_to root_path
     else
       flash[:alert] = "失敗"
-      redirect_to root_path
     end
+    redirect_to root_path
   end
 
-  def edit;end
+  def edit; end
 
   def update
     if @match.update(ok: true)
@@ -37,7 +36,7 @@ class MatchesController < ApplicationController
     params.permit(:budget, :meal_id)
   end
 
-  def get_match
+  def set_match
     @match = Match.find(params[:id])
   end
 

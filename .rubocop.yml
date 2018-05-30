@@ -1,13 +1,13 @@
+inherit_from: .rubocop_todo.yml
+
 # be rubocop --auto-gen-config
 
-inherit_from: .rubocop_todo.yml
+Rails:
+  Enabled: true
 
 AllCops:
   # 除外するディレクトリ（自動生成されたファイル）
   # デフォルト設定にある"vendor/**/*"が無効化されないように記述
-  Include:
-    - '**/Rakefile'
-    - '**/config.ru'
   Exclude:
     - 'db/**/*'
     - 'config/**/*'
@@ -68,3 +68,12 @@ Metrics/MethodLength:
 # メソッドをもっと細かく分けるのは後回しでok
 Metrics/AbcSize:
  Enabled: false
+
+# nation.rbのhas_many :foreignersのオプションとしてdependentをつけなくてもok
+HasManyOrHasOneDependent:
+    Exclude:
+      - 'app/models/nation.rb'
+
+# if文を1行で書かなくてもok
+Style/GuardClause:
+   Enabled: false
