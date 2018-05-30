@@ -3,6 +3,10 @@ class Message < ApplicationRecord
   belongs_to :messable, polymorphic: true
 
   validates :content, presence: true, length: { maximum: 100 }
+
+  def from_japanese?
+    messable_type == "Japanese"
+  end
 end
 
 # == Schema Information
