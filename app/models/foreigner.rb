@@ -2,7 +2,7 @@ class Foreigner < ApplicationRecord
   belongs_to :nation, optional: true
   has_many :meals, dependent: :destroy
   has_many :rooms, dependent: :destroy
-  has_many :messages, dependent: :destroy
+  has_many :messages, as: :messable, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: %i[facebook]
