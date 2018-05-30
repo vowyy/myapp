@@ -1,8 +1,8 @@
 class Room < ApplicationRecord
   belongs_to :match
-  belongs_to :foreigner
-  belongs_to :japanese
-  has_many :messages
+  belongs_to :foreigner, optional: true
+  belongs_to :japanese, optional: true
+  has_many :messages, dependent: :destroy
 
   validates :match_id, presence: true
 end
