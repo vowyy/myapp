@@ -23,10 +23,11 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_japanese.full_name%><span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#"><%= link_to "マイページ", japanese_path(current_japanese)  %></li>
-                <li><a href="#"><%= link_to "プロフィール編集", edit_japanese_registration_path %></a></li>
+                <li><%= link_to "マイページ", japanese_path(current_japanese)  %></li>
+                <li><%= link_to "プロフィール編集", edit_japanese_registration_path %></li>
+                <li><%= link_to "マイチャット", rooms_path %></li>
                 <li role="separator" class="divider"></li>
-                <li><a href="#"><%= link_to "サインアウト", destroy_japanese_session_path, method: :delete  %></a></li>
+                <li><%= link_to "サインアウト", destroy_japanese_session_path, method: :delete  %></li>
               </ul>
             </li>
           </ul>
@@ -36,10 +37,11 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_foreigner.name%><span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#"><%= link_to "mypage", foreigner_path(current_foreigner)  %></li>
-                <li><a href="#"><%= link_to "edit_profile", edit_foreigner_registration_path %></a></li>
+                <li><%= link_to "mypage", foreigner_path(current_foreigner)  %></li>
+                <li><%= link_to "edit_profile", edit_foreigner_registration_path %></li>
+                <li><%= link_to "my chat", rooms_path %></li>
                 <li role="separator" class="divider"></li>
-                <li><a href="#"><%= link_to "sign_out", destroy_foreigner_session_path, method: :delete  %></a></li>
+                <li><%= link_to "sign_out", destroy_foreigner_session_path, method: :delete  %></li>
               </ul>
             </li>
           </ul>
