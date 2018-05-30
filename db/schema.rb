@@ -101,12 +101,11 @@ ActiveRecord::Schema.define(version: 2018_05_28_043937) do
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "content", null: false
     t.bigint "room_id"
-    t.bigint "foreigner_id"
-    t.bigint "japanese_id"
+    t.string "messable_type", null: false
+    t.bigint "messable_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["foreigner_id"], name: "index_messages_on_foreigner_id"
-    t.index ["japanese_id"], name: "index_messages_on_japanese_id"
+    t.index ["messable_type", "messable_id"], name: "index_messages_on_messable_type_and_messable_id"
     t.index ["room_id"], name: "index_messages_on_room_id"
   end
 
