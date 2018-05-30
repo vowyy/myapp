@@ -19,6 +19,7 @@ Rails.application.routes.draw do
    resources :meals
    resources :matches
    resources :rooms
+   resources :messages
 end
 
 # == Route Map
@@ -86,6 +87,14 @@ end
 #                                       PATCH    /rooms/:id(.:format)                                                                     rooms#update
 #                                       PUT      /rooms/:id(.:format)                                                                     rooms#update
 #                                       DELETE   /rooms/:id(.:format)                                                                     rooms#destroy
+#                              messages GET      /messages(.:format)                                                                      messages#index
+#                                       POST     /messages(.:format)                                                                      messages#create
+#                           new_message GET      /messages/new(.:format)                                                                  messages#new
+#                          edit_message GET      /messages/:id/edit(.:format)                                                             messages#edit
+#                               message GET      /messages/:id(.:format)                                                                  messages#show
+#                                       PATCH    /messages/:id(.:format)                                                                  messages#update
+#                                       PUT      /messages/:id(.:format)                                                                  messages#update
+#                                       DELETE   /messages/:id(.:format)                                                                  messages#destroy
 #                    rails_service_blob GET      /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show
 #             rails_blob_representation GET      /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations#show
 #                    rails_disk_service GET      /rails/active_storage/disk/:encoded_key/*filename(.:format)                              active_storage/disk#show
