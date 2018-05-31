@@ -129,6 +129,7 @@ ActiveRecord::Schema.define(version: 2018_05_28_043937) do
 
   add_foreign_key "matches", "japaneses"
   add_foreign_key "matches", "meals"
+  add_foreign_key "messages", "rooms"
   add_foreign_key "rooms", "foreigners"
   add_foreign_key "rooms", "japaneses"
   add_foreign_key "rooms", "matches"

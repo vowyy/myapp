@@ -26,3 +26,7 @@ end
 #  index_messages_on_messable_type_and_messable_id  (messable_type,messable_id)
 #  index_messages_on_room_id                        (room_id)
 #
+# Foreign Keys
+#
+#  fk_rails_...  (room_id => rooms.id)
+#
