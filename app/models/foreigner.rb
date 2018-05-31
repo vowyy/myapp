@@ -2,6 +2,7 @@ class Foreigner < ApplicationRecord
   belongs_to :nation, optional: true
   has_many :meals, dependent: :destroy
   has_many :rooms, dependent: :destroy
+  has_many :messages, as: :messable, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: %i[facebook]
@@ -21,8 +22,13 @@ class Foreigner < ApplicationRecord
   # mount_uploader :image, ImageUploader
   # imageカラムとcarrierwaveで生成されたimageuploaderを結びつける。
 
-  enum gender: { male: 0, female: 1, else: 2 }
-  enum j_l: { beginner: 0, intermediate: 1, advanced: 2 }
+  enum gender: { male: 0,
+                 female: 1,
+                 else: 2 }
+
+  enum j_l: { beginner: 0,
+              intermediate: 1,
+              advanced: 2 }
 
   def new_comer?
     created_at > 1.minute.ago
@@ -51,7 +57,7 @@ class Foreigner < ApplicationRecord
       params.delete(:password_confirmation)
     end
 
-    result = update_attributes(params, *options)
+    result = update(params, *options)
     clean_up_passwords
     result
   end

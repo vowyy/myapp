@@ -1,8 +1,21 @@
 <div class="row">
   <div class="col-md-4">
     <ul>
-      <li>
+      <li id="chat">
+        <%= render @messages %>
       </li>
     </ul>
+
+    <%= form_for(@message) do |f| %>
+      <%= render 'shared/devise_errormes', object: f.object %>
+      <%= f.hidden_field :room_id, value: params[:id] %>
+      <div class="form-group">
+        <%= f.text_field :content, autofocus: true, placeholder: "メッセージを入力してください", class: "form-control" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "送信", class: "btn btn-primary" %>
+      </div>
+    <% end %>
   </div>
 </div>

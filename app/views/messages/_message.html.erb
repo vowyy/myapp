@@ -1,0 +1,7 @@
+<div class="message">
+  <% if message.from_japanese? %>
+    <p class="j-mess"><%= message.content %></p>
+  <% else %>
+    <p class="f-mess"><%= message.content %></p>
+  <% end %>
+</div>

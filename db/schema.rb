@@ -100,8 +100,13 @@ ActiveRecord::Schema.define(version: 2018_05_28_043937) do
 
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "content", null: false
+    t.bigint "room_id"
+    t.string "messable_type", null: false
+    t.bigint "messable_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["messable_type", "messable_id"], name: "index_messages_on_messable_type_and_messable_id"
+    t.index ["room_id"], name: "index_messages_on_room_id"
   end
 
   create_table "nations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -124,6 +129,7 @@ ActiveRecord::Schema.define(version: 2018_05_28_043937) do
 
   add_foreign_key "matches", "japaneses"
   add_foreign_key "matches", "meals"
+  add_foreign_key "messages", "rooms"
   add_foreign_key "rooms", "foreigners"
   add_foreign_key "rooms", "japaneses"
   add_foreign_key "rooms", "matches"

@@ -1,6 +1,5 @@
 class MealsController < ApplicationController
-  def show
-  end
+  def show; end
 
   def new
     @meal = Meal.new
@@ -13,18 +12,15 @@ class MealsController < ApplicationController
       flash[:notice] = "meal succesfully created!!"
       redirect_to root_url
     else
-     render :new
+      render :new
     end
   end
 
-  def edit
-  end
+  def edit; end
 
-  def update
-  end
+  def update; end
 
-  def destroy
-  end
+  def destroy; end
 
   private
 
