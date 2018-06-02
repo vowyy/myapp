@@ -2,6 +2,7 @@
   <% @meals.each do |meal| %>
     <div class="colp-md-3">
       <%= meal.foreigner.name %>
+      <%= image_tag meal.foreigner.nation.flag %>
       <%= meal.date_time %>
       <%= meal.location %>
       <%= meal.lang %>
