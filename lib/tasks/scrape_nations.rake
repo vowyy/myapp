@@ -1,16 +1,8 @@
-# # require 'open-uri' # urlにアクセスできるようにする
-# require 'kconv' # 文字コード変換。文字化け対策
-# # require 'nokogiri'
-
-
 namespace :scrape_nations do
   desc "scrape-nations and save them in nations table"
 
-  task :scrape_nation => :environment do
-
-    html = open("https://www.countries-ofthe-world.com/flags-of-the-world.html") do |f|
-      f.read
-    end
+  task scrape_nation: :environment do
+    html = open("https://www.countries-ofthe-world.com/flags-of-the-world.html", &:read)
 
     doc = Nokogiri::HTML.parse(html, nil, 'utf-8')
 
