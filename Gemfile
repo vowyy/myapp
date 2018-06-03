@@ -50,6 +50,9 @@ gem 'pessimize', "~> 0.4"
 # viewでmodel絡みのメソッドを書きたいときのためのdecorator
 gem 'active_decorator', "~> 1.0"
 
+# スクレイピング用
+gem 'nokogiri', "~> 1.8"
+
 # else
 gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '~> 1.3', require: false
