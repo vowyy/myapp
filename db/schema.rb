@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2018_05_28_043937) do
     t.string "unconfirmed_email"
     t.string "first_name"
     t.string "last_name"
+    t.string "nickname"
     t.integer "gender", limit: 1
     t.date "birthday"
     t.string "image"
@@ -72,6 +73,7 @@ ActiveRecord::Schema.define(version: 2018_05_28_043937) do
     t.index ["email"], name: "index_japaneses_on_email", unique: true
     t.index ["first_name"], name: "index_japaneses_on_first_name"
     t.index ["last_name"], name: "index_japaneses_on_last_name"
+    t.index ["nickname"], name: "index_japaneses_on_nickname"
     t.index ["reset_password_token"], name: "index_japaneses_on_reset_password_token", unique: true
   end
 

@@ -27,6 +27,7 @@ end
 #  last_name              :string(255)
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :string(255)
+#  nickname               :string(255)
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string(255)
@@ -41,5 +42,6 @@ end
 #  index_japaneses_on_email                 (email) UNIQUE
 #  index_japaneses_on_first_name            (first_name)
 #  index_japaneses_on_last_name             (last_name)
+#  index_japaneses_on_nickname              (nickname)
 #  index_japaneses_on_reset_password_token  (reset_password_token) UNIQUE
 #

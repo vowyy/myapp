@@ -34,6 +34,7 @@ class DeviseCreateJapaneses < ActiveRecord::Migration[5.2]
 
       t.string  :first_name, index: true
       t.string  :last_name, index: true
+      t.string  :nickname, index: true
       t.integer :gender, limit: 1
       t.date    :birthday
       t.string  :image
