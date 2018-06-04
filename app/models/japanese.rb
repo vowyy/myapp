@@ -11,8 +11,9 @@ class Japanese < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   validates :email, format: { with: VALID_EMAIL_REGEX }
-  validates :first_name, presence: true, length: { maximum: 10 }
-  validates :last_name,  presence: true, length: { maximum: 10 }
+  validates :first_name, presence: true, length: { maximum: 15 }
+  validates :last_name,  presence: true, length: { maximum: 15 }
+  validates :nickname,   presence: true, length: { maximum: 15 }, on: :update, format: {with: /[A-Za-z]+/}
   validates :gender,     presence: true, on: :update
   validates :lang_l,     presence: true, on: :update
   validates :birthday,   presence: true, on: :update
@@ -59,6 +60,7 @@ end
 #  last_name              :string(255)
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :string(255)
+#  nickname               :string(255)
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string(255)
@@ -73,5 +75,6 @@ end
 #  index_japaneses_on_email                 (email) UNIQUE
 #  index_japaneses_on_first_name            (first_name)
 #  index_japaneses_on_last_name             (last_name)
+#  index_japaneses_on_nickname              (nickname)
 #  index_japaneses_on_reset_password_token  (reset_password_token) UNIQUE
 #
