@@ -24,6 +24,10 @@
           </div>
 
           <div class="form-group">
+            <%= f.text_field :nickname, autofocus: true, placeholder: "ニックネーム(英語でお願いします。)", class: "form-control" %>
+          </div>
+
+          <div class="form-group">
             <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: "form-control" %>
           </div>
 
