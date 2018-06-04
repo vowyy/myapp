@@ -13,7 +13,7 @@ class Japanese < ApplicationRecord
   validates :email, format: { with: VALID_EMAIL_REGEX }
   validates :first_name, presence: true, length: { maximum: 15 }
   validates :last_name,  presence: true, length: { maximum: 15 }
-  validates :nickname,   presence: true, length: { maximum: 15 }, on: :update, format: {with: /[A-Za-z]+/}
+  validates :nickname,   presence: true, length: { maximum: 15 }, on: :update, format: { with: /[A-Za-z]+/ }
   validates :gender,     presence: true, on: :update
   validates :lang_l,     presence: true, on: :update
   validates :birthday,   presence: true, on: :update
