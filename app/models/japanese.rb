@@ -13,11 +13,12 @@ class Japanese < ApplicationRecord
   validates :email, format: { with: VALID_EMAIL_REGEX }
   validates :first_name, presence: true, length: { maximum: 15 }
   validates :last_name,  presence: true, length: { maximum: 15 }
-  validates :nickname,   presence: true, length: { maximum: 15 }, on: :update, format: { with: /[A-Za-z]+/ }
+  validates :nickname,   presence: true, length: { maximum: 15 }, on: :update
   validates :gender,     presence: true, on: :update
   validates :lang_l,     presence: true, on: :update
   validates :birthday,   presence: true, on: :update
   validates :intro,      length: { maximum: 255 }
+  validate :nickname_required
 
   # mount_uploader :image, ImageUploader
 
@@ -36,6 +37,12 @@ class Japanese < ApplicationRecord
     result = update(params, *options)
     clean_up_passwords
     result
+  end
+
+  private
+
+  def nickname_required
+    errors.add(:nickname, "はローマ字で入力してください。") if nickname !~ /[A-Za-z]+/
   end
 end
 
