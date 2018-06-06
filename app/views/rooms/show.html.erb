@@ -6,9 +6,8 @@
       </li>
     </ul>
 
-    <%= form_for(@message) do |f| %>
+    <%= form_for([@room, @message]) do |f| %>
       <%= render 'shared/devise_errormes', object: f.object %>
-      <%= f.hidden_field :room_id, value: params[:id] %>
       <div class="form-group">
         <%= f.text_field :content, autofocus: true, placeholder: "メッセージを入力してください", class: "form-control" %>
       </div>
