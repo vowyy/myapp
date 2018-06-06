@@ -5,6 +5,11 @@
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= render 'shared/devise_errormes', object: f.object %>
 
+      <div class="form-group">
+        <%= f.file_field :image, placeholder: "your name", class: "form-control" %>
+      </div>
+
+      <%= f.hidden_field :image_cache %>
 
       <div class="form-group">
         <%= f.text_field :name, placeholder: "your name", class: "form-control" %>

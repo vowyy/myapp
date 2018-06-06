@@ -7,6 +7,8 @@ class Foreigner < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: %i[facebook]
 
+  mount_uploader :image, ImageUploader
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   validates :email,     format: { with: VALID_EMAIL_REGEX }
@@ -18,9 +20,6 @@ class Foreigner < ApplicationRecord
   validates :intro,     length: { maximum: 255 }
   validates :provider,  presence: true
   validates :uid,       presence: true
-
-  # mount_uploader :image, ImageUploader
-  # imageカラムとcarrierwaveで生成されたimageuploaderを結びつける。
 
   enum gender: { male: 0,
                  female: 1,
@@ -37,15 +36,14 @@ class Foreigner < ApplicationRecord
   # 新たなカラム追加する場合、ストロングパラメーターに追加しないとforeignerは作成されないので注意。
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |foreigner|
-      foreigner.email    = auth.info.email
-      foreigner.uid      = auth.uid
-      foreigner.provider = auth.provider
-      foreigner.password = Devise.friendly_token[0, 20]
-      foreigner.name     = auth.info.name
-      foreigner.image    = auth.info.image.gsub('http://', 'https://')
-      # binding.pry
+      foreigner.email            = auth.info.email
+      foreigner.uid              = auth.uid
+      foreigner.provider         = auth.provider
+      foreigner.password         = Devise.friendly_token[0, 20]
+      foreigner.name             = auth.info.name
+      image_url                  = auth.info.image.to_s + "?type=large"
+      foreigner.remote_image_url = image_url.gsub('http://', 'https://')
     end
-    # binding.pry
   end
 
   # 現在のパスワードなしでupdateするオーバーライド
