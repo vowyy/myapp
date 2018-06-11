@@ -2,8 +2,8 @@
   <% @meals.each do |meal| %>
     <div class="colp-md-3">
       <%= meal.foreigner.name %>
-      <%= image_tag meal.foreigner.nation.flag %>
-      <%= meal.date_time %>
+      <%= meal.foreigner.nation.flag %>
+      <%= image_tag meal.foreigner.nation.flag.url(:thumb), class: "image" %>
       <%= meal.location %>
       <%= meal.lang %>
       <% if japanese? %>

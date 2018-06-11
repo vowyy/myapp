@@ -4,6 +4,8 @@ class Japanese < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
+  mount_uploader :image, ImageUploader
+
   has_many :matches, dependent: :destroy
   has_many :rooms, dependent: :destroy
   has_many :messages, as: :messable, dependent: :destroy
@@ -19,8 +21,6 @@ class Japanese < ApplicationRecord
   validates :birthday,   presence: true, on: :update
   validates :intro,      length: { maximum: 255 }
   validate :nickname_required
-
-  # mount_uploader :image, ImageUploader
 
   enum gender: { male: 0, female: 1, else: 2 }
   enum lang_l: { beginner: 0, intermediate: 1, advanced: 2 }
@@ -42,7 +42,7 @@ class Japanese < ApplicationRecord
   private
 
   def nickname_required
-    errors.add(:nickname, "はローマ字で入力してください。") if nickname !~ /[A-Za-z]+/
+    errors.add(:nickname, "はローマ字のみで入力してください。") if !nickname.blank? && nickname !~ /\A[a-zA-Z]\z/
   end
 end
 

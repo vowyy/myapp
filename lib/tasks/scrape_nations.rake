@@ -6,10 +6,13 @@ namespace :scrape_nations do
 
     doc = Nokogiri::HTML.parse(html, nil, 'utf-8')
 
-    doc.xpath('//table[@class="two-column td-image"]/tbody/tr[not(contains(@class, "line"))]/td[2]').each do |node|
-      name = node.inner_text
-      flag = "https://www.countries-ofthe-world.com/flags-normal/flag-of-#{name}.png"
-      nation = Nation.new(name: name, flag: flag)
+    doc.xpath('//table[@class="two-column td-image"]/tbody/tr[not(contains(@class, "line"))]').each do |node|
+      url =  node.at("td[1]").css('img').attribute("src").value
+      full_url = "https://www.countries-ofthe-world.com/#{url}"
+      name =  node.at("td[2]").inner_text
+
+      nation = Nation.new(name: name)
+      nation.remote_flag_url = full_url
       nation.save!
     end
     Nation.find_by(name: "Japan").destroy

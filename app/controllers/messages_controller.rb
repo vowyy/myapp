@@ -8,6 +8,6 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:content, :room_id)
+    params.require(:message).permit(:content).merge(room_id: params[:room_id])
   end
 end
