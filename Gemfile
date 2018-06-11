@@ -74,9 +74,12 @@ group :test do
   gem 'capybara', '~> 3.1', '< 4.0'
   gem 'selenium-webdriver', "~> 3.12"
   gem 'chromedriver-helper', "~> 1.2"
+end
+
+group :development, :test do
   # Rspec
   gem 'rspec-rails', "~> 3.7"
-  gem 'factory_girl_rails', "~> 4.9"
+  gem 'factory_bot_rails', "~> 4.10"
   gem 'database_cleaner', "~> 1.7"
 end
 
