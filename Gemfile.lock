@@ -352,7 +352,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   selenium-webdriver (~> 3.12)
   spring (~> 2.0)
-  spring-commands-rspec
+  spring-commands-rspec (~> 1.0)
   spring-watcher-listen (~> 2.0)
   thin (~> 1.7)
   toastr-rails (~> 1.0)
