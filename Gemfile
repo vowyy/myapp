@@ -81,6 +81,7 @@ group :development, :test do
   # Rspec
   gem 'rspec-rails', "~> 3.7"
   gem 'factory_bot_rails', "~> 4.10"
+  gem 'active_decorator-rspec', "~> 0.0"
   gem 'database_cleaner', "~> 1.7"
 end
 
