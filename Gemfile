@@ -66,6 +66,7 @@ group :development do
   gem 'listen', '~> 3.1', '< 3.2'
   gem 'spring', "~> 2.0"
   gem 'spring-watcher-listen', '~> 2.0'
+  gem 'spring-commands-rspec', "~> 1.0"
   gem 'pry-rails', "~> 0.3"
   gem 'pry-byebug', "~> 3.6"
 end

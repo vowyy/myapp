@@ -274,6 +274,8 @@ GEM
       rubyzip (~> 1.2)
     spring (2.0.2)
       activesupport (>= 4.2)
+    spring-commands-rspec (1.0.4)
+      spring (>= 0.9.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
       spring (>= 1.2, < 3.0)
@@ -330,7 +332,7 @@ DEPENDENCIES
   database_cleaner (~> 1.7)
   devise (~> 4.4)
   dotenv-rails (~> 2.4)
-  factory_bot_rails
+  factory_bot_rails (~> 4.10)
   font-awesome-rails (~> 4.7)
   jbuilder (~> 2.7)
   jquery-rails (~> 4.3)
@@ -350,6 +352,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   selenium-webdriver (~> 3.12)
   spring (~> 2.0)
+  spring-commands-rspec
   spring-watcher-listen (~> 2.0)
   thin (~> 1.7)
   toastr-rails (~> 1.0)
