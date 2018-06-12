@@ -66,6 +66,7 @@ group :development do
   gem 'listen', '~> 3.1', '< 3.2'
   gem 'spring', "~> 2.0"
   gem 'spring-watcher-listen', '~> 2.0'
+  gem 'spring-commands-rspec', "~> 1.0"
   gem 'pry-rails', "~> 0.3"
   gem 'pry-byebug', "~> 3.6"
 end
@@ -74,9 +75,13 @@ group :test do
   gem 'capybara', '~> 3.1', '< 4.0'
   gem 'selenium-webdriver', "~> 3.12"
   gem 'chromedriver-helper', "~> 1.2"
+end
+
+group :development, :test do
   # Rspec
   gem 'rspec-rails', "~> 3.7"
-  gem 'factory_girl_rails', "~> 4.9"
+  gem 'factory_bot_rails', "~> 4.10"
+  gem 'active_decorator-rspec', "~> 0.0"
   gem 'database_cleaner', "~> 1.7"
 end
 

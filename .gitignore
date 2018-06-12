@@ -8,7 +8,7 @@
 /.bundle
 
 # Ignore bundler gems.
-vendor/bundle
+vendor/bundler
 
 # Ignore all logfiles and tempfiles.
 /log/*

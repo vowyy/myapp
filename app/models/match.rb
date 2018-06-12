@@ -6,7 +6,8 @@ class Match < ApplicationRecord
   has_one :room, dependent: :destroy
 
   validates :ok, inclusion: { in: [true, false] }
-  validates :meal_id, uniqueness: { scope: :japanese_id }
+  validates :japanese_id, presence: true
+  validates :meal_id, presence: true, uniqueness: { scope: :japanese_id }
 
   private
 
