@@ -42,7 +42,7 @@ class Japanese < ApplicationRecord
   private
 
   def nickname_required
-    errors.add(:nickname, "はローマ字のみで入力してください。") if !nickname.blank? && nickname !~ /\A[a-zA-Z]\z/
+    errors.add(:nickname, "はローマ字のみで入力してください。") if !nickname.blank? && nickname !~ /\A[a-zA-Z]+\z/
   end
 end
 
