@@ -72,6 +72,7 @@ group :development do
 end
 
 group :test do
+  gem 'launchy', "~> 2.4"
   gem 'capybara', '~> 3.1', '< 4.0'
   gem 'selenium-webdriver', "~> 3.12"
   gem 'chromedriver-helper', "~> 1.2"
