@@ -1,6 +1,6 @@
 class Meal < ApplicationRecord
   belongs_to :foreigner
-  has_one :matches, dependent: :destroy
+  has_one :match, dependent: :destroy
 
   validates :date_time,    presence: true
   validates :lang,         presence: true
