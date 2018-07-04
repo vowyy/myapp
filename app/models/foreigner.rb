@@ -16,6 +16,8 @@ class Foreigner < ApplicationRecord
   validates :gender,    presence: true, on: :update
   validates :birthday,  presence: true, on: :update
   validates :j_l,       presence: true, on: :update
+  validates :f_lang,    presence: true, on: :update
+  validates :s_lang,    presence: true, on: :update
   validates :nation_id, presence: true, on: :update
   validates :intro,     length: { maximum: 255 }
   validates :provider,  presence: true
@@ -28,6 +30,30 @@ class Foreigner < ApplicationRecord
   enum j_l: { beginner: 0,
               intermediate: 1,
               advanced: 2 }
+
+  enum f_lang: {
+                 English: 0,
+                 Spanish: 1,
+                 Chinese: 2,
+                 Korean: 3,
+                 Hindi: 4,
+                 Arabic: 5,
+                 Italian: 6,
+                 Russian: 7,
+                 German: 8,
+                 Portuguese: 9 }, _suffix: true
+
+  enum s_lang: {
+                English: 0,
+                Spanish: 1,
+                Chinese: 2,
+                Korean: 3,
+                Hindi: 4,
+                Arabic: 5,
+                Italian: 6,
+                Russian: 7,
+                German: 8,
+                Portuguese: 9 }, _suffix: true
 
   def new_comer?
     created_at > 1.minute.ago
@@ -74,6 +100,7 @@ end
 #  current_sign_in_ip     :string(255)
 #  email                  :string(255)      default(""), not null
 #  encrypted_password     :string(255)      default(""), not null
+#  f_lang                 :integer
 #  gender                 :integer
 #  image                  :string(255)
 #  intro                  :text(65535)
@@ -85,6 +112,7 @@ end
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string(255)
+#  s_lang                 :integer
 #  sign_in_count          :integer          default(0), not null
 #  uid                    :bigint(8)
 #  unconfirmed_email      :string(255)
