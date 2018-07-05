@@ -2,12 +2,18 @@ class Meal < ApplicationRecord
   belongs_to :foreigner
   has_one :match, dependent: :destroy
 
-  validates :date_time,    presence: true
-  validates :lang,         presence: true
+  validates :date,         presence: true
+  validates :time,         presence: true
   validates :location,     presence: true
   validates :p_num,        presence: true
   validates :foreigner_id, presence: true
   validate :date_time_cannot_be_in_the_past
+
+  enum time: {
+               morning: 0,
+               afternoon: 1,
+               evening: 2,
+               night: 3 }
 
   enum lang: { English: 0,
                Chainese: 1,
@@ -29,7 +35,7 @@ class Meal < ApplicationRecord
   private
 
   def date_time_cannot_be_in_the_past
-    errors.add(:date_time, "is past.") if date_time.present? && date_time < Date.current
+    errors.add(:date, "is past.") if date.present? && date < Date.current
   end
 end
 
@@ -40,10 +46,10 @@ end
 # Table name: meals
 #
 #  id           :bigint(8)        not null, primary key
-#  date_time    :date
-#  lang         :integer
+#  date         :date
 #  location     :integer
 #  p_num        :integer          not null
+#  time         :integer
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  foreigner_id :bigint(8)
