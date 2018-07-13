@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2018_05_28_043937) do
     t.integer "gender", limit: 1
     t.text "intro"
     t.string "image"
-    t.date "birthday"
+    t.integer "age"
     t.integer "nation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
