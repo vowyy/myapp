@@ -95,7 +95,9 @@ ActiveRecord::Schema.define(version: 2018_05_28_043937) do
     t.date "date"
     t.integer "time"
     t.integer "location"
-    t.integer "p_num", null: false
+    t.integer "male", null: false
+    t.integer "female", null: false
+    t.text "note"
     t.bigint "foreigner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
