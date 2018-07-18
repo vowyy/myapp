@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include ApplicationHelper
-  MEAL_SIZE_LIMITATION = 3
 
   before_action :get_meal_instance
 
