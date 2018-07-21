@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
 
   root 'pages#home'
+  get '/jhome/', to: 'pages#jhome'
+
 
   #　(devise/confirmations#アクション)　＝＞　(japaneses/confirmation#アクション)に変更
   devise_for :japaneses, controllers: {
                                         registrations: 'japaneses/registrations',
-                                        confirmations: 'japaneses/confirmations'
+                                        confirmations: 'japaneses/confirmations',
+                                        sessions:      'japaneses/sessions'
                                        }
 
   devise_for :foreigners, controllers: {
@@ -27,9 +30,10 @@ end
 #
 #                                Prefix Verb     URI Pattern                                                                              Controller#Action
 #                                  root GET      /                                                                                        pages#home
-#                  new_japanese_session GET      /japaneses/sign_in(.:format)                                                             devise/sessions#new
-#                      japanese_session POST     /japaneses/sign_in(.:format)                                                             devise/sessions#create
-#              destroy_japanese_session DELETE   /japaneses/sign_out(.:format)                                                            devise/sessions#destroy
+#                                 jhome GET      /jhome(.:format)                                                                         pages#jhome
+#                  new_japanese_session GET      /japaneses/sign_in(.:format)                                                             japaneses/sessions#new
+#                      japanese_session POST     /japaneses/sign_in(.:format)                                                             japaneses/sessions#create
+#              destroy_japanese_session DELETE   /japaneses/sign_out(.:format)                                                            japaneses/sessions#destroy
 #                 new_japanese_password GET      /japaneses/password/new(.:format)                                                        devise/passwords#new
 #                edit_japanese_password GET      /japaneses/password/edit(.:format)                                                       devise/passwords#edit
 #                     japanese_password PATCH    /japaneses/password(.:format)                                                            devise/passwords#update
