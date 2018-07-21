@@ -21,6 +21,7 @@ Rails.application.routes.draw do
    resources :foreigners, only: [:show]
    resources :meals
    resources :matches
+   resources :profiles, except: [:index, :show, :delet]
    resources :rooms do
      resources :messages , only: [:create]
    end
@@ -84,6 +85,12 @@ end
 #                                       PATCH    /matches/:id(.:format)                                                                   matches#update
 #                                       PUT      /matches/:id(.:format)                                                                   matches#update
 #                                       DELETE   /matches/:id(.:format)                                                                   matches#destroy
+#                              profiles POST     /profiles(.:format)                                                                      profiles#create
+#                           new_profile GET      /profiles/new(.:format)                                                                  profiles#new
+#                          edit_profile GET      /profiles/:id/edit(.:format)                                                             profiles#edit
+#                               profile PATCH    /profiles/:id(.:format)                                                                  profiles#update
+#                                       PUT      /profiles/:id(.:format)                                                                  profiles#update
+#                                       DELETE   /profiles/:id(.:format)                                                                  profiles#destroy
 #                         room_messages POST     /rooms/:room_id/messages(.:format)                                                       messages#create
 #                                 rooms GET      /rooms(.:format)                                                                         rooms#index
 #                                       POST     /rooms(.:format)                                                                         rooms#create
