@@ -125,7 +125,7 @@ ActiveRecord::Schema.define(version: 2018_07_21_033038) do
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "profilable_id"
     t.string "profilable_type"
-    t.text "profile"
+    t.text "intro"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
