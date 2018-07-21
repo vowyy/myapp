@@ -17,7 +17,7 @@ gem 'thin', "~> 1.7" # https接続（bundle exec thin start --ssl)
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '~> 4.1'
 gem 'coffee-rails', '~> 4.2'
-gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap', '~> 4.1'
 gem 'jquery-rails', "~> 4.3"
 gem "font-awesome-rails", "~> 4.7"
 gem 'toastr-rails', "~> 1.0"
