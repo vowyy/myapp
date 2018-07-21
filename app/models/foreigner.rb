@@ -1,11 +1,12 @@
 class Foreigner < ApplicationRecord
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: %i[facebook]
+
   belongs_to :nation, optional: true
   has_many :meals, dependent: :destroy
   has_many :rooms, dependent: :destroy
   has_many :messages, as: :messable, dependent: :destroy
-
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: %i[facebook]
+  has_one  :profile, as: :profilable, dependent: :destroy
 
   mount_uploader :image, ImageUploader
 

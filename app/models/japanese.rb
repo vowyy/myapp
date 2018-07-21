@@ -1,14 +1,13 @@
 class Japanese < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
-
-  mount_uploader :image, ImageUploader
 
   has_many :matches, dependent: :destroy
   has_many :rooms, dependent: :destroy
   has_many :messages, as: :messable, dependent: :destroy
+  has_one  :profile, as: :profilable, dependent: :destroy
+
+  mount_uploader :image, ImageUploader
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
