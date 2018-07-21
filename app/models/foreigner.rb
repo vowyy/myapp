@@ -14,14 +14,14 @@ class Foreigner < ApplicationRecord
   validates :email,     format: { with: VALID_EMAIL_REGEX }
   validates :name,      presence: true, length: { maximum: 50 }
   validates :gender,    presence: true, on: :update
-  validates :birthday,  presence: true, on: :update
+  validates :age,       presence: true, numericality: { greter_than: 20, less_than: 50 }, on: :update
   validates :j_l,       presence: true, on: :update
   validates :f_lang,    presence: true, on: :update
-  validates :s_lang,    presence: true, on: :update
   validates :nation_id, presence: true, on: :update
   validates :intro,     length: { maximum: 255 }
   validates :provider,  presence: true
   validates :uid,       presence: true
+  validate :chose_same_lang?, on: :update
 
   enum gender: { male: 0,
                  female: 1,
@@ -44,16 +44,17 @@ class Foreigner < ApplicationRecord
                  Portuguese: 9 }, _suffix: true
 
   enum s_lang: {
-                English: 0,
-                Spanish: 1,
-                Chinese: 2,
-                Korean: 3,
-                Hindi: 4,
-                Arabic: 5,
-                Italian: 6,
-                Russian: 7,
-                German: 8,
-                Portuguese: 9 }, _suffix: true
+                none: 0,
+                English: 1,
+                Spanish: 2,
+                Chinese: 3,
+                Korean: 4,
+                Hindi: 5,
+                Arabic: 6,
+                Italian: 7,
+                Russian: 8,
+                German: 9,
+                Portuguese: 10 }, _suffix: true
 
   def new_comer?
     created_at > 1.minute.ago
@@ -85,6 +86,12 @@ class Foreigner < ApplicationRecord
     clean_up_passwords
     result
   end
+
+  private
+
+  def chose_same_lang?
+    errors.add(:s_lang, "is identical with First language.") if f_lang == s_lang
+  end
 end
 
 # == Schema Information
@@ -92,7 +99,7 @@ end
 # Table name: foreigners
 #
 #  id                     :bigint(8)        not null, primary key
-#  birthday               :date
+#  age                    :integer
 #  confirmation_sent_at   :datetime
 #  confirmation_token     :string(255)
 #  confirmed_at           :datetime
