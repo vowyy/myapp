@@ -1,0 +1,14 @@
+<li class="nav-item dropdown">
+  <%= link_to jhome_path, data: {toggle: "dropdown"}, aria: {haspopup: "true", expanded: "false"}, class: "nav-link p-0 mt-2", id: "dropdown", style: "color:#AAAAAA;" do %>
+    <i class="fas fa-language fa-lg align-middle mr-1"></i>Language
+    <div class="dropdown-menu" aria-labelledby="dropdown">
+      <%= link_to root_path, class: "dropdown-item" do %>
+        <i class="fas fa-globe-asia fa-lg mx-2"></i> EN
+      <% end %>
+      <%= link_to jhome_path, class: "dropdown-item" do %>
+        <i class="fas fa-circle border border-dark" style="font-size:0.3em;border-radius:150px;color:red;margin-left:8px;padding:5px;"></i>
+        <span class="pl-2">JA</span>
+      <% end %>
+    </div>
+  <% end %>
+</li>
