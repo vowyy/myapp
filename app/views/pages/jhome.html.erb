@@ -2,11 +2,11 @@
   <div class="row">
     <div class="col-12 pt-4 pb-4 text-center">
       <h2 class="font-weight-bold mb-3 main-color" style="font-size:32px;">
-        Have A Free Meal <span class="d-inline-block">In Japan</span>
+        外国人と会話して、おもてなししよう。
       </h2>
       <% if !current_user_exists? %>
         <p class="mb-4 h5 text-muted font-weight-bold" style="font-size:23px;">Visit Japan, Talk Your language, <span class="d-inline-block pt-2">Great Moment</span></p>
-        <%= button_to "Sign Up Now", new_foreigner_session_path, class: "btn btn-darkorange btn-lg m-auto font-weight-bold", method: :get%>
+        <%= button_to "無料で登録する", new_japanese_registration_path, class: "btn btn-darkorange px-4 btn-lg m-auto font-weight-bold", method: :get%>
       <% else %>
         <p class="mb-4 h5 text-muted font-weight-bold" style="font-size:23px;">Visit Japan, Talk Your language, <span class="d-inline-block pt-2">Great Moment</span></p>
       <% end %>
@@ -41,7 +41,7 @@
 
 <section id="second-2" class="p-5 d-block d-lg-none">
   <div class="row justify-content-center">
-    <div class="second-col col-sm-10 text-center text-white p-3 mb-5">
+    <div class="second-col col-sm-8 col-xs-10 text-center text-white p-3 mb-5">
       <h2 class="mb-4 mr-auto pb-2 border-bottom border-white">What's <span class="font-weight-bold word-edge d-inline-block"> MEEaT JAPAN</span> ?</h1>
       <p class="pl-4 text-left pr-2" style="line-height:2;">
         MEEaT JAPAN is web site which easily connects foreigner traveling in Japan and the japanese who want to talk with foreigner, and help you meet up with the japanese. In return for chatting and teaching your language and exchanging cultures, they treat you to meal. Foreigner can also ask and know a lot about Japan. Let's spend great time with them.
