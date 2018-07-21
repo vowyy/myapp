@@ -1,4 +1,6 @@
 class MealsController < ApplicationController
+  before_action :meal_num_get, only: :create
+
   def show; end
 
   def new
@@ -24,7 +26,15 @@ class MealsController < ApplicationController
 
   private
 
-  def meal_params
-    params.require(:meal).permit(:date_time, :location, :p_num, :lang)
+  def meal_num_get
+    unless Meal.size_over?(current_foreigner)
+      flash[:alert] = "Sorry. Maximum posts are three. Your post was deleted."
+      redirect_to root_path
+    end
   end
+
+  def meal_params
+    params.require(:meal).permit(:date, :time, :location, :male, :female)
+  end
+
 end
