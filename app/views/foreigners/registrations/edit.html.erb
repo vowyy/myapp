@@ -1,62 +1,66 @@
-<div class="row">
-  <div class="col-md-4 col-md-offset-4">
-    <h2>profile</h2>
-
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<% content_for :edit_foreigner do %>
+  <div class="row ml-5">
+    <div class="h2 mb-5 mx-5 text-center w-75 border-bottom border-darkorange py-2">Setting</div>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "w-100" }) do |f| %>
       <%= render 'shared/devise_errormes', object: f.object %>
 
-      <div class="form-group">
-        <%= f.file_field :image, placeholder: "your name", class: "form-control" %>
+      <div class="row mb-4 w-75 ml-3">
+        <div class="col-3">
+          <%= image_tag current_foreigner.image.url(:_200), size: "100x100", class: "mb-3 border border-dark ml-2 circle-image" %>
+        </div>
+          <div class="col-4 originalFileBtn mb-3 text-center" style="padding:9px;">
+            Choose image
+            <%= f.file_field :image %>
+          </div>
       </div>
 
-      <%= f.hidden_field :image_cache %>
-
-      <div class="form-group">
-        <%= f.text_field :name, placeholder: "your name", class: "form-control" %>
+      <div class="cp_iptxt d-flex justify-content-between mb-4">
+        <span class="font-weight-bold h5">Name</span>
+        <%= f.label :name, "Name", class: "ef w-40", style: "margin-right: 50px;" do %>
+          <%= f.text_field :name, class: "ef" %>
+        <% end %>
       </div>
 
-      <div class="form-group">
-        <%= f.email_field :email, autocomplete: "email", placeholder: "mail address", class: "form-control" %>
+      <div class="cp_iptxt d-flex justify-content-between mb-4">
+        <span class="font-weight-bold h5">Email</span>
+        <%= f.label :Email, "Email", class: "ef w-40", style: "margin-right: 50px;" do %>
+          <%= f.text_field :email, class: "ef" %>
+        <% end %>
       </div>
 
-      <div class="form-group">
-        <%= f.label :gender, "gender" %><br />
-        <%= f.select :gender, Foreigner.genders.keys, prompt: "select gender", class: "form-control" %>
+      <div class="form-group d-flex justify-content-between">
+        <span class="font-weight-bold h5">Age</span>
+        <%= f.number_field :age, in: 20..50 , placeholder: "Select", class: "form-control text-muted mr-5", style: "margin-bottom: 1.3rem;width:240px;" %>
       </div>
 
-      <div class="form-group">
-        <%= f.label :j_l, "japanese level" %><br />
-        <%= f.select :j_l, Foreigner.j_ls.keys, prompt: "select japanese level", class: "form-control" %>
+      <div class="form-group d-flex justify-content-between">
+        <span class="font-weight-bold h5">Gender</span>
+        <%= f.select :gender, Foreigner.genders.keys, { prompt: "Select" }, { class: "form-control text-muted mr-5", style: "margin-bottom: 1.3rem;width:240px;" }  %>
       </div>
 
-      <div class="form-group">
-        <%= f.label :nation_id, "select your nationality" %><br />
-        <%= f.collection_select :nation_id, Nation.all, :id, :name, prompt: "Your nationality" %>
+      <div class="form-group d-flex justify-content-between">
+        <span class=" font-weight-bold h5">Nation</span>
+        <%= f.collection_select :nation_id, Nation.all, :id, :name, { prompt: "Select" }, { class: "form-control text-muted mr-5", style: "margin-bottom: 1.3rem;width:240px;" } %>
       </div>
 
-      <div class="form-group">
-        <%= f.label :intro, "Introduction" %><br />
-        <%= f.text_field :intro, placeholder: "your introduction", class: "form-control" %>
+      <div class="form-group d-flex justify-content-between">
+        <span class="font-weight-bold h5">First Language</span>
+        <%= f.select :f_lang, Foreigner.f_langs.keys,{ prompt: "Select" }, { class: "form-control text-muted mr-5", style: "margin-bottom: 1.3rem;width:240px;" } %>
       </div>
 
-      <div class="form-group">
-        <%= f.label :birthday, "date of birthe" %><br />
-        <%= raw sprintf( f.date_select(:birthday, use_month_numbers: true,  start_year: 2000, end_year: 1950, include_blank: true, class: "form-control", date_separator: '%s'), 'year ', 'month ') + 'day' %>
+      <div class="form-group d-flex justify-content-between">
+        <span class="font-weight-bold h5">Second Language <br><span class="font-weight-normal" style="font-size:13px;">(If you have one.)</span></span>
+        <%= f.select :s_lang, Foreigner.s_langs.keys, { prompt: "Select" }, { class: "form-control text-muted mr-5", style: "margin-bottom: 1.3rem;width:240px;" } %>
       </div>
 
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-      <% end %>
+      <div class="form-group d-flex justify-content-between">
+        <span class="font-weight-bold h5">Japanese Level</span>
+        <%= f.select :j_l, Foreigner.j_ls.keys, { prompt: "Select" }, {class: "form-control text-muted mr-5", style: "margin-bottom: 1.3rem;width:240px;" } %>
+      </div>
 
-      <div class="actions">
-        <%= f.submit "update", class: "btn btn-primary" %>
+      <div class="actions text-center mt-5 h5">
+        <%= f.submit "Submit", class: "btn btn-darkorange px-5 py-2" %>
       </div>
     <% end %>
   </div>
-</div>
-
-<!-- <h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %> -->
+<% end %>

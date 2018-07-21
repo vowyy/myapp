@@ -1,26 +1,188 @@
-@import "bootstrap-sprockets";
 @import "bootstrap";
 @import "toastr";
-@import "partials/*";
+@import "form";
+// @import "partials/*";
 // - Sassファイルでは*= require、*= require_treeを削除する
 // - Sassファイルではインポートに@importを利用する
 // - Sassファイルで*= requireを利用すると他のスタイルシートではBootstrapのmixinや変数を利用できなくなる
 
+$darkorange: #FF690F;
 
 body {
   color: #565a5c;
-  background-color: #F8F8F8;
+  background-color: #FFFAFA;
+  padding-top: 88px;
   font-family: "Varela Round", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
 
-li {
-  list-style: none;
+.circle-image {
+  border-radius: 50%;
 }
 
-.j-mess {
-
+.w-60 {
+  width: 60% !important;
 }
 
-.f-mess {
-  padding-left: 30px;
+.w-40 {
+  width: 40% !important;
+}
+
+.mb-45 {
+  margin-bottom: 2rem !important;
+}
+
+.navbar {
+  min-height: 80px;
+
+  .main-logo {
+    color: $darkorange;
+    font-size: 40px;
+
+    &:hover {
+      color: $darkorange;
+      font-size: 40px;
+      opacity: 0.8;
+    }
+  }
+
+  .nav-link {
+    color: black;
+
+    &:hover {
+      color: $darkorange;
+    }
+  }
+
+  .dropdown-toggle::after {
+    display: none;
+  }
+}
+
+.modal {
+  top: 70px;
+
+  .modal-close {
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+    -webkit-appearance: none;
+    float: left;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
+  }
+}
+
+.jumbotron {
+  background-image: url("sushi.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: top 0 right 150px;
+  background-color: #F9F9F9;
+  margin-bottom: 0;
+}
+
+@media (min-width: 576px) {
+  .jumbotron {
+    padding: 2rem;
+  }
+}
+
+.offset-75 {
+    margin-left: 62.6666666667%;
+}
+
+.second-col {
+  border: 1px;
+  border-radius:15px;
+  background: -moz-linear-gradient(#ffb03c, $darkorange);
+  background: -webkit-linear-gradient(#ffb03c, $darkorange);
+  background: linear-gradient(to left, #ffb03c, $darkorange);
+}
+
+.btn-darkorange {
+    color: #fff;
+    background-color: $darkorange;
+    border-radius: 30px;
+
+    &:hover {
+        color: $darkorange;
+        background-color: white;
+        border-color: $darkorange;
+        background-image: none;
+    }
+}
+
+.facebook-button {
+    color: white;
+    background-color: #305097;
+    border-color: #305097;
+    border-radius: 15px;
+    font-size: 20px;
+
+    &:hover {
+        cursor: pointer;
+        opacity:0.8;
+    }
+}
+
+.btn-outline-darkorange {
+    color: $darkorange;
+    border-radius: 30px;
+}
+
+.bg-darkorange {
+  background-color: $darkorange;
+}
+
+.bg-lightorange {
+  background-color: #FFF2E5;
+}
+.border-darkorange {
+  border-color: $darkorange !important;
+}
+
+.border-lightorange {
+  border-color: #FFF2E5 !important;
+}
+
+.main-color {
+  color: $darkorange;
+}
+
+.word-edge {
+  text-shadow: $darkorange 4px 4px 0px,$darkorange -1px 1px 0px, $darkorange 1px -1px 0px, $darkorange -1px -1px 0px;
+}
+
+.sign-up-in-back {
+  border: 1px;
+  background: -moz-linear-gradient(#ffb03c, $darkorange);
+  background: -webkit-linear-gradient(#ffb03c, $darkorange);
+  background: linear-gradient(to bottom, #ffb03c, $darkorange);
+}
+
+.close:hover {
+  font-size: 30px;
+}
+
+// =============================
+
+.field_with_errors {
+  display: inline-block;
+  // width: 400px;
+  color: red;
+
+  select {
+    margin-left: auto;
+    border-color: red !important;
+  }
+
+  input {
+    margin-left: auto;
+    border-color: red !important;
+  }
 }

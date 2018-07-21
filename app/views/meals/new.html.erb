@@ -1,38 +1,57 @@
-<div class="row">
-  <div class="col-md-5 col-md-offset-3 text-center">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        meal details
+<div class="text-center" style="padding-top:65px;">
+  <div class="row">
+    <div class="col-xl-4 col-lg-5 col-md-7 col-sm-10 col-xs-8 mx-auto bg-white border-top border-darkorange px-0" style="border-radius:7px;filter:drop-shadow(10px 10px 10px rgba(0,0,0,0.4));">
+      <div class="bg-darkorange text-white pt-3 h4" style="height:60px;border-top-left-radius:5px;border-top-right-radius:5px;">
+        <i class="fas fa-coffee mr-2"></i>
+        Compose new Meal
       </div>
-      <div class="panel-body">
-        <%= form_for(@meal) do |f| %>
-          <%= render 'shared/devise_errormes', object: f.object %>
+      <%= form_for(@meal) do |f| %>
+        <%= render 'shared/devise_errormes', object: f.object %>
 
-          <div class="form-group">
-            <%= f.label :date_time, "date" %><br />
-            <%= raw sprintf( f.date_select(:date_time, use_month_numbers: true,  start_year: Time.now.year, default: Date.today, autofocus: true, class: "form-control", date_separator: '%s'), '- ', '/ ') %>
-          </div>
+        <div class="form-group mb-45 ml-4" style="padding-top:38px;">
+          <%= f.label :date, "Date (yyyy/mm/dd) : ", class: "font-weight-bold" %>
+          <span class="pr-1">
+            <i class="fas fa-calendar-alt main-color"></i>
+          </span>
+          <%= raw sprintf( f.date_select(:date, use_month_numbers: true,  start_year: Time.now.year, default: Date.today,  autofocus: true, class: "form-control", date_separator: '%s'), '/ ', '/ ') %>
+        </div>
 
-          <div class="form-group">
-            <%= f.label :p_num, "how many people?" %><br />
-            <%= f.select :p_num,  [[1, 1],[2, 2],[3, 3], [4,4], [5,5]], autofocus: true, prompt: "not selected", class: "form-control" %>
-          </div>
+        <div class="form-group mb-45" style="margin-left:34px;">
+          <%= f.label :time, "Time of Day :", class: "font-weight-bold ml-4" %>
+          <span class="ml-3">
+            <i class="fas fa-clock main-color"></i>
+          </span>
+          <%= f.select :time,  Meal.times.keys,{ autofocus: true, prompt: "select" }, { class: "form-control d-inline-block", style: "width:150px;" } %>
+        </div>
 
-          <div class="form-group">
-            <%= f.label :lang, "Your languge" %><br />
-            <%= f.select :lang, Meal.langs.keys, prompt: "not selected", class: "form-control" %>
-          </div>
+        <div class="form-group mb-2" style="margin-right:22px;">
+          <%= f.label :male, "How Many People? :", class: "font-weight-bold ml-4" %>
+          <span class="ml-4">
+            <i class="fas fa-male fa-lg main-color"></i>
+          </span>
+          <%= f.select :male,  [["0 male", 0], ["1 male", 1],["2 males", 2],["3 males", 3],], {}, { class: "form-control d-inline-block", style: "width:150px;" }  %>
+        </div>
 
-          <div class="form-group">
-            <%= f.label :location, "place" %><br />
-            <%= f.select :location, Meal.locations.keys, prompt: "not selected", class: "form-control" %>
-          </div>
+        <div class="form-group mb-45" style="margin-left:33px;">
+          <%= f.label :female, "(Maximum 3 people)", class: "ml-4 text-muted", style: "font-size:10px;vertical-align:top;" %>
+          <span class="ml-4">
+            <i class="fas fa-female fa-lg main-color"></i>
+          </span>
+          <%= f.select :female,  [["0 female", 0], ["1 female", 1],["2 females", 2],["3 females", 3],], {} , { class: "form-control d-inline-block", style: "width:150px;" } %>
+        </div>
 
-          <div class="actions">
-            <%= f.submit "send", class: "btn btn-primary" %>
-          </div>
-        <% end %>
-      </div>
+        <div class="form-group mb-5" style="margin-left:65px;">
+          <%= f.label :location, "Where? :", class: "font-weight-bold ml-4" %>
+          <span class="ml-4">
+            <i class="fas fa-map-marker-alt main-color"></i>
+          </span>
+          <%= f.select :location, Meal.locations.keys, { prompt: "select" }, { class: "form-control d-inline-block", style: "width:150px;" } %>
+        </div>
+
+        <div class="actions pb-4">
+          <%= f.submit "Post", class: "btn btn-darkorange btn-lg px-5" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

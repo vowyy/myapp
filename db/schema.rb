@@ -31,10 +31,12 @@ ActiveRecord::Schema.define(version: 2018_05_28_043937) do
     t.bigint "uid"
     t.string "provider"
     t.integer "j_l", limit: 1
+    t.integer "f_lang", limit: 1
+    t.integer "s_lang", limit: 1
     t.integer "gender", limit: 1
     t.text "intro"
     t.string "image"
-    t.date "birthday"
+    t.integer "age"
     t.integer "nation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -90,10 +92,12 @@ ActiveRecord::Schema.define(version: 2018_05_28_043937) do
   end
 
   create_table "meals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.date "date_time"
+    t.date "date"
+    t.integer "time"
     t.integer "location"
-    t.integer "p_num", null: false
-    t.integer "lang"
+    t.integer "male", null: false
+    t.integer "female", null: false
+    t.text "note"
     t.bigint "foreigner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

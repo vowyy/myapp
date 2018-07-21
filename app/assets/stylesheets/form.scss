@@ -1,0 +1,55 @@
+
+// Name & Email
+.cp_iptxt {
+  position: relative;
+  width: 100%;
+  margin: 15px 0;
+}
+.cp_iptxt input[type='text'] {
+  font: 12px/24px sans-serif;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.3em;
+  transition: 0.3s;
+  letter-spacing: 1px;
+  color: black;
+  border: none;
+  border-bottom: 2px solid #1b2538;
+  background: transparent;
+}
+.ef input[type='text']:focus {
+  border-bottom: 2px solid darkorange;
+  outline: none;
+}
+
+// File upload
+.originalFileBtn {
+  border: 2px solid;
+  border-radius: 15px;
+  display: inline-block;
+  padding: 0 0 20px 0;
+  position: relative;
+  margin: 40px 0 0 70px;
+  height: 20%;
+
+  &:hover {
+    color: darkorange;
+    background-color: white;
+    border-color: darkorange;
+    background-image: none;
+  }
+}
+.originalFileBtn input[type="file"] {
+  height: 20%;
+  left: 7px;
+  opacity: 0;
+  position: absolute;
+  top: 10px;
+  width: 100%;
+}
+
+@media screen and (max-width:992px) {
+  .foreigner-edit .form-control {
+    width: 150px !important;
+  }
+}

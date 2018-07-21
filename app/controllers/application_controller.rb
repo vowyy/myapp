@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include ApplicationHelper
 
+  before_action :get_meal_instance
+
   # before_action :configure_permitted_parameters, if: :devise_controller?
 
   # これがないとviewで current_japanese.full_name みたいにdecoratarのメソッドが呼び出せない。
@@ -13,6 +15,12 @@ class ApplicationController < ActionController::Base
   def current_foreigner
     ActiveDecorator::Decorator.instance.decorate(super) if super.present?
     super
+  end
+
+  protected
+
+  def get_meal_instance
+    @meal = Meal.new
   end
 
   # protected

@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-md bg-white fixed-top border-bottom">
+  <div class="container">
+    <%= link_to "MEEaT JAPAN", jhome_path, class: "navbar-brand font-weight-bold main-logo" %>
+    <button class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navcol">
+      <span class="h1">=</span>
+    </button>
+    <div id="navcol" class="collapse navbar-collapse">
+      <% if !current_user_exists? %>
+        <ul class="navbar-nav ml-auto text-dark">
+          <li class="nav-item mr-3">
+            <%= link_to new_japanese_session_path, class: "nav-link font-weight-bold" do %>
+            <i class="fas fa-sign-in-alt mr-1"></i>
+              <span class="d-inline-block">ログイン</span>
+            <% end %>
+          </li>
+          <span class="mt-2 mr-3">or</span>
+          <li class="nav-item mr-5">
+            <%= link_to new_japanese_registration_path, class: "nav-link font-weight-bold", style: "letter-spacing:0.7px;" do %>
+              <i class="fas fa-user-plus mr-1"></i>
+              <span class="d-inline-block">新規登録</span>
+            <% end %>
+          </li>
+          <%= render 'shared/lang_select'%>
+        </ul>
+      <% elsif japanese? %>
+        <%= render 'shared/logged_in_jpn_header'%>
+      <% else foreigner? %>
+        <%= render 'shared/logged_in_foreigner_header'%>
+      <% end %>
+    </div>
+  </div>
+</nav>
