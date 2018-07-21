@@ -1,14 +1,18 @@
-<section class="p-5 text-center">
-  <div class="row">
-    <div class="col">
-      <% if devise_mapping.omniauthable? %>
-        <% resource_class.omniauth_providers.each do |provider| %>
-          <%= button_to omniauth_authorize_path(resource_name, provider),class: "w-50 py-3", style: "color:white;background-color:#305097;border-radius:10px;font-size:20px;" do %>
-            <i class="fab fa-facebook-f fa-fw"></i> <%= "Continue with #{OmniAuth::Utils.camelize(provider)}" %></button>
+<section id="facebook-login" class="text-center sign-up-in-back" style="height:800px;margin-top:-88px;">
+  <div class="container">
+    <div class="row mx-auto">
+      <div class="col-md-7 mx-auto py-5" style="margin:135px 0;">
+        <h2 class="font-weight-bold text-white pb-3 mb-4 w-50 mx-auto border-bottom border-white">Sign Up / Sign In</h2>
+        <% if devise_mapping.omniauthable? %>
+          <% resource_class.omniauth_providers.each do |provider| %>
+            <%= button_to omniauth_authorize_path(resource_name, provider), class: "py-3 px-4 mt-4 mb-3 facebook-button" do %>
+              <i class="fab fa-facebook-f fa-fw fa-lg"></i> <%= "Continue with #{OmniAuth::Utils.camelize(provider)}" %></button>
+            <% end %>
+            <p class="w-50 mx-auto text-white pb-4" style="font-size:10px;">By logging in you accept our terms of use and privacy policy.</p>
+            <p class="mx-auto text-left" style="font-size:12px;width:47%">MEEaT JAPAN use your name, email address and main picture from your Facebook. Fill in the last questions after signing up with facebook and you can start right away!</p>
           <% end %>
-          <p class="mt-4 text-muted" style="font-size:10px;">By logging in you accept our terms of use and privacy policy.</p>
         <% end %>
-      <% end %>
+      </div>
     </div>
   </div>
 </section>
