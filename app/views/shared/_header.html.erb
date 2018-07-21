@@ -1,53 +1,53 @@
-<nav class="navbar navbar-expand-sm bg-white fixed-top border-bottom">
-    <div class="container">
-      <%= link_to "MEEaT JAPAN", root_path, class: "navbar-brand font-weight-bold main-logo" %>
-      <button class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navcol">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navcol">
-        <% if !current_user_exists? %>
-          <ul class="navbar-nav ml-auto text-dark">
-            <!-- <li class="nav-item"><%= link_to "ログイン", new_japanese_session_path, class: "nav-link" %></li>
-            <li class="nav-item"><%= link_to "新規登録", new_japanese_registration_path, class: "nav-link" %></li> -->
-            <li class="nav-item"><%= link_to "Sign up/login with facebook", new_foreigner_session_path, class: "nav-link font-weight-bold" %></li>
-          </ul>
-        <% elsif japanese? %>
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <%= link_to "マイチャット", rooms_path, class: "nav-link" %>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ドロップダウン<span class="caret"></span></a>
-              <div class="dropdown-menu" aria-labelledby="dropdown">
-                <%= link_to "マイページ", japanese_path(current_japanese), class: "dropdown-item" %>
-                <%= link_to "プロフィール編集", edit_japanese_registration_path, class: "dropdown-item" %>
-                <%= link_to "サインアウト", destroy_japanese_session_path, method: :delete, class: "dropdown-item" %>
-              </div>
-            </li>
-          </ul>
-        <% else foreigner? %>
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item mt-3 mr-4 h5">
-              <a href="#" class="nav-link">blog</a>
-            </li>
-            <li class="nav-item mt-3 mr-4 h5">
-              <%= link_to "new meal", new_meal_path, class: "nav-link" %>
-            </li>
-            <li class="nav-item mt-3 mr-4 h5">
-              <%= link_to "my chat", rooms_path, class: "nav-link" %>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <%= image_tag current_foreigner.image.url(:_50), style: "border-radius: 50%;" %>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="dropdown">
-                <%= link_to "mypage", foreigner_path(current_foreigner), class: "dropdown-item" %>
-                <%= link_to "edit_profile", edit_foreigner_registration_path, class: "dropdown-item" %>
-                <%= link_to "sign_out", destroy_foreigner_session_path, method: :delete, class: "dropdown-item" %>
-              </div>
-            </li>
-          </ul>
-        <% end %>
-      </div>
+<nav class="navbar navbar-expand-md bg-white fixed-top border-bottom">
+<div class="container">
+    <%= link_to "MEEaT JAPAN", root_path, class: "navbar-brand font-weight-bold main-logo" %>
+    <button class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navcol">
+      <span class="h1">=</span>
+    </button>
+    <div id="navcol" class="collapse navbar-collapse">
+      <% if !current_user_exists? %>
+        <ul class="navbar-nav ml-auto text-dark">
+          <li class="nav-item mr-5"><%= link_to "Sign Up/Sign In", new_foreigner_session_path, class: "nav-link font-weight-bold" %></li>
+          <%= render 'shared/lang_select'%>
+        </ul>
+      <% elsif japanese? %>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <%= link_to "マイチャット", rooms_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ドロップダウン<span class="caret"></span></a>
+            <div class="dropdown-menu" aria-labelledby="dropdown">
+              <%= link_to "マイページ", japanese_path(current_japanese), class: "dropdown-item" %>
+              <%= link_to "プロフィール編集", edit_japanese_registration_path, class: "dropdown-item" %>
+              <%= link_to "サインアウト", destroy_japanese_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+          </li>
+        </ul>
+      <% else foreigner? %>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mt-3 mr-4 h5">
+            <a href="#" class="nav-link">blog</a>
+          </li>
+          <li class="nav-item mt-3 mr-4 h5">
+            <%= link_to "New Meal", new_meal_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= image_tag current_foreigner.image.url(:_200), size: "50x50", style: "border-radius: 50%;" %>
+            </a>
+            <div class="dropdown-menu p-0" aria-labelledby="dropdown">
+              <span class="dropdown-item bg-darkorange" style="border-top-left-radius:3px;border-top-right-radius:3px;"></span>
+              <%= link_to "account", foreigner_path(current_foreigner), class: "dropdown-item" %>
+              <%= link_to "setting", edit_foreigner_registration_path, class: "dropdown-item" %>
+              <%= link_to "messge", rooms_path, class: "dropdown-item" %>
+              <%= link_to "profile", rooms_path, class: "dropdown-item" %>
+              <div class="dropdown-divider"></div>
+              <%= link_to "sign out", destroy_foreigner_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+          </li>
+        </ul>
+      <% end %>
     </div>
-  </nav>
+  </div>
+</nav>
