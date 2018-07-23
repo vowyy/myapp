@@ -1,7 +1,7 @@
 <% content_for :edit_foreigner do %>
-  <div class="row ml-5">
-    <div class="h2 mb-5 mx-5 text-center w-75 border-bottom border-darkorange py-2">Setting</div>
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "w-100" }) do |f| %>
+  <div class="row">
+    <div class="h2 mb-5 mx-5 text-center w-100 border-bottom border-darkorange py-2">Setting</div>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "w-100 ml-5" }) do |f| %>
       <%= render 'shared/devise_errormes', object: f.object %>
 
       <div class="row mb-4 w-75 ml-3">
