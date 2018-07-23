@@ -3,11 +3,11 @@ class PagesController < ApplicationController
   before_action :you_japanese?, only: :home
 
   def home
-    @meals = Meal.order("RAND()").limit(2)
+    @meals = Meal.order("RAND()").limit(5)
   end
 
   def jhome
-    @meals = Meal.order("RAND()").limit(2)
+    @meals = Meal.order("RAND()").limit(5)
     render layout: 'application_japanese'
   end
 
