@@ -61,12 +61,12 @@
         </div>
       <% end %>
 
-      <div class="ml-4 py-1 px-2 w-50 border border-dark mb-3 font-italic border-darkorange main-color" style="border-radius:10px;font-size:13px;opacity:0.9;">
-        Profile
+      <div class="ml-3 py-1 px-2 w-50 border border-dark mb-2 font-italic border-darkorange main-color" style="border-radius:10px;font-size:13px;opacity:0.9;">
+        Introduction
       </div>
       <div class="container">
-        <div class="mb-0 mx-auto text-left" style="font-size:13px;">
-          <%= current_foreigner.intro ? current_foreigner.intro : "(You need to complete your introduction to post meal.)" %>
+        <div class="mb-0 mx-auto text-left bg-white p-3" style="font-size:13px;border-radius:10px;">
+          <%= current_foreigner.profile && !current_foreigner.profile.intro.blank? ? current_foreigner.profile.intro : "(You need to complete your introduction to post meal.)" %>
         </div>
       </div>
     </div>
@@ -83,11 +83,13 @@
         </div>
         <div class="col-2 col-md-4 font-weight-bold" style="font-size:17px;">
           <i class="fas fa-user-edit"></i>
-          <%= link_to "profile", rooms_path, style: "color:darkorange;" %>
+          <%= link_to "introduction", new_profile_path, style: "color:darkorange;" %>
         </div>
       </div>
       <%= yield :edit_foreigner %>
       <%= yield :rooms %>
+      <%= yield :new_profile %>
+      <%= yield :edit_profile %>
     </div>
   </div>
 </div>
