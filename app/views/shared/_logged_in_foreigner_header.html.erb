@@ -11,10 +11,10 @@
     </a>
     <div class="dropdown-menu p-0" aria-labelledby="dropdown">
       <span class="dropdown-item bg-darkorange" style="border-top-left-radius:3px;border-top-right-radius:3px;"></span>
-      <%= link_to "account", foreigner_path(current_foreigner), class: "dropdown-item" %>
+      <%= link_to "profile", foreigner_path(current_foreigner), class: "dropdown-item" %>
       <%= link_to "setting", edit_foreigner_registration_path, class: "dropdown-item" %>
       <%= link_to "messge", rooms_path, class: "dropdown-item" %>
-      <%= link_to "profile", rooms_path, class: "dropdown-item" %>
+      <%= link_to "introduction", new_profile_path, class: "dropdown-item" %>
       <div class="dropdown-divider"></div>
       <%= link_to "sign out", destroy_foreigner_session_path, method: :delete, class: "dropdown-item" %>
     </div>
