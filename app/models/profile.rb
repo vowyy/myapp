@@ -1,7 +1,12 @@
 class Profile < ApplicationRecord
   belongs_to :profilable, polymorphic: true
 
-  validates :intro, length: { maximum: 500 }
+  validate :short_intro
+
+  private
+  def short_intro
+    errors[:base] << "Too long introduction." if intro.size > 500
+  end
 end
 
 # == Schema Information
