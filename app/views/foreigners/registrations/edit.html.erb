@@ -6,7 +6,7 @@
 
       <div class="row mb-4 w-75 ml-3">
         <div class="col-3">
-          <%= image_tag current_foreigner.image.url(:_200), size: "100x100", class: "mb-3 border border-dark ml-2 circle-image" %>
+          <%= image_tag current_foreigner.image.url(:_300), size: "100x100", class: "mb-3 border border-dark ml-2 circle-image" %>
         </div>
           <div class="col-4 originalFileBtn mb-3 text-center" style="padding:9px;">
             Choose image
@@ -14,47 +14,47 @@
           </div>
       </div>
 
-      <div class="cp_iptxt d-flex justify-content-between mb-4">
-        <span class="font-weight-bold h5">Name</span>
-        <%= f.label "Name", class: "ef w-40", style: "margin-right: 50px;" do %>
-          <%= f.text_field :name, class: "ef" %>
+      <div class="cp_iptxt d-flex justify-content-around mb-4">
+        <span class="font-weight-bold h5" style="width:176px;">Name</span>
+        <%= f.label "Name", class: "ef w-40", style: "margin-right:50px;" do %>
+          <%= f.text_field :name, class: "ef", style: "width:165px;" %>
         <% end %>
       </div>
 
-      <div class="cp_iptxt d-flex justify-content-between mb-4">
-        <span class="font-weight-bold h5">Email</span>
+      <div class="cp_iptxt d-flex justify-content-around mb-4">
+        <span class="font-weight-bold h5" style="width:176px;">Email</span>
         <%= f.label "Email", class: "ef w-40", style: "margin-right: 50px;" do %>
-          <%= f.text_field :email, class: "ef" %>
+          <%= f.text_field :email, class: "ef", style: "width:165px;" %>
         <% end %>
       </div>
 
-      <div class="form-group d-flex justify-content-between">
-        <span class="font-weight-bold h5">Age</span>
+      <div class="form-group d-flex justify-content-around">
+        <span class="font-weight-bold h5" style="width:176px;">Age</span>
         <%= f.number_field :age, in: 20..50 , placeholder: "Select", class: "form-control text-muted mr-5", style: "margin-bottom: 1.3rem;width:240px;" %>
       </div>
 
-      <div class="form-group d-flex justify-content-between">
-        <span class="font-weight-bold h5">Gender</span>
+      <div class="form-group d-flex justify-content-around">
+        <span class="font-weight-bold h5" style="width:176px;">Gender</span>
         <%= f.select :gender, Foreigner.genders.keys, { prompt: "Select" }, { class: "form-control text-muted mr-5", style: "margin-bottom: 1.3rem;width:240px;" }  %>
       </div>
 
-      <div class="form-group d-flex justify-content-between">
-        <span class=" font-weight-bold h5">Nation</span>
+      <div class="form-group d-flex justify-content-around">
+        <span class=" font-weight-bold h5" style="width:176px;">Nation</span>
         <%= f.collection_select :nation_id, Nation.all, :id, :name, { prompt: "Select" }, { class: "form-control text-muted mr-5", style: "margin-bottom: 1.3rem;width:240px;" } %>
       </div>
 
-      <div class="form-group d-flex justify-content-between">
-        <span class="font-weight-bold h5">First Language</span>
+      <div class="form-group d-flex justify-content-around">
+        <span class="font-weight-bold h5" style="width:176px;">First Language</span>
         <%= f.select :f_lang, Foreigner.f_langs.keys,{ prompt: "Select" }, { class: "form-control text-muted mr-5", style: "margin-bottom: 1.3rem;width:240px;" } %>
       </div>
 
-      <div class="form-group d-flex justify-content-between">
+      <div class="form-group d-flex justify-content-around">
         <span class="font-weight-bold h5">Second Language <br><span class="font-weight-normal" style="font-size:13px;">(If you have one.)</span></span>
         <%= f.select :s_lang, Foreigner.s_langs.keys, { prompt: "Select" }, { class: "form-control text-muted mr-5", style: "margin-bottom: 1.3rem;width:240px;" } %>
       </div>
 
-      <div class="form-group d-flex justify-content-between">
-        <span class="font-weight-bold h5">Japanese Level</span>
+      <div class="form-group d-flex justify-content-around">
+        <span class="font-weight-bold h5"  style="width:176px;">Japanese Level</span>
         <%= f.select :j_l, Foreigner.j_ls.keys, { prompt: "Select" }, {class: "form-control text-muted mr-5", style: "margin-bottom: 1.3rem;width:240px;" } %>
       </div>
 
