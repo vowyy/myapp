@@ -4,7 +4,7 @@ class Meal < ApplicationRecord
 
   NOBODY_IS_CHOSEN     = 0
   EXCESSIVE_IS_CHOSEN  = 3
-  MEAL_SAIZ_LIMITATION = 3
+  MEAL_SAIZ_LIMITATION = 5
 
   validates :date,         presence: true
   validates :time,         presence: true
