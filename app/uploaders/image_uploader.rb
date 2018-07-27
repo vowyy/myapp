@@ -11,8 +11,8 @@ class ImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  version :_200 do
-    process :resize_to_fill => [200, 200]
+  version :_300 do
+    process :resize_to_fill => [300, 300]
   end
 
   # 許可する画像の拡張子
