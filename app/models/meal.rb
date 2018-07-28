@@ -23,7 +23,7 @@ class Meal < ApplicationRecord
 
   enum location: { shinjyuku: 0,
                    shibuya: 1,
-                   sinagawa: 3 }
+                   sinagawa: 2 }
 
   def self.size_over?(foreigner)
     where(foreigner_id: foreigner).size < MEAL_SAIZ_LIMITATION
