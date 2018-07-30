@@ -21,7 +21,7 @@
           <span class="ml-3">
             <i class="fas fa-clock main-color"></i>
           </span>
-          <%= f.select :time,  Meal.times.keys,{ autofocus: true, prompt: "select" }, { class: "form-control d-inline-block", style: "width:150px;" } %>
+          <%= f.select :time,  [["0am - 9am","0am. - 9am." ], ["9am - 12pm", "9am - 12pm"],["12pm - 15pm", "12pm - 15pm"],["15pm - 18pm ", "15pm - 18pm"],["18pm - 21pm", "18pm - 21pm"],["21pm - 24pm", "21pm - 24pm"] ], { prompt: "select" } , { class: "form-control d-inline-block", style: "width:150px;" } %>
         </div>
 
         <div class="form-group mb-2" style="margin-right:22px;">
