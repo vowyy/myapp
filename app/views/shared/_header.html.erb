@@ -7,7 +7,12 @@
     <div id="navcol" class="collapse navbar-collapse">
       <% if !current_user_exists? %>
         <ul class="navbar-nav ml-auto text-dark">
-          <li class="nav-item mr-5"><%= link_to "Sign Up/Sign In", new_foreigner_session_path, class: "nav-link font-weight-bold" %></li>
+          <li class="nav-item mr-4 h5">
+            <%= link_to "Sign in", new_foreigner_session_path, class: "nav-link font-weight-bold" %>
+          </li>
+          <li class="nav-item mr-5 h5" >
+            <a class="nav-link font-weight-bold" href="#" data-toggle="modal" data-target="#registration_modal">Sign up</a>
+          </li>
           <%= render 'shared/lang_select'%>
         </ul>
       <% elsif japanese? %>
@@ -18,3 +23,5 @@
     </div>
   </div>
 </nav>
+
+<%= render 'shared/registration_modal' %>
