@@ -6,7 +6,8 @@
       </h2>
       <% if !current_user_exists? %>
         <p class="mb-4 h5 text-muted font-weight-bold" style="font-size:23px;">Visit Japan, Talk Your language, <span class="d-inline-block pt-2">Great Moment</span></p>
-        <%= button_to "無料で登録する", new_japanese_registration_path, class: "btn btn-darkorange px-4 btn-lg m-auto font-weight-bold", method: :get%>
+        <input class="btn btn-darkorange px-4 btn-lg m-auto font-weight-bold" type="submit" value="無料で登録する" data-toggle="modal" data-target="#registration_modal">
+        <%= render 'shared/registration_modal' %>
       <% else %>
         <p class="mb-4 h5 text-muted font-weight-bold" style="font-size:23px;">Visit Japan, Talk Your language, <span class="d-inline-block pt-2">Great Moment</span></p>
       <% end %>
@@ -52,6 +53,10 @@
     </div>
   </div>
 </section>
+
+<%= render 'shared/new_meal_collection' %>
+
+<%= render 'shared/english_meal_collection' %>
 
 <section id="third" class="pt-5 pb-2 bg-white">
   <div class="container">

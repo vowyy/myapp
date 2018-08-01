@@ -6,7 +6,8 @@
       </h2>
       <% if !current_user_exists? %>
         <p class="mb-4 h5 text-muted font-weight-bold" style="font-size:23px;">Visit Japan, Talk Your language, <span class="d-inline-block pt-2">Great Moment</span></p>
-        <%= button_to "Sign Up Now", new_foreigner_session_path, class: "btn btn-darkorange btn-lg m-auto font-weight-bold", method: :get%>
+        <input class="btn btn-darkorange btn-lg m-auto font-weight-bold" type="submit" value="Sign Up Now" data-toggle="modal" data-target="#registration_modal">
+        <%= render 'shared/registration_modal' %>
       <% else %>
         <p class="mb-4 h5 text-muted font-weight-bold" style="font-size:23px;">Visit Japan, Talk Your language, <span class="d-inline-block pt-2">Great Moment</span></p>
       <% end %>
@@ -32,7 +33,7 @@
       <div class="second-col col-md-4 offset-75 text-center text-white pt-4 pb-2 px-4 border">
         <h2 class="mb-4 mr-auto pb-2 border-bottom border-white">What's <span class="font-weight-bold word-edge d-inline-block"> MEEaT JAPAN</span> ?</h1>
         <p class="text-left" style="line-height: 2;">
-          MEEaT JAPAN is web site which easily connects foreigner traveling in Japan and the japanese who want to talk with foreigner, and help you meet up with the japanese. In return for chatting and teaching your language and exchanging cultures, they treat you to meal. Foreigner can also ask and know a lot about Japan. Let's spend great time with them.
+          MEEaT JAPAN is web site which easily connects foreigner traveling or studying or working in Japan and the japanese who want to talk with foreigner, and help you meet up with the japanese. In return for chatting and teaching your language and exchanging cultures, they treat you to meal. Foreigner can also ask and know a lot about Japan. Let's spend great time with them.
         </p>
       </div>
     </div>
@@ -44,7 +45,7 @@
     <div class="second-col col-sm-10 text-center text-white p-3 mb-5">
       <h2 class="mb-4 mr-auto pb-2 border-bottom border-white">What's <span class="font-weight-bold word-edge d-inline-block"> MEEaT JAPAN</span> ?</h1>
       <p class="pl-4 text-left pr-2" style="line-height:2;">
-        MEEaT JAPAN is web site which easily connects foreigner traveling in Japan and the japanese who want to talk with foreigner, and help you meet up with the japanese. In return for chatting and teaching your language and exchanging cultures, they treat you to meal. Foreigner can also ask and know a lot about Japan. Let's spend great time with them.
+        MEEaT JAPAN is web site which easily connects foreigner traveling or studying or working in Japan and the japanese who want to talk with foreigner, and help you meet up with the japanese. In return for chatting and teaching your language and exchanging cultures, they treat you to meal. Foreigner can also ask and know a lot about Japan. Let's spend great time with them.
       </p>
     </div>
     <div class="col-12 text-center mb-4 align-self-end">
@@ -130,5 +131,7 @@
     </div>
   </div>
 </section>
+
+<%= render 'shared/new_meal_collection' %>
 
 <%= render 'shared/footer_for_foreigner'%>
