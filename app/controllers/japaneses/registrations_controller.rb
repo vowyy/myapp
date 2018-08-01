@@ -4,10 +4,10 @@ class Japaneses::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   def new
-      build_resource
-      yield resource if block_given?
-      render layout: 'application_japanese'
-    end
+    build_resource
+    yield resource if block_given?
+    render layout: 'application_japanese'
+  end
 
   def create
     build_resource(sign_up_params)
@@ -27,7 +27,7 @@ class Japaneses::RegistrationsController < Devise::RegistrationsController
     else
       clean_up_passwords resource
       set_minimum_password_length
-      redirect_to jhome_path
+      render action: :new, layout: 'application_japanese'
     end
   end
 
