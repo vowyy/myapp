@@ -21,7 +21,7 @@ class Foreigners::RegistrationsController < Devise::RegistrationsController
         set_flash_message :notice, flash_key
       end
       bypass_sign_in resource, scope: resource_name
-      respond_with resource, location: after_update_path_for(resource)
+      redirect_to foreigner_path current_user, layout: 'personal_foreigner'
     else
       clean_up_passwords resource
       set_minimum_password_length

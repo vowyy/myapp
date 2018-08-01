@@ -53,3 +53,15 @@
     width: 150px !important;
   }
 }
+
+.sign_form .form-control {
+  padding: 10px;
+  background-color: #FAEBD7;
+  border: 1px solid #FAEBD7;
+
+  &:focus {
+    background-color: #FAEBD7;
+    border-color: none;
+    box-shadow: none;
+  }
+}

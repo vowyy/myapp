@@ -6,12 +6,12 @@
 // - Sassファイルではインポートに@importを利用する
 // - Sassファイルで*= requireを利用すると他のスタイルシートではBootstrapのmixinや変数を利用できなくなる
 
-$darkorange: #FF690F;
+$darkorange: #FF6928;
 
 body {
   color: #565a5c;
   background-color: #FFFAFA;
-  padding-top: 88px;
+  padding-top: 86px;
   font-family: "Varela Round", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
 
@@ -139,6 +139,10 @@ body {
   background-color: $darkorange;
 }
 
+.bg-grayorange {
+  background-color:#FF9872;
+}
+
 .bg-lightorange {
   background-color: #FFF2E5;
 }
@@ -152,6 +156,10 @@ body {
 
 .main-color {
   color: $darkorange;
+}
+
+.meal-color {
+  color: #FF8856;
 }
 
 .word-edge {
@@ -178,11 +186,11 @@ body {
 
   select {
     margin-left: auto;
-    border-color: red !important;
+    border:solid 1.6px red !important;
   }
 
   input {
     margin-left: auto;
-    border-color: red !important;
+    border:solid 1.6px red !important;
   }
 }

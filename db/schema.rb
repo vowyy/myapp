@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 2018_07_21_033038) do
 
   create_table "meals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "date"
-    t.integer "time"
+    t.string "time"
     t.integer "location"
     t.integer "male", null: false
     t.integer "female", null: false

@@ -3,9 +3,17 @@ class Profile < ApplicationRecord
 
   validate :short_intro
 
+  INTRO_SHORTENED_SIZE  = 25
+  INTRO_LIMITATION_SIZE = 500
+
+  def shorten_intro
+    intro.scan(/\w+/).slice(0..22).join(" ") + " ....." if self.intro.scan(/\w+/).size > INTRO_SHORTENED_SIZE 
+  end
+
   private
+
   def short_intro
-    errors[:base] << "Too long introduction." if intro.size > 500
+    errors[:base] << "Too long introduction." if intro.size > INTRO_LIMITATION_SIZE
   end
 end
 

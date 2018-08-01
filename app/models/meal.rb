@@ -4,26 +4,21 @@ class Meal < ApplicationRecord
 
   NOBODY_IS_CHOSEN     = 0
   EXCESSIVE_IS_CHOSEN  = 3
-  MEAL_SAIZ_LIMITATION = 3
+  MEAL_SAIZ_LIMITATION = 5
 
   validates :date,         presence: true
   validates :time,         presence: true
   validates :location,     presence: true
-  validates :male,         numericality: { less_than: 4}
-  validates :female,       numericality: { less_than: 4}
+  validates :male,         numericality: { less_than: 4 }
+  validates :female,       numericality: { less_than: 4 }
   validates :foreigner_id, presence: true
   validate :date_time_cannot_be_in_the_past
   validate :nobody_is_chosen
   validate :excessive_is_chosen
 
-  enum time: { morning: 0,
-               afternoon: 1,
-               evening: 2,
-               night: 3 }
-
   enum location: { shinjyuku: 0,
                    shibuya: 1,
-                   sinagawa: 3 }
+                   sinagawa: 2 }
 
   def self.size_over?(foreigner)
     where(foreigner_id: foreigner).size < MEAL_SAIZ_LIMITATION
@@ -56,7 +51,7 @@ end
 #  location     :integer
 #  male         :integer          not null
 #  note         :text(65535)
-#  time         :integer
+#  time         :string(255)
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  foreigner_id :bigint(8)

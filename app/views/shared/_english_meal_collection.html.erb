@@ -1,0 +1,10 @@
+<% if Meal.count > 2 %>
+  <section class="px-5 bg-white">
+    <div class="h3 mb-4">
+      <span>ー</span> <span class="mx-3"><span class="main-color font-weight-bold h2">English</span></span> <span>ー</span>
+    </div>
+    <div class="row justify-content-around">
+      <%= render @english_meals %>
+    </div>
+  </section>
+<% end %>

@@ -3,11 +3,13 @@ class PagesController < ApplicationController
   before_action :you_japanese?, only: :home
 
   def home
-    @meals = Meal.order("RAND()").limit(2)
+    @new_meals = Meal.limit(4).order("created_at DESC")
   end
 
   def jhome
-    @meals = Meal.order("RAND()").limit(2)
+    @new_meals = Meal.limit(4).order("created_at DESC")
+    @english_meals = Meal.joins(:foreigner).where(foreigners: { f_lang: "English" }).distinct.order("RAND()").limit(4)
+
     render layout: 'application_japanese'
   end
 
