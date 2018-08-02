@@ -8,21 +8,21 @@
         <% if request.path == '/'%>
           <div style="font-size:15px;">
             <div style="filter:drop-shadow(3px 3px 2px rgba(0,0,0,0.5));">
-              <%= button_to "Sign up as Foreigner", new_foreigner_session_path, class: "btn btn-darkorange font-weight-bold", style: "border-radius:5px;", method: :get%>
+              <%= button_to "Sign up as Foreigner", new_foreigner_session_path, class: "btn btn-darkorange btn-lg px-4 font-weight-bold", style: "border-radius:5px;", method: :get%>
             </div>
             <div class="my-4 h4">----------- or -----------</div>
-            <div>
-              <%= link_to "Sign up as Japanese", new_japanese_registration_path, class: "font-weight-bold text-muted", method: :get%>
+            <div class="mb-4">
+              <%= link_to "Sign up as Japanese", new_japanese_registration_path, class: "font-weight-bold text-muted h5", method: :get%>
             </div>
           </div>
         <% else %>
           <div style="font-size:13px;">
             <div style="filter:drop-shadow(3px 3px 2px rgba(0,0,0,0.5));">
-              <%= button_to "日本人で登録", new_japanese_registration_path, class: "btn btn-darkorange px-4 m-auto font-weight-bold", style: "border-radius:5px;", method: :get%>
+              <%= button_to "日本人で登録", new_japanese_registration_path, class: "btn btn-darkorange btn-lg px-5 m-auto font-weight-bold", style: "border-radius:5px;", method: :get%>
             </div>
             <div class="my-4 h4">----------- or -----------</div>
-            <div>
-              <%= link_to "外国人で登録", new_foreigner_session_path, class: "font-weight-bold text-muted", method: :get%>
+            <div class="mb-4">
+              <%= link_to "外国人で登録", new_foreigner_session_path, class: "font-weight-bold text-muted h5", method: :get%>
             </div>
           </div>
         <% end %>
