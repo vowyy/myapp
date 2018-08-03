@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 2018_07_21_033038) do
     t.string "last_name"
     t.string "nickname"
     t.integer "gender", limit: 1
-    t.date "birthday"
+    t.integer "age"
     t.string "image"
     t.text "intro"
     t.integer "lang_l"
