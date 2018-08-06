@@ -31,12 +31,37 @@ class Japaneses::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def edit
+    render layout: 'personal_japanese'
+  end
+
+  def update
+    self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
+    prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
+
+    resource_updated = update_resource(resource, account_update_params)
+    yield resource if block_given?
+    if resource_updated
+      if is_flashing_format?
+        flash_key = update_needs_confirmation?(resource, prev_unconfirmed_email) ?
+          :update_needs_confirmation : :updated
+        set_flash_message :notice, flash_key
+      end
+      bypass_sign_in resource, scope: resource_name
+      redirect_to japanese_path current_user, layout: 'personal_japanese'
+    else
+      clean_up_passwords resource
+      set_minimum_password_length
+      render action: :edit, layout: 'personal_japanese'
+    end
+  end
+
 
   protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :nickname, :birthday, :intro, :lang_l, :image, :gender])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :nickname, :age, :intro, :language, :lang_l, :image, :gender])
   end
 
   def update_resource(resource, params)
