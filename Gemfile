@@ -53,6 +53,9 @@ gem 'active_decorator', "~> 1.0"
 # スクレイピング用
 gem 'nokogiri', "~> 1.8"
 
+# enumの日本語化
+gem 'enum_help', "~> 0.0"
+
 # else
 gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '~> 1.3', require: false
