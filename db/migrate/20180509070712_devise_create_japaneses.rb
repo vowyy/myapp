@@ -35,11 +35,12 @@ class DeviseCreateJapaneses < ActiveRecord::Migration[5.2]
       t.string  :first_name, index: true
       t.string  :last_name, index: true
       t.string  :nickname, index: true
-      t.integer :gender, limit: 1
+      t.string  :gender
+      t.string  :language
       t.integer :age
       t.string  :image
       t.text    :intro
-      t.integer :lang_l
+      t.string  :lang_l
 
 
       t.timestamps null: false

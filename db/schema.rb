@@ -64,11 +64,12 @@ ActiveRecord::Schema.define(version: 2018_07_21_033038) do
     t.string "first_name"
     t.string "last_name"
     t.string "nickname"
-    t.integer "gender", limit: 1
+    t.string "gender"
+    t.string "language"
     t.integer "age"
     t.string "image"
     t.text "intro"
-    t.integer "lang_l"
+    t.string "lang_l"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["confirmation_token"], name: "index_japaneses_on_confirmation_token", unique: true
