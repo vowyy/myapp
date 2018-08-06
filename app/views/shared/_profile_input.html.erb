@@ -1,21 +1,40 @@
 <div class="row">
-  <div class="h2 mb-5 mx-5 text-center w-100 border-bottom border-darkorange py-2">Introduction</div>
+  <div class="h2 mb-5 mx-5 text-center w-100 border-bottom border-darkorange py-2">
+    <% if japanese? %>
+    自己紹介
+    <% else %>
+    Introduction
+    <% end %>
+  </div>
   <div class="col-9 text-center mx-auto">
     <%= form_for @profile do |f| %>
       <%= render 'shared/devise_errormes', object: f.object %>
 
       <div class="form_control mb-4">
-        <%= f.text_area :intro, rows: "11", placeholder: "Please write your profile in 500 words or less.",  class: "form-control", style: "width:100% !important;" %>
+        <% if japanese? %>
+          <%= f.text_area :intro, rows: "13", placeholder: "500文字以内で自己紹介文をご記入ください。",  class: "form-control", style: "width:100% !important;" %>
+        <% else %>
+          <%= f.text_area :intro, rows: "13", placeholder: "Please write your profile in 500 words or less.",  class: "form-control", style: "width:100% !important;" %>
+        <% end %>
       </div>
 
-      <div class="actions text-center mt-4 mb-5 h5">
-        <%= f.submit "Submit", class: "btn btn-darkorange px-5 py-2" %>
-      </div>
-
-      <div class="mx-auto text-left" style="font-size:11px;color:#999999;">
-        <i class="fas fa-exclamation-circle fa-2x mr-2 text-danger"></i>
+      <div class="profile-warning mx-auto text-left" style="font-size:10px;color:#999999;">
+        <i class="warning-title fas fa-exclamation-circle mr-2 text-danger"></i>
+        <% if japanese? %>
+        MEEaT JAPANの基本は人間関係です。あなたのことを知ってもらいましょう！あなたの好きなもの、ことを教えたください。
+        好きなことを５つ聞かれたらなんと答えますか？旅行は好きですか？将来どんなことがしたいですか？人々にあなたの性格についても教えてあげましょう。
+        <% else %>
         The basis of MEEaT JAPAN is human relations. Let 's make an effort to get to know yourself.
-        Please tell me what you like. What would you say if you are asked five things you could not live without this? What is your favorite destination, book, movie, program, music and off course Japanese, food? Please tell me the style of your trip (commitment, style). Let people know your personality as well. What is the motto of life?
+        Please tell me what you like. What would you say if you are asked five things you could not live without this? What is your favorite destination,
+        book, movie, program, music and off course Japanese, food? Please tell me the style of your trip (commitment, style). Let people know your personality as well. What is the motto of life?
+        <% end %>
+      </div>
+      <div class="actions text-center mt-4 mb-5 h5">
+        <% if japanese? %>
+        　<%= f.submit "送信する", class: "btn btn-darkorange btn-lg px-5 py-2", style: "border-radius:10px;" %>
+        <% else %>
+        　<%= f.submit "Submit", class: "btn btn-darkorange btn-lg px-5 py-2", style: "border-radius:10px;" %>
+        <% end %>
       </div>
 
     <% end %>
