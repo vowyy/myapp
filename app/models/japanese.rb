@@ -16,13 +16,11 @@ class Japanese < ApplicationRecord
   validates :last_name,  presence: true, length: { maximum: 15 }
   validates :nickname,   presence: true, length: { maximum: 15 }, on: :update
   validates :gender,     presence: true, on: :update
+  validates :language,   presence: true, on: :update
   validates :lang_l,     presence: true, on: :update
-  validates :birthday,   presence: true, on: :update
+  validates :age,        presence: true, on: :update
   validates :intro,      length: { maximum: 255 }
   validate :nickname_required
-
-  enum gender: { male: 0, female: 1, else: 2 }
-  enum lang_l: { beginner: 0, intermediate: 1, advanced: 2 }
 
   # allow users to update their accounts without passwords
   def update_without_current_password(params, *options)
@@ -50,7 +48,7 @@ end
 # Table name: japaneses
 #
 #  id                     :bigint(8)        not null, primary key
-#  birthday               :date
+#  age                    :integer
 #  confirmation_sent_at   :datetime
 #  confirmation_token     :string(255)
 #  confirmed_at           :datetime
@@ -59,10 +57,11 @@ end
 #  email                  :string(255)      default(""), not null
 #  encrypted_password     :string(255)      default(""), not null
 #  first_name             :string(255)
-#  gender                 :integer
+#  gender                 :string(255)
 #  image                  :string(255)
 #  intro                  :text(65535)
-#  lang_l                 :integer
+#  lang_l                 :string(255)
+#  language               :string(255)
 #  last_name              :string(255)
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :string(255)
