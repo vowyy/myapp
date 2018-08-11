@@ -4,7 +4,7 @@ class Foreigners::RegistrationsController < Devise::RegistrationsController
   before_action :configure_permitted_parameters
 
   def edit
-    render layout: 'personal_foreigner'
+    render layout: 'personal_user'
   end
 
 
@@ -21,11 +21,11 @@ class Foreigners::RegistrationsController < Devise::RegistrationsController
         set_flash_message :notice, flash_key
       end
       bypass_sign_in resource, scope: resource_name
-      redirect_to foreigner_path current_user, layout: 'personal_foreigner'
+      redirect_to foreigner_path current_user, layout: 'personal_user'
     else
       clean_up_passwords resource
       set_minimum_password_length
-      render action: :edit, layout: 'personal_foreigner'
+      render action: :edit, layout: 'personal_user'
     end
   end
 
