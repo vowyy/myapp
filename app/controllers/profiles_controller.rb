@@ -4,36 +4,36 @@ class ProfilesController < ApplicationController
 
   def new
     @profile = Profile.new
-    render layout: 'personal_foreigner'
+    render layout: 'personal_user'
   end
 
   def create
-    @profile = current_foreigner.build_profile(profile_params)
+    @profile = current_user.build_profile(profile_params)
     if @profile.save
       flash[:success] = "Profile successfully created"
-      redirect_to foreigner_path current_foreigner
+      redirect_to current_user
     else
-      redirect_to foreigner_path current_foreigner
+      redirect_to current_user
     end
   end
 
   def edit
-    render layout: 'personal_foreigner'
+    render layout: 'personal_user'
   end
 
   def update
     if @profile.update(profile_params)
       flash[:success] = "Profile successfully updated"
-      redirect_to foreigner_path current_foreigner
+      redirect_to current_user
     else
-      render action: :edit, layout: 'personal_foreigner'
+      render action: :edit, layout: 'personal_user'
     end
   end
 
   private
 
   def already_have_profile?
-    redirect_to edit_profile_path current_foreigner.profile if not current_foreigner.profile.nil?
+    redirect_to edit_profile_path current_user.profile if not current_user.profile.nil?
   end
 
   def load_profilable
@@ -44,4 +44,5 @@ class ProfilesController < ApplicationController
   def profile_params
     params.require(:profile).permit(:intro)
   end
+
 end
