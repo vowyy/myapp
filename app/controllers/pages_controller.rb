@@ -3,12 +3,12 @@ class PagesController < ApplicationController
   before_action :you_japanese?, only: :home
 
   def home
-    @new_meals = Meal.limit(4).order("created_at DESC")
+    @new_meals = Meal.limit(3).order("created_at DESC")
   end
 
   def jhome
-    @new_meals = Meal.limit(4).order("created_at DESC")
-    @english_meals = Meal.joins(:foreigner).where(foreigners: { f_lang: "English" }).distinct.order("RAND()").limit(4)
+    @new_meals = Meal.limit(3).order("created_at DESC")
+    @english_meals = Meal.joins(:foreigner).where(foreigners: { f_lang: "English" }).distinct.order("RAND()").limit(3)
   end
 
   private
