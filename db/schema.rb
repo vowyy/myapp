@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 2018_07_21_033038) do
     t.bigint "japanese_id"
     t.boolean "ok", default: false
     t.integer "budget", default: 0, null: false
+    t.boolean "skype", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["japanese_id"], name: "index_matches_on_japanese_id"
