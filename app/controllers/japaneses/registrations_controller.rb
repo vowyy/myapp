@@ -6,7 +6,6 @@ class Japaneses::RegistrationsController < Devise::RegistrationsController
   def new
     build_resource
     yield resource if block_given?
-    render layout: 'application_japanese'
   end
 
   def create
@@ -27,12 +26,12 @@ class Japaneses::RegistrationsController < Devise::RegistrationsController
     else
       clean_up_passwords resource
       set_minimum_password_length
-      render action: :new, layout: 'application_japanese'
+      render action: :new
     end
   end
 
   def edit
-    render layout: 'personal_japanese'
+    render layout: 'personal_user'
   end
 
   def update
@@ -48,11 +47,11 @@ class Japaneses::RegistrationsController < Devise::RegistrationsController
         set_flash_message :notice, flash_key
       end
       bypass_sign_in resource, scope: resource_name
-      redirect_to japanese_path current_user, layout: 'personal_japanese'
+      redirect_to japanese_path current_user, layout: 'personal_user'
     else
       clean_up_passwords resource
       set_minimum_password_length
-      render action: :edit, layout: 'personal_japanese'
+      render action: :edit, layout: 'personal_user'
     end
   end
 
