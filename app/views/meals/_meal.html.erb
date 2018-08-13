@@ -1,51 +1,31 @@
-<div class="col mb-4 pb-1 px-0" data-toggle="modal" data-target="#home-user-<%= meal.foreigner.id %>" style="background-color:#FF8856;max-width:280px;min-width:280px;border-radius:5px;filter:drop-shadow(1px 1px 8px rgba(0,0,0,0.3));">
-  <div class="meal-top pt-2 d-flex bg-white flex-column mb-1" style="border-top-left-radius:5px;border-top-right-radius:5px;">
+<div class="mb-5 px-0" style="background-color:#FF8856;max-width:355px;min-width:355px;border-radius:5px;filter:drop-shadow(1px 1px 4px rgba(0,0,0,0.7));">
+  <div class="meal-top pt-2 d-flex bg-white flex-column" style="border-top-left-radius:5px;border-top-right-radius:5px;">
     <div class="text-dark mx-auto d-flex" style="position:relative;">
-      <div style="position:absolute;top:-2px;right:-40px;">
-        <span class="fa-stack" style="font-size:16px;filter:drop-shadow(1px 1px 2px rgba(0,0,0,0.4));">
+      <div style="position:absolute;top:147px;right:-70px;"  data-toggle="modal" data-target="#home-user-<%= meal.foreigner.id %>">
+        <span class="fa-stack faa-wrench animated-hover" style="font-size:27px;filter:drop-shadow(1px 1px 2px rgba(0,0,0,0.9));">
           <i class="fas fa-circle fa-stack-2x text-white font-info"></i>
-          <i class="fas fa-info fa-stack-1x text-muted"></i>
+          <i class="fas fa-info fa-stack-1x" style="color:#008BBB;"></i>
         </span>
       </div>
-      <div class="text-center py-1">
-        <%= image_tag meal.foreigner.image.url(:_300), class: "home-image mb-2 circle-image", size: "105x105", style: "border:solid 1.5px white;brder-radius:5px;filter:drop-shadow(1px 1px 3px rgba(0,0,0,0.3));"%>
-        <div class="mb-2 text-muted" style="font-size:15px;">
-          <%= image_tag meal.foreigner.nation.flag.url, size: "30x22", class: "align-top mr-2", style: "filter:drop-shadow(2px 2px 3px rgba(0,0,0,0.3));" %>
+
+      <div class="text-center pt-1">
+        <%= image_tag meal.foreigner.image.url(:_700), class: "home-image mb-2 circle-image", size: "135x135", style: "border:solid 1.5px white;brder-radius:5px;filter:drop-shadow(1px 1px 3px rgba(0,0,0,0.5));"%>
+        <div class="mb-1 mr-3 text-muted font-weight-bold" style="font-size:18px;" data-toggle="modal" data-target="#home-user-<%= meal.foreigner.id %>">
+          <%= image_tag meal.foreigner.nation.flag.url, size: "33x20", class: "align-top mr-2", style: "filter:drop-shadow(2px 2px 3px rgba(0,0,0,0.3));" %>
           <%= meal.foreigner.name.truncate(13) %> , <%= meal.foreigner.age %>
         </div>
       </div>
-
-      <!-- <div class="font-weight-bold">
-        <div class="text-muted mt-2 mb-1"style="font-size:10px;">Language</div>
-        <div class="text-center mb-3 font-weight-bold p-1 border border-darkorange main-color d-inline-block" style="font-size:12px;min-width:110px;">
-          <%= meal.foreigner.f_lang%>
-          <% if meal.foreigner.s_lang %>
-            <span class="main-color">
-             /
-            </span>
-             <%= meal.foreigner.s_lang %>
-          <% end %>
-        </div>
-        <div class="pt-3" style="font-size:14px;border-top:solid 1px gray;filter:drop-shadow(2px 2px 3px rgba(0,0,0,0.3));">
-          <i class="fas fa-globe-americas fa-2x align-bottom mr-1" style="color:#75A9FF;"></i>
-          <%= image_tag meal.foreigner.nation.flag.url, size: "50x31", class: "align-top ml-2", style: "border-radius:0px;" %>
-        </div>
-      </div> -->
     </div>
   </div>
 
-
-
-  <div class="meal-bottom mx-auto pb-1" style="border-radius:5px;width:240px;">
-
-    <div class="mb-2 pb-2" style="border-bottom:dotted 2px white;">
-      <div class="ml-2" style="padding:1px;font-size:16px;">
-        <!-- <span class="fa-stack" style="font-size:16px;">
+  <div class="meal-bottom mx-auto pt-3 pb-2" style="border-radius:5px;width:285px;">
+    <div class="mb-1">
+      <div class="ml-2" style="padding:1px;font-size:19px;">
+        <span class="fa-stack" style="font-size:17px;">
           <i class="fas fa-circle fa-stack-2x text-white"></i>
           <i class="fas fa-comment-dots fa-stack-1x meal-color"></i>
-        </span> -->
-        <i class="fas fa-comment-dots text-white ml-1 pt-2" style="font-size:20px;"></i>
-        <span class="ml-1 mr-3 text-white"  style="font-size:18px;">
+        </span>
+        <span class="ml-1 mr-3 text-white">
           :
         </span>
         <span class="font-weight-bold text-white">
@@ -61,8 +41,8 @@
     </div>
 
     <div class="mb-1">
-      <div class="ml-2" style="padding:1px;font-size:16px;">
-        <span class="fa-stack" style="font-size:14px;">
+      <div class="ml-2" style="padding:1px;font-size:19px;">
+        <span class="fa-stack" style="font-size:17px;">
           <i class="fas fa-circle fa-stack-2x text-white"></i>
           <i class="fas fa-calendar-alt fa-stack-1x meal-color"></i>
         </span>
@@ -70,14 +50,15 @@
           :
         </span>
         <span class="font-weight-bold text-white">
-          <%= meal.date %> <span class="text-white align-center" style="font-size:10px;">(yyyy-mm-dd)</span>
+          <%= meal.date %> <span class="text-white align-center" style="font-size:10px;"><%= current_page?(root_path) ? "(yyyy-mm-dd)" : "( 年ー月ー日 )" %>
+          </span>
         </span>
       </div>
     </div>
 
     <div class="mb-1">
-      <div class="ml-2" style="padding:1px;font-size:16px;">
-        <span class="fa-stack" style="font-size:14px;">
+      <div class="ml-2" style="padding:1px;font-size:19px;">
+        <span class="fa-stack" style="font-size:17px;">
           <i class="fas fa-circle fa-stack-2x text-white"></i>
           <i class="fas fa-clock fa-stack-1x meal-color"></i>
         </span>
@@ -91,8 +72,8 @@
     </div>
 
     <div class="mb-1">
-      <div class="ml-2" style="padding:1px;font-size:16px;">
-        <span class="fa-stack" style="font-size:14px;">
+      <div class="ml-2" style="padding:1px;font-size:19px;">
+        <span class="fa-stack" style="font-size:17px;">
           <i class="fas fa-circle fa-stack-2x text-white"></i>
           <i class="fas fa-map-marker-alt fa-stack-1x meal-color"></i>
         </span>
@@ -107,7 +88,7 @@
 
     <div class="">
       <div class="ml-1" style="padding:1px;font-size:20px;">
-        <span class="fa-stack" style="font-size:14px;margin-left:4px;">
+        <span class="fa-stack" style="font-size:17px;margin-left:4px;">
           <i class="fas fa-circle fa-stack-2x text-white"></i>
           <i class="fas fa-users fa-stack-1x meal-color"></i>
         </span>
@@ -117,7 +98,7 @@
         <span>
           <span class="font-weight-bold text-white">
             <%= meal.male + meal.female %>
-            <span style="font-size:14px;">
+            <span style="font-size:17px;">
               (<i class="fas fa-male text-white ml-2"></i><span class="mr-1"> <%= meal.male%></span>+<i class="fas fa-female text-white ml-2"></i> <%= meal.female%> )
             </span>
           </span>
@@ -125,24 +106,31 @@
       </div>
     </div>
   </div>
+  <% if japanese? %>
+    <div class="bg-white" style="padding:6.5px 0;border-top:dashed 2px white;border-bottom-left-radius:5px;border-bottom-right-radius:5px;">
+      <input class="btn mb-1 font-weight-bold text-white mx-auto py-2 px-4" style="background-color:#008BBB;border-radius:3px;display:block !important;font-size:17px;filter:drop-shadow(2px 2px 2px rgba(0,0,0,0.3));" type="submit" value="予算を決めてリクエスト" data-toggle="modal" data-target="#request_modal_<%= meal.id %>">
+    </div>
+  <% end %>
 </div>
-
+<% if japanese? %>
+  <%= render partial: 'shared/request_confirmation', locals: { meal: meal } %>
+<% end %>
 
 
 <!-- MODAL -->
-<div class="modal" id="home-user-<%= meal.foreigner.id %>" style="z-index:1500;margin-top:-30px;">
+<div class="modal" id="home-user-<%= meal.foreigner.id %>" style="z-index:1500;margin-top:-70px;">
   <div class="modal-dialog">
-    <div class="col mr-4 bg-lightorange text-center py-2" style="max-width:400px;min-width:400px;border-radius:10px;margin-bottom:100px;filter:drop-shadow(1px 0px 6px rgba(0,0,0,0.3));margin-top:30px;">
+    <div class="col mr-4 bg-lightorange text-center py-3" style="max-width:430px;min-width:430px;border-radius:10px;margin-bottom:100px;filter:drop-shadow(1px 0px 6px rgba(0,0,0,0.3));margin-top:30px;">
       <div class="left-image" style="margin-top:5px;">
         <button class="close" data-dismiss="modal">&times;</button>
         <% if meal.foreigner.image %>
-          <%= image_tag meal.foreigner.image.url(:_300), size: "250x250", class: "border border-lightorange", style: "border-radius:10px;" %>
+          <%= image_tag meal.foreigner.image.url(:_700), size: "300x300", class: "border border-lightorange", style: "border-radius:10px;" %>
         <% else %>
-            <%= image_tag 'people_md.png', size: "130x130", class: "circle-image border border-dark"%>
+          <%= image_tag 'default.jpg', size: "250x250", class: "circle-image border border-dark"%>
         <% end %>
       </div>
 
-      <div class="d-flex justify-content-center my-2 pb-2 border-bottom border-dark">
+      <div class="d-flex justify-content-center mb-2 pb-1 border-bottom border-secondary">
         <div class="mr-2 h5 align-self-center" style="font-family:'Helvetica Neue';">
           <%= meal.foreigner.name %>
           <% if meal.foreigner.age %>
@@ -156,11 +144,47 @@
         </div>
       </div>
 
-      <div class="pt-4 pl-4 text-left font-italic main-color" style="border-radius:4px;font-size:16px;opacity:0.9;">
+      <div class="d-flex mb-2">
+        <div class="ml-4 py-1 border font-italic bg-darkorange border-darkorange text-white" style="min-width:129px;max-height:29px;border-radius:4px;font-size:13px;opacity:0.9;">
+          Nation
+        </div>
+        <div class="ml-4 mb-0 h5 align-self-end text-left">
+          <%= meal.foreigner.nation ? meal.foreigner.nation.name : "none" %>
+        </div>
+      </div>
+
+      <div class="d-flex mb-2">
+        <div class="ml-4 py-1 border font-italic bg-darkorange border-darkorange text-white" style="min-width:129px;max-height:29px;border-radius:4px;font-size:13px;opacity:0.9;">
+          Japanse Ability
+        </div>
+        <div class="ml-4 mb-0 h5 align-self-end text-left">
+          <%= meal.foreigner.j_l ? meal.foreigner.j_l : "none" %>
+        </div>
+      </div>
+
+      <div class="d-flex mb-2">
+        <div class="ml-4 py-1 border font-italic bg-darkorange border-darkorange text-white" style="min-width:129px;max-height:29px;border-radius:4px;font-size:13px;opacity:0.9;">
+          First Language
+        </div>
+        <div class="ml-4 mb-0 h5 align-self-end text-left">
+          <%= meal.foreigner.f_lang ? meal.foreigner.f_lang : "none" %>
+        </div>
+      </div>
+
+      <div class="d-flex mb-2">
+        <div class="ml-4 py-1 border font-italic bg-darkorange border-darkorange text-white" style="min-width:129px;max-height:29px;border-radius:4px;font-size:13px;opacity:0.9;">
+          Seocond Language
+        </div>
+        <div class="ml-4 mb-0 h5 align-self-end text-left">
+          <%= meal.foreigner.s_lang ? meal.foreigner.s_lang : "none" %>
+        </div>
+      </div>
+
+      <div class="pt-2 pl-4 text-left font-italic" style="border-radius:4px;font-size:17px;opacity:0.9;">
         <i class="fas fa-user mr-1"></i>
         profile
       </div>
-      <div class="container">
+      <div class="container bg-white pt-3 border border-white" style="border-radius:10px;">
         <div class="mx-auto text-left text-muted" style="font-size:12px;border-radius:4px;padding:5px 18px 18px 18px;">
           <%= meal.foreigner.profile.intro  %>
         </div>
