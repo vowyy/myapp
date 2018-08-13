@@ -1,7 +1,15 @@
-<% if Meal.count > 2 %>
+<% if Meal.count > 2 and @english_meals.count > 2 %>
   <section class="px-5 bg-white">
-    <div class="h3 mb-4">
-      <span>ー</span> <span class="mx-3"><span class="main-color font-weight-bold h2">English</span></span> <span>ー</span>
+    <div class="mb-4 h3 w-100">
+      <div class="ml-5 d-inline-block">
+        <i class="fas fa-comment"></i>
+        <% if current_page?(root_path) %>
+          <span class="mx-3">English</span>
+        <% else %>
+          <span class="mx-2 font-weight-bold" style="font-size:25px;"><span class="main-color">英語</span>を話そう</span>
+        <% end %>
+      </div>
+      <%= render 'shared/meal_explanation'%>
     </div>
     <div class="row justify-content-around">
       <%= render @english_meals %>

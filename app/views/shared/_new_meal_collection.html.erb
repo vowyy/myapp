@@ -1,10 +1,26 @@
-<% if Meal.count > 3 %>
+<% if Meal.count > 2 %>
   <section class="p-5 bg-white">
-    <div class="mx-auto text-center w-75 h4" style="margin-bottom:40px;">
-      <span class="border-left px-3 border-right border-darkorange pt-0">Collection of <div class="d-inline-block">Posted <span class="main-color font-weight-bold h2">Meals</span></div></span>
+    <div class="h2 ml-4 font-weight-bold" style="margin-bottom:70px;">
+      <span class="pt-2 pl-3" style="border-left:solid 5px #008BBB;">
+        <%= current_page?(root_path) ? "Meals collection" : "外国人を探す"%>
+      </span>
+      <span class="d-inline-block w-50 mt-3 ml-4" style="font-size:18px;color:pink;" data-toggle="modal" data-target="#how-to-read">
+        <span class="how-to">
+          <i class="far fa-question-circle"></i>
+          <%= current_page?(root_path) ? "How to read the post below" : "投稿の読み方" %>
+        </span>
+      </span>
     </div>
-    <div class="my-4 h3">
-      <span>ー</span> <span class="mx-3">Latest Meals</span> <span>ー</span>
+    <div class="mb-4 h3 w-100">
+      <div class="ml-5 d-inline-block">
+        <i class="fas fa-plane-arrival"></i>
+        <% if current_page?(root_path) %>
+          <span class="mx-3">Latest Meals</span>
+        <% else %>
+          <span class="mx-2 font-weight-bold" style="font-size:24px;">新着投稿</span>
+        <% end %>
+      </div>
+      <%= render 'shared/meal_explanation'%>
     </div>
     <div class="row justify-content-around">
       <%= render @new_meals %>
