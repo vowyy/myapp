@@ -1,66 +1,63 @@
-<div class="row">
-  <div class="col-md-3">
-    <ul class="sidebar-list">
-      <li class="sidebar-item"><%= link_to "Edit Profile", edit_japanese_registration_path, class: "sidebar-link active" %></li>
-    </ul>
-    <br/>
-    <%= link_to "View My Profile", japanese_path(current_japanese), class: "btn btn-default" %>
-  </div>
-  <div class="col-md-9 text-center">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        Your Profile
+<% content_for :edit_japanese do %>
+  <div class="row mx-auto foreigner-edit">
+    <div class="h2 mb-4 text-center w-100 border-bottom border-darkorange py-2 mx-5">設定</div>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "col mx-auto" }) do |f| %>
+      <%= render 'shared/devise_errormes', object: f.object %>
+
+      <div class="mb-4 d-flex justify-content-center">
+        <div class="">
+          <%= image_tag current_japanese.image.url(:_300), size: "100x100", class: "mb-3 border border-dark circle-image" %>
+        </div>
+          <div class="originalFileBtn mb-3 text-center" style="padding:9px;">
+            写真をアップロード
+            <%= f.file_field :image %>
+          </div>
       </div>
-      <div class="panel-body">
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-          <%= render 'shared/devise_errormes', object: f.object %>
 
-          <div class="form-group">
-            <%= f.text_field :last_name, autofocus: true, placeholder: "姓", class: "form-control" %>
-          </div>
-
-          <div class="form-group">
-            <%= f.text_field :first_name, autofocus: true, placeholder: "名", class: "form-control" %>
-          </div>
-
-          <div class="form-group">
-            <%= f.text_field :nickname, autofocus: true, placeholder: "ニックネーム(英語でお願いします。)", class: "form-control" %>
-          </div>
-
-          <div class="form-group">
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: "form-control" %>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :gender, "性別" %><br />
-            <%= f.select :gender, Japanese.genders.keys, autofocus: true, prompt: "性別を選んでください", class: "form-control" %>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :lang_l, "英語レベル" %><br />
-            <%= f.select :lang_l, Japanese.lang_ls.keys, autofocus: true, prompt: "英語レベル", class: "form-control" %>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :intro, "紹介文" %><br />
-            <%= f.text_area :intro, rows: 5, columns: 25, autofocus: true, placeholder: "紹介文を記入してください。", class: "form-control" %>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :birthday, "生年月日" %><br />
-            <%= raw sprintf( f.date_select(:birthday, use_month_numbers: true,  start_year: 2000, end_year: 1950, include_blank: true, autofocus: true, class: "form-control", date_separator: '%s'), '年 ', '月 ') + '日' %>
-          </div>
-
-
-          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-          <% end %>
-
-          <div class="actions">
-            <%= f.submit "送信", class: "btn btn-primary" %>
-          </div>
-        <% end %>
+      <div class="form-group d-flex">
+        <span class="h5 font-weight-bold mt-4 text-center mr-3 pl-4" style="width:140px;">姓</span>
+        <%= f.text_field :last_name, class: "form-control text-muted border-white bg-lightorange", style: "font-size:1.2rem;height:60px;padding:10px 0.5rem;margin-bottom: 0.6rem;max-width:340px;min-width:215px;" %>
       </div>
-    </div>
+
+      <div class="form-group d-flex">
+        <span class="h5 font-weight-bold mt-4 text-center mr-3 pl-4" style="width:140px;">名</span>
+        <%= f.text_field :first_name, class: "form-control text-muted border-white bg-lightorange", style: "font-size:1.2rem;height:60px;padding:10px 0.5rem;margin-bottom: 0.6rem;max-width:340px;min-width:215px;" %>
+      </div>
+
+      <div class="form-group d-flex">
+        <span class="font-weight-bold mt-3 text-right mr-3 pr-3" style="width:140px;font-size:14px;">ユーザー名<br><span class="mr-3">(英語)</span></span>
+        <%= f.text_field :nickname, class: "form-control text-muted border-white bg-lightorange", style: "font-size:1.2rem;height:60px;padding:10px 0.5rem;margin-bottom: 0.6rem;max-width:340px;min-width:215px;" %>
+      </div>
+      <div class="form-group d-flex">
+        <span class="h6 font-weight-bold mt-4 text-right mr-3 pl-4" style="width:140px;">メールアドレス</span>
+        <%= f.text_field :email, class: "form-control text-muted border-white bg-lightorange", style: "font-size:1.2rem;height:60px;padding:10px 0.5rem;margin-bottom: 0.6rem;max-width:340px;min-width:215px;" %>
+      </div>
+
+      <div class="form-group d-flex">
+        <span class="h6 font-weight-bold mt-3 text-center mr-3 pl-4" style="width:140px;">年齢</span>
+        <%= f.number_field :age, in: 20..50 , placeholder: "選択、または記入してください", class: "form-control text-muted", style: "padding:10px 0.5rem;margin-bottom: 1rem;max-width:300px;min-width:215px;" %>
+      </div>
+
+      <div class="form-group d-flex">
+        <span class="h6 font-weight-bold mt-3 text-center mr-3 pl-4" style="width:140px;">性別</span>
+        <%= f.select :gender, [["男性", "男性"], ["女性", "女性"],["その他", "その他"]], { prompt: "選択してください" }, { class: "form-control text-muted", style: "height:46px;margin-bottom: 1rem;max-width:300px;min-width:215px;" }  %>
+      </div>
+
+      <div class="form-group d-flex">
+        <span class="h6 font-weight-bold mt-3 text-center mr-3 pl-4" style="width:140px;">外国語</span>
+        <%= f.select :language,  [["英語", "英語"], ["スペイン語", "スペイン語"], ["中国語", "中国語"],
+                                 ["韓国語", "韓国語"], ["ヒンドゥー語", "ヒンドゥー語"], ["イタリア語", "イタリア語"],
+                                 ["ドイツ語", "ドイツ語"], ["フランス語", "フランス語"], ["ロシア語", "ロシア語"]], { prompt: "選択してください" }, { class: "form-control text-muted", style: "height:46px;margin-bottom:-30px;max-width:300px;min-width:215px;" } %>
+      </div>
+
+      <div class="form-group d-flex">
+        <span class="h6 font-weight-bold mt-3 text-center mr-3" style="width:140px;"></span>
+        <%= f.select :lang_l,  [["初級", "初級"], ["中級", "中級"],["上級", "上級"],["ネイティブ", "ネイティブ"]], { prompt: "外国語レベル" }, { class: "form-control text-muted", style: "height:46px;margin-bottom:1rem;max-width:300px;min-width:215px;" } %>
+      </div>
+
+      <div class="actions text-center mt-5">
+        <%= f.submit "送信", class: "btn btn-darkorange btn-lg px-5 py-2", style: "border-radius:10px;" %>
+      </div>
+    <% end %>
   </div>
-</div>
+<% end %>
