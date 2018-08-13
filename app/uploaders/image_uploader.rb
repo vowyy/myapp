@@ -11,8 +11,20 @@ class ImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
+  def default_url
+    "default.jpg"
+  end
+
   version :_300 do
     process :resize_to_fill => [300, 300]
+  end
+
+  version :_500 do
+    process :resize_to_fill => [500, 500]
+  end
+
+  version :_700 do
+    process :resize_to_fill => [700, 700]
   end
 
   # 許可する画像の拡張子

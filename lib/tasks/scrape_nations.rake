@@ -13,8 +13,10 @@ namespace :scrape_nations do
 
       nation = Nation.new(name: name)
       nation.remote_flag_url = full_url
-      nation.save!
+      nation.save! if nation.name != "Japan"
+
+      # FileUtils.cp(nation.flag, nation.name + ".jpg") if [ "United States of America", "United Kingdom", "Australia", "Canada" ].any? { |country_name| nation.name.include? country_name }
     end
-    Nation.find_by(name: "Japan").destroy
+    # FileUtils.mv('/uploads/nation/flag/1/#{}'.dup, 'images')
   end
 end

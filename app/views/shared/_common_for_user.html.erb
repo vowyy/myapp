@@ -1,0 +1,154 @@
+<div class="container" style="padding-top:100px;">
+  <div class="row justify-content-around" style="margin-bottom:100px;">
+
+    <div class="col bg-lightorange text-center py-3 h-100" style="position:relative;margin-bottom:100px;max-width:400px;min-width:400px;;filter:drop-shadow(1px 0px 6px rgba(0,0,0,0.3));margin-top:-60px;">
+
+      <div class="left-image" style="margin-top:5px;">
+        <% if current_user.image %>
+          <%= image_tag current_user.image.url(:_300), size: "170x170", class: "border border-lightorange", style: "border-radius:10px;" %>
+        <% end %>
+      </div>
+
+      <!-- foreigner　はflag-name-age
+           japanese 　はlast_name-first_name-age -->
+      <div class="d-flex justify-content-center mb-2 my-3 pb-2 border-bottom border-dark">
+        <div class="mr-3">
+          <% if foreigner? && current_foreigner.nation %>
+            <%= image_tag current_foreigner.nation.flag.url, size: "37x23", style: "border-radius:0px;" %>
+          <% end %>
+        </div>
+        <div class="h5 mb-0 align-self-center" style="font-family:'Helvetica Neue';">
+          <% if japanese? %>
+            <%= current_japanese.last_name %> <%= current_japanese.first_name %>
+          <% else %>
+            <%= current_foreigner.name %>
+          <% end %>
+          <% if current_user.age %>
+            <span class="font-weight-normal" style="font-size:18px;">(<%= current_user.age %>)</span>
+          <% end %>
+        </div>
+      </div>
+
+
+      <!-- foreigner　はflag-name-age
+           japanese 　はlast_name-first_name-age -->
+      <div class="d-flex mb-2">
+        <div class="ml-4 py-1 border font-italic bg-darkorange border-darkorange text-white" style="min-width:129px;max-height:29px;border-radius:4px;font-size:13px;opacity:0.9;">
+          <% if japanese? %>
+            ユーザー名
+          <% else %>
+            Nation
+          <% end %>
+        </div>
+        <div class="ml-4 mb-0 h5 align-self-end text-left">
+          <% if japanese? %>
+            <%= current_japanese.nickname ? current_japanese.nickname : "選択してください" %>
+          <% else %>
+            <%= current_foreigner.nation ? current_foreigner.nation.name : "none" %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="d-flex mb-2">
+        <div class="ml-4 py-1 border font-italic bg-darkorange border-darkorange text-white" style="min-width:129px;border-radius:4px;font-size:13px;opacity:0.9;">
+          <% if japanese? %>
+            外国語
+          <% else %>
+            Japanese Level
+          <% end %>
+        </div>
+        <div class="h6 ml-4 mb-0 align-self-center">
+          <% if japanese? %>
+            <%= current_japanese.language ? current_japanese.language : "選択してください" %> <%= current_japanese.lang_l ? "(#{current_japanese.lang_l})" : "" %>
+          <% else %>
+            <%= current_foreigner.j_l ? current_foreigner.j_l : "none" %>
+          <% end %>
+        </div>
+      </div>
+
+      <% if foreigner? %>
+        <div class="d-flex mb-2">
+          <div class="ml-4 py-1 px-2 border border-dark font-italic bg-darkorange border-darkorange text-white" style="min-width:129px;border-radius:4px;font-size:13px;opacity:0.9;">
+            First Language
+          </div>
+          <div class="h5 ml-4 mb-0 align-self-end">
+            <%= current_foreigner.f_lang ? current_foreigner.f_lang : "none" %>
+          </div>
+        </div>
+      <% end %>
+
+      <% if foreigner? %>
+        <div class="d-flex mb-2">
+          <div class="ml-4 py-1 px-2 border border-dark font-italic bg-darkorange border-darkorange text-white" style="border-radius:4px;font-size:13px;opacity:0.9;">
+            Second Language
+          </div>
+          <div class="h5 ml-4 mb-0 align-self-end">
+            <% if current_foreigner.s_lang %>
+              <%= current_foreigner.s_lang %>
+            <% else %>
+              none
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="ml-3 mt-3 py-1 px-2 w-50 border bg-white font-italic border-darkorange main-color" style="font-size:16px;opacity:0.9;">
+        <% if japanese? %>
+          紹介文
+        <% else %>
+          Introduction
+        <% end %>
+      </div>
+      <div class="container">
+        <div class="mb-0 mx-auto text-left bg-white p-3" style="font-size:13px;border-radius:4px;">
+          <% if japanese? %>
+            <%= current_japanese.profile && !current_japanese.profile.intro.blank? ? current_japanese.profile.intro : "(食事のリクエストを送るためには紹介文を完成させてください。)" %>
+          <% else %>
+            <%= current_foreigner.profile && !current_foreigner.profile.intro.blank? ? current_foreigner.profile.intro : "(You need to complete your introduction to post meal.)" %>
+          <% end %>
+        </div>
+      </div>
+      <div style="position:absolute;bottom:-29px;right:4px;">
+        <% if japanese? %>
+          <%= link_to "退会はこちら", japanese_registration_path, method: :delete, data: {confirm: 'ユーザーを削除してもよろしいですか?'}, class: "text-muted", style: "font-size:12px;" %>
+        <% else %>
+          <%= link_to "To delete the account", foreigner_registration_path, method: :delete, data: {confirm: 'Are you sure to delete this account?'}, class: "text-muted", style: "font-size:12px;" %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col pb-3 foreigner-edit mx-3" style="max-width:630px;min-width:380px;margin-top:-65px;">
+      <div class="row mb-2 py-3 bg-darkorange text-white">
+        <div class="col text-center px-0 font-weight-bold" style="font-size:14px;">
+          <i class="fas fa-cog"></i>
+          <% if japanese? %>
+            <%= link_to "設定", edit_japanese_registration_path, style: "color:white;" %>
+          <% else %>
+            <%= link_to "setting", edit_foreigner_registration_path, style: "color:white;" %>
+          <% end %>
+        </div>
+        <div class="col text-center font-weight-bold" style="font-size:14px;">
+          <i class="fas fa-user-edit"></i>
+          <% if japanese? %>
+            <%= link_to "紹介文", new_profile_path, style: "color:white;" %>
+          <% else %>
+            <%= link_to "introduction", new_profile_path, style: "color:white;" %>
+          <% end %>
+        </div>
+        <div class="col text-center font-weight-bold" style="font-size:14px;">
+          <i class="fas fa-envelope"></i>
+          <% if japanese? %>
+            <%= link_to "メッセージ", rooms_path, style: "color:white;" %>
+          <% else %>
+            <%= link_to "message", rooms_path, style: "color:white;" %>
+          <% end %>
+        </div>
+      </div>
+      <%= yield :edit_foreigner %>
+      <%= yield :edit_japanese %>
+      <%= yield :rooms %>
+      <%= yield :new_profile %>
+      <%= yield :edit_profile %>
+    </div>
+  </div>
+</div>

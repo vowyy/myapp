@@ -6,9 +6,8 @@
   margin: 15px 0;
 }
 .cp_iptxt input[type='text'] {
-  font: 12px/24px sans-serif;
+  font: 15px/18px sans-serif;
   box-sizing: border-box;
-  width: 100%;
   padding: 0.3em;
   transition: 0.3s;
   letter-spacing: 1px;
@@ -29,7 +28,7 @@
   display: inline-block;
   padding: 0 0 20px 0;
   position: relative;
-  margin: 40px 0 0 70px;
+  margin: 40px 0 0 40px;
   height: 20%;
 
   &:hover {
@@ -64,4 +63,9 @@
     border-color: none;
     box-shadow: none;
   }
+}
+
+// checkboxのboxのサイズ
+input[type=checkbox] {
+  transform: scale(1.2);
 }

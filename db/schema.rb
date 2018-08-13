@@ -64,11 +64,12 @@ ActiveRecord::Schema.define(version: 2018_07_21_033038) do
     t.string "first_name"
     t.string "last_name"
     t.string "nickname"
-    t.integer "gender", limit: 1
-    t.date "birthday"
+    t.string "gender"
+    t.string "language"
+    t.integer "age"
     t.string "image"
     t.text "intro"
-    t.integer "lang_l"
+    t.string "lang_l"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["confirmation_token"], name: "index_japaneses_on_confirmation_token", unique: true
@@ -84,6 +85,7 @@ ActiveRecord::Schema.define(version: 2018_07_21_033038) do
     t.bigint "japanese_id"
     t.boolean "ok", default: false
     t.integer "budget", default: 0, null: false
+    t.boolean "skype", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["japanese_id"], name: "index_matches_on_japanese_id"

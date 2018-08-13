@@ -1,6 +1,6 @@
 class Meal < ApplicationRecord
   belongs_to :foreigner
-  has_one :match, dependent: :destroy
+  has_many :matches, dependent: :destroy
 
   NOBODY_IS_CHOSEN     = 0
   EXCESSIVE_IS_CHOSEN  = 3

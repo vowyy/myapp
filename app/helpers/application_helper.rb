@@ -20,6 +20,10 @@ module ApplicationHelper
     session.delete(:previous_url)
   end
 
+  def from_root?
+    request.path == '/'
+  end
+
   private
 
   def store_location

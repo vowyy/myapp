@@ -1,5 +1,4 @@
-<p>Welcome <%= @email %>!</p>
+<p>ようこそ, <span class="main-color">MEEaT JAPAN</span>へ！！
+<p>仮登録が完了しましたので下のリンクから本登録を完了させてください。</p>
 
-<p>You can confirm your account email through the link below:</p>
-
-<p><%= link_to 'Confirm my account', japanese_confirmation_url(controller: 'japaneses/confirmations', action: 'create', confirmation_token: @token) %></p>
+<p><%= link_to '本登録をする', japanese_confirmation_url(controller: 'japaneses/confirmations', action: 'create', confirmation_token: @token) %></p>

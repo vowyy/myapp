@@ -177,20 +177,51 @@ body {
   font-size: 30px;
 }
 
+.how-to:hover {
+  cursor:pointer;
+  color:red !important;
+}
+
+.modal-backdrop.show {
+    opacity: 0.8 !important;
+}
+
 // =============================
 
-.field_with_errors {
-  display: inline-block;
-  // width: 400px;
+.foreigner-edit .field_with_errors {
+  display:inline;
   color: red;
 
+
   select {
-    margin-left: auto;
-    border:solid 1.6px red !important;
+    border:solid 2px red !important;
   }
 
   input {
-    margin-left: auto;
-    border:solid 1.6px red !important;
+    border:solid 2px red !important;
   }
+}
+
+.profile-warning {
+    position: relative;
+    margin: 2em 0;
+    padding: 1rem;
+    border:solid 2px #FF4F50;
+    border-radius: 30px;
+}
+.profile-warning .warning-title {
+    position: absolute;
+    display: inline-block;
+    top: -13px;
+    left: -10px;
+    padding: 0 9px;
+    line-height: 1;
+    font-size: 28px;
+    background: #FFFAFA;
+    color: #95ccff;
+    font-weight: bold;
+}
+.profile-warning p {
+    margin: 0;
+    padding: 0;
 }
