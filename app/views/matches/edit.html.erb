@@ -1,15 +1,13 @@
-Your meal was requested by
-
-<%= @match.japanese.full_name %>
-<%= @match.japanese.lang_l %>
-<%= @match.japanese.intro %>
-
-<div>If you accept this request, click on the button below and chat room will immedietly be created!!</div>
-  <%= button_to 'approve request', match_path(@match), method: :put, class: "btn btn-primary"%>
-<div>
-  or
+<div class="container my-5">
+  <div class="row">
+    <%= image_tag @match.japanese.image.url(:_700), size: "210x210", class: "mb-3", style: "border-radius:4px;" %>
+    <%= @match.japanese.nickname.capitalize %>
+    <%= @match.japanese.full_name %>
+  </div>
 </div>
 
-<div>
-  <%= button_to 'cancel request', match_path(@match), method: :delete, class: "btn btn-primary"%>
-</div>
+
+
+<!-- <%= button_to 'approve request', meal_match_path(@match), method: :put, class: "btn btn-primary"%>
+<%= button_to 'cancel request', meal_match_path(@match), method: :delete, class: "btn btn-primary"%>
+<%=%> -->
