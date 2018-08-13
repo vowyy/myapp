@@ -1,17 +1,18 @@
 class MatchesController < ApplicationController
-  before_action :set_match, only: [:edit, :update]
+  before_action :set_meal_and_match, only: [:edit, :update]
   before_action :already_approved?, only: [:update]
 
   def create
+    @meal = Meal.find(params[:meal_id])
     @match = current_japanese.matches.build(match_params)
 
     if @match.save
-      flash[:success] = "食事リクエストを#{@match.meal.foreigner.name}さんに送信しました。"
-      MatchMailer.meal_request(@match).deliver_now
+      flash[:success] = "食事リクエストを#{@match.meal.foreigner.name}さんに送信しました。承認されましたらメールでお知らせします。しばらくお待ちください"
+      MatchMailer.meal_request(@meal, @match).deliver_now
     else
-      flash[:alert] = "失敗"
+      flash[:alert] = "リクエストに失敗しました。もう一度やり直してください。"
     end
-    redirect_to root_path
+    redirect_to jhome_path
   end
 
   def edit; end
@@ -31,12 +32,12 @@ class MatchesController < ApplicationController
 
   private
 
-  # これ必要か？userに直接入力してもらうことは特になく、ボタン押すだけ。
   def match_params
-    params.permit(:budget, :meal_id)
+    params.require(:match).permit(:budget, :skype).merge(meal_id: params[:meal_id])
   end
 
-  def set_match
+  def set_meal_and_match
+    @meal = Meal.find(params[:meal_id])
     @match = Match.find(params[:id])
   end
 
