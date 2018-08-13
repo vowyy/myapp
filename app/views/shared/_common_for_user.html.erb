@@ -3,10 +3,9 @@
 
     <div class="col bg-lightorange text-center py-3 h-100" style="position:relative;margin-bottom:100px;max-width:400px;min-width:400px;;filter:drop-shadow(1px 0px 6px rgba(0,0,0,0.3));margin-top:-60px;">
 
-
       <div class="left-image" style="margin-top:5px;">
         <% if current_user.image %>
-          <%= image_tag current_user.image.url(:_300), size: "150x150", class: "circle-image border border-lightorange" %>
+          <%= image_tag current_user.image.url(:_300), size: "170x170", class: "border border-lightorange", style: "border-radius:10px;" %>
         <% end %>
       </div>
 
@@ -58,9 +57,9 @@
             Japanese Level
           <% end %>
         </div>
-        <div class="h5 ml-4 mb-0 align-self-end">
+        <div class="h6 ml-4 mb-0 align-self-center">
           <% if japanese? %>
-            <%= current_japanese.language ? current_japanese.language : "選択してください" %> (<%= current_japanese.lang_l ? current_japanese.lang_l : "" %>)
+            <%= current_japanese.language ? current_japanese.language : "選択してください" %> <%= current_japanese.lang_l ? "(#{current_japanese.lang_l})" : "" %>
           <% else %>
             <%= current_foreigner.j_l ? current_foreigner.j_l : "none" %>
           <% end %>
@@ -93,7 +92,7 @@
         </div>
       <% end %>
 
-      <div class="ml-3 mt-5 py-1 px-2 w-50 border border-dark mb-2 font-italic border-darkorange main-color" style="border-radius:4px;font-size:16px;opacity:0.9;">
+      <div class="ml-3 mt-3 py-1 px-2 w-50 border bg-white font-italic border-darkorange main-color" style="font-size:16px;opacity:0.9;">
         <% if japanese? %>
           紹介文
         <% else %>
