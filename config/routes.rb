@@ -17,14 +17,17 @@ Rails.application.routes.draw do
                                          sessions:           'foreigners/sessions'
                                         }
 
-   resources :japaneses,  only: [:show]
-   resources :foreigners, only: [:show]
-   resources :meals
-   resources :matches
-   resources :profiles, except: [:index, :show, :delet]
-   resources :rooms do
-     resources :messages , only: [:create]
-   end
+    resources :japaneses,  only: [:show]
+    resources :foreigners, only: [:show]
+    resources :profiles, except: [:index, :show, :delete]
+
+    resources :meals do
+      resources :matches
+    end
+    
+    resources :rooms do
+      resources :messages , only: [:create]
+    end
 end
 
 # == Route Map
@@ -69,6 +72,20 @@ end
 #                                       POST     /foreigners(.:format)                                                                    foreigners/registrations#create
 #                              japanese GET      /japaneses/:id(.:format)                                                                 japaneses#show
 #                             foreigner GET      /foreigners/:id(.:format)                                                                foreigners#show
+#                              profiles POST     /profiles(.:format)                                                                      profiles#create
+#                           new_profile GET      /profiles/new(.:format)                                                                  profiles#new
+#                          edit_profile GET      /profiles/:id/edit(.:format)                                                             profiles#edit
+#                               profile PATCH    /profiles/:id(.:format)                                                                  profiles#update
+#                                       PUT      /profiles/:id(.:format)                                                                  profiles#update
+#                                       DELETE   /profiles/:id(.:format)                                                                  profiles#destroy
+#                          meal_matches GET      /meals/:meal_id/matches(.:format)                                                        matches#index
+#                                       POST     /meals/:meal_id/matches(.:format)                                                        matches#create
+#                        new_meal_match GET      /meals/:meal_id/matches/new(.:format)                                                    matches#new
+#                       edit_meal_match GET      /meals/:meal_id/matches/:id/edit(.:format)                                               matches#edit
+#                            meal_match GET      /meals/:meal_id/matches/:id(.:format)                                                    matches#show
+#                                       PATCH    /meals/:meal_id/matches/:id(.:format)                                                    matches#update
+#                                       PUT      /meals/:meal_id/matches/:id(.:format)                                                    matches#update
+#                                       DELETE   /meals/:meal_id/matches/:id(.:format)                                                    matches#destroy
 #                                 meals GET      /meals(.:format)                                                                         meals#index
 #                                       POST     /meals(.:format)                                                                         meals#create
 #                              new_meal GET      /meals/new(.:format)                                                                     meals#new
@@ -77,20 +94,6 @@ end
 #                                       PATCH    /meals/:id(.:format)                                                                     meals#update
 #                                       PUT      /meals/:id(.:format)                                                                     meals#update
 #                                       DELETE   /meals/:id(.:format)                                                                     meals#destroy
-#                               matches GET      /matches(.:format)                                                                       matches#index
-#                                       POST     /matches(.:format)                                                                       matches#create
-#                             new_match GET      /matches/new(.:format)                                                                   matches#new
-#                            edit_match GET      /matches/:id/edit(.:format)                                                              matches#edit
-#                                 match GET      /matches/:id(.:format)                                                                   matches#show
-#                                       PATCH    /matches/:id(.:format)                                                                   matches#update
-#                                       PUT      /matches/:id(.:format)                                                                   matches#update
-#                                       DELETE   /matches/:id(.:format)                                                                   matches#destroy
-#                              profiles POST     /profiles(.:format)                                                                      profiles#create
-#                           new_profile GET      /profiles/new(.:format)                                                                  profiles#new
-#                          edit_profile GET      /profiles/:id/edit(.:format)                                                             profiles#edit
-#                               profile PATCH    /profiles/:id(.:format)                                                                  profiles#update
-#                                       PUT      /profiles/:id(.:format)                                                                  profiles#update
-#                                       DELETE   /profiles/:id(.:format)                                                                  profiles#destroy
 #                         room_messages POST     /rooms/:room_id/messages(.:format)                                                       messages#create
 #                                 rooms GET      /rooms(.:format)                                                                         rooms#index
 #                                       POST     /rooms(.:format)                                                                         rooms#create
