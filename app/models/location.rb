@@ -1,5 +1,6 @@
 class Location < ApplicationRecord
   belongs_to :prefecture
+  has_many :meal
 end
 
 # == Schema Information
@@ -7,7 +8,7 @@ end
 # Table name: locations
 #
 #  id            :bigint(8)        not null, primary key
-#  location      :string(255)
+#  name          :string(255)
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  prefecture_id :bigint(8)
