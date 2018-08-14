@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_21_033038) do
+ActiveRecord::Schema.define(version: 2018_08_14_104157) do
 
   create_table "foreigners", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 2018_07_21_033038) do
     t.integer "f_lang", limit: 1
     t.integer "s_lang", limit: 1
     t.integer "gender", limit: 1
-    t.text "intro"
     t.string "image"
     t.integer "age"
     t.integer "nation_id"
@@ -68,7 +67,6 @@ ActiveRecord::Schema.define(version: 2018_07_21_033038) do
     t.string "language"
     t.integer "age"
     t.string "image"
-    t.text "intro"
     t.string "lang_l"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -78,6 +76,14 @@ ActiveRecord::Schema.define(version: 2018_07_21_033038) do
     t.index ["last_name"], name: "index_japaneses_on_last_name"
     t.index ["nickname"], name: "index_japaneses_on_nickname"
     t.index ["reset_password_token"], name: "index_japaneses_on_reset_password_token", unique: true
+  end
+
+  create_table "locations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.bigint "prefecture_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["prefecture_id"], name: "index_locations_on_prefecture_id"
   end
 
   create_table "matches", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -96,14 +102,16 @@ ActiveRecord::Schema.define(version: 2018_07_21_033038) do
   create_table "meals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "date"
     t.string "time"
-    t.integer "location"
+    t.bigint "location_id"
     t.integer "male", null: false
     t.integer "female", null: false
     t.text "note"
     t.bigint "foreigner_id"
+    t.boolean "skype"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["foreigner_id"], name: "index_meals_on_foreigner_id"
+    t.index ["location_id"], name: "index_meals_on_location_id"
   end
 
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -120,6 +128,12 @@ ActiveRecord::Schema.define(version: 2018_07_21_033038) do
   create_table "nations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "flag"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "prefectures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -143,6 +157,7 @@ ActiveRecord::Schema.define(version: 2018_07_21_033038) do
     t.index ["match_id"], name: "index_rooms_on_match_id", unique: true
   end
 
+  add_foreign_key "locations", "prefectures"
   add_foreign_key "matches", "japaneses"
   add_foreign_key "matches", "meals"
   add_foreign_key "messages", "rooms"
