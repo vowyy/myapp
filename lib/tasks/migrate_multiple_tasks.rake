@@ -8,5 +8,6 @@ namespace :migrate_tasks do
     Rake::Task['db:create'].execute
     Rake::Task['db:migrate'].execute
     Rake::Task['scrape_nations:scrape_nation'].execute
+    Rake::Task['set_prefecture:save_locations'].execute
   end
 end
