@@ -13,7 +13,7 @@ class ProfilesController < ApplicationController
       flash[:success] = "Profile successfully created"
       redirect_to current_user
     else
-      redirect_to current_user
+      render action: :new, layout: 'personal_user'
     end
   end
 
