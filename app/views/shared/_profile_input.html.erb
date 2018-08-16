@@ -12,7 +12,7 @@
 
       <div class="form_control mb-4">
         <% if japanese? %>
-          <%= f.text_area :intro, rows: "13", placeholder: "500文字以内の簡単な英語でご記入ください。",  class: "form-control", style: "width:100% !important;" %>
+          <%= f.text_area :intro, rows: "13", placeholder: "あなたの自己紹介を簡単な英語でなるべく多くご記入ください。例) なんと呼んで欲しいですか？好きなことはなんですか？どこらへんに住んでいますか？",  class: "form-control", style: "width:100% !important;" %>
         <% else %>
           <%= f.text_area :intro, rows: "13", placeholder: "Please write your profile in 500 words or less.",  class: "form-control", style: "width:100% !important;" %>
         <% end %>
