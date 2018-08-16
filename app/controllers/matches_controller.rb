@@ -1,6 +1,6 @@
 class MatchesController < ApplicationController
   before_action :set_meal_and_match, only: [:edit, :update]
-  before_action :already_approved?, only: [:update]
+  before_action :already_approved?, only: [:edit, :update]
 
   def create
     @meal = Meal.find(params[:meal_id])

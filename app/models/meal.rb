@@ -1,6 +1,7 @@
 class Meal < ApplicationRecord
   belongs_to :foreigner
   has_many :matches, dependent: :destroy
+  belongs_to :location
 
   NOBODY_IS_CHOSEN     = 0
   EXCESSIVE_IS_CHOSEN  = 3
@@ -8,17 +9,13 @@ class Meal < ApplicationRecord
 
   validates :date,         presence: true
   validates :time,         presence: true
-  validates :location,     presence: true
+  validates :location_id,     presence: true
   validates :male,         numericality: { less_than: 4 }
   validates :female,       numericality: { less_than: 4 }
   validates :foreigner_id, presence: true
   validate :date_time_cannot_be_in_the_past
   validate :nobody_is_chosen
   validate :excessive_is_chosen
-
-  enum location: { shinjyuku: 0,
-                   shibuya: 1,
-                   sinagawa: 2 }
 
   def self.size_over?(foreigner)
     where(foreigner_id: foreigner).size < MEAL_SAIZ_LIMITATION
@@ -48,15 +45,17 @@ end
 #  id           :bigint(8)        not null, primary key
 #  date         :date
 #  female       :integer          not null
-#  location     :integer
 #  male         :integer          not null
 #  note         :text(65535)
+#  skype        :boolean
 #  time         :string(255)
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  foreigner_id :bigint(8)
+#  location_id  :bigint(8)
 #
 # Indexes
 #
 #  index_meals_on_foreigner_id  (foreigner_id)
+#  index_meals_on_location_id   (location_id)
 #

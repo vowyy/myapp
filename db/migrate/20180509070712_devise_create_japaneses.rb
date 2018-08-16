@@ -39,7 +39,6 @@ class DeviseCreateJapaneses < ActiveRecord::Migration[5.2]
       t.string  :language
       t.integer :age
       t.string  :image
-      t.text    :intro
       t.string  :lang_l
 
 

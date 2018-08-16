@@ -19,7 +19,6 @@ class Japanese < ApplicationRecord
   validates :language,   presence: true, on: :update
   validates :lang_l,     presence: true, on: :update
   validates :age,        presence: true, on: :update
-  validates :intro,      length: { maximum: 255 }
   validate :nickname_required
 
   # allow users to update their accounts without passwords
@@ -59,7 +58,6 @@ end
 #  first_name             :string(255)
 #  gender                 :string(255)
 #  image                  :string(255)
-#  intro                  :text(65535)
 #  lang_l                 :string(255)
 #  language               :string(255)
 #  last_name              :string(255)

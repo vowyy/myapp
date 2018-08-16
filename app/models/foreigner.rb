@@ -19,7 +19,6 @@ class Foreigner < ApplicationRecord
   validates :j_l,       presence: true, on: :update
   validates :f_lang,    presence: true, on: :update
   validates :nation_id, presence: true, on: :update
-  validates :intro,     length: { maximum: 255 }
   validates :provider,  presence: true
   validates :uid,       presence: true
   validate :chose_same_lang?, on: :update
@@ -111,7 +110,6 @@ end
 #  f_lang                 :integer
 #  gender                 :integer
 #  image                  :string(255)
-#  intro                  :text(65535)
 #  j_l                    :integer
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :string(255)

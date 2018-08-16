@@ -45,7 +45,7 @@
           <span class="ml-4">
             <i class="fas fa-map-marker-alt main-color"></i>
           </span>
-          <%= f.select :location, Meal.locations.keys, { prompt: "select" }, { class: "form-control d-inline-block", style: "width:150px;" } %>
+          <%= f.grouped_collection_select(:location_id, Prefecture.all, :locations, :name, :id, :name, { prompt: "select"} , { class: "form-control d-inline-block", style: "width:150px;" } ) %>
         </div>
 
         <div class="actions pb-4">

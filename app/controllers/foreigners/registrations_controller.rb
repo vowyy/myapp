@@ -32,7 +32,7 @@ class Foreigners::RegistrationsController < Devise::RegistrationsController
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :age, :intro, :j_l, :f_lang, :s_lang, :image, :gender, :nation_id])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :age, :j_l, :f_lang, :s_lang, :image, :gender, :nation_id])
   end
 
   def update_resource(resource, params)

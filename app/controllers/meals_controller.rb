@@ -34,7 +34,7 @@ class MealsController < ApplicationController
   end
 
   def meal_params
-    params.require(:meal).permit(:date, :time, :location, :male, :female)
+    params.require(:meal).permit(:date, :time, :location_id, :male, :female)
   end
 
 end
