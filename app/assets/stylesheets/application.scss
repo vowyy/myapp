@@ -10,9 +10,10 @@ $darkorange: #FF6928;
 
 body {
   color: #565a5c;
-  background-color: #FFFAFA;
+  background-color: white;
   padding-top: 86px;
-  font-family: "Varela Round", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  // font-family: "Varela Round", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-family:'Noto Sans JP';
 }
 
 .circle-image {
@@ -117,6 +118,19 @@ body {
     }
 }
 
+.btn-darkorange-reverse {
+    color: $darkorange;
+    background-color: #fff;
+    border-radius: 30px;
+
+    &:hover {
+        color: #fff;
+        background-color: $darkorange;
+        border-color: $darkorange;
+        background-image: none;
+    }
+}
+
 .facebook-button {
     color: white;
     background-color: #305097;
@@ -163,7 +177,7 @@ body {
 }
 
 .word-edge {
-  text-shadow: $darkorange 4px 4px 0px,$darkorange -1px 1px 0px, $darkorange 1px -1px 0px, $darkorange -1px -1px 0px;
+  text-shadow: $darkorange 3.5px 2px 0px,$darkorange -1px 1px 0px, $darkorange 1px -1px 0px, $darkorange -1px -1px 0px;
 }
 
 .sign-up-in-back {
