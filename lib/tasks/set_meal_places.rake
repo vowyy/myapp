@@ -14,7 +14,7 @@ namespace :set_prefecture do
     fukuoka  = [ "hakata" ]
     kanagawa = [ "hakone", "kamakura", "kawasaki", "syonan", "yokohama" ]
     hyogo    = [ "amagasaki", "awaji", "himeji", "kobe" ]
-    kyoto    = [ "eastern part", "western part", "southern part", "northern part" ]
+    kyoto    = [ "east part", "west part", "south part", "north part" ]
     okinawa  = [ "naha" ]
     aichi    = [ "nagoya" ]
     chiba    = [ "kisarazu", "maihama" ]
