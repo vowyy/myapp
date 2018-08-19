@@ -24,9 +24,9 @@ Rails.application.routes.draw do
     resources :meals do
       resources :matches
     end
-    
+
     resources :rooms do
-      resources :messages , only: [:create]
+      resources :messages , only: [:create, :destroy]
     end
 end
 
@@ -95,6 +95,7 @@ end
 #                                       PUT      /meals/:id(.:format)                                                                     meals#update
 #                                       DELETE   /meals/:id(.:format)                                                                     meals#destroy
 #                         room_messages POST     /rooms/:room_id/messages(.:format)                                                       messages#create
+#                          room_message DELETE   /rooms/:room_id/messages/:id(.:format)                                                   messages#destroy
 #                                 rooms GET      /rooms(.:format)                                                                         rooms#index
 #                                       POST     /rooms(.:format)                                                                         rooms#create
 #                              new_room GET      /rooms/new(.:format)                                                                     rooms#new
