@@ -10,6 +10,9 @@
         <%= render 'shared/registration_modal' %>
       <% else %>
         <p class="mb-4 h5 text-muted font-weight-bold" style="font-size:23px;">Visit Japan, Talk Your language, <span class="d-inline-block pt-2">Great Moment</span></p>
+        <%= link_to new_meal_path, class: "btn btn-darkorange btn-lg px-4 mt-4",style: "border-radius:10px;" do %>
+          <span style="font-size:23px;">Create New Meal here</span>
+        <% end %>
       <% end %>
     </div>
     <div class="col d-none d-lg-block">
