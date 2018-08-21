@@ -13,8 +13,8 @@
 ActiveRecord::Schema.define(version: 2018_08_21_110056) do
 
   create_table "favors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "meal_id", null: false
-    t.bigint "japanese_id", null: false
+    t.bigint "meal_id"
+    t.bigint "japanese_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["japanese_id"], name: "index_favors_on_japanese_id"
