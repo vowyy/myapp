@@ -9,10 +9,11 @@ class Meal < ApplicationRecord
 
   validates :date,         presence: true
   validates :time,         presence: true
-  validates :location_id,     presence: true
+  validates :skype,        presence: true
   validates :male,         numericality: { less_than: 4 }
   validates :female,       numericality: { less_than: 4 }
   validates :foreigner_id, presence: true
+  validates :location_id,  presence: true
   validate :date_time_cannot_be_in_the_past
   validate :nobody_is_chosen
   validate :excessive_is_chosen
