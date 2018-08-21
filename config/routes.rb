@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
     resources :meals do
       resources :matches
+      resources :favors, only: [:create, :destroy]
     end
 
     resources :rooms do
@@ -86,6 +87,8 @@ end
 #                                       PATCH    /meals/:meal_id/matches/:id(.:format)                                                    matches#update
 #                                       PUT      /meals/:meal_id/matches/:id(.:format)                                                    matches#update
 #                                       DELETE   /meals/:meal_id/matches/:id(.:format)                                                    matches#destroy
+#                           meal_favors POST     /meals/:meal_id/favors(.:format)                                                         favors#create
+#                            meal_favor DELETE   /meals/:meal_id/favors/:id(.:format)                                                     favors#destroy
 #                                 meals GET      /meals(.:format)                                                                         meals#index
 #                                       POST     /meals(.:format)                                                                         meals#create
 #                              new_meal GET      /meals/new(.:format)                                                                     meals#new
