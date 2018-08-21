@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     resources :foreigners, only: [:show]
     resources :profiles, except: [:index, :show, :delete]
 
-    resources :meals do
+    resources :meals,shallow: true do
       resources :matches
       resources :favors, only: [:create, :destroy]
     end
@@ -82,13 +82,13 @@ end
 #                          meal_matches GET      /meals/:meal_id/matches(.:format)                                                        matches#index
 #                                       POST     /meals/:meal_id/matches(.:format)                                                        matches#create
 #                        new_meal_match GET      /meals/:meal_id/matches/new(.:format)                                                    matches#new
-#                       edit_meal_match GET      /meals/:meal_id/matches/:id/edit(.:format)                                               matches#edit
-#                            meal_match GET      /meals/:meal_id/matches/:id(.:format)                                                    matches#show
-#                                       PATCH    /meals/:meal_id/matches/:id(.:format)                                                    matches#update
-#                                       PUT      /meals/:meal_id/matches/:id(.:format)                                                    matches#update
-#                                       DELETE   /meals/:meal_id/matches/:id(.:format)                                                    matches#destroy
+#                            edit_match GET      /matches/:id/edit(.:format)                                                              matches#edit
+#                                 match GET      /matches/:id(.:format)                                                                   matches#show
+#                                       PATCH    /matches/:id(.:format)                                                                   matches#update
+#                                       PUT      /matches/:id(.:format)                                                                   matches#update
+#                                       DELETE   /matches/:id(.:format)                                                                   matches#destroy
 #                           meal_favors POST     /meals/:meal_id/favors(.:format)                                                         favors#create
-#                            meal_favor DELETE   /meals/:meal_id/favors/:id(.:format)                                                     favors#destroy
+#                                 favor DELETE   /favors/:id(.:format)                                                                    favors#destroy
 #                                 meals GET      /meals(.:format)                                                                         meals#index
 #                                       POST     /meals(.:format)                                                                         meals#create
 #                              new_meal GET      /meals/new(.:format)                                                                     meals#new

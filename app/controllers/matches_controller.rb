@@ -1,5 +1,5 @@
 class MatchesController < ApplicationController
-  before_action :set_meal_and_match, only: [:edit, :update]
+  before_action :set_match, only: [:edit, :update]
   before_action :already_approved?, only: [:edit, :update]
 
   def create
@@ -36,8 +36,7 @@ class MatchesController < ApplicationController
     params.require(:match).permit(:budget, :skype).merge(meal_id: params[:meal_id])
   end
 
-  def set_meal_and_match
-    @meal = Meal.find(params[:meal_id])
+  def set_match
     @match = Match.find(params[:id])
   end
 
