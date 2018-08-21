@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 2018_08_14_104157) do
     t.integer "male", null: false
     t.integer "female", null: false
     t.text "note"
+    t.string "food"
     t.bigint "foreigner_id"
     t.boolean "skype"
     t.datetime "created_at", null: false

@@ -9,7 +9,7 @@ class Meal < ApplicationRecord
 
   validates :date,         presence: true
   validates :time,         presence: true
-  validates :skype,        presence: true
+  validates :skype,        inclusion: { in: [ true, false ] }
   validates :male,         numericality: { less_than: 4 }
   validates :female,       numericality: { less_than: 4 }
   validates :foreigner_id, presence: true
@@ -46,6 +46,7 @@ end
 #  id           :bigint(8)        not null, primary key
 #  date         :date
 #  female       :integer          not null
+#  food         :string(255)
 #  male         :integer          not null
 #  note         :text(65535)
 #  skype        :boolean
