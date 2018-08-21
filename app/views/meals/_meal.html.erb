@@ -50,7 +50,7 @@
           :
         </span>
         <span class="font-weight-bold text-white">
-          <%= meal.date %> <span class="text-white align-center" style="font-size:10px;"><%= current_page?(root_path) ? "(yyyy-mm-dd)" : "( 年ー月ー日 )" %>
+          <%= current_page?(root_path) ? meal.date.strftime("%dth %b %Y (%a)") : meal.date.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[meal.date.wday]})") %>
           </span>
         </span>
       </div>
@@ -81,7 +81,7 @@
           :
         </span>
         <span class="font-weight-bold text-white">
-          <%= meal.location.name %> (<%= meal.location.prefecture.name %>)
+          <%= meal.location.name %>, <%= meal.location.prefecture.name %>
         </span>
       </div>
     </div>
@@ -97,7 +97,7 @@
         </span>
         <span>
           <span class="font-weight-bold text-white">
-            <%= meal.male + meal.female %>
+            <span style="font-size:25px;"><%= meal.male + meal.female %></span> <%= current_page?(root_path) ? "ppl" : "人" %>
             <span style="font-size:17px;">
               (<i class="fas fa-male text-white ml-2"></i><span class="mr-1"> <%= meal.male%></span>+<i class="fas fa-female text-white ml-2"></i> <%= meal.female%> )
             </span>
