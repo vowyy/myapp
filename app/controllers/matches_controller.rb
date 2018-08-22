@@ -7,10 +7,10 @@ class MatchesController < ApplicationController
     @match = current_japanese.matches.build(match_params)
 
     if @match.save
-      flash[:success] = "食事リクエストを#{@match.meal.foreigner.name}さんに送信しました。承認されましたらメールでお知らせします。しばらくお待ちください"
+      flash[:success] = "食事オファーを#{@match.meal.foreigner.name}さんに送信しました。承認されましたらメールでお知らせします。しばらくお待ちください"
       MatchMailer.meal_request(@meal, @match).deliver_now
     else
-      flash[:alert] = "リクエストに失敗しました。もう一度やり直してください。"
+      flash[:alert] = "オファーに失敗しました。もう一度やり直してください。"
     end
     redirect_to jhome_path
   end
