@@ -8,7 +8,7 @@ class MatchesController < ApplicationController
 
     if @match.save
       flash[:success] = "食事オファーを#{@match.meal.foreigner.name}さんに送信しました。承認されましたらメールでお知らせします。しばらくお待ちください"
-      MatchMailer.meal_request(@meal, @match).deliver_now
+      MatchMailer.meal_offer(@meal, @match).deliver_now
     else
       flash[:alert] = "オファーに失敗しました。もう一度やり直してください。"
     end
@@ -26,7 +26,7 @@ class MatchesController < ApplicationController
 
   def destroy
     Match.find(params[:id]).destroy
-    flash[:notice] = "You successfully canceled request."
+    flash[:notice] = "You successfully canceled this offer."
     redirect_to root_path
   end
 
@@ -42,7 +42,7 @@ class MatchesController < ApplicationController
 
   def already_approved?
     if @match.ok? && Room.exists?(match_id: @match.id)
-      flash[:alert] = "You already approved request."
+      flash[:alert] = "You already approved offer."
       redirect_to root_path
     end
   end
