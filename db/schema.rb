@@ -158,6 +158,7 @@ ActiveRecord::Schema.define(version: 2018_08_21_110056) do
 
   create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "match_id", null: false
+    t.bigint "meal_id", null: false
     t.bigint "foreigner_id", null: false
     t.bigint "japanese_id", null: false
     t.datetime "created_at", null: false
@@ -165,6 +166,7 @@ ActiveRecord::Schema.define(version: 2018_08_21_110056) do
     t.index ["foreigner_id"], name: "index_rooms_on_foreigner_id"
     t.index ["japanese_id"], name: "index_rooms_on_japanese_id"
     t.index ["match_id"], name: "index_rooms_on_match_id", unique: true
+    t.index ["meal_id"], name: "index_rooms_on_meal_id", unique: true
   end
 
   add_foreign_key "favors", "japaneses"
@@ -176,4 +178,5 @@ ActiveRecord::Schema.define(version: 2018_08_21_110056) do
   add_foreign_key "rooms", "foreigners"
   add_foreign_key "rooms", "japaneses"
   add_foreign_key "rooms", "matches"
+  add_foreign_key "rooms", "meals"
 end
