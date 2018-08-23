@@ -7,7 +7,6 @@ class CreateMeals < ActiveRecord::Migration[5.2]
       t.integer :male, null: false, defautl: 0
       t.integer :female, null: false, defautl: 0
       t.text :note
-      t.string :food
       t.references :foreigner
       t.boolean :skype
 

@@ -1,6 +1,8 @@
 class Meal < ApplicationRecord
   belongs_to :foreigner
   has_many :matches, dependent: :destroy
+  has_many :favors, dependent: :destroy
+  has_one  :room, dependent: :destroy
   belongs_to :location
 
   NOBODY_IS_CHOSEN     = 0
@@ -21,6 +23,20 @@ class Meal < ApplicationRecord
   def self.size_over?(foreigner)
     where(foreigner_id: foreigner).size < MEAL_SAIZ_LIMITATION
   end
+
+  def already_offered?
+    matches.exists?
+  end
+
+  def already_matched?
+    room
+  end
+
+  def get_num_of_offer
+    meal.matches.size
+  end
+
+
 
   private
 
@@ -46,7 +62,6 @@ end
 #  id           :bigint(8)        not null, primary key
 #  date         :date
 #  female       :integer          not null
-#  food         :string(255)
 #  male         :integer          not null
 #  note         :text(65535)
 #  skype        :boolean
