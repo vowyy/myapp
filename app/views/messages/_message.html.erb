@@ -1,7 +1,25 @@
-<div class="message">
-  <% if message.from_japanese? %>
-    <p class="j-mess"><%= message.content %></p>
+<li>
+  <% if message_from_current_user?(message) %>
+    <div class="text-right mb-4">
+      <div class="d-inline-block bg-white py-2 px-3 message-right text-left" style="overflow-wrap:break-word;max-width:220px;border-radius:5px;font-size:13px;">
+        <%= message.content %>
+        <div class="text-muted" style="position:absolute;top:0;left:-35px;font-size:10px;"><%= message.created_at.in_time_zone('Tokyo').strftime("%H:%M") %></div>
+      </div>
+      <span class="ml-2">
+        <%= image_tag message.messable.image.url(:_700), size: "35x35", class: "circle-image", style: "vertical-align:top !important;" %>
+      </span>
+      <div class="mr-5" style="font-size:5px;"><div href="" style="font-size:5px;"><%= link_to "delete", room_message_path(@room, message), method: :delete %></div>
+    </div>
   <% else %>
-    <p class="f-mess"><%= message.content %></p>
+    <div class="mb-4">
+      <span class="mr-2">
+        <%= image_tag message.messable.image.url(:_700), size: "35x35", class: "circle-image", style: "vertical-align:top !important;" %>
+      </span>
+
+      <div class="d-inline-block bg-white py-2 px-3 message-left" style="overflow-wrap:break-word;max-width:220px;border-radius:5px;font-size:13px;">
+        <%= message.content %>
+        <div class="text-muted" style="position:absolute;top:0;right:-35px;font-size:10px;"><%= message.created_at.in_time_zone('Tokyo').strftime("%H:%M") %></div>
+      </div>
+    </div>
   <% end %>
-</div>
+</li>
