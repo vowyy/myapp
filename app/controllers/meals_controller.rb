@@ -6,6 +6,7 @@ class MealsController < ApplicationController
 
   def new
     @meal = Meal.new
+    Meal.all.each {|meal| meal.destroy if meal.date.past? }
   end
 
   def create
