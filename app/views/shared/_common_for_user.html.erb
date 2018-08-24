@@ -57,7 +57,7 @@
             Japanese Level
           <% end %>
         </div>
-        <div class="h6 ml-4 mb-0 align-self-center">
+        <div class="h5 ml-4 mb-0 align-self-center">
           <% if japanese? %>
             <%= current_japanese.language ? current_japanese.language : "選択してください" %> <%= current_japanese.lang_l ? "(#{current_japanese.lang_l})" : "" %>
           <% else %>
@@ -117,7 +117,7 @@
       </div>
     </div>
 
-    <div class="col pb-3 foreigner-edit" style="max-width:630px;min-width:380px;margin-top:-65px;">
+    <div class="col pb-3 foreigner-edit" style="padding:0 !important;max-width:630px;min-width:380px;margin-top:-65px;">
       <div class="row mb-2 py-3 bg-darkorange text-white">
         <div class="col text-center px-0 font-weight-bold" style="font-size:14px;">
           <i class="fas fa-cog"></i>
@@ -135,7 +135,7 @@
             <%= link_to "introduction", new_profile_path, style: "color:white;" %>
           <% end %>
         </div>
-        <div class="col text-center font-weight-bold" style="font-size:14px;">
+        <div class="col text-center font-weight-bold" style=";font-size:14px;">
           <i class="fas fa-mortar-pestle"></i>
           <% if japanese? %>
             <%= link_to "Meal", rooms_path, style: "color:white;" %>
