@@ -5,6 +5,11 @@ class MessagesController < ApplicationController
     redirect_back_or(root_path)
   end
 
+  def destroy
+    Message.find(params[:id]).destroy
+    redirect_to room_path(params[:room_id])
+  end
+
   private
 
   def message_params
