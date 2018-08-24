@@ -12,21 +12,22 @@ class MatchesController < ApplicationController
     else
       flash[:alert] = "オファーに失敗しました。もう一度やり直してください。"
     end
-    redirect_to jhome_path
+    redirect_back(fallback_location: jhome_path)
   end
 
   def edit; end
 
   def update
     if @match.update(ok: true)
+      Match.where(meal_id: @match.meal_id).map {|match| match.destroy if match.id != @match.id }
       flash[:notice] = "Congratulations"
-      redirect_to root_path
+      redirect_to room_path(@match.room.id)
     end
   end
 
   def destroy
     Match.find(params[:id]).destroy
-    flash[:notice] = "You successfully canceled this offer."
+    flash[:notice] = "You successfully canceled this match."
     redirect_to root_path
   end
 
@@ -37,7 +38,12 @@ class MatchesController < ApplicationController
   end
 
   def set_match
-    @match = Match.find(params[:id])
+    if Match.exists?(params[:id])
+      @match = Match.find(params[:id])
+    else
+      flash[:alert] = "This offer has been deleted."
+      redirect_to root_path
+    end
   end
 
   def already_approved?

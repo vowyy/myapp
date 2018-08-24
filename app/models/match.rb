@@ -13,7 +13,7 @@ class Match < ApplicationRecord
   private
 
   def setup_room!
-    create_room!(foreigner_id: meal.foreigner_id, japanese_id: japanese_id)
+    create_room!(meal_id: meal.id, foreigner_id: meal.foreigner_id, japanese_id: japanese_id)
   end
 end
 
