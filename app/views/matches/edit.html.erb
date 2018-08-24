@@ -18,7 +18,7 @@
           </span>
           <%= @match.meal.date %>
         </div>
-        <div class="col-7 text-white font-weight-bold pr-0" style="padding-left:25px;">
+        <div class="col-7 text-white font-weight-bold pr-0" style="padding-left:35px;">
           <span class="mr-3">
             <i class="fas fa-clock fa-lg"></i>
           </span>
@@ -37,7 +37,7 @@
           (<i class="fas fa-male fa-sm"></i><%= @match.meal.male %> <i class="fas fa-female fa-sm"></i><%= @match.meal.female %>)
         </div>
 
-        <div class="col-7 text-white font-weight-bold mt-1 pr-0" style="padding-left:25px;">
+        <div class="col-7 text-white font-weight-bold mt-1 pr-0" style="padding-left:35px;">
           <span class="mr-3 ml-1">
             <i class="fas fa-map-marker-alt fa-lg"></i>
           </span>
@@ -46,17 +46,11 @@
       </div>
 
       <div class="row">
-        <div class="col-5 pr-0 text-white font-weight-bold">
-          <span class="mr-3">
-            <i class="fas fa-mortar-pestle fa-lg"></i>
-          </span>
-          <%= @match.meal.food %>
-        </div>
-        <div class="col-7 text-white font-weight-bold pr-0 mt-1" style="padding-left:25px;">
+        <div class="col-7 text-white font-weight-bold pr-0 mt-1" style="padding-left:12px;">
           <span class="mr-3">
             <i class="fab fa-skype fa-lg ml-1"></i>
           </span>
-            <%= @match.meal.skype == true ? "Yes, I want to." : "No, I don't want to." %>
+            <%= @match.meal.skype == true ? "Yes, I want to" : "No, I don't want to" %>
         </div>
       </div>
     </div>
@@ -98,7 +92,7 @@
       <div class="py-1 pl-2" style="border-left:solid 3px gray;width:210px;">
         <div class="h3 font-weight-bold mb-4 pb-2" style="border-bottom:dotted 2px black;">
           Offer</br>
-          <span class="ml-5">
+          <span class="ml-4">
             Condition
           </span>
         </div>
