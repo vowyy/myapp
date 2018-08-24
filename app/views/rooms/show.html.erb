@@ -1,20 +1,29 @@
-<div class="row">
-  <div class="col-md-4">
-    <ul>
-      <li id="chat">
-        <%= render @messages %>
-      </li>
-    </ul>
+<div class="container">
+  <div class="row justify-content-center py-3">
+    <div class="d-flex flex-column mb-5 mx-2" style="font-size:16px;max-width:460px;border-radius:12px;border:solid 1px #EEEEEE;height:250px;">
+      <%= render 'shared/setting_meal_inside', meal: @room.meal %>
+    </div>
 
-    <%= form_for([@room, @message]) do |f| %>
-      <%= render 'shared/devise_errormes', object: f.object %>
-      <div class="form-group">
-        <%= f.text_field :content, autofocus: true, placeholder: "メッセージを入力してください", class: "form-control" %>
-      </div>
 
-      <div class="actions">
-        <%= f.submit "送信", class: "btn btn-primary" %>
+    <div class="mx-2" style="background-color:#c6d9f2;height:630px;width:410px;margin:0 1rem;position:relative;border-radius:4px;">
+      <div class="scrollarea deco p-3" style="height:575px;overflow:auto;">
+          <ul class="list-unstyled" style="height:100%;">
+            <%= render @messages %>
+          </ul>
+        </div>
+
+        <div>
+          <%= form_for([@room, Message.new], html: { style: "width:100%;position: absolute; bottom: 0;background-color:#3CB371;"} ) do |f| %>
+            <%= render 'shared/devise_errormes', object: f.object %>
+            <div class="d-flex mb-0">
+              <div>
+                <%= f.text_field :content, autofocus: true, placeholder: "Type Message", class: "form-control bg-lightorange", style: "height:55px;min-width:310px;border-radius:0px;box-shadow:none;border-right:solid 1px #3CB371;" %>
+              </div>
+
+              <%= f.submit "SEND", class: "btn text-center text-white pl-3 mess-send", style: "background-color:#3CB371;height:55px;max-width:75px;border-radius:0px;" %>
+            </div>
+          <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
 </div>

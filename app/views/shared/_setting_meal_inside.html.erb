@@ -1,0 +1,92 @@
+<% if !meal.already_offered? && !meal.already_matched? %>
+  <div class="d-flex pl-5 py-2 font-weight-bold" style="font-size:22px;background-color:#20B2AA;border-top-right-radius:10px;border-top-left-radius:11px;">
+    <div class="py-1 text-white" style="background-color:#20B2AA;"><i class="fas fa-ban mr-2"></i>No offer</div>
+  </div>
+<% elsif meal.already_offered? && !meal.already_matched? %>
+  <div class="d-flex justify-content-between pl-5 py-2 font-weight-bold" style="font-size:22px;background-color:#FFCC00;border-top-right-radius:10px;border-top-left-radius:11px;">
+    <div class="py-1 text-white" style="background-color:#FFCC00;"><i class="far fa-envelope-open mr-2"></i>Offered</div>
+    <div class="mr-4">
+      <span class="text-white mr-1" style="font-size:15px;">by</span>
+      <% meal.matches.each do |match| %>
+        <%= link_to image_tag(match.japanese.image.url, size: "38x38", class: "circle-image"), edit_match_path(match) %>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <div class="d-flex justify-content-between pl-5 py-2 font-weight-bold" style="font-size:22px;background-color:#ff7363;border-top-right-radius:11px;border-top-left-radius:11px;">
+    <div class="py-1 text-white py-1" style="background-color:#ff7363;"><i class="fas fa-check-double mr-2"></i>
+      <%= foreigner? ? "Matched" : "マッチング" %>
+    </div>
+    <div class="mr-4 text-white">
+      <% if current_page?(rooms_path) %>
+        <span class="mr-1" style="font-size:15px;">with</span> <%= image_tag meal.room.japanese.image.url, size: "38x38", class: "circle-image" %>
+      <% else %>
+        <%= image_tag meal.room.foreigner.image.url, size: "42x42", class: "circle-image" %> <i class="far fa-handshake fa-lg align-middle"></i> <%= image_tag meal.room.japanese.image.url, size: "42x42", class: "circle-image" %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<div class="d-flex justify-content-center">
+  <div class="flex-left">
+    <div class="d-flex flex-column mx-4 mt-3">
+
+      <div class="text-gray font-weight-bold mb-3">
+        <i class="fas fa-calendar-alt fa-lg mr-1" style="color:#FFAD90;"></i>
+        <span style="font-size:16px;">
+          <%= meal.date.strftime("%dth %b (%a)") %>
+        </span>
+      </div>
+
+      <div class="text-gray font-weight-bold mb-3">
+        <i class="fas fa-users mr-1" style="color:#FFAD90;"></i>
+        <span class="h5">
+          <%= meal.male + meal.female %> <span style="font-size:15px;">ppl</span>
+        </span>
+        (<i class="fas fa-male fa-sm"></i><%= meal.male %> <i class="fas fa-female fa-sm"></i><%= meal.female %>)
+      </div>
+
+      <div class="text-gray font-weight-bold mb-3">
+        <i class="fab fa-skype fa-lg mr-1" style="color:#FFAD90;"></i>
+        <span style="font-size:14px;">
+          <%= meal.skype == true ? "Yes, I want to" : "No, I don't want to" %>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex-right" style="width:192px;">
+    <div class="d-flex flex-column mt-3">
+
+      <div class="text-gray font-weight-bold mb-3">
+        <i class="fas fa-clock fa-lg mr-1" style="color:#FFAD90;"></i>
+        <%= meal.time %>
+      </div>
+
+      <div class="text-gray font-weight-bold mb-3">
+        <i class="fas fa-map-marker-alt fa-lg ml-1 mr-1" style="color:#FFAD90;"></i>
+        <%= meal.location.name %> (<%= meal.location.prefecture.name %>)
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="text-center py-2" style="background-color:#EEEEEE;border-bottom-right-radius:11px;border-bottom-left-radius:11px;">
+  <% if foreigner? && !meal.already_matched? %>
+    <div class="d-flex justify-content-around">
+      <%= button_to "Edit", edit_meal_path(meal), method: :get, class: "btn btn-darkblue font-weight-bold", style: "width:100px;border-radius:5px;filter:drop-shadow(1px 1px 3px rgba(0,0,0,0.8));" %>
+      <%= button_to "Delete", meal_path(meal), method: :delete, data: { confirm: 'Are you sure you want to delete this meal?' }, class: "btn btn-darkblue font-weight-bold", style: "width:105px;border-radius:5px;filter:drop-shadow(1px 1px 3px rgba(0,0,0,0.8));"  %>
+    </div>
+  <% else %>
+  <div class="d-flex justify-content-around">
+    <% if current_page?(rooms_path) %>
+      <%= button_to "Send Message", room_path(meal.room), method: :get, class: "btn btn-darkblue font-weight-bold", style: "width:140px;border-radius:5px;filter:drop-shadow(1px 1px 3px rgba(0,0,0,0.8));" %>
+      <%= button_to "Cancel This Match", match_path(meal.room.match), method: :delete, data: { confirm: 'Are you sure you want to cancel this match?' },class: "btn btn-darkblue font-weight-bold", style: "width:170px;border-radius:5px;filter:drop-shadow(1px 1px 3px rgba(0,0,0,0.8));" %>
+    <% else %>
+      <%= button_to match_path(meal.room.match), method: :delete, data: { confirm: 'Are you sure you want to cancel this match?' },class: "btn btn-darkblue font-weight-bold", style: "border-radius:5px;filter:drop-shadow(1px 1px 3px rgba(0,0,0,0.8));" do %>
+        <%= foreigner? ? "Cancel This Match" : "マッチングをキャンセル"%>
+      <% end %>
+    <% end %>
+  </div>
+  <% end %>
+</div>
