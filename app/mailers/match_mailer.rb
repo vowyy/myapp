@@ -1,9 +1,9 @@
 class MatchMailer < ApplicationMailer
-  def meal_request(meal, match)
+  def meal_offer(meal, match)
     @match = match
     @meal = meal
     @foreigner = meal.foreigner
 
-    mail to: @foreigner.email, subject: "Your meal has been requested!"
+    mail to: @foreigner.email, subject: "Your meal has been offered!"
   end
 end

@@ -1,6 +1,8 @@
 class Meal < ApplicationRecord
   belongs_to :foreigner
   has_many :matches, dependent: :destroy
+  has_many :favors, dependent: :destroy
+  has_one  :room, dependent: :destroy
   belongs_to :location
 
   NOBODY_IS_CHOSEN     = 0
@@ -9,10 +11,11 @@ class Meal < ApplicationRecord
 
   validates :date,         presence: true
   validates :time,         presence: true
-  validates :location_id,     presence: true
+  validates :skype,        inclusion: { in: [ true, false ] }
   validates :male,         numericality: { less_than: 4 }
   validates :female,       numericality: { less_than: 4 }
   validates :foreigner_id, presence: true
+  validates :location_id,  presence: true
   validate :date_time_cannot_be_in_the_past
   validate :nobody_is_chosen
   validate :excessive_is_chosen
@@ -20,6 +23,20 @@ class Meal < ApplicationRecord
   def self.size_over?(foreigner)
     where(foreigner_id: foreigner).size < MEAL_SAIZ_LIMITATION
   end
+
+  def already_offered?
+    matches.exists?
+  end
+
+  def already_matched?
+    room
+  end
+
+  def get_num_of_offer
+    meal.matches.size
+  end
+
+
 
   private
 

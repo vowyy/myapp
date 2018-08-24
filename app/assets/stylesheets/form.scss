@@ -65,7 +65,70 @@
   }
 }
 
+
+// メッセージのスクロールバー
+
 // checkboxのboxのサイズ
 input[type=checkbox] {
   transform: scale(1.2);
+}
+
+.scrollarea.deco::-webkit-scrollbar {
+    width: 15px;
+}
+/*スクロールバーの背景色・角丸指定*/
+.scrollarea.deco::-webkit-scrollbar-track {
+  border-radius: 4px;
+	background: #f2f2f2;
+}
+/*スクロールバーの色・角丸指定*/
+.scrollarea.deco::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+	background: darkorange;
+}
+
+
+// messageのborder
+.message-left {
+  position: relative;
+  padding: 0.5em 0.7em;
+  background: #e6f4ff;
+  color: #666666;
+  font-weight: bold;
+}
+.message-left:after {
+  position: absolute;
+  content: '';
+  top: 11px;
+  left: -16px;
+  border: 6px solid transparent;
+  border-right: 10px solid white;
+  width: 0;
+  height: 0;
+}
+.box24 p {
+  margin: 0;
+  padding: 0;
+}
+
+.message-right {
+  position: relative;
+  padding: 0.5em 0.7em;
+  background: #e6f4ff;
+  color: #666666;
+  font-weight: bold;
+}
+.message-right:after {
+  position: absolute;
+  content: '';
+  top: 11px;
+  right: -16px;
+  border: 6px solid transparent;
+  border-left: 10px solid white;
+  width: 0;
+  height: 0;
+}
+.box24 p {
+  margin: 0;
+  padding: 0;
 }

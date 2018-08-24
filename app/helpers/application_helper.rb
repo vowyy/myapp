@@ -24,6 +24,10 @@ module ApplicationHelper
     request.path == '/'
   end
 
+  def message_from_current_user?(message)
+    message.messable_type.to_s.downcase == current_user.class.to_s.downcase
+  end
+
   private
 
   def store_location

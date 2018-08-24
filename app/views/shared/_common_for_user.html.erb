@@ -57,7 +57,7 @@
             Japanese Level
           <% end %>
         </div>
-        <div class="h6 ml-4 mb-0 align-self-center">
+        <div class="h5 ml-4 mb-0 align-self-center">
           <% if japanese? %>
             <%= current_japanese.language ? current_japanese.language : "選択してください" %> <%= current_japanese.lang_l ? "(#{current_japanese.lang_l})" : "" %>
           <% else %>
@@ -102,7 +102,7 @@
       <div class="container">
         <div class="mb-0 mx-auto text-left bg-white p-3" style="font-size:13px;border-radius:4px;">
           <% if japanese? %>
-            <%= current_japanese.profile && !current_japanese.profile.intro.blank? ? current_japanese.profile.intro : "(食事のリクエストを送るためには紹介文を完成させてください。)" %>
+            <%= current_japanese.profile && !current_japanese.profile.intro.blank? ? current_japanese.profile.intro : "(食事のオファーを送るためには紹介文を完成させてください。)" %>
           <% else %>
             <%= current_foreigner.profile && !current_foreigner.profile.intro.blank? ? current_foreigner.profile.intro : "(You need to complete your introduction to post meal.)" %>
           <% end %>
@@ -117,7 +117,7 @@
       </div>
     </div>
 
-    <div class="col pb-3 foreigner-edit mx-3" style="max-width:630px;min-width:380px;margin-top:-65px;">
+    <div class="col pb-3 foreigner-edit" style="padding:0 !important;max-width:630px;min-width:380px;margin-top:-65px;">
       <div class="row mb-2 py-3 bg-darkorange text-white">
         <div class="col text-center px-0 font-weight-bold" style="font-size:14px;">
           <i class="fas fa-cog"></i>
@@ -135,20 +135,20 @@
             <%= link_to "introduction", new_profile_path, style: "color:white;" %>
           <% end %>
         </div>
-        <div class="col text-center font-weight-bold" style="font-size:14px;">
-          <i class="fas fa-envelope"></i>
+        <div class="col text-center font-weight-bold" style=";font-size:14px;">
+          <i class="fas fa-mortar-pestle"></i>
           <% if japanese? %>
-            <%= link_to "メッセージ", rooms_path, style: "color:white;" %>
+            <%= link_to "Meal", rooms_path, style: "color:white;" %>
           <% else %>
-            <%= link_to "message", rooms_path, style: "color:white;" %>
+            <%= link_to "Meal", rooms_path, style: "color:white;" %>
           <% end %>
         </div>
       </div>
       <%= yield :edit_foreigner %>
       <%= yield :edit_japanese %>
-      <%= yield :rooms %>
       <%= yield :new_profile %>
       <%= yield :edit_profile %>
+      <%= yield :rooms %>
     </div>
   </div>
 </div>

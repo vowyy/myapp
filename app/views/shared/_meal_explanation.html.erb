@@ -1,4 +1,4 @@
-<div class="modal bg-grayorange mx-auto" id="how-to-read" style="height:451px;z-index:1500;width:360px;border-radius:5px;margin-top:50px;">
+<div class="modal bg-grayorange mx-auto" id="how-to-read" style="height:465px;z-index:1500;width:360px;border-radius:5px;margin-top:50px;">
   <div class="modal-dialog m-0">
     <div class="meal-top pt-2 d-flex bg-white flex-column mb-1" style="width:360px;border-top-left-radius:5px;border-top-right-radius:5px;">
       <div class="text-dark mx-auto d-flex" style="position:relative;">
@@ -23,11 +23,14 @@
       </div>
     </div>
 
-    <div class="meal-bottom mx-auto py-2" style="border-radius:5px;width:270px;">
-      <div class="pb-2">
-        <div class="ml-2" style="padding:1px;">
-          <i class="fas fa-comment-dots text-white ml-1 pt-2" style="font-size:25px;"></i>
-          <span class="ml-1 mr-2 text-white"  style="font-size:24px;">
+    <div class="meal-bottom mx-auto py-2" style="border-radius:5px;width:300px;">
+      <div class="pb-1">
+        <div class="ml-2" style="padding:1px;font-size:16px;">
+          <span class="fa-stack" style="font-size:15px;">
+            <i class="fas fa-circle fa-stack-2x text-white"></i>
+            <i class="fas fa-comment-dots fa-stack-1x meal-color"></i>
+          </span>
+          <span class="ml-1 mr-2 text-white">
             :
           </span>
           <% if current_page?(root_path) %>
@@ -50,7 +53,7 @@
         </div>
       </div>
 
-      <div class="mb-2">
+      <div class="mb-1">
         <div class="ml-2" style="padding:1px;font-size:16px;">
           <span class="fa-stack" style="font-size:15px;">
             <i class="fas fa-circle fa-stack-2x text-white"></i>
@@ -67,7 +70,7 @@
         </div>
       </div>
 
-      <div class="mb-2">
+      <div class="mb-1">
         <div class="ml-2" style="padding:1px;font-size:16px;">
           <span class="fa-stack" style="font-size:15px;">
             <i class="fas fa-circle fa-stack-2x text-white"></i>
@@ -82,7 +85,7 @@
         </div>
       </div>
 
-      <div class="mb-2">
+      <div class="mb-1">
         <div class="ml-2" style="padding:1px;font-size:16px;">
           <span class="fa-stack" style="font-size:15px;">
             <i class="fas fa-circle fa-stack-2x text-white"></i>
@@ -92,12 +95,12 @@
             :
           </span>
           <span class="font-weight-bold text-white">
-            <%= current_page?(root_path) ? "Location" : "場所" %>
+            <%= current_page?(root_path) ? "Location, Prefecture" : "地名,　都道府県" %>
           </span>
         </div>
       </div>
 
-      <div>
+      <div class="mb-1">
         <div class="ml-1" style="padding:1px;font-size:17px;">
           <span class="fa-stack" style="font-size:15px;margin-left:4px;">
             <i class="fas fa-circle fa-stack-2x text-white"></i>
@@ -108,17 +111,32 @@
           </span>
           <span>
             <span class="font-weight-bold text-white">
-              <%= current_page?(root_path) ? "Number of people" : "合計人数" %>
+              <%= current_page?(root_path) ? "Number of ppl" : "合計人数" %>
               <span class="d-inline-block" style="font-size:11px;">
                 <span class="mr-2">
-                  (<%= current_page?(root_path) ? "number of men" : "男性人数" %>
+                  (<%= current_page?(root_path) ? "men" : "男性人数" %>
                 </span>
                 +
                 <span class="ml-2">
-                  <%= current_page?(root_path) ? "number of women" : "女性人数" %>)
+                  <%= current_page?(root_path) ? "women" : "女性人数" %>)
                 </span>
               </span>
             </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="mb-1">
+        <div class="ml-2" style="padding:1px;font-size:13px;">
+          <span class="fa-stack" style="font-size:15px;">
+            <i class="fas fa-circle fa-stack-2x text-white"></i>
+            <i class="fab fa-skype fa-stack-1x meal-color"></i>
+          </span>
+          <span class="ml-1 mr-2 text-white">
+            :
+          </span>
+          <span class="font-weight-bold text-white">
+            <%= current_page?(root_path) ? "wanna skype after matched?" : "マッチング後、skypeを希望しますか？" %>
           </span>
         </div>
       </div>
@@ -126,7 +144,7 @@
   </div>
   <% if japanese? %>
     <div class="mt-1 bg-white" style="padding:5px 0;">
-      <input class="btn mb-1 font-weight-bold text-white w-75 mx-auto" style="background-color:#008BBB;border-radius:7px;display:block !important;font-size:17px;filter:drop-shadow(1px 1px 3px rgba(0,0,0,0.4));" type="submit" value="リクエストを送る" data-toggle="modal" data-target="#request_modal">
+      <input class="btn mb-1 font-weight-bold text-white w-75 mx-auto" style="background-color:#008BBB;border-radius:7px;display:block !important;font-size:17px;filter:drop-shadow(1px 1px 3px rgba(0,0,0,0.4));" type="submit" value="予算を決めてオファーする">
     </div>
   <% end %>
 </div>

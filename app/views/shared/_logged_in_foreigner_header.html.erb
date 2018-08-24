@@ -1,20 +1,24 @@
 <ul class="navbar-nav ml-auto">
-  <li class="nav-item mt-3 mr-4 h6">
+  <!-- <li class="nav-item mt-3 mr-4 h6">
     <a href="#" class="nav-link">blog</a>
   </li>
-  <li class="nav-item mt-3 mr-4 h6">
+  <li class="nav-item mt-3 mr-5 h6">
     <%= link_to "New Meal", new_meal_path, class: "nav-link" %>
-  </li>
-  <li class="nav-item dropdown">
+  </li> -->
+
+  <%= render 'shared/header_informations'%>
+  <%= render 'shared/header_message'%>
+
+  <li class="nav-item dropdown header-face ml-2">
     <a class="nav-link dropdown-toggle" href="#" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <%= image_tag current_foreigner.image.url(:_500), size: "45x45", style: "border-radius: 50%;" %>
     </a>
-    <div class="dropdown-menu p-0" aria-labelledby="dropdown">
+    <div class="dropdown-menu p-0" style="left:20px;" aria-labelledby="dropdown">
       <span class="dropdown-item bg-darkorange" style="border-top-left-radius:3px;border-top-right-radius:3px;"></span>
       <%= link_to "profile", foreigner_path(current_foreigner), class: "dropdown-item" %>
       <%= link_to "setting", edit_foreigner_registration_path, class: "dropdown-item" %>
-      <%= link_to "messge", rooms_path, class: "dropdown-item" %>
       <%= link_to "introduction", new_profile_path, class: "dropdown-item" %>
+      <%= link_to "meal", rooms_path, class: "dropdown-item" %>
       <div class="dropdown-divider"></div>
       <%= link_to "sign out", destroy_foreigner_session_path, method: :delete, class: "dropdown-item" %>
     </div>

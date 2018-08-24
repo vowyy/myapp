@@ -7,13 +7,13 @@
 // - Sassファイルで*= requireを利用すると他のスタイルシートではBootstrapのmixinや変数を利用できなくなる
 
 $darkorange: #FF6928;
+$darkblue: #4682B4;
 
 body {
   color: #565a5c;
   background-color: white;
   padding-top: 86px;
   // font-family: "Varela Round", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  font-family:'Noto Sans JP';
 }
 
 .circle-image {
@@ -37,17 +37,19 @@ body {
 
   .main-logo {
     color: $darkorange;
-    font-size: 40px;
+    font-size: 35px;
+    font-weight: 500;
 
     &:hover {
       color: $darkorange;
-      font-size: 40px;
+      font-size: 35px;
+      font-weight: 700;
       opacity: 0.8;
     }
   }
 
   .nav-link {
-    color: black;
+    color: #777777;
 
     &:hover {
       color: $darkorange;
@@ -113,7 +115,7 @@ body {
     &:hover {
         color: $darkorange;
         background-color: white;
-        border-color: $darkorange;
+        border-color: $darkorange !important;
         background-image: none;
     }
 }
@@ -126,9 +128,46 @@ body {
     &:hover {
         color: #fff;
         background-color: $darkorange;
-        border-color: $darkorange;
+        border-color: $darkorange !important;
         background-image: none;
     }
+}
+
+.btn-darkblue {
+    color: #fff;
+    background-color: $darkblue;
+    border-radius: 30px;
+
+    &:hover {
+        color: $darkblue;
+        background-color: white;
+        border-color: $darkblue !important;
+        background-image: none;
+    }
+}
+
+.btn-darkblue-reverse {
+    color: $darkblue;
+    background-color: #fff;
+    border: solid 3.5px $darkblue;
+    border-radius: 30px;
+
+    &:hover {
+        color: #fff;
+        background-color: $darkblue;
+        border-color: $darkblue !important;
+        background-image: none;
+    }
+}
+
+.offer-btn:hover {
+  background-color:#4682B4 !important;
+  filter:drop-shadow(3px 3px 3px rgba(0,0,0,0.6)) !important;
+}
+
+.matched-btn:hover {
+  background-color:#FF4F50 !important;
+  filter:drop-shadow(3px 3px 3px rgba(0,0,0,0.6)) !important;
 }
 
 .facebook-button {
@@ -142,6 +181,10 @@ body {
         cursor: pointer;
         opacity:0.8;
     }
+}
+
+.mess-send:hover {
+  font-size:18px !important;
 }
 
 .btn-outline-darkorange {
@@ -172,6 +215,10 @@ body {
   color: $darkorange;
 }
 
+.main-blue {
+  color: $darkblue;
+}
+
 .meal-color {
   color: #FF8856;
 }
@@ -200,6 +247,10 @@ body {
     opacity: 0.8 !important;
 }
 
+.meal-heart:hover {
+  font-size:34px;
+}
+
 // =============================
 
 .foreigner-edit .field_with_errors {
@@ -214,6 +265,11 @@ body {
   input {
     border:solid 2px red !important;
   }
+}
+
+.new_meal .field_with_errors {
+  display:inline-block;
+  color:red;
 }
 
 .profile-warning {
@@ -238,4 +294,51 @@ body {
 .profile-warning p {
     margin: 0;
     padding: 0;
+}
+
+
+// roomsのtable
+.meal-th {
+  text-align:center;
+  padding:10px 3px 5px 3px !important;
+  vertical-align: middle !important;
+}
+
+.meal-td {
+  font-size:16px;
+  font-weight:bold;
+  text-align:center;
+  padding:3px !important;
+  vertical-align: middle !important;
+}
+
+.tr_bottom {
+  background-color:#FFF5EE !important;
+
+  &:hover {
+    cursor:pointer;
+    background-color: #FFDEAD !important;
+  }
+}
+
+.tr_bottom:last-child {
+  border:none;
+}
+
+.table thead th, .table th, .table td {
+  border:none;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  background-color:white !important;
+  color:$darkblue;
+  border-bottom:solid 6px $darkblue;
+  border-radius:0px;
+}
+
+.meal-nav {
+  color:black;
+  font-size:15px;
+  max-width:200px;
+  min-width:100px;
 }

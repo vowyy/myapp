@@ -10,6 +10,9 @@
         <%= render 'shared/registration_modal' %>
       <% else %>
         <p class="mb-4 h5 text-muted font-weight-bold" style="font-size:23px;">Visit Japan, Talk Your language, <span class="d-inline-block pt-2">Great Moment</span></p>
+        <%= link_to new_meal_path, class: "btn btn-darkorange btn-lg px-4 mt-4",style: "border-radius:10px;" do %>
+          <span style="font-size:23px;">Create New Meal here</span>
+        <% end %>
       <% end %>
     </div>
     <div class="col d-none d-lg-block">
@@ -66,7 +69,7 @@
       <div class="col-lg-3 col-sm-6 mb-4">
         <i class="fas fa-hands-helping fa-5x faa-wrench animated-hover main-color mb-4"></i>
         <h5 class="font-weight-bold mb-3">2. Matching </h4>
-        <p class="text-muted pl-4 text-left">Choose whether or not you accept request from japanese when your post was offered. </p>
+        <p class="text-muted pl-4 text-left">Choose whether or not you accept offer from japanese when your post was offered. </p>
       </div>
       <div class="col-lg-3 col-sm-6 mb-4">
         <i class="fas fa-comments fa-5x faa-wrench animated-hover main-color mb-4"></i>

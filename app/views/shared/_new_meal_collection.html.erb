@@ -4,22 +4,22 @@
       <span class="pt-2 pl-3" style="border-left:solid 5px #008BBB;">
         <%= current_page?(root_path) ? "Meals collection" : "外国人を探す"%>
       </span>
-      <span class="d-inline-block w-50 mt-3 ml-4" style="font-size:18px;color:pink;" data-toggle="modal" data-target="#how-to-read">
-        <span class="how-to">
-          <i class="far fa-question-circle"></i>
-          <%= current_page?(root_path) ? "How to read the post below" : "投稿の読み方" %>
-        </span>
-      </span>
     </div>
     <div class="mb-4 h3 w-100">
       <div class="ml-5 d-inline-block">
-        <i class="fas fa-plane-arrival"></i>
+        <i class="fas fa-plane-arrival fa-lg"></i>
         <% if current_page?(root_path) %>
           <span class="mx-3">Latest Meals</span>
         <% else %>
-          <span class="mx-2 font-weight-bold" style="font-size:24px;">新着投稿</span>
+          <span class="mx-2 font-weight-bold" style="font-size:28px;">新着投稿</span>
         <% end %>
       </div>
+      <span class="d-inline-block w-50 mt-3 ml-4" style="font-size:18px;color:pink;" data-toggle="modal" data-target="#how-to-read">
+        <span class="how-to">
+          <i class="far fa-question-circle"></i>
+          <%= current_page?(root_path) ? "How to read a meal" : "投稿の読み方" %>
+        </span>
+      </span>
       <%= render 'shared/meal_explanation'%>
     </div>
     <div class="row justify-content-around">

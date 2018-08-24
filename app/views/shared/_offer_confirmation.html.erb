@@ -1,4 +1,4 @@
-<div class="modal mx-auto bg-white" id="request_modal_<%= meal.id %>" style="height:515px;z-index:1500;width:390px;border-radius:5px;margin-top:50px;">
+<div class="modal mx-auto bg-white" id="offer_modal_<%= meal.id %>" style="height:515px;z-index:1500;width:390px;border-radius:5px;margin-top:50px;">
   <div class="modal-dialog mt-0">
     <button class="close text-dark pr-3 pt-3" style="outline:none;" data-dismiss="modal">&times;</button>
   </div>
@@ -12,13 +12,13 @@
         <%= f.label :skype, "事前にskype", class: "font-weight-bold h5 d-block main-color text-left ml-5" %>
         <%= f.select :skype, [["希望しない", 0], ["希望する", 1]], {}, { class: "form-control d-inline-block mr-4", style: "width:275px;height:47px;" }%>
       </div>
-      <%= f.submit "リクエストを送信する", class: "btn btn-darkorange px-4 py-2 mr-3 mb-4", style: "border-radius:5px;" %>
+      <%= f.submit "オファーする", class: "btn btn-darkorange px-4 py-2 mr-3 mb-4", style: "border-radius:5px;" %>
     <% end %>
     <p class="mx-auto text-left mr-3 p-3 mt-4" style="background-color:#FADBDA;color:#FF0000;border-radius:3px;width:93%;line-height:1 !important;">
      <span class="font-weight-bold d-inline-block ml-2 h5">注意事項</span></br>
      <span style="font-size:10px;">
-      ・リクエストは相手との食事が決定されるものではなく、承認されないこともありますのでご了承ください。</br>
-      ・自己紹介を充実させることによってリクエストされる可能性が上がります。
+      ・オファーは相手との食事が決定されるものではなく、承認されないこともありますのでご了承ください。</br>
+      ・自己紹介を充実させることによってオファーが承認される可能性が上がります。
      </span>
   </div>
 </div>

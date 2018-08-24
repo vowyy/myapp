@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_14_104157) do
+ActiveRecord::Schema.define(version: 2018_08_21_110056) do
+
+  create_table "favors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "meal_id"
+    t.bigint "japanese_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["japanese_id"], name: "index_favors_on_japanese_id"
+    t.index ["meal_id"], name: "index_favors_on_meal_id"
+  end
 
   create_table "foreigners", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -148,6 +157,7 @@ ActiveRecord::Schema.define(version: 2018_08_14_104157) do
 
   create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "match_id", null: false
+    t.bigint "meal_id", null: false
     t.bigint "foreigner_id", null: false
     t.bigint "japanese_id", null: false
     t.datetime "created_at", null: false
@@ -155,8 +165,11 @@ ActiveRecord::Schema.define(version: 2018_08_14_104157) do
     t.index ["foreigner_id"], name: "index_rooms_on_foreigner_id"
     t.index ["japanese_id"], name: "index_rooms_on_japanese_id"
     t.index ["match_id"], name: "index_rooms_on_match_id", unique: true
+    t.index ["meal_id"], name: "index_rooms_on_meal_id", unique: true
   end
 
+  add_foreign_key "favors", "japaneses"
+  add_foreign_key "favors", "meals"
   add_foreign_key "locations", "prefectures"
   add_foreign_key "matches", "japaneses"
   add_foreign_key "matches", "meals"
@@ -164,4 +177,5 @@ ActiveRecord::Schema.define(version: 2018_08_14_104157) do
   add_foreign_key "rooms", "foreigners"
   add_foreign_key "rooms", "japaneses"
   add_foreign_key "rooms", "matches"
+  add_foreign_key "rooms", "meals"
 end
