@@ -11,6 +11,9 @@ module Myapp
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
+    # DBの登録時間帯を日本に変更
+    config.active_record.default_timezone = :local
+
     #rails g した時の挙動
     config.generators do |g|
       g.skip_routes true
