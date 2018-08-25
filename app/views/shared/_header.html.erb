@@ -5,13 +5,15 @@
       <span class="h1">=</span>
     </button>
     <div id="navcol" class="collapse navbar-collapse">
-      <% if !current_user_exists? %>
-        <%= render 'shared/header_without_user' %>
-      <% elsif japanese? %>
-        <%= render 'shared/logged_in_japanese_header' %>
-      <% else foreigner? %>
-        <%= render 'shared/logged_in_foreigner_header' %>
-      <% end %>
+      <ul class="navbar-nav ml-auto">
+        <% if !current_user_exists? %>
+          <%= render 'shared/header_without_user' %>
+        <% elsif japanese? %>
+          <%= render 'shared/logged_in_japanese_header' %>
+        <% else foreigner? %>
+          <%= render 'shared/logged_in_foreigner_header' %>
+        <% end %>
+      </ul>
     </div>
   </div>
 </nav>
