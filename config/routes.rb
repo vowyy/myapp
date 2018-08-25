@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resources :meals,shallow: true do
       resources :matches
       resources :favors, only: [:create, :destroy]
+      get :serch, on: :collection
     end
 
     resources :rooms do
@@ -89,6 +90,7 @@ end
 #                                       DELETE   /matches/:id(.:format)                                                                   matches#destroy
 #                           meal_favors POST     /meals/:meal_id/favors(.:format)                                                         favors#create
 #                                 favor DELETE   /favors/:id(.:format)                                                                    favors#destroy
+#                           serch_meals GET      /meals/serch(.:format)                                                                   meals#serch
 #                                 meals GET      /meals(.:format)                                                                         meals#index
 #                                       POST     /meals(.:format)                                                                         meals#create
 #                              new_meal GET      /meals/new(.:format)                                                                     meals#new

@@ -39,6 +39,9 @@ class MealsController < ApplicationController
     redirect_to rooms_path
   end
 
+  def search
+  end
+
   private
 
   def meal_params
