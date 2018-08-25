@@ -1,13 +1,13 @@
 class Meal < ApplicationRecord
   belongs_to :foreigner
+  belongs_to :location
   has_many :matches, dependent: :destroy
   has_many :favors, dependent: :destroy
   has_one  :room, dependent: :destroy
-  belongs_to :location
 
-  NOBODY_IS_CHOSEN     = 0
-  EXCESSIVE_IS_CHOSEN  = 3
-  MEAL_SAIZ_LIMITATION = 5
+  NOBODY_IS_CHOSEN      = 0
+  EXCESSIVE_ARE_CHOSEN  = 3
+  MEAL_SAIZ_LIMITATION  = 5
 
   validates :date,         presence: true
   validates :time,         presence: true
@@ -16,6 +16,7 @@ class Meal < ApplicationRecord
   validates :female,       numericality: { less_than: 4 }
   validates :foreigner_id, presence: true
   validates :location_id,  presence: true
+
   validate :date_time_cannot_be_in_the_past
   validate :nobody_is_chosen
   validate :excessive_is_chosen
@@ -49,7 +50,7 @@ class Meal < ApplicationRecord
   end
 
   def excessive_is_chosen
-    errors[:base] << "Please select less than three people." if male + female > EXCESSIVE_IS_CHOSEN
+    errors[:base] << "Please select less than three people." if male + female > EXCESSIVE_ARE_CHOSEN
   end
 end
 

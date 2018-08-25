@@ -20,6 +20,7 @@ class Japanese < ApplicationRecord
   validates :language,   presence: true, on: :update
   validates :lang_l,     presence: true, on: :update
   validates :age,        presence: true, on: :update
+  
   validate :nickname_required
 
   # allow users to update their accounts without passwords

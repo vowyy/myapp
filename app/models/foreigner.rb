@@ -21,6 +21,7 @@ class Foreigner < ApplicationRecord
   validates :nation_id, presence: true, on: :update
   validates :provider,  presence: true
   validates :uid,       presence: true
+  
   validate :chose_same_lang?, on: :update
 
   enum gender: { male: 0,
