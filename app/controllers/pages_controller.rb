@@ -8,7 +8,7 @@ class PagesController < ApplicationController
 
   def jhome
     @new_meals = Meal.limit(4).order("created_at DESC")
-    @english_meals = Meal.joins(:foreigner).where(foreigners: { f_lang: "English" }).distinct.order("RAND()").limit(4)
+    @english_meals = Meal.joins(:foreigner).where(foreigners: { flng_id: 2 }).distinct.order("RAND()").limit(4)
   end
 
   private
