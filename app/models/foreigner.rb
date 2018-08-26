@@ -3,6 +3,8 @@ class Foreigner < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: %i[facebook]
 
   belongs_to :nation, optional: true
+  belongs_to :flng, class_name: 'Language', foreign_key: 'flng_id', optional: true
+  belongs_to :slng, class_name: 'Language', foreign_key: 'slng_id', optional: true
   has_many :meals, dependent: :destroy
   has_many :rooms, dependent: :destroy
   has_many :messages, as: :messable, dependent: :destroy
@@ -17,11 +19,12 @@ class Foreigner < ApplicationRecord
   validates :gender,    presence: true, on: :update
   validates :age,       presence: true, numericality: { greter_than: 20, less_than: 50 }, on: :update
   validates :j_l,       presence: true, on: :update
-  validates :f_lang,    presence: true, on: :update
+  validates :flng_id,   presence: true, on: :update
   validates :nation_id, presence: true, on: :update
   validates :provider,  presence: true
   validates :uid,       presence: true
-  
+
+  validate :flng_none?, on: :update
   validate :chose_same_lang?, on: :update
 
   enum gender: { male: 0,
@@ -31,31 +34,6 @@ class Foreigner < ApplicationRecord
   enum j_l: { beginner: 0,
               intermediate: 1,
               advanced: 2 }
-
-  enum f_lang: {
-                 English: 0,
-                 Spanish: 1,
-                 Chinese: 2,
-                 Korean: 3,
-                 Hindi: 4,
-                 Arabic: 5,
-                 Italian: 6,
-                 Russian: 7,
-                 German: 8,
-                 Portuguese: 9 }, _suffix: true
-
-  enum s_lang: {
-                none: 0,
-                English: 1,
-                Spanish: 2,
-                Chinese: 3,
-                Korean: 4,
-                Hindi: 5,
-                Arabic: 6,
-                Italian: 7,
-                Russian: 8,
-                German: 9,
-                Portuguese: 10 }, _suffix: true
 
   def new_comer?
     created_at > 1.minute.ago
@@ -90,8 +68,12 @@ class Foreigner < ApplicationRecord
 
   private
 
+  def flng_none?
+    errors.add(:flng_id,  "must exist.") if flng.lang == "none"
+  end
+
   def chose_same_lang?
-    errors.add(:s_lang, "is identical with First language.") if f_lang == s_lang
+    errors.add(:slng_id, "is identical with First language.") if slng.id != 1 && flng.id == slng.id
   end
 end
 
@@ -108,7 +90,6 @@ end
 #  current_sign_in_ip     :string(255)
 #  email                  :string(255)      default(""), not null
 #  encrypted_password     :string(255)      default(""), not null
-#  f_lang                 :integer
 #  gender                 :integer
 #  image                  :string(255)
 #  j_l                    :integer
@@ -119,18 +100,21 @@ end
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string(255)
-#  s_lang                 :integer
 #  sign_in_count          :integer          default(0), not null
 #  uid                    :bigint(8)
 #  unconfirmed_email      :string(255)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  flng_id                :integer
 #  nation_id              :integer
+#  slng_id                :integer
 #
 # Indexes
 #
 #  index_foreigners_on_confirmation_token    (confirmation_token) UNIQUE
 #  index_foreigners_on_email                 (email) UNIQUE
+#  index_foreigners_on_flng_id               (flng_id)
 #  index_foreigners_on_nation_id             (nation_id)
 #  index_foreigners_on_reset_password_token  (reset_password_token) UNIQUE
+#  index_foreigners_on_slng_id               (slng_id)
 #
