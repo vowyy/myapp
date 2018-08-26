@@ -43,12 +43,12 @@
         :
       </span>
       <span class="font-weight-bold text-white">
-        <%= meal.foreigner.f_lang%>
-        <% if meal.foreigner.s_lang && meal.foreigner.s_lang != "none" %>
+        <%= meal.foreigner.flng.lang %>
+        <% if meal.foreigner.slng && meal.foreigner.slng.lang != "none" %>
           <span class="text-white">
            /
           </span>
-           <%= meal.foreigner.s_lang %>
+           <%= meal.foreigner.slng.lang %>
         <% end %>
       </span>
     </div>
@@ -202,7 +202,7 @@
           First Language
         </div>
         <div class="ml-4 mb-0 h5 align-self-end text-left mr-3">
-          <%= meal.foreigner.f_lang ? meal.foreigner.f_lang : "none" %>
+          <%= meal.foreigner.flng.lang %>
         </div>
       </div>
 
@@ -211,7 +211,7 @@
           Seocond Language
         </div>
         <div class="ml-4 mb-0 h5 align-self-end text-left mr-1">
-          <%= meal.foreigner.s_lang ? meal.foreigner.s_lang : "none" %>
+          <%= meal.foreigner.slng ? meal.foreigner.slng.lang : "none" %>
         </div>
       </div>
 
