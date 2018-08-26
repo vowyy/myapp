@@ -1,6 +1,15 @@
 <nav class="navbar navbar-expand-md fixed-top p-0" style="background-color:#FFFAFA;min-height:65px;">
-  <div class="container" style="max-width:1300px !important;">
-    <%= link_to "MEEaT JAPAN", current_page?(root_path) ? root_path : jhome_path, class: "navbar-brand font-weight-bold main-logo" %>
+  <div class="container" style="max-width:1270px !important;">
+    <%= link_to "MEEaT JAPAN", current_page?(root_path) ? root_path : jhome_path, class: "navbar-brand font-weight-bold main-logo ml-2" %>
+    
+    <% if current_page?(jhome_path) %>
+      <div class="navcol col d-none d-lg-block px-0" style="min-width:250px;">
+        <ul class="navbar-nav">
+          <%= render 'shared/meal_search_window' %>
+        </ul>
+      </div>
+    <% end %>
+
     <button class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navcol">
       <span class="h1">=</span>
     </button>
