@@ -4,7 +4,7 @@ class Foreigners::OmniauthCallbacksController < Devise::OmniauthCallbacksControl
   def facebook
     # You need to implement the method below in your model (e.g. app/models/user.rb)
     @foreigner = Foreigner.from_omniauth(request.env["omniauth.auth"])
-    # binding.pry
+
     if @foreigner.persisted?
       if @foreigner.new_comer?
         sign_in @foreigner
