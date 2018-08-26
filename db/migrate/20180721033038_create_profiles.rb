@@ -1,8 +1,7 @@
 class CreateProfiles < ActiveRecord::Migration[5.2]
   def change
     create_table :profiles do |t|
-      t.integer :profilable_id
-      t.string :profilable_type
+      t.references :profilable, polymorphic: true, index: true, null: false
       t.text :intro
 
       t.timestamps
