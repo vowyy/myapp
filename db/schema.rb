@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_21_110056) do
+ActiveRecord::Schema.define(version: 2018_08_26_011449) do
 
   create_table "favors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "meal_id"
@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 2018_08_21_110056) do
     t.bigint "uid"
     t.string "provider"
     t.integer "j_l", limit: 1
-    t.integer "f_lang", limit: 1
-    t.integer "s_lang", limit: 1
+    t.integer "flng_id", limit: 1
+    t.integer "slng_id", limit: 1
     t.integer "gender", limit: 1
     t.string "image"
     t.integer "age"
@@ -50,8 +50,10 @@ ActiveRecord::Schema.define(version: 2018_08_21_110056) do
     t.datetime "updated_at", null: false
     t.index ["confirmation_token"], name: "index_foreigners_on_confirmation_token", unique: true
     t.index ["email"], name: "index_foreigners_on_email", unique: true
+    t.index ["flng_id"], name: "index_foreigners_on_flng_id"
     t.index ["nation_id"], name: "index_foreigners_on_nation_id"
     t.index ["reset_password_token"], name: "index_foreigners_on_reset_password_token", unique: true
+    t.index ["slng_id"], name: "index_foreigners_on_slng_id"
   end
 
   create_table "japaneses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -73,7 +75,7 @@ ActiveRecord::Schema.define(version: 2018_08_21_110056) do
     t.string "last_name"
     t.string "nickname"
     t.string "gender"
-    t.string "language"
+    t.integer "language_id"
     t.integer "age"
     t.string "image"
     t.string "lang_l"
@@ -85,6 +87,12 @@ ActiveRecord::Schema.define(version: 2018_08_21_110056) do
     t.index ["last_name"], name: "index_japaneses_on_last_name"
     t.index ["nickname"], name: "index_japaneses_on_nickname"
     t.index ["reset_password_token"], name: "index_japaneses_on_reset_password_token", unique: true
+  end
+
+  create_table "languages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "lang", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "locations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -148,11 +156,12 @@ ActiveRecord::Schema.define(version: 2018_08_21_110056) do
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "profilable_id"
-    t.string "profilable_type"
+    t.string "profilable_type", null: false
+    t.bigint "profilable_id", null: false
     t.text "intro"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["profilable_type", "profilable_id"], name: "index_profiles_on_profilable_type_and_profilable_id"
   end
 
   create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
