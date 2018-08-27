@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   root 'pages#home'
-  get '/jhome/', to: 'pages#jhome'
+
+  get '/jhome', to: 'pages#jhome'
+  get '/search_meals', to: 'pages#search_meals'
 
 
   #　(devise/confirmations#アクション)　＝＞　(japaneses/confirmation#アクション)に変更
@@ -24,7 +26,6 @@ Rails.application.routes.draw do
     resources :meals,shallow: true do
       resources :matches
       resources :favors, only: [:create, :destroy]
-      get :search, on: :collection
     end
 
     resources :rooms do
@@ -37,6 +38,7 @@ end
 #                                Prefix Verb     URI Pattern                                                                              Controller#Action
 #                                  root GET      /                                                                                        pages#home
 #                                 jhome GET      /jhome(.:format)                                                                         pages#jhome
+#                          search_meals GET      /search_meals(.:format)                                                                  pages#search_meals
 #                  new_japanese_session GET      /japaneses/sign_in(.:format)                                                             japaneses/sessions#new
 #                      japanese_session POST     /japaneses/sign_in(.:format)                                                             japaneses/sessions#create
 #              destroy_japanese_session DELETE   /japaneses/sign_out(.:format)                                                            japaneses/sessions#destroy
@@ -90,7 +92,6 @@ end
 #                                       DELETE   /matches/:id(.:format)                                                                   matches#destroy
 #                           meal_favors POST     /meals/:meal_id/favors(.:format)                                                         favors#create
 #                                 favor DELETE   /favors/:id(.:format)                                                                    favors#destroy
-#                          search_meals GET      /meals/search(.:format)                                                                  meals#search
 #                                 meals GET      /meals(.:format)                                                                         meals#index
 #                                       POST     /meals(.:format)                                                                         meals#create
 #                              new_meal GET      /meals/new(.:format)                                                                     meals#new
