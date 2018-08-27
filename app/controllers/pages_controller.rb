@@ -7,8 +7,16 @@ class PagesController < ApplicationController
   end
 
   def jhome
+
     @new_meals = Meal.limit(4).order("created_at DESC")
     @english_meals = Meal.joins(:foreigner).where(foreigners: { flng_id: 2 }).distinct.order("RAND()").limit(4)
+  end
+
+  def search_meals
+    language = params[:language] unless params[:language].blank?
+    location = params[:location] unless params[:location].blank?
+
+    @search_result = Meal.joins(:foreigner).where(foreigners: { flng_id: language }).where(location_id: location).distinct.order("RAND()")
   end
 
   private
