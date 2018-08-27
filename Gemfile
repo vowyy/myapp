@@ -56,6 +56,9 @@ gem 'nokogiri', "~> 1.8"
 # enumの日本語化
 gem 'enum_help', "~> 0.0"
 
+# 検索用
+gem 'ransack', "~> 2.0"
+
 # else
 gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '~> 1.3', require: false
@@ -86,6 +89,9 @@ group :development, :test do
   gem 'factory_bot_rails', "~> 4.10"
   gem 'active_decorator-rspec', "~> 0.0"
   gem 'database_cleaner', "~> 1.7"
+
+  # N+1問題検出
+  gem 'bullet', "~> 5.7"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
