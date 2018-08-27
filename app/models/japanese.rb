@@ -7,6 +7,7 @@ class Japanese < ApplicationRecord
   has_many :rooms, dependent: :destroy
   has_many :messages, as: :messable, dependent: :destroy
   has_many :favors, dependent: :destroy
+  has_many :meals, through: :favors
   has_one  :profile, as: :profilable, dependent: :destroy
 
   mount_uploader :image, ImageUploader

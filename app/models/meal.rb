@@ -3,6 +3,7 @@ class Meal < ApplicationRecord
   belongs_to :location
   has_many :matches, dependent: :destroy
   has_many :favors, dependent: :destroy
+  has_many :japanese, through: :favors
   has_one  :room, dependent: :destroy
 
   NOBODY_IS_CHOSEN      = 0
