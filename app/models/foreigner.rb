@@ -73,7 +73,7 @@ class Foreigner < ApplicationRecord
   end
 
   def chose_same_lang?
-    errors.add(:slng_id, "is identical with First language.") if slng.id != 1 && flng.id == slng.id
+    errors.add(:slng_id, "is identical with First language.") if slng.id != 13 && flng.id == slng.id
   end
 end
 
