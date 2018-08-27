@@ -1,6 +1,7 @@
 class MealsController < ApplicationController
   before_action :meal_num_get, only: [:new, :create]
   before_action :get_meal, only: [:edit, :update, :destroy]
+  before_action :element_selected?, only: :search
 
   def show; end
 
@@ -37,9 +38,6 @@ class MealsController < ApplicationController
       flash[:success] = "Meal was successfully deleted"
     end
     redirect_to rooms_path
-  end
-
-  def search
   end
 
   private
