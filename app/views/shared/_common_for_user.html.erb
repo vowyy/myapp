@@ -1,7 +1,7 @@
 <div class="container" style="padding-top:100px;">
   <div class="row justify-content-around" style="margin-bottom:100px;">
 
-    <div class="col bg-lightorange text-center py-3 h-100" style="position:relative;margin-bottom:100px;max-width:400px;min-width:400px;filter:drop-shadow(1px 0px 6px rgba(0,0,0,0.3));margin-top:-60px;">
+    <div class="col bg-lightorange text-center py-3 h-100 mx-2" style="position:relative;margin-bottom:100px;max-width:400px;min-width:400px;filter:drop-shadow(1px 0px 6px rgba(0,0,0,0.3));margin-top:-60px;">
 
       <div class="left-image" style="margin-top:5px;">
         <% if current_user.image %>
@@ -117,7 +117,7 @@
       </div>
     </div>
 
-    <div class="col pb-3 foreigner-edit" style="padding:0 !important;max-width:630px;min-width:380px;margin-top:-65px;">
+    <div class="col pb-3 foreigner-edit mx-5" style="padding:0 !important;max-width:630px;min-width:380px;margin-top:-65px;">
       <div class="row mb-2 py-3 bg-darkorange text-white">
         <div class="col text-center px-0 font-weight-bold" style="font-size:14px;">
           <i class="fas fa-cog"></i>
@@ -140,7 +140,7 @@
           <% if japanese? %>
             <%= link_to "ミール", meals_path, style: "color:white;" %>
           <% else %>
-            <%= link_to "Meal", rooms_path, style: "color:white;" %>
+            <%= link_to "Meal", meals_path, style: "color:white;" %>
           <% end %>
         </div>
       </div>
