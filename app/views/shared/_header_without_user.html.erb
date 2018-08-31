@@ -6,6 +6,7 @@
     <%= link_to "Sign in", new_foreigner_session_path, class: "nav-link font-weight-bold" %>
   </li>
 <% else %>
+  <%= render 'shared/header_search'%>
   <li class="nav-item mt-2 ml-2">
     <a class="nav-link font-weight-bold" href="#" style="letter-spacing:0.7px;" data-toggle="modal" data-target="#registration_modal">
       <i class="fas fa-user-plus main-color fa-sm"></i>
