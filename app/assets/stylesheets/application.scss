@@ -7,6 +7,7 @@
 // - Sassファイルで*= requireを利用すると他のスタイルシートではBootstrapのmixinや変数を利用できなくなる
 
 $darkorange: #FF6928;
+$lightorange: #FFF2E5;
 $darkblue: #4682B4;
 
 body {
@@ -37,15 +38,8 @@ body {
 
   .main-logo {
     color: $darkorange;
-    font-size: 35px;
-    font-weight: 500;
-
-    &:hover {
-      color: $darkorange;
-      font-size: 35px;
-      font-weight: 700;
-      opacity: 0.8;
-    }
+    font-size: 38px;
+    font-weight: 900;
   }
 
   .nav-link {
@@ -123,6 +117,7 @@ body {
 .btn-darkorange-reverse {
     color: $darkorange;
     background-color: #fff;
+    border:solid 1px $darkorange;
     border-radius: 30px;
 
     &:hover {
@@ -220,7 +215,7 @@ body {
 }
 
 .meal-color {
-  color: #FF8856;
+  color: #ffa47c;
 }
 
 .word-edge {
@@ -342,3 +337,26 @@ body {
   max-width:200px;
   min-width:100px;
 }
+
+.meal-container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto; }
+  @media (min-width: 576px) {
+    .meal-container {
+      max-width: 530px; } }
+  @media (min-width: 768px) {
+    .meal-container {
+      max-width: 680px; } }
+  @media (min-width: 992px) {
+    .meal-container {
+      max-width: 700px; } }
+  @media (min-width: 1200px) {
+    .meal-container {
+      max-width: 1340px; } }
+
+@media (max-width: 706px) {
+  .meal-small {
+    margin-left:30px; } }
