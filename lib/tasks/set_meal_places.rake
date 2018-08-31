@@ -8,7 +8,7 @@ namespace :set_prefecture do
     prefs.each {|pref| Prefecture.create(name: pref)}
 
 
-    tokyo    = %w[akihabara asakusa ginza harajyuku odaiba roppongi shibuya shinjyukuueno]
+    tokyo    = %w[akihabara asakusa ginza harajyuku odaiba roppongi shibuya shinjyuku ueno]
     osaka    = %w[bay\ area namba shinnsaibashi sakai umeda]
     hokkaido = %w[asahikawa hakodate otaru sapporo]
     fukuoka  = %w[hakata]
