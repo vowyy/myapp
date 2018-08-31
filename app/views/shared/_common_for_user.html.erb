@@ -1,7 +1,7 @@
 <div class="container" style="padding-top:100px;">
   <div class="row justify-content-around" style="margin-bottom:100px;">
 
-    <div class="col bg-lightorange text-center py-3 h-100" style="position:relative;margin-bottom:100px;max-width:400px;min-width:400px;filter:drop-shadow(1px 0px 6px rgba(0,0,0,0.3));margin-top:-60px;">
+    <div class="col bg-lightorange text-center py-3 h-100 mx-2" style="position:relative;margin-bottom:100px;max-width:400px;min-width:400px;filter:drop-shadow(1px 0px 6px rgba(0,0,0,0.3));margin-top:-60px;">
 
       <div class="left-image" style="margin-top:5px;">
         <% if current_user.image %>
@@ -59,7 +59,7 @@
         </div>
         <div class="h5 ml-4 mb-0 align-self-center">
           <% if japanese? %>
-            <%= current_japanese.language ? current_japanese.language : "選択してください" %> <%= current_japanese.lang_l ? "(#{current_japanese.lang_l})" : "" %>
+            <%= current_japanese.language ? current_japanese.language.lang : "選択してください" %> <%= current_japanese.lang_l ? "(#{current_japanese.lang_l})" : "" %>
           <% else %>
             <%= current_foreigner.j_l ? current_foreigner.j_l : "none" %>
           <% end %>
@@ -72,7 +72,7 @@
             First Language
           </div>
           <div class="h5 ml-4 mb-0 align-self-end">
-            <%= current_foreigner.f_lang ? current_foreigner.f_lang : "none" %>
+            <%= current_foreigner.flng ? current_foreigner.flng.lang : "none" %>
           </div>
         </div>
       <% end %>
@@ -83,8 +83,8 @@
             Second Language
           </div>
           <div class="h5 ml-4 mb-0 align-self-end">
-            <% if current_foreigner.s_lang %>
-              <%= current_foreigner.s_lang %>
+            <% if current_foreigner.slng %>
+              <%= current_foreigner.slng.lang %>
             <% else %>
               none
             <% end %>
@@ -117,7 +117,7 @@
       </div>
     </div>
 
-    <div class="col pb-3 foreigner-edit" style="padding:0 !important;max-width:630px;min-width:380px;margin-top:-65px;">
+    <div class="col pb-3 foreigner-edit mx-5" style="padding:0 !important;max-width:630px;min-width:380px;margin-top:-65px;">
       <div class="row mb-2 py-3 bg-darkorange text-white">
         <div class="col text-center px-0 font-weight-bold" style="font-size:14px;">
           <i class="fas fa-cog"></i>
@@ -138,9 +138,9 @@
         <div class="col text-center font-weight-bold" style=";font-size:14px;">
           <i class="fas fa-mortar-pestle"></i>
           <% if japanese? %>
-            <%= link_to "Meal", rooms_path, style: "color:white;" %>
+            <%= link_to "ミール", meals_path, style: "color:white;" %>
           <% else %>
-            <%= link_to "Meal", rooms_path, style: "color:white;" %>
+            <%= link_to "Meal", meals_path, style: "color:white;" %>
           <% end %>
         </div>
       </div>
@@ -148,7 +148,7 @@
       <%= yield :edit_japanese %>
       <%= yield :new_profile %>
       <%= yield :edit_profile %>
-      <%= yield :rooms %>
+      <%= yield :meals %>
     </div>
   </div>
 </div>

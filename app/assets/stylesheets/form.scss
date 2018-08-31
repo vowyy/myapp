@@ -65,6 +65,42 @@
   }
 }
 
+.search_form .form-control {
+  border-radius:0px !important;
+  border-color:#d1d1d1;
+  outline: none;
+  -webkit-appearance: none;
+
+  &:focus {
+    border-color: #d1d1d1;
+    box-shadow: none;
+  }
+}
+
+.search_form .search-button {
+  -webkit-appearance: none;
+
+  &:focus {
+    border-color: #d1d1d1;
+    outline:none !important;
+  }
+}
+
+.search-select::before {
+  z-index: 1;
+  position: absolute;
+  right: 10px;
+  top: -2px;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 700;
+  content: "\f107";
+  line-height: 43px;
+  pointer-events: none;
+}
+
+.search-select {
+  position:relative;
+}
 
 // メッセージのスクロールバー
 

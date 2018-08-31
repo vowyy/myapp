@@ -18,7 +18,7 @@
       <%= foreigner? ? "Matched" : "マッチング" %>
     </div>
     <div class="mr-4 text-white">
-      <% if current_page?(rooms_path) %>
+      <% if current_page?(meals_path) %>
         <span class="mr-1" style="font-size:15px;">with</span> <%= image_tag meal.room.japanese.image.url, size: "38x38", class: "circle-image" %>
       <% else %>
         <%= image_tag meal.room.foreigner.image.url, size: "42x42", class: "circle-image" %> <i class="far fa-handshake fa-lg align-middle"></i> <%= image_tag meal.room.japanese.image.url, size: "42x42", class: "circle-image" %>

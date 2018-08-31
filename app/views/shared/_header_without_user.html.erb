@@ -1,28 +1,24 @@
 <% if request.path == '/' %>
-  <ul class="navbar-nav ml-auto text-dark">
-    <li class="nav-item mr-4 h6 mt-2">
-      <%= link_to "Sign in", new_foreigner_session_path, class: "nav-link font-weight-bold" %>
-    </li>
-    <li class="nav-item mr-5 h6 mt-2" >
-      <a class="nav-link font-weight-bold" href="#" data-toggle="modal" data-target="#registration_modal">Sign up</a>
-    </li>
-    <%= render 'shared/lang_select'%>
-  </ul>
+  <li class="nav-item mr-4 h6 mt-2 ml-2" >
+    <a class="nav-link font-weight-bold" href="#" data-toggle="modal" data-target="#registration_modal">Sign up</a>
+  </li>
+  <li class="nav-item mr-5 h6 mt-2 ml-2">
+    <%= link_to "Sign in", new_foreigner_session_path, class: "nav-link font-weight-bold" %>
+  </li>
 <% else %>
-  <ul class="navbar-nav ml-auto text-dark">
-    <li class="nav-item mr-3 mt-2">
-      <%= link_to new_japanese_session_path, class: "nav-link font-weight-bold" do %>
+  <%= render 'shared/header_search'%>
+  <li class="nav-item mt-2 ml-2">
+    <a class="nav-link font-weight-bold" href="#" style="letter-spacing:0.7px;" data-toggle="modal" data-target="#registration_modal">
+      <i class="fas fa-user-plus main-color fa-sm"></i>
+      <span class="d-inline-block" style="font-size:13px;">ユーザー登録</span>
+    </a>
+  </li>
+  <span class="mt-3 ml-2 text-muted">/</span>
+  <li class="nav-item mr-4 mt-2 ml-2" style="border-color:none;box-shadow:none;">
+    <%= link_to new_japanese_session_path, class: "nav-link font-weight-bold" do %>
       <i class="fas fa-sign-in-alt main-color"></i>
-        <span class="d-inline-block">ログイン</span>
-      <% end %>
-    </li>
-    <span class="mt-3 mr-3">or</span>
-    <li class="nav-item mr-5 mt-2" style="border-color:none;box-shadow:none;">
-      <a class="nav-link font-weight-bold" href="#" style="letter-spacing:0.7px;" data-toggle="modal" data-target="#registration_modal">
-        <i class="fas fa-user-plus main-color"></i>
-        <span class="d-inline-block">ユーザー登録</span>
-      </a>
-    </li>
-    <%= render 'shared/lang_select'%>
-  </ul>
+      <span class="d-inline-block" style="font-size:13px;">ログイン</span>
+    <% end %>
+  </li>
 <% end %>
+<%= render 'shared/lang_select'%>

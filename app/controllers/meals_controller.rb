@@ -1,8 +1,20 @@
 class MealsController < ApplicationController
   before_action :meal_num_get, only: [:new, :create]
   before_action :get_meal, only: [:edit, :update, :destroy]
+  before_action :element_selected?, only: :search
 
-  def show; end
+  def index
+    if foreigner?
+      @foreigner_all_meals      = current_foreigner.meals
+      @foreigner_offered_meals  = current_foreigner.meals.select { |my_meal| my_meal.already_offered? && !my_meal.already_matched? }
+      @foreigner_matched_meals  = current_foreigner.meals.select { |my_meal| my_meal.already_matched? }
+    else
+      @japanese_favor_meals   = current_japanese.favors.map {|my_favor| my_favor.meal }.delete_if { |meal| meal.already_matched? }
+      @japanese_offered_meals = current_japanese.matches.where(ok: false).map { |my_offer| my_offer.meal }
+      @japanese_matched_meals = current_japanese.matches.where(ok: true).map { |my_match| my_match.meal }
+    end
+    render layout: "personal_user"
+  end
 
   def new
     @meal = Meal.new

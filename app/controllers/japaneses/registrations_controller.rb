@@ -47,7 +47,13 @@ class Japaneses::RegistrationsController < Devise::RegistrationsController
         set_flash_message :notice, flash_key
       end
       bypass_sign_in resource, scope: resource_name
-      redirect_to japanese_path current_user, layout: 'personal_user'
+
+      if current_japanese.profile.nil? || current_japanese.profile.intro.blank?
+        redirect_to new_profile_path, layout: 'personal_user'
+        flash[:success] = "自己紹介文を完成させてMealにオファーしましょう。"
+      else
+        redirect_to japanese_path current_japanese, layout: 'personal_user'
+      end
     else
       clean_up_passwords resource
       set_minimum_password_length
@@ -60,7 +66,7 @@ class Japaneses::RegistrationsController < Devise::RegistrationsController
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :nickname, :age, :language, :lang_l, :image, :gender])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :nickname, :age, :language_id, :lang_l, :image, :gender])
   end
 
   def update_resource(resource, params)

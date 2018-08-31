@@ -1,6 +1,10 @@
-<% content_for :rooms do %>
+<% content_for :meals do %>
   <div class="pt-3 pb-2 mx-5 h2 text-center" style="border-bottom:solid 1px darkorange;">
-    Meal
+    <% if japanese? %>
+      ミール
+    <% else %>
+      Meal
+    <% end %>
   </div>
   <ul class="nav nav-pills pt-4" id="pills-tab" role="tablist">
     <li class="nav-item">
@@ -40,13 +44,13 @@
 
   <!-- パネル部分 -->
   <div class="tab-content" id="pills-tabContent">
-    <div class="tab-pane fade show active mt-5" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab">
+    <div class="tab-pane fade show active mt-5"  id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab">
       <% if foreigner? %>
         <% @foreigner_all_meals.each do |meal| %>
           <%= render 'shared/setting_meal', meal: meal %>
         <% end %>
       <% else %>
-        <div class="row justify-content-around ml-2">
+        <div class="row justify-content-around">
           <%= render @japanese_favor_meals %>
         </div>
       <% end %>
@@ -58,7 +62,7 @@
           <%= render 'shared/setting_meal', meal: meal %>
         <% end %>
       <% else %>
-        <div class="row justify-content-around ml-2">
+        <div class="row justify-content-around">
           <%= render @japanese_offered_meals %>
         </div>
       <% end %>
@@ -70,7 +74,7 @@
           <%= render 'shared/setting_meal', meal: meal %>
         <% end %>
       <% else %>
-        <div class="row justify-content-around ml-2">
+        <div class="row justify-content-around">
           <%= render @japanese_matched_meals %>
         </div>
       <% end %>

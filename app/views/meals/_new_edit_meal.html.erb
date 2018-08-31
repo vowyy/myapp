@@ -8,26 +8,23 @@
       <%= form_for(@meal) do |f| %>
         <%= render 'shared/devise_errormes', object: f.object %>
 
-        <div class="form-group mb-3 pb-3 mx-4" style="padding-top:20px;border-bottom:dotted 2px black;">
-          <span class="d-inline-block"style="margin-right:205px;">
-            <%= f.label :date, "Date(yyyy/mm/dd): ", class: "font-weight-bold mr-1" %>
-          </span>
-          <br>
-          <span class="pr-1">
+        <div class="form-group mb-45 mt-5" style="margin-right:48px;">
+          <%= f.label :date, "Date(yyyy/mm/dd): ", class: "font-weight-bold ml-4" %>
+          <span class="ml-2">
             <i class="fas fa-calendar-alt main-color"></i>
           </span>
-          <%= raw sprintf( f.date_select(:date, use_month_numbers: false,  start_year: Time.now.year, default: Date.today,  autofocus: true, class: "form-control bg-white", date_separator: '%s'), '/ ', '/ ') %>
+          <%= f.text_field :date, placeholder: "select", class: "form-control d-inline-block", id: "new-meal-datepicker", style: "width:150px;", autocomplete: 'off' %>
         </div>
 
-        <div class="form-group mb-45" style="margin-left:0px;">
-          <%= f.label :time, "Time of Day :", class: "font-weight-bold ml-4" %>
-          <span class="ml-2">
+        <div class="form-group mb-45" style="margin-left:6px;">
+          <%= f.label :time, "Time of Day :", class: "font-weight-bold ml-3" %>
+          <span class="ml-1">
             <i class="fas fa-clock main-color"></i>
           </span>
           <%= f.select :time,  [["0am - 9am","0am-9am" ], ["09am - 12pm", "09am-12pm"],["12pm - 15pm", "12pm-15pm"],["15pm - 18pm ", "15pm-18pm"],["18pm - 21pm", "18pm-21pm"],["21pm - 24pm", "21pm-24pm"] ], { prompt: "select" } , { class: "form-control d-inline-block", style: "width:150px;" } %>
         </div>
 
-        <div class="form-group mb-0" style="margin-right:46px;">
+        <div class="form-group mb-0" style="margin-right:55px;">
           <%= f.label :male, "How Many People? :", class: "font-weight-bold ml-4" %>
           <span class="ml-2">
             <i class="fas fa-male fa-lg main-color"></i>
@@ -35,7 +32,7 @@
           <%= f.select :male,  [["0 male", 0], ["1 male", 1],["2 males", 2],["3 males", 3],], {}, { class: "form-control d-inline-block", style: "width:150px;" }  %>
         </div>
 
-        <div class="form-group mb-45" style="margin-left:7px;">
+        <div class="form-group mb-45" style="margin-left:-4px;">
           <%= f.label :female, "(Maximum 3 people)", class: "text-muted", style: "font-size:10px;vertical-align:top;margin-left:28px !important;" %>
           <span class="ml-2">
             <i class="fas fa-female fa-lg main-color"></i>
@@ -43,15 +40,15 @@
           <%= f.select :female,  [["0 female", 0], ["1 female", 1],["2 females", 2],["3 females", 3],], {} , { class: "form-control d-inline-block", style: "width:150px;border-top-right-radius:0px !important;" } %>
         </div>
 
-        <div class="form-group mb-45" style="margin-left:45px;">
-          <%= f.label :location, "Where? :", class: "font-weight-bold ml-3" %>
+        <div class="form-group mb-45" style="margin-left:48px;">
+          <%= f.label :location, "Where? :", class: "font-weight-bold ml-2" %>
           <span class="ml-2">
             <i class="fas fa-map-marker-alt main-color"></i>
           </span>
           <%= f.grouped_collection_select(:location_id, Prefecture.all, :locations, :name, :id, :name, { prompt: "select" } , { class: "form-control d-inline-block", style: "width:150px;" } ) %>
         </div>
 
-        <div class="form-group mb-45" style="margin-right:43px;">
+        <div class="form-group mb-45" style="margin-right:53px;">
           <%= f.label :skype, "skype before meet? : ", class: "font-weight-bold ml-3" %>
           <span class="ml-2">
             <i class="fab fa-skype main-color"></i>

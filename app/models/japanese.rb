@@ -2,10 +2,12 @@ class Japanese < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
+  belongs_to :language, optional: true
   has_many :matches, dependent: :destroy
   has_many :rooms, dependent: :destroy
   has_many :messages, as: :messable, dependent: :destroy
   has_many :favors, dependent: :destroy
+  has_many :meals, through: :favors
   has_one  :profile, as: :profilable, dependent: :destroy
 
   mount_uploader :image, ImageUploader
@@ -13,13 +15,14 @@ class Japanese < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   validates :email, format: { with: VALID_EMAIL_REGEX }
-  validates :first_name, presence: true, length: { maximum: 15 }
-  validates :last_name,  presence: true, length: { maximum: 15 }
-  validates :nickname,   presence: true, length: { maximum: 15 }, on: :update
-  validates :gender,     presence: true, on: :update
-  validates :language,   presence: true, on: :update
-  validates :lang_l,     presence: true, on: :update
-  validates :age,        presence: true, on: :update
+  validates :first_name,  presence: true, length: { maximum: 15 }
+  validates :last_name,   presence: true, length: { maximum: 15 }
+  validates :nickname,    presence: true, length: { maximum: 15 }, on: :update
+  validates :gender,      presence: true, on: :update
+  validates :language_id, presence: true, on: :update
+  validates :lang_l,      presence: true, on: :update
+  validates :age,         presence: true, on: :update
+
   validate :nickname_required
 
   # allow users to update their accounts without passwords
@@ -60,7 +63,6 @@ end
 #  gender                 :string(255)
 #  image                  :string(255)
 #  lang_l                 :string(255)
-#  language               :string(255)
 #  last_name              :string(255)
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :string(255)
@@ -72,6 +74,7 @@ end
 #  unconfirmed_email      :string(255)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  language_id            :integer
 #
 # Indexes
 #

@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
   root 'pages#home'
-  get '/jhome/', to: 'pages#jhome'
 
+  get '/jhome', to: 'pages#jhome'
+  get '/search_meals', to: 'pages#search_meals'
+  get '/search_meals_result', to: 'pages#search_meals_result'
 
   #　(devise/confirmations#アクション)　＝＞　(japaneses/confirmation#アクション)に変更
   devise_for :japaneses, controllers: {
@@ -36,6 +38,8 @@ end
 #                                Prefix Verb     URI Pattern                                                                              Controller#Action
 #                                  root GET      /                                                                                        pages#home
 #                                 jhome GET      /jhome(.:format)                                                                         pages#jhome
+#                          search_meals GET      /search_meals(.:format)                                                                  pages#search_meals
+#                   search_meals_result GET      /search_meals_result(.:format)                                                           pages#search_meals_result
 #                  new_japanese_session GET      /japaneses/sign_in(.:format)                                                             japaneses/sessions#new
 #                      japanese_session POST     /japaneses/sign_in(.:format)                                                             japaneses/sessions#create
 #              destroy_japanese_session DELETE   /japaneses/sign_out(.:format)                                                            japaneses/sessions#destroy

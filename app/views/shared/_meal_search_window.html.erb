@@ -1,0 +1,37 @@
+<div class="d-flex py-4 mx-3">
+  <%= search_form_for @q, url: search_meals_result_path, class: "search_form mx-auto" do |f| %>
+    <div class="form-group">
+
+      <div class="px-0 search-select d-inline-block mb-1">
+        <%= f.collection_select :foreigner_flng_id_eq, Language.all, :id, :lang, { prompt: "言語", include_blank: "選択なし" }, { class: "form-control text-muted", style: "height:40px;font-size:14px;width:115px;border-radius:3px !important;" } %>
+      </div>
+
+      <div class="px-0 search-select d-inline-block">
+        <%= f.grouped_collection_select(:location_id_eq, Prefecture.all, :locations, :name, :id, :name, { prompt: "場所", include_blank: "選択なし" }, { class: "form-control text-muted", style: "height:40px;font-size:14px;width:115px;border-radius:3px !important;" } ) %>
+      </div>
+
+      <div class="px-0 search-select d-inline-block">
+        <%= f.text_field :date_eq, placeholder: "日付", class: 'form-control bg-white', id: "datepicker", style: "height:40px;font-size:14px;width:115px;border-radius:3px !important;", autocomplete: 'off' %>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
+      </div>
+
+      <div class="px-0 search-select d-inline-block">
+        <%= f.select :time_eq,  [["00時 - 09時","0am-9am" ], ["09時 - 12時", "09am-12pm"],["12時 - 15時", "12pm-15pm"],["15時 - 18時", "15pm-18pm"],["18時 - 21時", "18pm-21pm"],["21時 - 24時", "21pm-24pm"] ], { prompt: "時間帯", include_blank: "選択なし" }, { class: "form-control text-muted", style: "height:40px;font-size:14px;width:115px;border-radius:3px !important;" } %>
+      </div>
+
+      <div class="px-0 search-select d-inline-block">
+        <%= f.select :created_at, [["新着順", "DESC" ], ["古い順", "ASC"]], { prompt: "表示順"}, { class: "form-control text-muted", style: "height:40px;font-size:14px;width:115px;border-radius:3px !important;" } %>
+      </div>
+
+      <%= f.button class: "search-button", style: "border-color:#BBBBB;background-color:#EEEEEE;height:40px;" do %>
+        <i class="fa fa-search mx-2"></i>
+      <% end %>
+
+      <div class="d-inline-block ml-3">
+        <%= link_to search_meals_path do%>
+          <i class="fas fa-redo faa-spin animated-hover fa-lg"></i>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

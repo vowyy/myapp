@@ -36,8 +36,8 @@ class DeviseCreateForeigners < ActiveRecord::Migration[5.2]
       t.bigint     :uid
       t.string     :provider
       t.integer    :j_l, limit: 1
-      t.integer    :f_lang, limit: 1
-      t.integer    :s_lang, limit: 1
+      t.integer    :flng_id, limit: 1
+      t.integer    :slng_id, limit: 1
       t.integer    :gender, limit: 1
       t.string     :image
       t.integer    :age
@@ -46,6 +46,8 @@ class DeviseCreateForeigners < ActiveRecord::Migration[5.2]
       t.timestamps null: false
     end
 
+    add_index :foreigners, :flng_id
+    add_index :foreigners, :slng_id
     add_index :foreigners, :email,                unique: true
     add_index :foreigners, :reset_password_token, unique: true
     add_index :foreigners, :confirmation_token,   unique: true

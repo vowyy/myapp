@@ -21,7 +21,13 @@ class Foreigners::RegistrationsController < Devise::RegistrationsController
         set_flash_message :notice, flash_key
       end
       bypass_sign_in resource, scope: resource_name
-      redirect_to foreigner_path current_user, layout: 'personal_user'
+
+      if current_foreigner.profile.nil? || current_foreigner.profile.intro.blank?
+        redirect_to new_profile_path, layout: 'personal_user'
+        flash[:success] = "Let's Complete introduction to post meal."
+      else
+        redirect_to foreigner_path current_foreigner, layout: 'personal_user'
+      end
     else
       clean_up_passwords resource
       set_minimum_password_length
@@ -32,7 +38,7 @@ class Foreigners::RegistrationsController < Devise::RegistrationsController
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :age, :j_l, :f_lang, :s_lang, :image, :gender, :nation_id])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :age, :j_l, :flng_id, :slng_id, :image, :gender, :nation_id])
   end
 
   def update_resource(resource, params)

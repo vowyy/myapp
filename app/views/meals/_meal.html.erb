@@ -1,7 +1,7 @@
-<div class="mb-4 px-0" style="background-color:#FF8856;max-width:290px;min-width:290px;border-radius:5px;filter:drop-shadow(1px 1px 4px rgba(0,0,0,0.7));">
+<div class="mb-4 px-0 d-inline-block mx-3" style="background-color:#ffa47c;width:290px;border-radius:5px;filter:drop-shadow(1px 1px 4px rgba(0,0,0,0.7));">
   <div class="meal-top pt-2 d-flex bg-white flex-column" style="border-top-left-radius:5px;border-top-right-radius:5px;">
     <div class="text-dark mx-auto d-flex" style="position:relative;">
-      <div style="position:absolute;top:124px;right:-47px;"  data-toggle="modal" data-target="#home-user-<%= meal.foreigner.id %>">
+      <div style="position:absolute;top:124px;right:-57px;"  data-toggle="modal" data-target="#home-user-<%= meal.foreigner.id %>">
         <span class="fa-stack faa-wrench animated-hover" style="font-size:20px;filter:drop-shadow(1px 1px 2px rgba(0,0,0,0.9));">
           <i class="fas fa-circle fa-stack-2x text-white font-info"></i>
           <i class="fas fa-info fa-stack-1x" style="color:#008BBB;"></i>
@@ -9,7 +9,7 @@
       </div>
 
       <% if japanese? && !meal.already_matched? %>
-        <div style="position:absolute;top:0px;right:190px;">
+        <div style="position:absolute;top:1px;right:180px;">
           <% if !Favor.exists?(meal_id: meal.id, japanese_id: current_japanese.id) %>
             <%= link_to meal_favors_path(meal), method: :post do %>
               <i class="far fa-heart fa-2x text-danger meal-heart"></i>
@@ -43,12 +43,12 @@
         :
       </span>
       <span class="font-weight-bold text-white">
-        <%= meal.foreigner.f_lang%>
-        <% if meal.foreigner.s_lang && meal.foreigner.s_lang != "none" %>
+        <%= meal.foreigner.flng.lang %>
+        <% if meal.foreigner.slng && meal.foreigner.slng.lang != "none" %>
           <span class="text-white">
            /
           </span>
-           <%= meal.foreigner.s_lang %>
+           <%= meal.foreigner.slng.lang %>
         <% end %>
       </span>
     </div>
@@ -202,7 +202,7 @@
           First Language
         </div>
         <div class="ml-4 mb-0 h5 align-self-end text-left mr-3">
-          <%= meal.foreigner.f_lang ? meal.foreigner.f_lang : "none" %>
+          <%= meal.foreigner.flng.lang %>
         </div>
       </div>
 
@@ -211,7 +211,7 @@
           Seocond Language
         </div>
         <div class="ml-4 mb-0 h5 align-self-end text-left mr-1">
-          <%= meal.foreigner.s_lang ? meal.foreigner.s_lang : "none" %>
+          <%= meal.foreigner.slng ? meal.foreigner.slng.lang : "none" %>
         </div>
       </div>
 
