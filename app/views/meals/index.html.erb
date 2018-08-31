@@ -50,7 +50,7 @@
           <%= render 'shared/setting_meal', meal: meal %>
         <% end %>
       <% else %>
-        <div class="row meal-small">
+        <div class="row justify-content-around">
           <%= render @japanese_favor_meals %>
         </div>
       <% end %>
@@ -62,7 +62,7 @@
           <%= render 'shared/setting_meal', meal: meal %>
         <% end %>
       <% else %>
-        <div class="row">
+        <div class="row justify-content-around">
           <%= render @japanese_offered_meals %>
         </div>
       <% end %>
@@ -74,7 +74,7 @@
           <%= render 'shared/setting_meal', meal: meal %>
         <% end %>
       <% else %>
-        <div class="row">
+        <div class="row justify-content-around">
           <%= render @japanese_matched_meals %>
         </div>
       <% end %>
