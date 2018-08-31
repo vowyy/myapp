@@ -1,4 +1,4 @@
-<div class="mb-4 px-0" style="background-color:#ff9c72;max-width:290px;min-width:290px;border-radius:5px;filter:drop-shadow(1px 1px 4px rgba(0,0,0,0.7));">
+<div class="mb-4 px-0 d-inline-block mx-3" style="background-color:#ffa47c;width:290px;border-radius:5px;filter:drop-shadow(1px 1px 4px rgba(0,0,0,0.7));">
   <div class="meal-top pt-2 d-flex bg-white flex-column" style="border-top-left-radius:5px;border-top-right-radius:5px;">
     <div class="text-dark mx-auto d-flex" style="position:relative;">
       <div style="position:absolute;top:124px;right:-57px;"  data-toggle="modal" data-target="#home-user-<%= meal.foreigner.id %>">
@@ -9,7 +9,7 @@
       </div>
 
       <% if japanese? && !meal.already_matched? %>
-        <div style="position:absolute;top:0px;right:190px;">
+        <div style="position:absolute;top:1px;right:180px;">
           <% if !Favor.exists?(meal_id: meal.id, japanese_id: current_japanese.id) %>
             <%= link_to meal_favors_path(meal), method: :post do %>
               <i class="far fa-heart fa-2x text-danger meal-heart"></i>
