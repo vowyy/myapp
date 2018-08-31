@@ -20,5 +20,17 @@
     <div class="row justify-content-around">
       <%= render @english_meals %>
     </div>
+    <div class="d-flex py-4 mx-3">
+      <%= search_form_for @q, url: search_meals_result_path, class: "search_form mx-auto" do |f| %>
+        <div class="form-group">
+          <%= hidden_field_tag :foreigner_flng_id_eq, Language.first.id  %>
+          <%= f.button class: "btn btn-darkorange-reverse search-button px-4", style: "height:40px;" do %>
+            <span class="">
+              <i class="fa fa-search mx-2"></i>もっと見る
+            </span>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </section>
 <% end %>
