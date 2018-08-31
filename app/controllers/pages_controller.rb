@@ -6,6 +6,7 @@ class PagesController < ApplicationController
   def home;end
 
   def jhome
+    @q = Meal.ransack(params[:q])
     @english_meals = Meal.joins(:foreigner).where(foreigners: { flng_id: 1 }).distinct.order("RAND()").limit(4)
   end
 
@@ -15,6 +16,7 @@ class PagesController < ApplicationController
 
   def search_meals_result
     @q     = Meal.search(search_params)
+    @q.sorts = "created_at #{@created_at}" if @q.sorts.empty?
     @search_meals_result = @q.result.includes(:location, :foreigner)
     render 'search_meals'
   end
@@ -34,6 +36,12 @@ class PagesController < ApplicationController
   end
 
   def search_params
-    params.require(:q).permit!
+    if !params[:q].nil?
+      @created_at = params[:q][:created_at]
+      params.require(:q).permit(:foreigner_flng_id_eq, :location_id_eq, :date_eq, :time_eq, :crated_at)
+    else
+      @created_at = params[:created_at]
+      params.permit(:foreigner_flng_id_eq, :created_at)
+    end
   end
 end
