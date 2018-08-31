@@ -9,7 +9,7 @@
       </div>
 
       <% if japanese? && !meal.already_matched? %>
-        <div style="position:absolute;top:1px;right:180px;">
+        <div style="position:absolute;top:1px;right:195px;">
           <% if !Favor.exists?(meal_id: meal.id, japanese_id: current_japanese.id) %>
             <%= link_to meal_favors_path(meal), method: :post do %>
               <i class="far fa-heart fa-2x text-danger meal-heart"></i>
