@@ -2,9 +2,12 @@ Rails.application.routes.draw do
 
   root 'pages#home'
 
-  get '/jhome', to: 'pages#jhome'
-  get '/search_meals', to: 'pages#search_meals'
+  get '/jhome',               to: 'pages#jhome'
+  get '/search_meals',        to: 'pages#search_meals'
   get '/search_meals_result', to: 'pages#search_meals_result'
+  get '/policy',              to: 'pages#policy'
+  get '/term',                to: 'pages#term'
+  get '/contact',             to: 'pages#contact'
 
   #　(devise/confirmations#アクション)　＝＞　(japaneses/confirmation#アクション)に変更
   devise_for :japaneses, controllers: {
