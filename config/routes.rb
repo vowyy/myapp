@@ -6,8 +6,11 @@ Rails.application.routes.draw do
   get '/search_meals',        to: 'pages#search_meals'
   get '/search_meals_result', to: 'pages#search_meals_result'
   get '/policy',              to: 'pages#policy'
+  get '/jpolicy',             to: 'pages#jpolicy'
   get '/term',                to: 'pages#term'
+  get '/jterm',               to: 'pages#jterm'
   get '/contact',             to: 'pages#contact'
+  get '/jcontact',            to: 'pages#jcontact'
 
   #　(devise/confirmations#アクション)　＝＞　(japaneses/confirmation#アクション)に変更
   devise_for :japaneses, controllers: {
@@ -43,6 +46,12 @@ end
 #                                 jhome GET      /jhome(.:format)                                                                         pages#jhome
 #                          search_meals GET      /search_meals(.:format)                                                                  pages#search_meals
 #                   search_meals_result GET      /search_meals_result(.:format)                                                           pages#search_meals_result
+#                                policy GET      /policy(.:format)                                                                        pages#policy
+#                               jpolicy GET      /jpolicy(.:format)                                                                       pages#jpolicy
+#                                  term GET      /term(.:format)                                                                          pages#term
+#                                 jterm GET      /jterm(.:format)                                                                         pages#jterm
+#                               contact GET      /contact(.:format)                                                                       pages#contact
+#                              jcontact GET      /jcontact(.:format)                                                                      pages#jcontact
 #                  new_japanese_session GET      /japaneses/sign_in(.:format)                                                             japaneses/sessions#new
 #                      japanese_session POST     /japaneses/sign_in(.:format)                                                             japaneses/sessions#create
 #              destroy_japanese_session DELETE   /japaneses/sign_out(.:format)                                                            japaneses/sessions#destroy
