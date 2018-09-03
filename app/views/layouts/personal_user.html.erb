@@ -16,6 +16,10 @@
     <%= render 'shared/header' %>
     <%= render 'shared/message_toastr' %>
     <%= render 'shared/common_for_user' %>
-    <%= render 'shared/footer_for_foreigner' %>
+    <% if japanese? %>
+      <%= render 'shared/footer_for_japanese' %>
+    <% else %>
+      <%= render 'shared/footer_for_foreigner' %>
+    <% end %>
   </body>
 </html>
