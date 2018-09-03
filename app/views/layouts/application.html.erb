@@ -21,5 +21,10 @@
     <%= render 'shared/header' %>
     <%= render 'shared/message_toastr' %>
     <%= yield %>
+    <% if current_page?(jhome_path) || japanese? %>
+      <%= render 'shared/footer_for_japanese' %>
+    <% elsif current_page?(root_path) || foreigner? %>
+      <%= render 'shared/footer_for_foreigner' %>
+    <% end %>
   </body>
 </html>
