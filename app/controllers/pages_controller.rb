@@ -15,10 +15,46 @@ class PagesController < ApplicationController
   end
 
   def search_meals_result
-    @q     = Meal.search(search_params)
+    @q = Meal.search(search_params)
     @q.sorts = "created_at #{@created_at}" if @q.sorts.empty?
     @search_meals_result = @q.result.includes(:location, :foreigner)
     render 'search_meals'
+  end
+
+  def praivacy;end
+  def jpraivacy;end
+
+  def term;end
+  def jterm;end
+
+  def contact;end
+  def jcontact;end
+
+  def contact_send
+    @name    = params[:name]
+    @email   = params[:email]
+    @inquiry = params[:inquiry]
+
+    if [@name, @email, @inquiry].map(&:blank?).include?(true)
+      if request.referer.split("/").last == "jcontact"
+        flash.now[:warning] = "全て記入してください。"
+        render :jcontact
+      else
+        flash.now[:warning] = "Blank form can not be accepted."
+        render :contact
+      end
+    else
+      
+      ContactMailer.contact_send(@name, @email, @inquiry).deliver_now
+
+      if request.referer.split("/").last == "jcontact"
+        flash[:success] = "お問い合わせを送信しました。"
+        redirect_to jhome_path
+      else
+        flash[:success] = "Your contact was successfully sent."
+        redirect_to root_path
+      end
+    end
   end
 
   private
