@@ -1,13 +1,13 @@
-<footer id="main-footer" class="text-center py-4 bg-white text-dark">
+<footer id="main-footer" class="text-center pt-5 pb-4 bg-white text-dark">
   <div class="container">
     <div class="row">
       <div class="col-12 pb-3">
-        <a href="#" class="text-secondary mr-2">Privacy Policy</a>  |
-        <a href="#" class="text-secondary mx-2">Contact</a>  |
-        <a href="#" class="text-secondary ml-2">Terms of service</a>
+        <a href="#" class="text-secondary ml-2"><%= link_to "Terms of service", term_path, class:"text-muted"%></a>  |
+        <a href="#" class="text-secondary mr-2"><%= link_to "Privacy Policy", policy_path, class:"text-muted"%></a>  |
+        <a href="#" class="text-secondary mx-2"><%= link_to "Contact", contact_path, class:"text-muted"%></a>
       </div>
       <div class="col-12">
-        <p class="text-secondary">Copy-right &copy; 2018 MEEaT JAPAN.inc All Rights Reserved.</p>
+        <p class="text-secondary">&copy; MEEaT JAPAN</p>
       </div>
     </div>
   </div>
