@@ -21,9 +21,9 @@
     <%= render 'shared/header' %>
     <%= render 'shared/message_toastr' %>
     <%= yield %>
-    <% if current_page?(jhome_path) || japanese? %>
+    <% if current_page?(jhome_path) || current_page?(search_meals_path) || current_page?(search_meals_result_path) || current_page?(jpolicy_path) || current_page?(jterm_path) || current_page?(jcontact_path) || current_page?(new_japanese_registration_path) || current_page?(new_japanese_session_path) || japanese? %>
       <%= render 'shared/footer_for_japanese' %>
-    <% elsif current_page?(root_path) || foreigner? %>
+    <% elsif current_page?(root_path) || current_page?(policy_path) || current_page?(term_path) || current_page?(contact_path) || foreigner? %>
       <%= render 'shared/footer_for_foreigner' %>
     <% end %>
   </body>
