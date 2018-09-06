@@ -27,7 +27,7 @@ class MatchesController < ApplicationController
 
   def destroy
     Match.find(params[:id]).destroy
-    flash[:notice] = "You successfully canceled this match."
+    flash[:notice] = "You successfully canceled this Meal"
     redirect_to root_path
   end
 
