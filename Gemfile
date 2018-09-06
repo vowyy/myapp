@@ -66,6 +66,7 @@ gem 'bootsnap', '~> 1.3', require: false
 
 # ページネーション
 gem 'kaminari', '~> 0.17.0'
+gem 'kaminari-bootstrap', '~> 3.0.1'
 
 group :development, :test do
   gem 'byebug', "~> 10.0", platforms: [:mri, :mingw, :x64_mingw]

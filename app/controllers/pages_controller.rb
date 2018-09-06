@@ -17,7 +17,7 @@ class PagesController < ApplicationController
   def search_meals_result
     @q = Meal.search(search_params)
     @q.sorts = "created_at #{@created_at}" if @q.sorts.empty?
-    @search_meals_result = @q.result.includes(:location, :foreigner)
+    @search_meals_result = @q.result.includes(:location, :foreigner).page(params[:page]).per(8)
     render 'search_meals'
   end
 
@@ -44,7 +44,7 @@ class PagesController < ApplicationController
         render :contact
       end
     else
-      
+
       ContactMailer.contact_send(@name, @email, @inquiry).deliver_now
 
       if request.referer.split("/").last == "jcontact"
