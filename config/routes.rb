@@ -2,27 +2,30 @@ Rails.application.routes.draw do
 
   root 'pages#home'
 
-  get '/jhome',               to: 'pages#jhome'
-  get '/search_meals',        to: 'pages#search_meals'
-  get '/search_meals_result', to: 'pages#search_meals_result'
-  get '/policy',              to: 'pages#policy'
-  get '/jpolicy',             to: 'pages#jpolicy'
-  get '/term',                to: 'pages#term'
-  get '/jterm',               to: 'pages#jterm'
-  get '/contact',             to: 'pages#contact'
-  get '/jcontact',            to: 'pages#jcontact'
+  get  '/jhome',               to: 'pages#jhome'
+  get  '/search_meals',        to: 'pages#search_meals'
+  get  '/search_meals_result', to: 'pages#search_meals_result'
+  get  '/policy',              to: 'pages#policy'
+  get  '/jpolicy',             to: 'pages#jpolicy'
+  get  '/term',                to: 'pages#term'
+  get  '/jterm',               to: 'pages#jterm'
+  get  '/contact',             to: 'pages#contact'
+  get  '/jcontact',            to: 'pages#jcontact'
+  post '/contact_send',        to: 'pages#contact_send'
 
   #　(devise/confirmations#アクション)　＝＞　(japaneses/confirmation#アクション)に変更
   devise_for :japaneses, controllers: {
                                         registrations: 'japaneses/registrations',
                                         confirmations: 'japaneses/confirmations',
-                                        sessions:      'japaneses/sessions'
+                                        sessions:      'japaneses/sessions',
+                                        passwords:      'japaneses/passwords'
                                        }
 
   devise_for :foreigners, controllers: {
                                          registrations:      'foreigners/registrations',
                                          omniauth_callbacks: 'foreigners/omniauth_callbacks',
-                                         sessions:           'foreigners/sessions'
+                                         sessions:           'foreigners/sessions',
+                                         passwords:           'foreigners/passwords'
                                         }
 
     resources :japaneses,  only: [:show]
@@ -52,14 +55,15 @@ end
 #                                 jterm GET      /jterm(.:format)                                                                         pages#jterm
 #                               contact GET      /contact(.:format)                                                                       pages#contact
 #                              jcontact GET      /jcontact(.:format)                                                                      pages#jcontact
+#                          contact_send POST     /contact_send(.:format)                                                                  pages#contact_send
 #                  new_japanese_session GET      /japaneses/sign_in(.:format)                                                             japaneses/sessions#new
 #                      japanese_session POST     /japaneses/sign_in(.:format)                                                             japaneses/sessions#create
 #              destroy_japanese_session DELETE   /japaneses/sign_out(.:format)                                                            japaneses/sessions#destroy
-#                 new_japanese_password GET      /japaneses/password/new(.:format)                                                        devise/passwords#new
-#                edit_japanese_password GET      /japaneses/password/edit(.:format)                                                       devise/passwords#edit
-#                     japanese_password PATCH    /japaneses/password(.:format)                                                            devise/passwords#update
-#                                       PUT      /japaneses/password(.:format)                                                            devise/passwords#update
-#                                       POST     /japaneses/password(.:format)                                                            devise/passwords#create
+#                 new_japanese_password GET      /japaneses/password/new(.:format)                                                        japaneses/passwords#new
+#                edit_japanese_password GET      /japaneses/password/edit(.:format)                                                       japaneses/passwords#edit
+#                     japanese_password PATCH    /japaneses/password(.:format)                                                            japaneses/passwords#update
+#                                       PUT      /japaneses/password(.:format)                                                            japaneses/passwords#update
+#                                       POST     /japaneses/password(.:format)                                                            japaneses/passwords#create
 #          cancel_japanese_registration GET      /japaneses/cancel(.:format)                                                              japaneses/registrations#cancel
 #             new_japanese_registration GET      /japaneses/sign_up(.:format)                                                             japaneses/registrations#new
 #            edit_japanese_registration GET      /japaneses/edit(.:format)                                                                japaneses/registrations#edit
@@ -75,11 +79,11 @@ end
 #             destroy_foreigner_session DELETE   /foreigners/sign_out(.:format)                                                           foreigners/sessions#destroy
 # foreigner_facebook_omniauth_authorize GET|POST /foreigners/auth/facebook(.:format)                                                      foreigners/omniauth_callbacks#passthru
 #  foreigner_facebook_omniauth_callback GET|POST /foreigners/auth/facebook/callback(.:format)                                             foreigners/omniauth_callbacks#facebook
-#                new_foreigner_password GET      /foreigners/password/new(.:format)                                                       devise/passwords#new
-#               edit_foreigner_password GET      /foreigners/password/edit(.:format)                                                      devise/passwords#edit
-#                    foreigner_password PATCH    /foreigners/password(.:format)                                                           devise/passwords#update
-#                                       PUT      /foreigners/password(.:format)                                                           devise/passwords#update
-#                                       POST     /foreigners/password(.:format)                                                           devise/passwords#create
+#                new_foreigner_password GET      /foreigners/password/new(.:format)                                                       foreigners/passwords#new
+#               edit_foreigner_password GET      /foreigners/password/edit(.:format)                                                      foreigners/passwords#edit
+#                    foreigner_password PATCH    /foreigners/password(.:format)                                                           foreigners/passwords#update
+#                                       PUT      /foreigners/password(.:format)                                                           foreigners/passwords#update
+#                                       POST     /foreigners/password(.:format)                                                           foreigners/passwords#create
 #         cancel_foreigner_registration GET      /foreigners/cancel(.:format)                                                             foreigners/registrations#cancel
 #            new_foreigner_registration GET      /foreigners/sign_up(.:format)                                                            foreigners/registrations#new
 #           edit_foreigner_registration GET      /foreigners/edit(.:format)                                                               foreigners/registrations#edit
