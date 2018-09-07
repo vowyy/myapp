@@ -78,15 +78,15 @@
       <%= button_to "Delete", meal_path(meal), method: :delete, data: { confirm: 'Are you sure you want to delete this meal?' }, class: "btn btn-darkblue font-weight-bold", style: "width:105px;border-radius:5px;filter:drop-shadow(1px 1px 3px rgba(0,0,0,0.8));"  %>
     </div>
   <% else %>
-  <div class="d-flex justify-content-around">
-    <% if current_page?(rooms_path) %>
-      <%= button_to "Send Message", room_path(meal.room), method: :get, class: "btn btn-darkblue font-weight-bold", style: "width:140px;border-radius:5px;filter:drop-shadow(1px 1px 3px rgba(0,0,0,0.8));" %>
-      <%= button_to "Cancel This Match", match_path(meal.room.match), method: :delete, data: { confirm: 'Are you sure you want to cancel this match?' },class: "btn btn-darkblue font-weight-bold", style: "width:170px;border-radius:5px;filter:drop-shadow(1px 1px 3px rgba(0,0,0,0.8));" %>
-    <% else %>
-      <%= button_to match_path(meal.room.match), method: :delete, data: { confirm: 'Are you sure you want to cancel this match?' },class: "btn btn-darkblue font-weight-bold", style: "border-radius:5px;filter:drop-shadow(1px 1px 3px rgba(0,0,0,0.8));" do %>
-        <%= foreigner? ? "Cancel This Match" : "ミールをキャンセル"%>
+    <div class="d-flex justify-content-around">
+      <% if current_page?(meals_path) %>
+        <%= button_to "Send Message", room_path(meal.room), method: :get, class: "btn btn-darkblue font-weight-bold", style: "width:140px;border-radius:5px;filter:drop-shadow(1px 1px 3px rgba(0,0,0,0.8));" %>
+        <%= button_to "Cancel This Match", match_path(meal.room.match), method: :delete, data: { confirm: 'Are you sure you want to cancel this match?' },class: "btn btn-darkblue font-weight-bold", style: "width:170px;border-radius:5px;filter:drop-shadow(1px 1px 3px rgba(0,0,0,0.8));" %>
+      <% else %>
+        <%= button_to match_path(meal.room.match), method: :delete, data: { confirm: 'Are you sure you want to cancel this match?' },class: "btn btn-darkblue font-weight-bold", style: "border-radius:5px;filter:drop-shadow(1px 1px 3px rgba(0,0,0,0.8));" do %>
+          <%= foreigner? ? "Cancel This Match" : "ミールをキャンセル"%>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
   <% end %>
 </div>

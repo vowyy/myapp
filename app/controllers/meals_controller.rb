@@ -37,7 +37,7 @@ class MealsController < ApplicationController
   def update
     if @meal.update(meal_params)
       flash[:success] = "Meal was successfully updated"
-      redirect_to rooms_path
+      redirect_to meals_path
     else
       render 'edit'
     end
@@ -48,7 +48,7 @@ class MealsController < ApplicationController
       Meal.find(@meal.id).destroy
       flash[:success] = "Meal was successfully deleted"
     end
-    redirect_to rooms_path
+    redirect_to meals_path
   end
 
   private
