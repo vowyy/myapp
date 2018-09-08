@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    models:
+      meal: ミール
+    attributes:
+      meal:
+        id: ID
+        date: 日
+        time: 時間
+        location_id: 場所
+        male: 男性
+        female: 女性
+        note: 一言
+        foreigner_id: 外国人
+        skype: スカイプ
+        created_at: 登録日時
+        updated_at: 更新日時

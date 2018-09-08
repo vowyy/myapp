@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    models:
+      match: マッチング
+    attributes:
+      match:
+        id: ID
+        meal_id: ミール
+        Japanese_id: 日本人
+        ok: マッチング済み
+        budget: 予算
+        skype: スカイプ
+        created_at: 登録日時
+        updated_at: 更新日時

@@ -1,0 +1,11 @@
+en:
+  activerecord:
+    models:
+      nation: Nation
+    attributes:
+      nation:
+        id: ID
+        name: Country
+        flag: Image of Flag
+        created_at: date of creating
+        updated_at: date of updating

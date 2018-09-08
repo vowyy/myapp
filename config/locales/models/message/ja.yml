@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    models:
+      message: メッセージ
+    attributes:
+      message:
+        id: ID
+        content: メッセージ
+        room_id: 部屋
+        created_at: 登録日時
+        updated_at: 更新日時

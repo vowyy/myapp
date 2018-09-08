@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    models:
+      favor: お気に入り
+    attributes:
+      favor:
+        id: ID
+        meal_id: ミール
+        japanese_id: 日本人
+        created_at: 登録日時
+        updated_at: 更新日時

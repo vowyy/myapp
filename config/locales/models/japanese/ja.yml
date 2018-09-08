@@ -1,0 +1,20 @@
+ja:
+  activerecord:
+    models:
+      japanese: 日本人
+    attributes:
+      japanese:
+        id: ID
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        first_name: 名
+        last_name: 姓
+        nickname: ニックネーム
+        gender: 性別
+        language_id: 言語
+        age: 年齢
+        image: 写真
+        lang_l: 言語レベル
+        created_at: 登録日時
+        updated_at: 更新日時

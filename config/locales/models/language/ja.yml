@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      language: 言語
+    attributes:
+      language:
+        id: ID
+        lang: 言語
+        created_at: 登録日時
+        updated_at: 更新日時

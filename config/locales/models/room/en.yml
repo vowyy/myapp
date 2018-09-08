@@ -1,0 +1,13 @@
+en:
+  activerecord:
+    models:
+      room: Room
+    attributes:
+      room:
+        id: ID
+        match_id: Match
+        meal_id: Meal
+        foreigner_id: Foreigner
+        japanese_id: Japanese
+        created_at: date of creating
+        updated_at: date of updating

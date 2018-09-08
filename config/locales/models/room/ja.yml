@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    models:
+      room: 部屋
+    attributes:
+      room:
+        id: ID
+        match_id: マッチング
+        meal_id: ミール
+        foreigner_id: 外国人
+        japanese_id: 日本人
+        created_at: 登録日時
+        updated_at: 更新日時

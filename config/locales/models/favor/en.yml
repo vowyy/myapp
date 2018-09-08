@@ -1,0 +1,11 @@
+en:
+  activerecord:
+    models:
+      favor: Favorite
+    attributes:
+      favor:
+        id: ID
+        meal_id: Meal
+        japanese_id: Japanese
+        created_at: date of creating
+        updated_at: date of updating

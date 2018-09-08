@@ -1,0 +1,10 @@
+en:
+  activerecord:
+    models:
+      language: Language
+    attributes:
+      language:
+        id: ID
+        lang: Language
+        created_at: date of creating
+        updated_at: date of updating

@@ -1,0 +1,14 @@
+en:
+  activerecord:
+    models:
+      match: Match
+    attributes:
+      match:
+        id: ID
+        meal_id: Meal
+        Japanese_id: Japanese
+        ok: matched
+        budget: Budget
+        skype: skype
+        created_at: date of creating
+        updated_at: date of updating
