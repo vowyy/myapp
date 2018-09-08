@@ -90,13 +90,15 @@ ActiveRecord::Schema.define(version: 2018_08_26_011449) do
   end
 
   create_table "languages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "lang", null: false
+    t.string "lang_en", null: false
+    t.string "lang_ja", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "locations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
+    t.string "name_en"
+    t.string "name_ja"
     t.bigint "prefecture_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -150,7 +152,8 @@ ActiveRecord::Schema.define(version: 2018_08_26_011449) do
   end
 
   create_table "prefectures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
+    t.string "name_en"
+    t.string "name_ja"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
