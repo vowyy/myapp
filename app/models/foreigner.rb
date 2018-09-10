@@ -69,7 +69,7 @@ class Foreigner < ApplicationRecord
   private
 
   def flng_none?
-    errors.add(:flng_id,  "must exist.") if flng.lang == "none"
+    errors.add(:flng_id,  "must exist.") if flng.lang_en == "none"
   end
 
   def chose_same_lang?
