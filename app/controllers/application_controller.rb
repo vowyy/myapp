@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
 
   before_action :get_meal_instance
+  before_action :set_locale
 
   # before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -16,6 +17,22 @@ class ApplicationController < ActionController::Base
     ActiveDecorator::Decorator.instance.decorate(super) if super.present?
     super
   end
+
+  def set_locale
+    if japanese?
+      I18n.locale = I18n.default_locale
+    elsif foreigner?
+      I18n.locale = :en
+    end
+  end
+
+  # def default_url_options
+  #   if I18n.locale.to_sym == I18n.default_locale
+  #     super()
+  #   else
+  #     { locale: locale }
+  #   end
+  # end
 
   protected
 
