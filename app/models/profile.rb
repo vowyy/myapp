@@ -1,6 +1,7 @@
 class Profile < ApplicationRecord
   belongs_to :profilable, polymorphic: true
 
+  validates :intro, presence: true
   validate :short_intro
 
   INTRO_SHORTENED_SIZE  = 25
