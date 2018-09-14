@@ -22,5 +22,14 @@ module Myapp
       g.helper false
       g.test_framework false
     end
+
+    # I18nライブラリに訳文の探索場所を指示する
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
+
+    # アプリで利用可能なロケールをホワイトリスト化する
+    config.i18n.available_locales = [:en, :ja]
+
+    # ロケールを:en以外に変更する
+    config.i18n.default_locale = :ja
   end
 end
