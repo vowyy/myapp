@@ -2,6 +2,7 @@
 
 class Foreigners::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
+    I18n.locale = :en
     # You need to implement the method below in your model (e.g. app/models/user.rb)
     @foreigner = Foreigner.from_omniauth(request.env["omniauth.auth"])
 
@@ -21,6 +22,6 @@ class Foreigners::OmniauthCallbacksController < Devise::OmniauthCallbacksControl
   end
 
   def failure
-    redirect_to root_path
+    redirect_to root_path(locale: :en)
   end
 end
