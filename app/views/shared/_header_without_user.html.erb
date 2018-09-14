@@ -1,4 +1,4 @@
-<% if request.path == '/' || current_page?(policy_path) || current_page?(term_path) || current_page?(contact_path) %>
+<% if I18n.locale == :en %>
   <li class="nav-item mr-4 h6 mt-2 ml-2" >
     <a class="nav-link font-weight-bold" href="#" data-toggle="modal" data-target="#registration_modal">Sign up</a>
   </li>

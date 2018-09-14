@@ -41,7 +41,7 @@
           <span class="mr-3 ml-1">
             <i class="fas fa-map-marker-alt fa-lg"></i>
           </span>
-          <%= @match.meal.location.name %> (<%= @match.meal.location.prefecture.name %>)
+          <%= @match.meal.location.pick_locale %> (<%= @match.meal.location.prefecture.pick_locale %>)
         </div>
       </div>
 
@@ -79,12 +79,18 @@
           </span>
           <br>
           <span class="mt-2"style="font-size:15px; color:#A9A9A9;">
-            <%= @match.japanese.gender %>
+            <%= @match.japanese.gender == "男性" ? "Male" : "Female" %>
           </span>
           <br>
           <span class="mt-2"style="font-size:15px; color:#A9A9A9;">
-            <%= @match.japanese.language.lang %>
-            <%= @match.japanese.lang_l %>
+            <%= @match.japanese.language.pick_locale %>
+            <% if @match.japanese.lang_l == "中級" %>
+              (intermediate)
+            <% elsif @match.japanese.lang_l == "初級" %>
+              (beginner)
+            <% else %>
+              (advanced)
+            <% end %>
           </span>
         </div>
       </div>

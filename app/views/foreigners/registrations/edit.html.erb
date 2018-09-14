@@ -40,17 +40,17 @@
 
       <div class="form-group d-flex">
         <span class="h5 mt-2 text-center mr-3 pl-4" style="width:160px;">Nation</span>
-        <%= f.collection_select :nation_id, Nation.all, :id, :name, { prompt: "Select" }, { class: "form-control text-muted", style: "height:46px;margin-bottom:0.6rem;max-width:235px;min-width:165px;" } %>
+        <%= f.collection_select :nation_id, Nation.all, :id, :name_en, { prompt: "Select" }, { class: "form-control text-muted", style: "height:46px;margin-bottom:0.6rem;max-width:235px;min-width:165px;" } %>
       </div>
 
       <div class="form-group d-flex">
         <span class="h5 mt-2 text-center mr-3" style="width:160px;">First Language</span>
-        <%= f.collection_select :flng_id, Language.all, :id, :lang, {}, { class: "form-control text-muted", style: "height:46px;margin-bottom:0.6rem;max-width:235px;min-width:165px;" } %>
+        <%= f.collection_select :flng_id, Language.all, :id, :lang_en, {}, { class: "form-control text-muted", style: "height:46px;margin-bottom:0.6rem;max-width:235px;min-width:165px;" } %>
       </div>
 
       <div class="form-group d-flex">
         <span class="h6 text-center mt-2 mr-3" style="width:160px;">Second Language<br><span class="font-weight-normal" style="font-size:13px;">(If you have one.)</span></span>
-        <%= f.collection_select :slng_id, Language.all, :id, :lang, { include_blank: "No Choice" }, { class: "form-control text-muted", style: "height:46px;margin-bottom: 0.6rem;max-width:235px;min-width:165px;" }  %>
+        <%= f.collection_select :slng_id, Language.all, :id, :lang_en, { include_blank: "Not in paticular" }, { class: "form-control text-muted", style: "height:46px;margin-bottom: 0.6rem;max-width:235px;min-width:165px;" }  %>
       </div>
 
       <div class="form-group d-flex">

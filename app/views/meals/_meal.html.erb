@@ -31,6 +31,10 @@
     </div>
   </div>
 
+
+
+
+
   <div class="meal-bottom mx-auto pt-2 pb-1" style="border-radius:5px;width:245px;">
 
     <div class="ml-2 mt-1" style="padding:1px;font-size:17px;">
@@ -42,12 +46,12 @@
         :
       </span>
       <span class="font-weight-bold text-white">
-        <%= meal.foreigner.flng.lang %>
-        <% if meal.foreigner.slng && meal.foreigner.slng.lang != "none" %>
+        <%= meal.foreigner.flng.pick_locale %>
+        <% if meal.foreigner.slng && meal.foreigner.slng.lang_en != "none" %>
           <span class="text-white">
            /
           </span>
-           <%= meal.foreigner.slng.lang %>
+          <%= meal.foreigner.slng.pick_locale %>
         <% end %>
       </span>
     </div>
@@ -61,7 +65,7 @@
         :
       </span>
       <span class="font-weight-bold text-white">
-        <%= current_page?(root_path) ? meal.date.strftime("%dth %b %Y (%a)") : meal.date.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[meal.date.wday]})") %>
+        <%= I18n.locale == :ja ? meal.date.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[meal.date.wday]})") : meal.date.strftime("%dth %b %Y (%a)") %>
         </span>
       </span>
     </div>
@@ -88,7 +92,7 @@
         :
       </span>
       <span class="font-weight-bold text-white">
-        <%= meal.location.name %>, <%= meal.location.prefecture.name %>
+        <%= meal.location.pick_locale %>, <%= meal.location.prefecture.pick_locale %>
       </span>
     </div>
 
@@ -102,7 +106,7 @@
       </span>
       <span>
         <span class="font-weight-bold text-white">
-          <span style="font-size:17px;"><%= meal.male + meal.female %></span> <%= current_page?(root_path) ? "ppl" : "人" %>
+          <span style="font-size:17px;"><%= meal.male + meal.female %></span> <%= t('ppl')%>
           <span style="font-size:14px;">
             (<i class="fas fa-male text-white ml-2"></i><span class="mr-1"> <%= meal.male%></span>+<i class="fas fa-female text-white ml-2"></i> <%= meal.female%> )
           </span>
@@ -120,9 +124,9 @@
       </span>
       <span class="font-weight-bold text-white">
         <% if meal.skype == true%>
-          <%= current_page?(root_path) ? "Yes, I want to." : "はい"%>
+          <%= I18n.locale == :en ? "Yes, I want to." : "はい"%>
         <% else %>
-          <%= current_page?(root_path) ? "No, I don't want to." : "いいえ"%>
+          <%=  I18n.locale == :en ? "No, I don't want to." : "いいえ"%>
         <% end %>
       </span>
     </div>
@@ -157,18 +161,14 @@
     <div class="col mr-4 bg-lightorange text-center py-3" style="max-width:430px;min-width:430px;border-radius:10px;margin-bottom:100px;filter:drop-shadow(1px 0px 6px rgba(0,0,0,0.3));margin-top:30px;">
       <div class="left-image" style="margin-top:5px;">
         <button class="close" data-dismiss="modal">&times;</button>
-        <% if meal.foreigner.image %>
-          <%= image_tag meal.foreigner.image.url(:_700), size: "300x300", class: "border border-lightorange", style: "border-radius:10px;" %>
-        <% else %>
-          <%= image_tag 'default.jpg', size: "250x250", class: "circle-image border border-dark"%>
-        <% end %>
+        <%= image_tag meal.foreigner.image.url(:_700), size: "300x300", class: "border border-lightorange", style: "border-radius:10px;" %>
       </div>
 
-      <div class="d-flex justify-content-center mb-2 pb-1 border-bottom border-secondary">
+      <div class="d-flex justify-content-center my-2 pb-1 border-bottom border-secondary">
         <div class="mr-2 h5 align-self-center" style="font-family:'Helvetica Neue';">
           <%= meal.foreigner.name %>
           <% if meal.foreigner.age %>
-            <span class="font-weight-normal" style="font-size:18px;">(<%= meal.foreigner.age %>)</span>
+            <span class="font-weight-normal" style="font-size:20px;">, <%= meal.foreigner.age %></span>
           <% end %>
         </div>
         <div class="">
@@ -178,45 +178,51 @@
         </div>
       </div>
 
-      <div class="d-flex justify-content-center mr-5 mb-2">
+      <div class="d-flex mr-5 ml-4 mb-2">
         <div class="ml-4 py-1 border font-italic bg-darkorange border-darkorange text-white" style="min-width:129px;max-height:29px;border-radius:4px;font-size:13px;opacity:0.9;">
-          Nation
+          <%= I18n.locale == :en ? "Nation" : "国籍" %>
         </div>
         <div class="ml-4 mb-0 h5 align-self-end text-left">
-          <%= meal.foreigner.nation ? meal.foreigner.nation.name : "none" %>
+          <%= meal.foreigner.nation ? meal.foreigner.nation.pick_locale : "none" %>
         </div>
       </div>
 
-      <div class="d-flex justify-content-center mr-5 mb-2">
+      <div class="d-flex mr-5 ml-4 mb-2">
         <div class="ml-4 py-1 border font-italic bg-darkorange border-darkorange text-white" style="min-width:129px;max-height:29px;border-radius:4px;font-size:13px;opacity:0.9;">
-          Japanse Ability
+          <%= I18n.locale == :en ? "Japanse Ability" : "日本語レベル" %>
         </div>
         <div class="ml-4 mb-0 h5 align-self-end text-left">
-          <%= meal.foreigner.j_l ? meal.foreigner.j_l : "none" %>
+          <% if meal.foreigner.j_l == "中級" %>
+            <%= I18n.locale == :en ? "intermediate" : "中級" %>
+          <% elsif  meal.foreigner.j_l == "初級" %>
+            <%= I18n.locale == :en ? "beginner" : "初級" %>
+          <% else %>
+            <%= I18n.locale == :en ? "advanced" : "上級" %>
+          <% end %>
         </div>
       </div>
 
-      <div class="d-flex justify-content-center mr-5 mb-2">
+      <div class="d-flex mr-5 ml-4 mb-2">
         <div class="ml-4 py-1 border font-italic bg-darkorange border-darkorange text-white" style="min-width:129px;max-height:29px;border-radius:4px;font-size:13px;opacity:0.9;">
-          First Language
+          <%= I18n.locale == :en ? "First Language" : "母国語" %>
         </div>
         <div class="ml-4 mb-0 h5 align-self-end text-left mr-3">
-          <%= meal.foreigner.flng.lang %>
+          <%= meal.foreigner.flng.pick_locale %>
         </div>
       </div>
 
-      <div class="d-flex justify-content-center mr-5 mb-2">
+      <div class="d-flex mr-5 ml-4 mb-2">
         <div class="ml-4 py-1 border font-italic bg-darkorange border-darkorange text-white" style="min-width:129px;max-height:29px;border-radius:4px;font-size:13px;opacity:0.9;">
-          Seocond Language
+          <%= I18n.locale == :en ? "Second Language" : "第2言語" %>
         </div>
         <div class="ml-4 mb-0 h5 align-self-end text-left mr-1">
-          <%= meal.foreigner.slng ? meal.foreigner.slng.lang : "none" %>
+          <%= meal.foreigner.slng ? meal.foreigner.slng.pick_locale : "none" %>
         </div>
       </div>
 
       <div class="pt-2 pl-4 text-left font-italic" style="border-radius:4px;font-size:17px;opacity:0.9;">
         <i class="fas fa-user mr-1"></i>
-        profile
+        <%= I18n.locale == :en ? "About me" : "自己紹介文" %>
       </div>
       <div class="container bg-white pt-3 border border-white" style="border-radius:10px;">
         <div class="mx-auto text-left text-muted" style="font-size:12px;border-radius:4px;padding:5px 18px 18px 18px;">

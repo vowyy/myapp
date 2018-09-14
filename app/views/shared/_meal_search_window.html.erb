@@ -3,11 +3,11 @@
     <div class="form-group">
 
       <div class="px-0 search-select d-inline-block mb-1">
-        <%= f.collection_select :foreigner_flng_id_eq, Language.all, :id, :lang, { prompt: "言語", include_blank: "選択なし" }, { class: "form-control text-muted", style: "height:40px;font-size:14px;width:115px;border-radius:3px !important;" } %>
+        <%= f.collection_select :foreigner_flng_id_eq, Language.all, :id, :lang_ja, { prompt: "言語", include_blank: "選択なし" }, { class: "form-control text-muted", style: "height:40px;font-size:14px;width:115px;border-radius:3px !important;" } %>
       </div>
 
       <div class="px-0 search-select d-inline-block">
-        <%= f.grouped_collection_select(:location_id_eq, Prefecture.all, :locations, :name, :id, :name, { prompt: "場所", include_blank: "選択なし" }, { class: "form-control text-muted", style: "height:40px;font-size:14px;width:115px;border-radius:3px !important;" } ) %>
+        <%= f.grouped_collection_select(:location_id_eq, Prefecture.all, :locations, :name_ja, :id, :name_ja, { prompt: "場所", include_blank: "選択なし" }, { class: "form-control text-muted", style: "height:40px;font-size:14px;width:115px;border-radius:3px !important;" } ) %>
       </div>
 
       <div class="px-0 search-select d-inline-block">

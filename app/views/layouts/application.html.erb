@@ -1,29 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MEEaT JAPAN</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
-    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/earlyaccess/notosansjp.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css" type="text/css" media="all" />
-
-    <!-- Datepicker -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <%= render 'layouts/head'%>
   </head>
 
   <body>
     <%= render 'shared/header' %>
     <%= render 'shared/message_toastr' %>
     <%= yield %>
-    <% if current_page?(jhome_path) || current_page?(search_meals_path) || current_page?(search_meals_result_path) || current_page?(jpolicy_path) || current_page?(jterm_path) || current_page?(jcontact_path) || current_page?(new_japanese_registration_path) || current_page?(new_japanese_session_path) || japanese? %>
+    <% if I18n.locale == :ja %>
       <%= render 'shared/footer_for_japanese' %>
-    <% elsif current_page?(root_path) || current_page?(policy_path) || current_page?(term_path) || current_page?(contact_path) || foreigner? %>
+    <% elsif I18n.locale == :en %>
       <%= render 'shared/footer_for_foreigner' %>
     <% end %>
   </body>

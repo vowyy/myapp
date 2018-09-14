@@ -29,19 +29,19 @@
 
 <div class="d-flex justify-content-center">
   <div class="flex-left">
-    <div class="d-flex flex-column mx-4 mt-3">
+    <div class="d-flex flex-column mx-4 mt-3" style="width:170px;">
 
       <div class="text-gray font-weight-bold mb-3">
         <i class="fas fa-calendar-alt fa-lg mr-1" style="color:#FFAD90;"></i>
         <span style="font-size:16px;">
-          <%= meal.date.strftime("%dth %b (%a)") %>
+          <%= foreigner? ? meal.date.strftime("%dth %b (%a)") : meal.date.strftime("%m月%d日(#{%w(日 月 火 水 木 金 土)[meal.date.wday]})") %>
         </span>
       </div>
 
       <div class="text-gray font-weight-bold mb-3">
         <i class="fas fa-users mr-1" style="color:#FFAD90;"></i>
         <span class="h5">
-          <%= meal.male + meal.female %> <span style="font-size:15px;">ppl</span>
+          <%= meal.male + meal.female %> <span class="font-weight-bold" style="font-size:15px;"><%= foreigner? ? "ppl" : "人" %></span>
         </span>
         (<i class="fas fa-male fa-sm"></i><%= meal.male %> <i class="fas fa-female fa-sm"></i><%= meal.female %>)
       </div>
@@ -49,7 +49,11 @@
       <div class="text-gray font-weight-bold mb-3">
         <i class="fab fa-skype fa-lg mr-1" style="color:#FFAD90;"></i>
         <span style="font-size:14px;">
-          <%= meal.skype == true ? "Yes, I want to" : "No, I don't want to" %>
+          <% if meal.skype == true%>
+            <%= foreigner? ? "Yes, I want to." : "はい"%>
+          <% else %>
+            <%= foreigner? ? "No, I don't want to." : "いいえ"%>
+          <% end %>
         </span>
       </div>
     </div>
@@ -65,7 +69,7 @@
 
       <div class="text-gray font-weight-bold mb-3">
         <i class="fas fa-map-marker-alt fa-lg ml-1 mr-1" style="color:#FFAD90;"></i>
-        <%= meal.location.name %> (<%= meal.location.prefecture.name %>)
+        <%= meal.location.pick_locale %> (<%= meal.location.prefecture.pick_locale %>)
       </div>
     </div>
   </div>

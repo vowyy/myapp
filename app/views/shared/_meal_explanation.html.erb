@@ -13,7 +13,7 @@
         <div class="text-center pt-1">
           <%= image_tag 'default.jpg', class: "home-image mb-2 circle-image", size: "120x120", style: "border:solid 1.5px white;brder-radius:5px;filter:drop-shadow(1px 1px 3px rgba(0,0,0,0.3));"%>
           <div class="mb-3 text-muted" style="font-size:15px;">
-            <% if current_page?(root_path) %>
+            <% if I18n.locale == :en %>
              name, age
             <% else %>
               国籍
@@ -34,7 +34,7 @@
           <span class="ml-1 mr-2 text-white">
             :
           </span>
-          <% if current_page?(root_path) %>
+          <% if I18n.locale == :en %>
             <span class="font-weight-bold text-white" style="font-size:11px;">
                First Language
               <span class="text-white">
@@ -65,7 +65,7 @@
           </span>
           <span class="font-weight-bold text-white">
             <span class="text-white align-center" style="font-size:15px;">
-              <%= current_page?(root_path) ? "Date" : "日付" %>
+              <%= I18n.locale == :en ? "Date" : "日付" %>
             </span>
           </span>
         </div>
@@ -81,7 +81,7 @@
             :
           </span>
           <span class="font-weight-bold text-white">
-            <%= current_page?(root_path) ? "Time Zone" : "時間帯" %>
+            <%= I18n.locale == :en ? "Time Zone" : "時間帯" %>
           </span>
         </div>
       </div>
@@ -96,7 +96,7 @@
             :
           </span>
           <span class="font-weight-bold text-white">
-            <%= current_page?(root_path) ? "Location, Prefecture" : "地名,　都道府県" %>
+            <%= I18n.locale == :en ? "Location, Prefecture" : "地名,　都道府県" %>
           </span>
         </div>
       </div>
@@ -112,14 +112,14 @@
           </span>
           <span>
             <span class="font-weight-bold text-white">
-              <%= current_page?(root_path) ? "Number of ppl" : "合計人数" %>
+              <%= I18n.locale == :en ? "Number of ppl" : "合計人数" %>
               <span class="d-inline-block" style="font-size:11px;">
                 <span class="mr-2">
-                  (<%= current_page?(root_path) ? "men" : "男性人数" %>
+                  (<%= I18n.locale == :en ? "men" : "男性人数" %>
                 </span>
                 +
                 <span class="ml-2">
-                  <%= current_page?(root_path) ? "women" : "女性人数" %>)
+                  <%= I18n.locale == :en ? "women" : "女性人数" %>)
                 </span>
               </span>
             </span>
@@ -137,7 +137,7 @@
             :
           </span>
           <span class="font-weight-bold text-white">
-            <%= current_page?(root_path) ? "wanna skype after matched?" : "マッチング後、skypeを希望しますか？" %>
+            <%= I18n.locale == :en ? "wanna skype after matched?" : "マッチング後、skypeを希望しますか？" %>
           </span>
         </div>
       </div>

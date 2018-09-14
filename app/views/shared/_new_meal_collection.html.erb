@@ -2,13 +2,13 @@
   <section class="p-5 bg-white">
     <div class="h2 ml-4 font-weight-bold" style="margin-bottom:70px;">
       <span class="pt-2 pl-3" style="border-left:solid 5px #008BBB;">
-        <%= current_page?(root_path) ? "Meals collection" : "外国人を探す"%>
+        <%= I18n.locale == :en ? "Meals collection" : "外国人を探す"%>
       </span>
     </div>
     <div class="mb-4 h3 w-100">
       <div class="ml-5 d-inline-block">
         <i class="fas fa-plane-arrival fa-lg"></i>
-        <% if current_page?(root_path) %>
+        <% if I18n.locale == :en %>
           <span class="mx-3">Latest Meals</span>
         <% else %>
           <span class="mx-2 font-weight-bold" style="font-size:28px;">新着投稿</span>
@@ -18,7 +18,7 @@
       <span class="d-inline-block w-50 mt-3 ml-4" style="font-size:18px;color:pink;" data-toggle="modal" data-target="#how-to-read">
         <span class="how-to">
           <i class="far fa-question-circle"></i>
-          <%= current_page?(root_path) ? "How to read a meal" : "投稿の読み方" %>
+          <%= I18n.locale == :en ? "How to read a meal" : "投稿の読み方" %>
         </span>
       </span>
       <%= render 'shared/meal_explanation'%>
@@ -26,7 +26,7 @@
     <div class="row justify-content-around">
       <%= render @new_meals %>
     </div>
-    <% if japanese? || current_page?(jhome_path) %>
+    <% if I18n.locale == :ja %>
       <div class="d-flex py-4 mx-3">
         <%= search_form_for @q, url: search_meals_result_path, class: "search_form mx-auto" do |f| %>
           <div class="form-group">

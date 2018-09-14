@@ -5,7 +5,7 @@
   <div class="pb-5 pt-5 text-center">
     <%= form_for([ meal, current_japanese.matches.build ], html: {class: "mb-3", style: "border-bottom:dotted 2px gray;"}) do |f| %>
       <div class="form-group mb-3" style="margin-right:22px;">
-        <%= f.label "予算 (一人あたり)", class: "font-weight-bold h5 d-block main-color text-left ml-5" %>
+        <%= f.label :budget, "予算 (一人あたり)", class: "font-weight-bold h5 d-block main-color text-left ml-5" %>
         <%= f.select :budget,  [["〜1000円", 1000], ["〜1500円", 1500],["〜2000円", 2000],["〜3000円", 3000], ["〜4000円", 4000]], {}, { class: "form-control d-inline-block w-75", style: "height:47px;" }  %>
       </div>
       <div class="form-group mb-4">
