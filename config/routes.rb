@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
-  root 'pages#home'
+  scope "(:locale)", locale: /en/ do
+    root 'pages#home'
+  end
 
-  get  '/jhome',               to: 'pages#jhome'
   get  '/search_meals',        to: 'pages#search_meals'
   get  '/search_meals_result', to: 'pages#search_meals_result'
   get  '/policy',              to: 'pages#policy'
@@ -45,8 +46,7 @@ end
 # == Route Map
 #
 #                                Prefix Verb     URI Pattern                                                                              Controller#Action
-#                                  root GET      /                                                                                        pages#home
-#                                 jhome GET      /jhome(.:format)                                                                         pages#jhome
+#                                  root GET      /(:locale)(.:format)                                                                     pages#home {:locale=>/en/}
 #                          search_meals GET      /search_meals(.:format)                                                                  pages#search_meals
 #                   search_meals_result GET      /search_meals_result(.:format)                                                           pages#search_meals_result
 #                                policy GET      /policy(.:format)                                                                        pages#policy
