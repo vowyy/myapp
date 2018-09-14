@@ -4,6 +4,6 @@ class ContactMailer < ApplicationMailer
     @email   = email
     @inquiry = inquiry
 
-    mail to: "meeat.japan@gmail.com", subject: "お問い合わせが来ています"
+    mail to: "bilibuddy1234@gmail.com", subject: "お問い合わせが来ています"
   end
 end
