@@ -1,4 +1,6 @@
 class MatchesController < ApplicationController
+  before_action :is_japanese?, only: :create
+  before_action :deserve_to_offer_meal?, only: :create
   before_action :set_match, only: [:edit, :update]
   before_action :already_approved?, only: [:edit, :update]
 
@@ -12,7 +14,7 @@ class MatchesController < ApplicationController
     else
       flash[:alert] = "オファーに失敗しました。もう一度やり直してください。"
     end
-    redirect_back(fallback_location: jhome_path)
+    redirect_back(fallback_location: root_path)
   end
 
   def edit; end
@@ -27,11 +29,29 @@ class MatchesController < ApplicationController
 
   def destroy
     Match.find(params[:id]).destroy
-    flash[:notice] = "You successfully canceled this Meal"
-    redirect_to root_path
+    flash[:notice] = t('flash.cancell_offer')
+    if japanese?
+      redirect_to root_path
+    else
+      redirect_to root_path(locale: :en)
+    end
   end
 
   private
+
+  def is_japanese?
+    unless japanese?
+      flash[:warning] = t('flash.wrong_access')
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
+  def deserve_to_offer_meal?
+    if current_japanese.there_lack_attributes?
+      flash[:warning] = "ミールにオファーするにはプロフィール、または自己紹介文を完成させてください。"
+      redirect_to edit_japanese_registration_path
+    end
+  end
 
   def match_params
     params.require(:match).permit(:budget, :skype).merge(meal_id: params[:meal_id])
@@ -42,14 +62,14 @@ class MatchesController < ApplicationController
       @match = Match.find(params[:id])
     else
       flash[:alert] = "This offer has been deleted."
-      redirect_to root_path
+      redirect_to root_path(locale: :en)
     end
   end
 
   def already_approved?
     if @match.ok? && Room.exists?(match_id: @match.id)
       flash[:alert] = "You already approved offer."
-      redirect_to root_path
+      redirect_to root_path(locale: :en)
     end
   end
 end
