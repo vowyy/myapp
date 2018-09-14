@@ -2,4 +2,8 @@ en:
   flash:
     profile_created: Your introduction was successfully created!
     profile_updated: Your introduction was successfully updated!
+    cancell_offer: You successfully cnacelled this offer.
+    wrong_access: wrong access
   ppl: ppl
+  send: Send
+  type: Type Message
