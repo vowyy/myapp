@@ -2,6 +2,10 @@ class Nation < ApplicationRecord
   has_many :foreigners
 
   mount_uploader :flag, FlagUploader
+
+  def pick_locale
+    I18n.locale == :ja ? name_ja : name_en
+  end
 end
 
 # == Schema Information

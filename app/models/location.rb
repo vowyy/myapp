@@ -2,8 +2,8 @@ class Location < ApplicationRecord
   belongs_to :prefecture
   has_many :meal
 
-  def pick_location(current_user, path)
-    current_user.class.name == "Foreigner" || path == "/" ? name_en : name_ja
+  def pick_locale
+    I18n.locale == :ja ? name_ja : name_en
   end
 end
 
