@@ -1,0 +1,18 @@
+en:
+  activerecord:
+    models:
+      foreigner: Foreinger
+    attributes:
+      foreigner:
+        id: ID
+        email: Email
+        name: Name
+        j_l: Japanese ability
+        flng_id: First Language
+        slng_id: Second Language
+        gender: Gender
+        image: Image
+        age: Age
+        nation_id: Nationality
+        created_at: date of creating
+        updated_at: date of updating

@@ -1,0 +1,17 @@
+<div class="mx-auto text-center p-4" style="font-size:14px;max-width:420px;min-width:300px;">
+  <div class="h3 font-weight-bold main-color mb-5">お問い合わせ</div>
+  <%= form_with url: contact_send_path, local: true do |f| %>
+    <div class="form-group mx-auto mb-4">
+      <%= f.text_field :name, autofocus: true, placeholder: "お名前", class: "form-control", style: "height:50px;" %>
+    </div>
+    <div class="form-group mx-auto mb-4">
+      <%= f.email_field :email, placeholder: "Email", class: "form-control", style: "height:50px;" %>
+    </div>
+    <div class="form-group mx-auto mb-5">
+      <%= f.text_area :inquiry, placeholder: "お問い合わせ内容", class: "form-control align-top", style: "height:250px;" %>
+    </div>
+    <div class="form-group mx-auto mb-4">
+      <%= f.submit "送信する", class: "form-control btn btn-darkorange py-2", style: "border-radius:5px;" %>
+    </div>
+  <% end %>
+</div>

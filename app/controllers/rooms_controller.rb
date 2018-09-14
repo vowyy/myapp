@@ -13,11 +13,18 @@ class RoomsController < ApplicationController
     if Room.exists?(id: params[:id])
       @room = Room.find(params[:id])
       if foreigner?
-        redirect_back(fallback_location: root_path) unless @room.foreigner.id == current_foreigner.id
+        unless @room.foreigner == current_foreigner
+          flash[:warning] = t('flash.wrong_access')
+          redirect_back(fallback_location: root_path(locale: :en))
+        end
       elsif japanese?
-        redirect_back(fallback_location: jhome_path) unless @room.japanese.id == current_japanese.id
+        unless @room.japanese == current_japanese
+          flash[:warning] = t('flash.wrong_access')
+          redirect_back(fallback_location: root_path)
+        end
       end
     else
+      flash[:warning] = t('flash.wrong_access')
       redirect_back(fallback_location: root_path)
     end
   end

@@ -1,0 +1,17 @@
+en:
+  activerecord:
+    models:
+      meal: Meal
+    attributes:
+      meal:
+        id: ID
+        date: Date
+        time: Time of Day
+        location_id: Location
+        male: Male
+        female: Female
+        note: Note
+        foreigner_id: Foreigner
+        skype: skype
+        created_at: date of creating
+        updated_at: date of updating

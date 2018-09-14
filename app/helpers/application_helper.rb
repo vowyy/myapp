@@ -28,6 +28,20 @@ module ApplicationHelper
     message.messable_type.to_s.downcase == current_user.class.to_s.downcase
   end
 
+  def japanese_related_page?
+     japanese? || !from_root?
+  end
+
+  def authenticate!
+    unless current_user_exists?
+      if I18n.locale = :ja
+        :authenticate_japanese!
+      elsif I18n.locale = :en
+        :authenticate_foreigner!
+      end
+    end
+  end
+
   private
 
   def store_location

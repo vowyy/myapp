@@ -1,0 +1,10 @@
+en:
+  activerecord:
+    models:
+      profile: Profile
+    attributes:
+      profile:
+        id: ID
+        intro: Introduction
+        created_at: date of creating
+        updated_at: date of updating

@@ -1,0 +1,11 @@
+en:
+  activerecord:
+    models:
+      location: Location
+    attributes:
+      location:
+        id: ID
+        name: Location
+        prefecture_id: Prefecure
+        created_at: date of creating
+        updated_at: date of updating

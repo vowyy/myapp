@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md fixed-top p-0" style="background-color:#FFFAFA;min-height:65px;">
   <div class="container" style="max-width:1270px !important;">
-    <%= link_to "MEEaT JAPAN", current_page?(root_path) ? root_path : jhome_path, class: "navbar-brand font-weight-bold main-logo ml-2" %>
+    <%= image_tag 'favicon_300.png', size: "35x35", class: "ml-5 mr-3" %><%= link_to "BiliBuddy", I18n.locale == :ja ? root_path : root_path(locale: :en), class: "navbar-brand font-weight-bold main-logo" %>
 
     <button class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navcol">
       <span class="h1">=</span>

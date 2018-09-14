@@ -17,10 +17,10 @@
             <%= render 'shared/devise_errormes', object: f.object %>
             <div class="d-flex mb-0">
               <div>
-                <%= f.text_field :content, autofocus: true, placeholder: "Type Message", class: "form-control bg-lightorange", style: "height:55px;min-width:310px;border-radius:0px;box-shadow:none;border-right:solid 1px #3CB371;" %>
+                <%= f.text_field :content, autofocus: true, placeholder: t('type'), class: "form-control bg-lightorange", style: "height:55px;min-width:310px;border-radius:0px;box-shadow:none;border-right:solid 1px #3CB371;" %>
               </div>
 
-              <%= f.submit "SEND", class: "btn text-center text-white pl-3 mess-send", style: "background-color:#3CB371;height:55px;max-width:75px;border-radius:0px;" %>
+              <%= f.submit t('send'), class: "btn text-center text-white pl-3 mess-send", style: "background-color:#3CB371;height:55px;max-width:75px;border-radius:0px;" %>
             </div>
           <% end %>
       </div>

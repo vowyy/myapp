@@ -9,6 +9,10 @@ class Language < ApplicationRecord
 
   has_many :has_second_langs, class_name: "Foreigner", foreign_key: 'slng_id'
   has_many :get_first, through: :has_second_langs, source: :flng
+
+  def pick_locale
+    I18n.locale == :ja ? lang_ja : lang_en
+  end
 end
 
 # == Schema Information
@@ -16,7 +20,8 @@ end
 # Table name: languages
 #
 #  id         :bigint(8)        not null, primary key
-#  lang       :string(255)      not null
+#  lang_en    :string(255)      not null
+#  lang_ja    :string(255)      not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

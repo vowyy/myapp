@@ -64,6 +64,13 @@ gem 'ransack', "~> 2.0"
 gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '~> 1.3', require: false
 
+# ページネーション
+gem 'kaminari', '~> 0.17.0'
+gem 'kaminari-bootstrap', '~> 3.0.1'
+
+# i18n日本語
+gem 'rails-i18n'
+
 group :development, :test do
   gem 'byebug', "~> 10.0", platforms: [:mri, :mingw, :x64_mingw]
 end

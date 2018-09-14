@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    models:
+      location: 場所
+    attributes:
+      location:
+        id: ID
+        name: 場所
+        prefecture_id: 都道府県
+        created_at: 登録日時
+        updated_at: 更新日時

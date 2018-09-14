@@ -1,0 +1,18 @@
+ja:
+  activerecord:
+    models:
+      foreigner: 外国人
+    attributes:
+      foreigner:
+        id: ID
+        email: メールアドレス
+        name: 名前
+        j_l: 日本語レベル
+        flng_id: 第1言語
+        slng_id: 第2言語
+        gender: 性別
+        image: 写真
+        age: 年齢
+        nation_id: 国籍
+        created_at: 登録日時
+        updated_at: 更新日時

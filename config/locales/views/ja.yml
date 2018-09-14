@@ -1,0 +1,9 @@
+ja:
+  flash:
+    profile_created: 自己紹介文が登録されました。
+    profile_updated: 自己紹介文が更新されました。
+    cancell_offer: オファーをキャンセルしました。
+    wrong_access: 不正なアクセスです。
+  ppl: 人
+  send: 送信
+  type: メッセージを入力してください

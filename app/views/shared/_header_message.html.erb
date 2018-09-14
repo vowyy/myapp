@@ -37,15 +37,16 @@
                   <%= image_tag room.foreigner.image.url(:_700), size: "45x45", class: "circle-image" %>
                 <% end %>
               </td>
-              <td class="meal-td"> <%= room.match.meal.date.strftime("%d, %b") %></td>
+              <td class="meal-td">
+                <%= foreigner? ? room.meal.date.strftime("%d, %b") : room.meal.date.strftime("%m月%d日") %>
               <td class="meal-td"><%= room.match.meal.time %></td>
               <td class="meal-td">
-                <%= room.match.meal.location.name %><br>
-                (<%= room.match.meal.location.prefecture.name %>)
+                <%= room.match.meal.location.pick_locale %><br>
+                (<%= room.match.meal.location.prefecture.pick_locale %>)
               </td>
               <td class="meal-td">
                 <span style="font-size:20px;">
-                  <%= room.match.meal.male + room.match.meal.female %> <span style="font-size:15px;">ppl</span>
+                  <%= room.match.meal.male + room.match.meal.female %> <span style="font-size:15px;"><%= t('ppl')%></span>
                 </span>
               </br>
                 ( <i class="fas fa-male fa-sm"></i><%= room.match.meal.male %> <i class="fas fa-female fa-sm"></i><%= room.match.meal.female %> )

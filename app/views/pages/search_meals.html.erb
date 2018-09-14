@@ -6,7 +6,7 @@
 <span class="d-inline-block w-50 ml-5" style="font-size:18px;color:pink;" data-toggle="modal" data-target="#how-to-read">
   <span class="how-to">
     <i class="far fa-question-circle"></i>
-    <%= current_page?(root_path) ? "How to read a meal" : "投稿の読み方" %>
+    投稿の読み方
   </span>
 </span>
 <%= render 'shared/meal_explanation'%>
@@ -14,12 +14,15 @@
 <% if !@search_meals_result.nil? %>
   <div class="mx-5 mt-4">
     <% if @search_meals_result.blank? %>
-    <div class="text-center text-muted">
+    <div class="text-center font-weight-bold h5">
       該当のミールが見つかりませんでした.入力内容を変更して再度検索してみてください。
     </div>
     <% end %>
     <div class="meal-container">
       <%= render @search_meals_result %>
+    </div>
+    <div class="ml-5 mt-3">
+      <%= paginate @search_meals_result %>
     </div>
   </div>
 <% end %>

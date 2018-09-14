@@ -1,0 +1,11 @@
+en:
+  activerecord:
+    models:
+      message: Message
+    attributes:
+      message:
+        id: ID
+        content: Message
+        room_id: Room
+        created_at: date of creating
+        updated_at: date of updating

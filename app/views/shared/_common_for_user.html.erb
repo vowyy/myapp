@@ -44,7 +44,7 @@
           <% if japanese? %>
             <%= current_japanese.nickname ? current_japanese.nickname : "選択してください" %>
           <% else %>
-            <%= current_foreigner.nation ? current_foreigner.nation.name : "none" %>
+            <%= current_foreigner.nation ? current_foreigner.nation.pick_locale : "none" %>
           <% end %>
         </div>
       </div>
@@ -59,7 +59,7 @@
         </div>
         <div class="h5 ml-4 mb-0 align-self-center">
           <% if japanese? %>
-            <%= current_japanese.language ? current_japanese.language.lang : "選択してください" %> <%= current_japanese.lang_l ? "(#{current_japanese.lang_l})" : "" %>
+            <%= current_japanese.language ? current_japanese.language.lang_ja : "選択してください" %> <%= current_japanese.lang_l ? "(#{current_japanese.lang_l})" : "" %>
           <% else %>
             <%= current_foreigner.j_l ? current_foreigner.j_l : "none" %>
           <% end %>
@@ -72,7 +72,7 @@
             First Language
           </div>
           <div class="h5 ml-4 mb-0 align-self-end">
-            <%= current_foreigner.flng ? current_foreigner.flng.lang : "none" %>
+            <%= current_foreigner.flng ? current_foreigner.flng.lang_en : "none" %>
           </div>
         </div>
       <% end %>
@@ -84,7 +84,7 @@
           </div>
           <div class="h5 ml-4 mb-0 align-self-end">
             <% if current_foreigner.slng %>
-              <%= current_foreigner.slng.lang %>
+              <%= current_foreigner.slng.lang_en %>
             <% else %>
               none
             <% end %>
@@ -130,7 +130,7 @@
         <div class="col text-center font-weight-bold" style="font-size:14px;">
           <i class="fas fa-user-edit"></i>
           <% if japanese? %>
-            <%= link_to "紹介文", new_profile_path, style: "color:white;" %>
+            <%= link_to "自己紹介文", new_profile_path, style: "color:white;" %>
           <% else %>
             <%= link_to "introduction", new_profile_path, style: "color:white;" %>
           <% end %>
