@@ -39,6 +39,11 @@ class Foreigner < ApplicationRecord
     created_at > 1.minute.ago
   end
 
+  def there_lack_attributes?
+    attrs = %i(email name j_l flng_id slng_id gender image age nation_id profile)
+    attrs.map{|a| self.send(a)}.include?(nil)
+  end
+
   # 新たなカラム追加する場合、ストロングパラメーターに追加しないとforeignerは作成されないので注意。
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |foreigner|

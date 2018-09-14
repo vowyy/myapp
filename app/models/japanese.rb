@@ -25,6 +25,12 @@ class Japanese < ApplicationRecord
 
   validate :nickname_required
 
+
+  def there_lack_attributes?
+    attrs = %i(email first_name last_name nickname language_id lang_l gender age profile)
+    attrs.map{|a| self.send(a)}.include?(nil)
+  end
+
   # allow users to update their accounts without passwords
   def update_without_current_password(params, *options)
     params.delete(:current_password)
