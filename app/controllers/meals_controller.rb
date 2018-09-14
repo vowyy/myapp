@@ -1,4 +1,6 @@
 class MealsController < ApplicationController
+  before_action :is_foreigner?
+  before_action :deserve_to_create_meal?
   before_action :meal_num_get, only: [:new, :create]
   before_action :get_meal, only: [:edit, :update, :destroy]
   before_action :element_selected?, only: :search
@@ -53,12 +55,18 @@ class MealsController < ApplicationController
 
   private
 
-  def meal_params
-    params.require(:meal).permit(:date, :time, :location_id, :male, :female, :skype)
+  def is_foreigner?
+    unless foreigner?
+      flash[:warning] = t('flash.wrong_access')
+      redirect_back(fallback_location: root_path)
+    end
   end
 
-  def get_meal
-    @meal = Meal.find(params[:id])
+  def deserve_to_create_meal?
+    if current_foreigner.there_lack_attributes?
+      flash[:warning] = "Please complete your profile or introduction."
+      redirect_to edit_foreigner_registration_path
+    end
   end
 
   def meal_num_get
@@ -66,5 +74,13 @@ class MealsController < ApplicationController
       flash[:alert] = "Sorry. Maximum posts are five."
       redirect_to root_path
     end
+  end
+
+  def meal_params
+    params.require(:meal).permit(:date, :time, :location_id, :male, :female, :skype)
+  end
+
+  def get_meal
+    @meal = Meal.find(params[:id])
   end
 end
