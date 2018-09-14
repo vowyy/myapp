@@ -1,11 +1,8 @@
 class PagesController < ApplicationController
-  before_action :you_foreigner?, only: :jhome
-  before_action :you_japanese?, only: :home
   before_action :new_arrival_meals
+  skip_before_action :authenticate!
 
-  def home;end
-
-  def jhome
+  def home
     @q = Meal.ransack(params[:q])
     @english_meals = Meal.joins(:foreigner).where(foreigners: { flng_id: 1 }).distinct.order("RAND()").limit(4)
   end
@@ -49,7 +46,7 @@ class PagesController < ApplicationController
 
       if request.referer.split("/").last == "jcontact"
         flash[:success] = "お問い合わせを送信しました。"
-        redirect_to jhome_path
+        redirect_to root_path
       else
         flash[:success] = "Your contact was successfully sent."
         redirect_to root_path
@@ -61,14 +58,6 @@ class PagesController < ApplicationController
 
   def new_arrival_meals
     @new_meals = Meal.limit(4).order("created_at DESC")
-  end
-
-  def you_foreigner?
-    redirect_to root_path if foreigner?
-  end
-
-  def you_japanese?
-    redirect_to jhome_path if japanese?
   end
 
   def search_params
