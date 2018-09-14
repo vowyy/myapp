@@ -1,4 +1,5 @@
 class ProfilesController < ApplicationController
+  before_action :valid_user, only: [:edit, :update]
   before_action :already_have_profile?, only: [:new, :create]
   before_action :load_profilable, only: [:edit, :update]
 
@@ -10,7 +11,7 @@ class ProfilesController < ApplicationController
   def create
     @profile = current_user.build_profile(profile_params)
     if @profile.save
-      flash[:success] = "Profile successfully created"
+      flash[:success] = t('flash.profile_created')
       redirect_to current_user
     else
       render action: :new, layout: 'personal_user'
@@ -23,7 +24,7 @@ class ProfilesController < ApplicationController
 
   def update
     if @profile.update(profile_params)
-      flash[:success] = "Profile successfully updated"
+      flash[:success] = t('flash.profile_updated')
       redirect_to current_user
     else
       render action: :edit, layout: 'personal_user'
@@ -31,6 +32,19 @@ class ProfilesController < ApplicationController
   end
 
   private
+
+  def valid_user
+    if Profile.exists?(id: params[:id])
+      @profile = Profile.find(params[:id])
+      unless @profile.profilable == current_user
+        redirect_back(fallback_location: root_path(locale: :en))
+        flash[:warning] = t('flash.wrong_access')
+      end
+    else
+      flash[:warning] = t('flash.wrong_access')
+      redirect_back(fallback_location: root_path)
+    end
+  end
 
   def already_have_profile?
     redirect_to edit_profile_path current_user.profile if not current_user.profile.nil?
