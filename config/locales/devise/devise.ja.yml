@@ -13,7 +13,7 @@ ja:
       not_found_in_database: 'メールアドレスかパスワードが違います。'
       timeout: 'セッションがタイムアウトしました。もう一度ログインしてください。'
       unauthenticated: 'ログインしてください。'
-      unconfirmed: '本登録を行ってください。'
+      unconfirmed: '確認メールから本登録を行ってください。'
     mailer:
       confirmation_instructions:
         subject: 'アカウントの登録方法'
