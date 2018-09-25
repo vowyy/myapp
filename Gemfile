@@ -65,14 +65,14 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '~> 1.3', require: false
 
 # ページネーション
-gem 'kaminari', '~> 0.17.0'
-gem 'kaminari-bootstrap', '~> 3.0.1'
+gem 'kaminari', '~> 0.17'
+gem 'kaminari-bootstrap', '~> 3.0'
 
 # i18n日本語
-gem 'rails-i18n'
+gem 'rails-i18n', "~> 5.1"
 
-group :development, :test do
-  gem 'byebug', "~> 10.0", platforms: [:mri, :mingw, :x64_mingw]
+group :production do
+  gem 'pg', "~> 1.1"
 end
 
 group :development do
@@ -92,6 +92,8 @@ group :test do
 end
 
 group :development, :test do
+  gem 'byebug', "~> 10.0", platforms: [:mri, :mingw, :x64_mingw]
+
   # Rspec
   gem 'rspec-rails', "~> 3.7"
   gem 'factory_bot_rails', "~> 4.10"
