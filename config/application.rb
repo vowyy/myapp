@@ -31,5 +31,8 @@ module Myapp
 
     # ロケールを:en以外に変更する
     config.i18n.default_locale = :ja
+
+    # herokuのPrecompiling assets failed.対策
+    config.assets.initialize_on_precompile = false
   end
 end
