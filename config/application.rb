@@ -34,5 +34,8 @@ module Myapp
 
     # herokuのPrecompiling assets failed.対策
     config.assets.initialize_on_precompile = false
+
+    # 本番環境での定数読み込み
+    config.paths.add 'lib', eager_load: true
   end
 end
