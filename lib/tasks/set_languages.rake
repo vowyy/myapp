@@ -1,7 +1,7 @@
 namespace :set_languages do
   desc "set_languages"
 
-  task :save_languages do
+  task save_languages: :environment do
     # raise "Not allowed to run on production" if Rails.env.production?
 
     Language.create(lang_en: "English", lang_ja: "英語")

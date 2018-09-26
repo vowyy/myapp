@@ -1,7 +1,7 @@
 namespace :migrate_tasks do
   desc "rails db:migrate:reset + rails scrape_nations:scrape_nation"
 
-  task :db_rebuild do
+  task db_rebuild: :environment do
     # raise "Not allowed to run on production" if Rails.env.production?
 
     unless Rails.env.production?
@@ -9,7 +9,7 @@ namespace :migrate_tasks do
       Rake::Task['db:create'].execute
       Rake::Task['db:migrate'].execute
     end
-    
+
     Rake::Task['set_prefecture:save_locations'].execute
     Rake::Task['set_languages:save_languages'].execute
     Rake::Task['scrape_nations:scrape_nation'].execute

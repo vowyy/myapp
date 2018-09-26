@@ -1,7 +1,7 @@
 namespace :set_prefecture do
   desc "set_meal_places"
 
-  task :save_locations do
+  task save_locations: :environment do
     # raise "Not allowed to run on production" if Rails.env.production?
 
     prefs    = { "東京": "Tokyo", "大阪": "Osaka", "北海道": "Hokkaido", "福岡": "Fukuoka", "神奈川": "Kanagawa", "兵庫": "Hyogo", "京都": "Kyoto", "沖縄": "Okinawa", "愛知": "Aichi", "千葉": "Chiba" }
