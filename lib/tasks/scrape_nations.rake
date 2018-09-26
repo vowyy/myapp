@@ -1,7 +1,7 @@
 namespace :scrape_nations do
   desc "scrape-nations and save them in nations table"
 
-  task scrape_nation: :environment do
+  task :scrape_nation do
     html = open("https://www.countries-ofthe-world.com/flags-of-the-world.html", &:read)
 
     doc = Nokogiri::HTML.parse(html, nil, 'utf-8')
