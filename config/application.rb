@@ -34,5 +34,7 @@ module Myapp
 
     # herokuのPrecompiling assets failed.対策
     config.assets.initialize_on_precompile = false
+
+    config.enable_dependency_loading = true
   end
 end
