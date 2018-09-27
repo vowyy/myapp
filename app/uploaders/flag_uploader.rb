@@ -1,7 +1,7 @@
 class FlagUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
 
-  if Rials.env.production?
+  if Rails.env.production?
     storage :fog
   else
     storage :file
