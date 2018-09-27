@@ -1,8 +1,11 @@
 class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
 
-  storage :file
-  # storage :fog
+  if Rials.env.production?
+    storage :fog
+  else
+    storage :file
+  end
 
   process convert: 'jpg'
 
