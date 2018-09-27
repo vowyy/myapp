@@ -1,6 +1,6 @@
 class MealsController < ApplicationController
-  before_action :is_foreigner?
-  before_action :deserve_to_create_meal?
+  before_action :is_foreigner?, except: :index
+  before_action :deserve_to_create_meal?, except: :index
   before_action :meal_num_get, only: [:new, :create]
   before_action :get_meal, only: [:edit, :update, :destroy]
   before_action :element_selected?, only: :search
