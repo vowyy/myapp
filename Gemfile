@@ -73,6 +73,7 @@ gem 'rails-i18n', "~> 5.1"
 
 group :production do
   gem 'pg', "~> 1.1"
+  gem 'fog-aws'
 end
 
 group :development do
