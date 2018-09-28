@@ -6,4 +6,4 @@
 Your meal has been offered. Click on the link below to check offer.
 </p>
 
-<%= link_to "check offer", edit_match_url(@match) %>
+<%= link_to "check offer", edit_match_url(@match), only_path: false, protocol: 'https://' %>

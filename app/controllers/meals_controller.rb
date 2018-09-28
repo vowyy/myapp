@@ -28,7 +28,7 @@ class MealsController < ApplicationController
 
     if @meal.save
       flash[:notice] = "meal succesfully created!!"
-      redirect_to root_url
+      redirect_to root_path
     else
       render :new
     end
