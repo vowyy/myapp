@@ -4,7 +4,7 @@ class PagesController < ApplicationController
 
   def home
     @q = Meal.ransack(params[:q])
-    @english_meals = Meal.joins(:foreigner).where(foreigners: { flng_id: 1 }).distinct.order("RAND()").limit(4)
+    @english_meals = Meal.joins(:foreigner).where(foreigners: { flng_id: 1 }).distinct.limit(4)
   end
 
   def search_meals
