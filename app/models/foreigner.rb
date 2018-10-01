@@ -40,7 +40,7 @@ class Foreigner < ApplicationRecord
   end
 
   def there_lack_attributes?
-    attrs = %i(email name j_l flng_id slng_id gender image age nation_id profile)
+    attrs = %i(email name j_l flng_id gender image age nation_id profile)
     attrs.map{|a| self.send(a)}.include?(nil)
   end
 
