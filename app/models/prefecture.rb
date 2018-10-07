@@ -1,5 +1,5 @@
 class Prefecture < ApplicationRecord
-  has_many :locations
+  has_many :locations, dependent: :destroy
 
   def pick_locale
     I18n.locale == :ja ? name_ja : name_en
