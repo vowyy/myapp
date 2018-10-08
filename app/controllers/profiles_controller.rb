@@ -47,7 +47,7 @@ class ProfilesController < ApplicationController
   end
 
   def already_have_profile?
-    redirect_to edit_profile_path current_user.profile if not current_user.profile.nil?
+    redirect_to edit_profile_path current_user.profile if current_user.profile
   end
 
   def load_profilable
@@ -58,5 +58,4 @@ class ProfilesController < ApplicationController
   def profile_params
     params.require(:profile).permit(:intro)
   end
-
 end

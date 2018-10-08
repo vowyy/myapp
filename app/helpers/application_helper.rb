@@ -29,14 +29,14 @@ module ApplicationHelper
   end
 
   def japanese_related_page?
-     japanese? || !from_root?
+    japanese? || !from_root?
   end
 
   def authenticate!
-    unless current_user_exists?
-      if I18n.locale = :ja
+    if current_user_exists?
+      if I18n.locale == :ja
         :authenticate_japanese!
-      elsif I18n.locale = :en
+      elsif I18n.locale == :en
         :authenticate_foreigner!
       end
     end

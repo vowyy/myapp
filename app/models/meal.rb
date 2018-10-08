@@ -12,7 +12,7 @@ class Meal < ApplicationRecord
 
   validates :date,         presence: true
   validates :time,         presence: true
-  validates :skype,        inclusion: { in: [ true, false ] }
+  validates :skype,        inclusion: { in: [true, false] }
   validates :male,         numericality: { less_than: 4 }
   validates :female,       numericality: { less_than: 4 }
   validates :foreigner_id, presence: true
@@ -30,15 +30,13 @@ class Meal < ApplicationRecord
     matches.exists?
   end
 
+  def count_offer
+    matches.where(meal_id: self, ok: 0).size
+  end
+
   def already_matched?
     room
   end
-
-  def get_num_of_offer
-    meal.matches.size
-  end
-
-
 
   private
 

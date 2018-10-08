@@ -8,7 +8,7 @@ class Profile < ApplicationRecord
   INTRO_LIMITATION_SIZE = 1000
 
   def shorten_intro
-    intro.scan(/\w+/).slice(0..22).join(" ") + " ....." if self.intro.scan(/\w+/).size > INTRO_SHORTENED_SIZE
+    intro.scan(/\w+/).slice(0..22).join(" ") + " ....." if intro.scan(/\w+/).size > INTRO_SHORTENED_SIZE
   end
 
   private

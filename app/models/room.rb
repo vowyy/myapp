@@ -9,7 +9,6 @@ class Room < ApplicationRecord
   validates :meal_id, presence: true, uniqueness: true
   validates :japanese_id, presence: true
   validates :foreigner_id, presence: true
-
 end
 
 # == Schema Information

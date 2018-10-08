@@ -11,16 +11,16 @@ class FlagUploader < CarrierWave::Uploader::Base
 
   # 保存するディレクトリ名
   def store_dir
-     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
   version :thumb do
-    process :resize_to_fit => [25, 25]
+    process resize_to_fit: [25, 25]
   end
 
   # 許可する画像の拡張子
   def extension_white_list
-    %W[jpg jpeg gif png]
+    %w(jpg jpeg gif png)
   end
 
   # 変換したファイルのファイル名の規則
@@ -32,7 +32,6 @@ class FlagUploader < CarrierWave::Uploader::Base
 
   def secure_token
     var = :"@#{mounted_as}_secure_token"
-    model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
+    model.instance_variable_get(var) || model.instance_variable_set(var, SecureRandom.uuid)
   end
-
 end

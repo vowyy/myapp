@@ -1,26 +1,25 @@
 class MealsController < ApplicationController
-  before_action :is_foreigner?, except: :index
+  before_action :only_foreigner, except: :index
   before_action :deserve_to_create_meal?, except: :index
   before_action :meal_num_get, only: [:new, :create]
-  before_action :get_meal, only: [:edit, :update, :destroy]
-  before_action :element_selected?, only: :search
+  before_action :find_meal, only: [:edit, :update, :destroy]
 
   def index
     if foreigner?
       @foreigner_all_meals      = current_foreigner.meals
       @foreigner_offered_meals  = current_foreigner.meals.select { |my_meal| my_meal.already_offered? && !my_meal.already_matched? }
-      @foreigner_matched_meals  = current_foreigner.meals.select { |my_meal| my_meal.already_matched? }
+      @foreigner_matched_meals  = current_foreigner.meals.select(&:already_matched?)
     else
-      @japanese_favor_meals   = current_japanese.favors.map {|my_favor| my_favor.meal }.delete_if { |meal| meal.already_matched? }
-      @japanese_offered_meals = current_japanese.matches.where(ok: false).map { |my_offer| my_offer.meal }
-      @japanese_matched_meals = current_japanese.matches.where(ok: true).map { |my_match| my_match.meal }
+      @japanese_favor_meals   = current_japanese.favors.map(&:meal).delete_if(&:already_matched?)
+      @japanese_offered_meals = current_japanese.matches.where(ok: false).map(&:meal)
+      @japanese_matched_meals = current_japanese.matches.where(ok: true).map(&:meal)
     end
     render layout: "personal_user"
   end
 
   def new
     @meal = Meal.new
-    Meal.all.each {|meal| meal.destroy if meal.date.past? }
+    Meal.all.each { |meal| meal.destroy if meal.date.past? }
   end
 
   def create
@@ -55,7 +54,7 @@ class MealsController < ApplicationController
 
   private
 
-  def is_foreigner?
+  def only_foreigner
     unless foreigner?
       flash[:warning] = t('flash.wrong_access')
       redirect_back(fallback_location: root_path)
@@ -80,7 +79,7 @@ class MealsController < ApplicationController
     params.require(:meal).permit(:date, :time, :location_id, :male, :female, :skype)
   end
 
-  def get_meal
+  def find_meal
     @meal = Meal.find(params[:id])
   end
 end

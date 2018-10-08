@@ -5,9 +5,9 @@ class Match < ApplicationRecord
   belongs_to :japanese
   has_one :room, dependent: :destroy
 
-  validates :ok, inclusion: { in: [ true, false ] }
+  validates :ok, inclusion: { in: [true, false] }
   validates :japanese_id, presence: true
-  validates :skype, inclusion: { in: [ true, false ] }
+  validates :skype, inclusion: { in: [true, false] }
   validates :meal_id, presence: true, uniqueness: { scope: :japanese_id }
 
   private

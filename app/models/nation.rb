@@ -1,5 +1,5 @@
 class Nation < ApplicationRecord
-  has_many :foreigners
+  has_many :foreigners, dependent: :nullify
 
   mount_uploader :flag, FlagUploader
 

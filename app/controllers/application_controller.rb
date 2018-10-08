@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include ApplicationHelper
 
-  before_action :get_meal_instance
   before_action :set_locale
   before_action :authenticate!
 
@@ -20,18 +19,14 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale
-    if current_user_exists?
-      japanese? ? I18n.locale = I18n.default_locale : I18n.locale = :en
-    else
-      I18n.locale = params[:locale] || I18n.default_locale
-    end
+    I18n.locale = if current_user_exists?
+                    japanese? ? I18n.default_locale : I18n.locale = :en
+                  else
+                    params[:locale] || I18n.default_locale
+                  end
   end
 
   protected
-
-  def get_meal_instance
-    @meal = Meal.new
-  end
 
   def authenticate!
     if japanese_signed_in?

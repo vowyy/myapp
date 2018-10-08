@@ -18,14 +18,11 @@ class PagesController < ApplicationController
     render 'search_meals'
   end
 
-  def praivacy;end
-  def jpraivacy;end
+  def praivacy; end
 
-  def term;end
-  def jterm;end
+  def term; end
 
-  def contact;end
-  def jcontact;end
+  def contact; end
 
   def contact_send
     @name    = params[:name]
@@ -33,24 +30,23 @@ class PagesController < ApplicationController
     @inquiry = params[:inquiry]
 
     if [@name, @email, @inquiry].map(&:blank?).include?(true)
-      if request.referer.split("/").last == "jcontact"
-        flash.now[:warning] = "全て記入してください。"
-        render :jcontact
-      else
-        flash.now[:warning] = "Blank form can not be accepted."
-        render :contact
-      end
+      flash.now[:warning] = if request.referer.split("/")[-2] == "en"
+                              "Blank form can not be accepted."
+                            else
+                              "全て記入してください。"
+                            end
+      # ここでエラー？というか日本語と英語のflashがごちゃ混ぜになる。
+      render "contact"
     else
 
       ContactMailer.contact_send(@name, @email, @inquiry).deliver_now
 
-      if request.referer.split("/").last == "jcontact"
-        flash[:success] = "お問い合わせを送信しました。"
-        redirect_to root_path
-      else
-        flash[:success] = "Your contact was successfully sent."
-        redirect_to root_path
-      end
+      flash[:success] = if request.referer.split("/")[-2] == "en"
+                          "Your contact was successfully sent."
+                        else
+                          "お問い合わせを送信しました。"
+                        end
+      redirect_to root_path(locale: params[:locale])
     end
   end
 
