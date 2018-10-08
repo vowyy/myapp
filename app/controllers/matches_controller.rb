@@ -1,5 +1,5 @@
 class MatchesController < ApplicationController
-  before_action :is_japanese?, only: :create
+  before_action :only_japanese, only: :create
   before_action :deserve_to_offer_meal?, only: :create
   before_action :set_match, only: [:edit, :update]
   before_action :already_approved?, only: [:edit, :update]
@@ -21,7 +21,7 @@ class MatchesController < ApplicationController
 
   def update
     if @match.update(ok: true)
-      Match.where(meal_id: @match.meal_id).map {|match| match.destroy if match.id != @match.id }
+      Match.where(meal_id: @match.meal_id).map { |match| match.destroy if match.id != @match.id }
       flash[:notice] = "Congratulations"
       redirect_to room_path(@match.room.id)
     end
@@ -39,7 +39,7 @@ class MatchesController < ApplicationController
 
   private
 
-  def is_japanese?
+  def only_japanese
     unless japanese?
       flash[:warning] = t('flash.wrong_access')
       redirect_back(fallback_location: root_path)

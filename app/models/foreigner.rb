@@ -1,6 +1,6 @@
 class Foreigner < ApplicationRecord
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: %i[facebook]
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: %i(facebook)
 
   belongs_to :nation, optional: true
   belongs_to :flng, class_name: 'Language', foreign_key: 'flng_id', optional: true
@@ -41,7 +41,7 @@ class Foreigner < ApplicationRecord
 
   def there_lack_attributes?
     attrs = %i(email name j_l flng_id gender image age nation_id profile)
-    attrs.map{|a| self.send(a)}.include?(nil)
+    attrs.map { |a| send(a) }.include?(nil)
   end
 
   # 新たなカラム追加する場合、ストロングパラメーターに追加しないとforeignerは作成されないので注意。
@@ -74,7 +74,7 @@ class Foreigner < ApplicationRecord
   private
 
   def flng_none?
-    errors.add(:flng_id,  "must exist.") if flng.lang_en == "none"
+    errors.add(:flng_id, "must exist.") if flng.lang_en == "none"
   end
 
   def chose_same_lang?

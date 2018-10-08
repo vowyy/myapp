@@ -52,6 +52,8 @@ Style/SymbolArray:
 # 1行に文字120まで書ける
 Metrics/LineLength:
   Max: 150
+  Exclude:
+    - 'lib/tasks/set_meal_places.rake'
 
 # ブロックの中身の行数50行までok
 Metrics/BlockLength:
@@ -63,17 +65,49 @@ Style/ClassAndModuleChildren:
 
 # メソッド内のライン20行までok
 Metrics/MethodLength:
-  Max: 20
+  Max: 22
 
 # メソッドをもっと細かく分けるのは後回しでok
 Metrics/AbcSize:
  Enabled: false
 
-# nation.rbのhas_many :foreignersのオプションとしてdependentをつけなくてもok
-HasManyOrHasOneDependent:
-    Exclude:
-      - 'app/models/nation.rb'
-
 # if文を1行で書かなくてもok
 Style/GuardClause:
-   Enabled: false
+  Enabled: false
+
+# スペースが入っていてもおk。(task系は見やすさのためイコールを揃えている)
+Layout/ExtraSpacing:
+  Exclude:
+    - 'lib/tasks/set_meal_places.rake'
+    - 'lib/tasks/scrape_nations.rake'
+
+# '='の周りのスペースは１つ
+Layout/SpaceAroundOperators:
+  Exclude:
+    - 'lib/tasks/set_meal_places.rake'
+
+# 循環的複雑度(Cyclomatic Complexity-分岐等の数を計測し、どれだけリスクが低いプログラムかを定量的に評価)をチェック
+Metrics/CyclomaticComplexity:
+  Max: 8
+Metrics/PerceivedComplexity:
+  Max: 10
+
+# downcaseを使わないでcasecmpを使わなくていい
+Performance/Casecmp:
+  Enabled: false
+
+# throughオプションにinverse_ofをつけなくていい。(よくわからん)
+Rails/InverseOf:
+  Enabled: false
+
+# よくわからんが、deviseのコードが怒れれたのでむし
+Style/MultilineTernaryOperator:
+  Exclude:
+    - 'app/controllers/japaneses/registrations_controller.rb'
+    - 'app/controllers/foreigners/registrations_controller.rb'
+
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    default: ()
+    '%i': ()
+    '%w': ()

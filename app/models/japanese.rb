@@ -25,10 +25,9 @@ class Japanese < ApplicationRecord
 
   validate :nickname_required
 
-
   def there_lack_attributes?
     attrs = %i(email first_name last_name nickname language_id lang_l gender age profile)
-    attrs.map{|a| self.send(a)}.include?(nil)
+    attrs.map { |a| send(a) }.include?(nil)
   end
 
   # allow users to update their accounts without passwords
@@ -48,7 +47,7 @@ class Japanese < ApplicationRecord
   private
 
   def nickname_required
-    errors.add(:nickname, "はローマ字のみで入力してください。") if !nickname.blank? && nickname !~ /\A[a-zA-Z]+\z/
+    errors.add(:nickname, "はローマ字のみで入力してください。") if nickname.present? && nickname !~ /\A[a-zA-Z]+\z/
   end
 end
 

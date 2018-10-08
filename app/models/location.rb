@@ -1,6 +1,6 @@
 class Location < ApplicationRecord
   belongs_to :prefecture
-  has_many :meal
+  has_many :meal, dependent: :nullify
 
   def pick_locale
     I18n.locale == :ja ? name_ja : name_en
