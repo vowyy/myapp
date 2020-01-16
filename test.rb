@@ -1,7 +1,5 @@
 describe "" do
-  aaa1
-  aaa2
-  aaa0
+  fack
 end
 
 describe "" do
