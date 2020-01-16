@@ -1,4 +1,4 @@
-describe "" do
+describe "fack" do
   fack
 end
 
