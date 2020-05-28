@@ -65,7 +65,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '~> 1.3', require: false
 
 # ページネーション
-gem 'kaminari', '~> 0.17'
+gem 'kaminari', '~> 1.2'
 gem 'kaminari-bootstrap', '~> 3.0'
 
 # i18n日本語
