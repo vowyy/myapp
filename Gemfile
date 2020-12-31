@@ -52,7 +52,7 @@ gem 'pessimize', "~> 0.4"
 gem 'active_decorator', "~> 1.0"
 
 # スクレイピング用
-gem 'nokogiri', "~> 1.8"
+gem 'nokogiri', "~> 1.10"
 
 # enumの日本語化
 gem 'enum_help', "~> 0.0"
