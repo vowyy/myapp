@@ -32,7 +32,7 @@ gem 'devise', '~> 4.4'
 gem 'dotenv-rails', "~> 2.4"
 
 # 画像
-gem 'carrierwave', "~> 1.2"
+gem 'carrierwave', "~> 1.3"
 gem 'rmagick', "~> 2.16"
 
 # エラー画面をわかりやすく整形してくれる
